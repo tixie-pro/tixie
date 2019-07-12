@@ -24,6 +24,7 @@ public class User {
     private String Password;
 
     private String ProfileImage;
+
     private Integer Specialization;
 
     public User() {
