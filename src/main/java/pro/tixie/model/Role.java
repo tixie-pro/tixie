@@ -11,28 +11,33 @@ public class Role {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private int role;
+    private String role;
 
-    public Role(int user_id, int role) {
+    public Role(String role) {
         this.role = role;
     }
 
-    public Role() {
-    }
+    public Role (){};
+
+//    getters
+
 
     public Long getId() {
         return id;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+//    Setters
+
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    public int getRole() {
-        return role;
-    }
-
-    public void setRole(int role) {
+    public void setRole(String role) {
         this.role = role;
     }
 }
