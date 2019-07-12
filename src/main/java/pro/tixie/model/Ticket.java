@@ -23,16 +23,16 @@ public class Ticket {
     private String issue_details;
 
     @OneToOne
-    private Specialization specialization_id;
+    private Specialization specialization;
 
     @OneToOne
-    private int statusId;
+    private Status status;
 
     @OneToOne
-    private User authorId;
+    private User author;
 
     @OneToOne
-    private User ownerId;
+    private User owner;
 
     @Column(nullable = false)
     private Date issue_date;
@@ -43,22 +43,22 @@ public class Ticket {
     @Column(nullable = false)
     private String imgUrl;
 
-    @Column(nullable = false)
-    private Priority priorityId;
+    @OneToOne
+    private Priority priority;
 
-    public Ticket( long id, int biohazard, String location_1, String location_2, String issue_details, Specialization specialization_id, int statusId, User authorId, User ownerId, Date issue_date, Date comp_date, String imgUrl, Priority priorityId) {
+    public Ticket( long id, int biohazard, String location_1, String location_2, String issue_details, Specialization specialization, Status status, User author, User owner, Date issue_date, Date comp_date, String imgUrl, Priority priority) {
         this.biohazard = biohazard;
         this.location_1 = location_1;
         this.location_2 = location_2;
         this.issue_details = issue_details;
-        this.specialization_id = specialization_id;
-        this.statusId = statusId;
-        this.authorId = authorId;
-        this.ownerId = ownerId;
+        this.specialization = specialization;
+        this.status = status;
+        this.author = author;
+        this.owner = owner;
         this.issue_date = issue_date;
         this.comp_date = comp_date;
         this.imgUrl = imgUrl;
-        this.priorityId = priorityId;
+        this.priority = priority;
     }
 
     public Long getId() {
@@ -82,19 +82,19 @@ public class Ticket {
     }
 
     public Specialization getSpecialization_id() {
-        return specialization_id;
+        return specialization;
     }
 
-    public int getStatusId() {
-        return statusId;
+    public Status getStatusId() {
+        return status;
     }
 
     public User getAuthorId() {
-        return authorId;
+        return author;
     }
 
     public User getOwnerId() {
-        return ownerId;
+        return owner;
     }
 
     public Date getIssue_date() {
@@ -110,7 +110,7 @@ public class Ticket {
     }
 
     public Priority getPriorityId() {
-        return priorityId;
+        return priority;
     }
 
     public void setId(Long id) {
@@ -133,20 +133,20 @@ public class Ticket {
         this.issue_details = issue_details;
     }
 
-    public void setSpecialization_id(Specialization specialization_id) {
-        this.specialization_id = specialization_id;
+    public void setSpecialization_id(Specialization specialization) {
+        this.specialization = specialization;
     }
 
-    public void setStatusId(int statusId) {
-        this.statusId = statusId;
+    public void setStatusId(Status status) {
+        this.status = status;
     }
 
-    public void setAuthorId(User authorId) {
-        this.authorId = authorId;
+    public void setAuthorId(User author) {
+        this.author = author;
     }
 
-    public void setOwnerId(User ownerId) {
-        this.ownerId = ownerId;
+    public void setOwnerId(User owner) {
+        this.owner = owner;
     }
 
     public void setIssue_date(Date issue_date) {
@@ -161,7 +161,7 @@ public class Ticket {
         this.imgUrl = imgUrl;
     }
 
-    public void setPriorityId(Priority priorityId) {
-        this.priorityId = priorityId;
+    public void setPriorityId(Priority priority) {
+        this.priority = priority;
     }
 }

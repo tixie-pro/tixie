@@ -12,21 +12,21 @@ public class Note {
     private Long id;
 
     @OneToOne
-    private Ticket ticketId;
+    private Ticket ticket;
 
     @Column(nullable = false )
     private String description;
 
     @OneToOne
-    private User userId;
+    private User user;
 
     @Column(nullable = false)
     private Date created;
 
-    public Note(Ticket ticketId, String description, User userId, Date created) {
-        this.ticketId = ticketId;
+    public Note(Ticket ticket, String description, User user, Date created) {
+        this.ticket = ticket;
         this.description = description;
-        this.userId = userId;
+        this.user = user;
         this.created = created;
     }
 
@@ -37,7 +37,7 @@ public class Note {
     }
 
     public Ticket getTicket_id() {
-        return ticketId;
+        return ticket;
     }
 
     public String getDescription() {
@@ -45,7 +45,7 @@ public class Note {
     }
 
     public User getUser_id() {
-        return userId;
+        return user;
     }
 
     public Date getCreated() {
@@ -59,16 +59,16 @@ public class Note {
         this.id = id;
     }
 
-    public void setTicket_id(Ticket ticketId) {
-        this.ticketId = ticketId;
+    public void setTicket_id(Ticket ticket) {
+        this.ticket = ticket;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setUser_id(User userId) {
-        this.userId = userId;
+    public void setUser_id(User user) {
+        this.user = user;
     }
 
     public void setCreated(Date created) {
