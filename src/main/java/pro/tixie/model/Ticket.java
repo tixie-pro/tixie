@@ -26,7 +26,7 @@ public class Ticket {
     private Specialization specialization_id;
 
     @OneToOne
-    private int status_id;
+    private Status status_id;
 
     @OneToOne
     private User author_id;
@@ -43,10 +43,10 @@ public class Ticket {
     @Column(nullable = false)
     private String imgUrl;
 
-    @Column(nullable = false)
+    @OneToOne
     private Priority priority_id;
 
-    public Ticket(int biohazard, String location_1, String location_2, String issue_details, Specialization specialization_id, int status_id, User author_id, User owner_id, Date issue_date, Date comp_date, String imgUrl, Priority priority_id) {
+    public Ticket(int biohazard, String location_1, String location_2, String issue_details, Specialization specialization_id, Status status_id, User author_id, User owner_id, Date issue_date, Date comp_date, String imgUrl, Priority priority_id) {
         this.biohazard = biohazard;
         this.location_1 = location_1;
         this.location_2 = location_2;
@@ -91,7 +91,7 @@ public class Ticket {
         return specialization_id;
     }
 
-    public int getStatus_id() {
+    public Status getStatus_id() {
         return status_id;
     }
 
@@ -146,7 +146,7 @@ public class Ticket {
         this.specialization_id = specialization_id;
     }
 
-    public void setStatus_id(int status_id) {
+    public void setStatus_id(Status status_id) {
         this.status_id = status_id;
     }
 
