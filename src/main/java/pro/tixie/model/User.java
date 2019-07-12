@@ -9,7 +9,7 @@ public class User {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private String Username;
+    private String userName;
 
     @Column(nullable = false)
     private String firstName;
@@ -23,10 +23,10 @@ public class User {
     @Column(nullable = false)
     private String Password;
 
-    private String ProfileImage;
+    private String profileImage;
 
     @OneToOne
-    private Specialization Specialization;
+    private Specialization specialization;
 
     public User() {
 
@@ -34,21 +34,21 @@ public class User {
 
     public User(Long id, String username, String firstName, String lastName, String email, String password, String profileImage, Specialization specialization) {
         this.id = id;
-        this.Username = username;
+        this.userName = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.Email = email;
         this.Password = password;
-        this.ProfileImage = profileImage;
-        this.Specialization = specialization;
+        this.profileImage = profileImage;
+        this.specialization = specialization;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getUsername() {
-        return Username;
+    public String getuserName() {
+        return userName;
     }
 
     public String getFirstName() {
@@ -68,15 +68,15 @@ public class User {
     }
 
     public String getProfileImage() {
-        return ProfileImage;
+        return profileImage;
     }
 
     public Specialization getSpecialization() {
-        return Specialization;
+        return specialization;
     }
 
-    public void setUsername(String username) {
-        Username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public void setFirstName(String firstName) {
@@ -88,18 +88,18 @@ public class User {
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.Email = email;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.Password = password;
     }
 
     public void setProfileImage(String profileImage) {
-        ProfileImage = profileImage;
+        this.profileImage = profileImage;
     }
 
     public void setSpecialization(Specialization specialization) {
-        Specialization = specialization;
+        this.specialization = specialization;
     }
 }
