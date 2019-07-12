@@ -1,0 +1,2 @@
+BUILD_COMMAND='./mvnw package'
+JAR_FILE=target/tixie-0.0.1-SNAPSHOT.jar
