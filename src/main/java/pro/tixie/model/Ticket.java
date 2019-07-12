@@ -1,7 +1,6 @@
 package pro.tixie.model;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.util.Date;
 
 @Entity
