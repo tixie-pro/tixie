@@ -28,19 +28,23 @@ public class User {
     @OneToOne
     private Specialization Specialization;
 
+    @OneToOne
+    private Role role;
+
     public User() {
 
     }
 
-    public User(Long id, String username, String firstName, String lastName, String email, String password, String profileImage, Specialization specialization) {
+    public User( long id,String username, String firstName, String lastName, String email, String password, String profileImage, pro.tixie.model.Specialization specialization, Role role) {
         this.id = id;
-        this.Username = username;
+        Username = username;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.Email = email;
-        this.Password = password;
-        this.ProfileImage = profileImage;
-        this.Specialization = specialization;
+        Email = email;
+        Password = password;
+        ProfileImage = profileImage;
+        Specialization = specialization;
+        this.role = role;
     }
 
     public Long getId() {
@@ -75,6 +79,12 @@ public class User {
         return Specialization;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+
+
     public void setUsername(String username) {
         Username = username;
     }
@@ -101,5 +111,9 @@ public class User {
 
     public void setSpecialization(Specialization specialization) {
         Specialization = specialization;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
