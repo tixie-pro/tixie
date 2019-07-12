@@ -1,4 +1,4 @@
-package pro.tixie.tixie;
+package com.tixie.tixie;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
