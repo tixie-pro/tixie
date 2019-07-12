@@ -25,13 +25,14 @@ public class User {
 
     private String ProfileImage;
 
-    private Integer Specialization;
+    @OneToOne
+    private Specialization Specialization;
 
     public User() {
 
     }
 
-    public User(Long id, String username, String firstName, String lastName, String email, String password, String profileImage, Integer specialization) {
+    public User(Long id, String username, String firstName, String lastName, String email, String password, String profileImage, Specialization specialization) {
         this.id = id;
         this.Username = username;
         this.firstName = firstName;
@@ -70,7 +71,7 @@ public class User {
         return ProfileImage;
     }
 
-    public Integer getSpecialization() {
+    public Specialization getSpecialization() {
         return Specialization;
     }
 
@@ -98,7 +99,7 @@ public class User {
         ProfileImage = profileImage;
     }
 
-    public void setSpecialization(Integer specialization) {
+    public void setSpecialization(Specialization specialization) {
         Specialization = specialization;
     }
 }
