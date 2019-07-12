@@ -21,7 +21,7 @@ public class Ticket {
     private String location_2;
 
     @Column(nullable = false)
-    private TextArea issue_details;
+    private String issue_details;
 
     @Column(nullable = false)
     private int specialization_id;
@@ -42,9 +42,12 @@ public class Ticket {
     private Date comp_date;
 
     @Column(nullable = false)
+    private String imgUrl;
+
+    @Column(nullable = false)
     private int priority_id;
 
-    public Ticket(int biohazard, String location_1, String location_2, TextArea issue_details, int specialization_id, int status_id, int author_id, int owner_id, Date issue_date, Date comp_date, int priority_id) {
+    public Ticket(int biohazard, String location_1, String location_2, String issue_details, int specialization_id, int status_id, int author_id, int owner_id, Date issue_date, Date comp_date, String imgUrl, int priority_id) {
         this.biohazard = biohazard;
         this.location_1 = location_1;
         this.location_2 = location_2;
@@ -55,6 +58,7 @@ public class Ticket {
         this.owner_id = owner_id;
         this.issue_date = issue_date;
         this.comp_date = comp_date;
+        this.imgUrl = imgUrl;
         this.priority_id = priority_id;
     }
 
@@ -93,11 +97,11 @@ public class Ticket {
         this.location_2 = location_2;
     }
 
-    public TextArea getIssue_details() {
+    public String getIssue_details() {
         return issue_details;
     }
 
-    public void setIssue_details(TextArea issue_details) {
+    public void setIssue_details(String issue_details) {
         this.issue_details = issue_details;
     }
 
@@ -147,6 +151,14 @@ public class Ticket {
 
     public void setComp_date(Date comp_date) {
         this.comp_date = comp_date;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public int getPriority_id() {
