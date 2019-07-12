@@ -9,7 +9,7 @@ public class User {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private String Username;
+    private String userName;
 
     @Column(nullable = false)
     private String firstName;
@@ -23,36 +23,32 @@ public class User {
     @Column(nullable = false)
     private String Password;
 
-    private String ProfileImage;
+    private String profileImage;
 
     @OneToOne
-    private Specialization Specialization;
-
-    @OneToOne
-    private Role role;
+    private Specialization specialization;
 
     public User() {
 
     }
 
-    public User( long id,String username, String firstName, String lastName, String email, String password, String profileImage, pro.tixie.model.Specialization specialization, Role role) {
+    public User(Long id, String username, String firstName, String lastName, String email, String password, String profileImage, Specialization specialization) {
         this.id = id;
-        Username = username;
+        this.userName = username;
         this.firstName = firstName;
         this.lastName = lastName;
-        Email = email;
-        Password = password;
-        ProfileImage = profileImage;
-        Specialization = specialization;
-        this.role = role;
+        this.Email = email;
+        this.Password = password;
+        this.profileImage = profileImage;
+        this.specialization = specialization;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getUsername() {
-        return Username;
+    public String getuserName() {
+        return userName;
     }
 
     public String getFirstName() {
@@ -72,21 +68,15 @@ public class User {
     }
 
     public String getProfileImage() {
-        return ProfileImage;
+        return profileImage;
     }
 
     public Specialization getSpecialization() {
-        return Specialization;
+        return specialization;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-
-
-    public void setUsername(String username) {
-        Username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public void setFirstName(String firstName) {
@@ -98,22 +88,18 @@ public class User {
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.Email = email;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.Password = password;
     }
 
     public void setProfileImage(String profileImage) {
-        ProfileImage = profileImage;
+        this.profileImage = profileImage;
     }
 
     public void setSpecialization(Specialization specialization) {
-        Specialization = specialization;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
+        this.specialization = specialization;
     }
 }
