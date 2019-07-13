@@ -3,6 +3,7 @@ package pro.tixie.repos;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import pro.tixie.model.Ticket;
+import pro.tixie.model.User;
 
 import java.util.List;
 
@@ -10,10 +11,10 @@ import java.util.List;
 public interface TicketRepository extends CrudRepository<Ticket, Long> {
 
     public List<Ticket> findAll();
-//    public List<Ticket> findAllByAuthorId(long authorId);
-//    public List<Ticket> findAllByOwnerId(long ownerId);
-//    public List<Ticket> findAllByPriorityId(long priorityId);
-//    public List<Ticket> findAllBySpecializationId(long specializationId);
-//    public List<Ticket> findAllByStatusId(long statusId);
+    public List<Ticket> findAllByAuthor(long authorId);
+    public List<Ticket> findAllByOwner(long ownerId);
+    public List<Ticket> findAllByPriority(long priorityId);
+    public List<Ticket> findAllBySpecialization(long specializationId);
+    public List<Ticket> findAllByStatus(long statusId);
 
 }

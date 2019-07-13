@@ -1,6 +1,7 @@
 package pro.tixie.model;
 
 import javax.persistence.*;
+import org.springframework.context.*;
 import java.util.Date;
 
 @Entity
