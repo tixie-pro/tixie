@@ -18,10 +18,10 @@ public class User {
     private String lastName;
 
     @Column(nullable = false, unique = true)
-    private String Email;
+    private String email;
 
     @Column(nullable = false)
-    private String Password;
+    private String password;
 
     private String profileImage;
 
@@ -37,8 +37,8 @@ public class User {
         this.userName = username;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.Email = email;
-        this.Password = password;
+        this.email = email;
+        this.password = password;
         this.profileImage = profileImage;
         this.specialization = specialization;
     }
@@ -60,11 +60,11 @@ public class User {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public String getProfileImage() {
@@ -88,11 +88,11 @@ public class User {
     }
 
     public void setEmail(String email) {
-        this.Email = email;
+        this.email = email;
     }
 
     public void setPassword(String password) {
-        this.Password = password;
+        this.password = password;
     }
 
     public void setProfileImage(String profileImage) {

@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
-<div th:object="">
+<div >
+<table>
+    <tr>
+        <th>Ticket #</th>
+        <th>Priority</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Issue</th>
+        <th>Created on</th>
+        <th>Created by</th>
+        <th>Assigned to</th>
+    </tr>
 
+    <div th:each="ticket : ${tix}" >
+        <tr>
+            <td><span th:text="${ticket.id}"/></td>
+            <td><span th:text="${ticket.priorityId.name}"/></td>
+            <td><span th:text="${ticket.specialization_id.name}"/></td>
+            <td><span th:text="${ticket.statusId.status}"/></td>
+            <td><span th:text="${ticket.issue_details}"/></td>
+            <td><span th:text="${ticket.issue_date.getTime()}"/></td>
+            <td><span th:text="${ticket.authorId.getuserName()}"/></td>
+            <td><span th:text="${ticket.ownerId.getuserName()}"/></td>
+        </tr>
+    </div>
+
+</table>
 </div>
 </body>
 </html>
