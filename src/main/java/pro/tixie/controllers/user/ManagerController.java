@@ -81,7 +81,6 @@ public class ManagerController {
         return "user/manager/tickets";
     }
 
-
     @GetMapping("tickets/dashboard")
     public String statsTickets(){
 
