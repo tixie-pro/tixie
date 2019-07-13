@@ -19,7 +19,7 @@ public class Ticket {
     @Column(nullable = false)
     private String location_2;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     private String issue_details;
 
     @OneToOne
@@ -37,7 +37,7 @@ public class Ticket {
     @Column(nullable = false)
     private Date issue_date;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Date comp_date;
 
     @Column(nullable = false)

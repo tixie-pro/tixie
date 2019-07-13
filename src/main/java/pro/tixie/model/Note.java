@@ -14,7 +14,7 @@ public class Note {
     @OneToOne
     private Ticket ticket;
 
-    @Column(nullable = false )
+    @Column(nullable = false, columnDefinition = "text")
     private String description;
 
     @OneToOne
