@@ -23,16 +23,16 @@ public class Ticket {
     private String issue_details;
 
     @OneToOne
-    private Specialization specialization_id;
+    private Specialization specialization;
 
     @OneToOne
-    private Status status_id;
+    private Status status;
 
     @OneToOne
-    private User author_id;
+    private User author;
 
     @OneToOne
-    private User owner_id;
+    private User owner;
 
     @Column(nullable = false)
     private Date issue_date;
@@ -44,28 +44,22 @@ public class Ticket {
     private String imgUrl;
 
     @OneToOne
-    private Priority priority_id;
+    private Priority priority;
 
-    public Ticket(int biohazard, String location_1, String location_2, String issue_details, Specialization specialization_id, Status status_id, User author_id, User owner_id, Date issue_date, Date comp_date, String imgUrl, Priority priority_id) {
+    public Ticket( long id, int biohazard, String location_1, String location_2, String issue_details, Specialization specialization, Status status, User author, User owner, Date issue_date, Date comp_date, String imgUrl, Priority priority) {
         this.biohazard = biohazard;
         this.location_1 = location_1;
         this.location_2 = location_2;
         this.issue_details = issue_details;
-        this.specialization_id = specialization_id;
-        this.status_id = status_id;
-        this.author_id = author_id;
-        this.owner_id = owner_id;
+        this.specialization = specialization;
+        this.status = status;
+        this.author = author;
+        this.owner = owner;
         this.issue_date = issue_date;
         this.comp_date = comp_date;
         this.imgUrl = imgUrl;
-        this.priority_id = priority_id;
+        this.priority = priority;
     }
-
-    public Ticket() {
-    }
-
-//  getters
-
 
     public Long getId() {
         return id;
@@ -88,19 +82,19 @@ public class Ticket {
     }
 
     public Specialization getSpecialization_id() {
-        return specialization_id;
+        return specialization;
     }
 
-    public Status getStatus_id() {
-        return status_id;
+    public Status getStatusId() {
+        return status;
     }
 
-    public User getAuthor_id() {
-        return author_id;
+    public User getAuthorId() {
+        return author;
     }
 
-    public User getOwner_id() {
-        return owner_id;
+    public User getOwnerId() {
+        return owner;
     }
 
     public Date getIssue_date() {
@@ -115,12 +109,9 @@ public class Ticket {
         return imgUrl;
     }
 
-    public Priority getPriority_id() {
-        return priority_id;
+    public Priority getPriorityId() {
+        return priority;
     }
-
-//  setters
-
 
     public void setId(Long id) {
         this.id = id;
@@ -142,20 +133,20 @@ public class Ticket {
         this.issue_details = issue_details;
     }
 
-    public void setSpecialization_id(Specialization specialization_id) {
-        this.specialization_id = specialization_id;
+    public void setSpecialization_id(Specialization specialization) {
+        this.specialization = specialization;
     }
 
-    public void setStatus_id(Status status_id) {
-        this.status_id = status_id;
+    public void setStatusId(Status status) {
+        this.status = status;
     }
 
-    public void setAuthor_id(User author_id) {
-        this.author_id = author_id;
+    public void setAuthorId(User author) {
+        this.author = author;
     }
 
-    public void setOwner_id(User owner_id) {
-        this.owner_id = owner_id;
+    public void setOwnerId(User owner) {
+        this.owner = owner;
     }
 
     public void setIssue_date(Date issue_date) {
@@ -170,7 +161,7 @@ public class Ticket {
         this.imgUrl = imgUrl;
     }
 
-    public void setPriority_id(Priority priority_id) {
-        this.priority_id = priority_id;
+    public void setPriorityId(Priority priority) {
+        this.priority = priority;
     }
 }
