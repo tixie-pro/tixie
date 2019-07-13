@@ -5,33 +5,59 @@
     <title>Title</title>
 </head>
 <body>
-<div >
-<table>
-    <tr>
-        <th>Ticket #</th>
-        <th>Priority</th>
-        <th>Category</th>
-        <th>Status</th>
-        <th>Issue</th>
-        <th>Created on</th>
-        <th>Created by</th>
-        <th>Assigned to</th>
-    </tr>
-
-    <div th:each="ticket : ${tix}" >
+<div>
+    <table>
         <tr>
-            <td><span th:text="${ticket.id}"/></td>
-            <td><span th:text="${ticket.priorityId.name}"/></td>
-            <td><span th:text="${ticket.specialization_id.name}"/></td>
-            <td><span th:text="${ticket.statusId.status}"/></td>
-            <td><span th:text="${ticket.issue_details}"/></td>
-            <td><span th:text="${ticket.issue_date.getTime()}"/></td>
-            <td><span th:text="${ticket.authorId.getuserName()}"/></td>
-            <td><span th:text="${ticket.ownerId.getuserName()}"/></td>
+            <th>Ticket #</th>
+            <th>Priority</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Issue</th>
+            <th>Created on</th>
+            <th>Created by</th>
+            <th>Assigned to</th>
         </tr>
-    </div>
 
-</table>
+        <div th:each="ticket : ${tix}">
+            <tr>
+                <td><span th:text="${ticket.id}"/></td>
+                <td>
+                    <a th:href="@{'/tickets/priority/'+${ticket.priorityId.id}}">
+                    <span th:text="${ticket.priorityId.name}"/>
+                    </a>
+                </td>
+
+                <td>
+                    <a th:href="@{'/tickets/specialization/'+${ticket.specialization_id.id}}">
+                    <span th:text="${ticket.specialization_id.name}"/>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{'/tickets/status/'+${ticket.statusId.id}}">
+                        <span th:text="${ticket.statusId.status}"/>
+                    </a>
+                </td>
+                <td><span th:text="${ticket.issue_details}"/></td>
+                <td>
+
+                    <span th:text="${ticket.issue_date.getTime()}"/>
+
+                </td>
+                <td>
+                    <a th:href="@{'/tickets/author/'+${ticket.authorId.id}}">
+                        <span th:text="${ticket.authorId.getuserName()}"/>
+                    </a>
+                </td>
+
+                <td>
+                    <a th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">
+                        <span th:text="${ticket.ownerId.getuserName()}"/>
+                    </a>
+                </td>
+            </tr>
+        </div>
+
+    </table>
 </div>
 </body>
 </html>
