@@ -16,18 +16,21 @@ public class ManagerTixController {
     private PriorityRepository priDao;
     private StatusRepository statDao;
     private SpecializationRepo specDao;
+    private NoteRepository noteDao;
 
     public ManagerTixController(TicketRepository ticketDao,
                              UserRepository userDao,
                              PriorityRepository priDao,
                              StatusRepository statDao,
-                             SpecializationRepo specDao
+                             SpecializationRepo specDao,
+                             NoteRepository noteDao
     ){
         this.ticketDao = ticketDao;
         this.userDao = userDao;
         this.priDao = priDao;
         this.statDao= statDao;
         this.specDao = specDao;
+        this.noteDao = noteDao;
     }
 
     @GetMapping("tickets/all")
@@ -86,6 +89,25 @@ public class ManagerTixController {
 
     }
 
+    @GetMapping("/tech")
+    public String techPage(Model model){
+        List<Ticket> tix = ticketDao.findAll();
+        model.addAttribute("tix", tix);
+        model.addAttribute("active", false);
+        return "user/technician/index";
+    }
+
+    @GetMapping("tech/ticket/{id}")
+    public String techTicket(@PathVariable long id, Model model){
+        Ticket tix = ticketDao.findOne(id);
+        List<Note> note = noteDao.findAllByTicket(tix);
+        List<Ticket> allTix = ticketDao.findAll();
+        model.addAttribute("active", true);
+        model.addAttribute("ticket", tix);
+        model.addAttribute("note", note);
+        model.addAttribute("tix", allTix);
+        return "user/technician/index";
+    }
 
 
 }

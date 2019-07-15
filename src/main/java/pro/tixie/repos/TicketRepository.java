@@ -17,4 +17,5 @@ public interface TicketRepository extends CrudRepository<Ticket, Long> {
     public List<Ticket> findAllByStatus(Status status);
     public List<Ticket> findAllByBiohazardEquals(int id);
 
+
 }
