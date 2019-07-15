@@ -63,7 +63,7 @@ public class ManagerDashController {
         List<Ticket> plumTix = ticketDao.findAllBySpecialization(plum);
         List<Ticket> hvacTix = ticketDao.findAllBySpecialization(hvac);
         List<Ticket> custTix = ticketDao.findAllBySpecialization(cust);
-        List<Ticket> biohTix = ticketDao.findAllBySpecialization(bioh);
+        List<Ticket> biohTix = ticketDao.findAllByBiohazardEquals(1);
 
 //        String totalTix=
 
@@ -90,7 +90,7 @@ public class ManagerDashController {
 
 
 //        one graph for tickets by time line.
-
+        model.addAttribute("tixbydate", allTix);
 
         return "user/manager/dashboard";
     }

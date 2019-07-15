@@ -34,31 +34,37 @@
     <div th:text="@{'HVAC %: '+${hvacPerc}}"></div>
     <div th:text="@{'Custodial Tickets: '+${cust}}"></div>
     <div th:text="@{'Custodial %: '+${custPerc}}"></div>
-    <div th:text="@{'Biohazardus Tickets: '+${bioh}}"></div>
-    <div th:text="@{'Biohazardus %: '+${biohPerc}}"></div>
+    <div th:text="@{'Biohazardous Tickets: '+${bioh}}"></div>
+    <div th:text="@{'Biohazardous %: '+${biohPerc}}"></div>
 
 </div>
 
 <div th:style="@{float: left; border: 1px solid black;padding:3px;}">
     <div th:each="tix :${tixbydate}">
         <div>
-            <div><span th:text="${ticket.id}"/></div>
+            <div><span th:text="${tix.id}"/></div>
             <div>
-                <a th:href="@{'/tickets/priority/'+${ticket.priorityId.id}}">
-                    <span th:text="${ticket.priorityId.name}"/>
+                <a th:href="@{'/tickets/priority/'+${tix.priorityId.id}}">
+                    <span th:text="${tix.priorityId.name}"/>
                 </a>
             </div>
 
             <div>
-                <a th:href="@{'/tickets/specialization/'+${ticket.specialization_id.id}}">
-                    <span th:text="${ticket.specialization_id.name}"/>
+                <a th:href="@{'/tickets/specialization/'+${tix.specialization_id.id}}">
+                    <span th:text="${tix.specialization_id.name}"/>
                 </a>
             </div>
             <div>
-                <a th:href="@{'/tickets/status/'+${ticket.statusId.id}}">
-                    <span th:text="${ticket.statusId.status}"/>
+                <a th:href="@{'/tickets/status/'+${tix.statusId.id}}">
+                    <span th:text="${tix.statusId.status}"/>
                 </a>
             </div>
+            <div>
+                <a th:href="@{'/tickets/status/'+${tix.statusId.id}}">
+                    <span th:text="${tix.issue_date.getDate()}"/>
+                </a>
+            </div>
+
 
         </div>
     </div>
