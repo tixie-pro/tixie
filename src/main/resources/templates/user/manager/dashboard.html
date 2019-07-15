@@ -1,9 +1,23 @@
 <!DOCTYPE html>
-x<head>
-    <meta charset="UTF-8" />
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
+<div th:style="@{float: left; border: 1px solid black;padding:3px;}">
+    <div>
+        <h3>Stats by status</h3>
+    </div>
+    <div th:text="@{'Total Tickets: '+${totalTix}}"></div>
+    <div th:text="@{'Copmleted Tickets: '+${complete}}"></div>
+    <div th:text="@{'Copmleted %: '+${completePerc}}"></div>
+    <div th:text="@{'Tickets in progress: '+${inProg}}"></div>
+    <div th:text="@{'Tickets in progress: '+${inProg}}"></div>
+    <div th:text="@{'In Progress%: '+${inProgPerc}}"></div>
+    <div th:text="@{'Open Tickets: '+${open}}"></div>
+    <div th:text="@{'Open %: '+${openPerc}}"></div>
+</div>
 
 </body>
 </html>
