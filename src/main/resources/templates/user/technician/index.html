@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
@@ -8,6 +8,7 @@
             border-bottom: #1a1a1a 3px solid;
             text-align: center;
         }
+
 
         .container {
             margin-top: 1rem;
@@ -28,9 +29,19 @@
             padding: 15px 0 15px 0;
         }
 
-        .assignedTickets, .activeTicketsTitle {
+        .activeTicketsTitle {
             border: #1a1a1a 3px solid;
             width: fit-content;
+        }
+
+        /*#activeTickets{*/
+        /*visibility: hidden;*/
+        /*}*/
+
+        .assignedTickets {
+            border: #1a1a1a 3px solid;
+            width: 500px;
+            height: 693px;
         }
 
         table, th {
@@ -66,6 +77,25 @@
             padding-top: 15px;
         }
 
+        #table-wrapper {
+            position: relative;
+        }
+
+        #table-scroll {
+            height: 630px;
+            overflow: auto;
+            margin-top: 20px;
+        }
+
+        #table-wrapper table {
+            width: 100%;
+
+        }
+
+        .text {
+            text-align: center;
+        }
+
 
     </style>
 </head>
@@ -77,37 +107,72 @@
         <div class="assignedTickets">
             <h3>Assigned Tickets</h3>
             <div class="view">
-                <!--<th:block th:each="ticket : ${tickets}">-->
-                <table>
-                    <tr>
-                        <th>Active</th>
-                        <th>Reassign</th>
-                        <th>Notes</th>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" name="active" value="Active"/></td>
-                        <td>Ticket ID</td>
-                        <td><p>Meow to be let in it's 3am</p>
-                        </td>
-                        <!--<td><input type="checkbox" name="active" value="Active" />Active</td>-->
-                        <!--<td th:text="${ticket.id}">Ticket ID</td>-->
-                        <!--<td th:text="${ticket.issue_details}">blah blah blah</td>-->
-                    </tr>
-                </table>
-                <!--</th:block>-->
+                <div id="table-wrapper">
+                    <div id="table-scroll">
+                        <table>
+                            <thead>
+                            <div th:each="tickets : ${tix}">
+                                <tr>
+                                    <th>Active</th>
+                                    <th>Ticket Id</th>
+                                    <th>Notes</th>
+                                </tr>
+                                <tr>
+                                    <td class="text">
+                                        <th:block th:if="${active}">
+                                            <th:block th:if="${tickets.id} == ${ticket.id}">
+                                                <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
+                                                    <div>
+                                                        <div onclick="showSingleTicket()" class="text">
+                                                            <input type="checkbox" checked="checked"></input>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </th:block>
+                                            <th:block th:if="${tickets.id} != ${ticket.id}">
+                                                <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
+                                                    <div>
+                                                        <div onclick="showSingleTicket()" class="text" type="checkbox"
+                                                             name="active" value="Active">
+                                                            <button>Activate</button>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </th:block>
+                                        </th:block>
+                                        <th:block th:if="${!active}">
+                                            <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
+                                                <div>
+                                                    <div onclick="showSingleTicket()" class="text" type="checkbox"
+                                                         name="active" value="Active">
+                                                        <button>Activate</button>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </th:block>
+                                    </td>
+                                    <td class="text"><span class="text" th:text="${tickets.id}"/></td>
+                                    <td><span class="text" th:text="${tickets.issue_details}"/></td>
+                                </tr>
+                            </div>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="activeTicketsTitle">
+        <div th:if="${active}" class="activeTicketsTitle">
             <div>
                 <h3 class="align-left">Active Ticket</h3>
             </div>
             <div class="activeDetails">
                 <table>
                     <tr>
-                        <th>Category:</th>
+                        <th>Category: <span th:text="${ticket.specialization_id.name}"></span></th>
                     </tr>
                     <tr>
-                        <th>Location:</th>
+                        <th>Location: <span th:text="${ticket.location_1}"></span> , <span
+                                th:text="${ticket.location_2}"></span></th>
                     </tr>
                 </table>
             </div>
@@ -115,7 +180,8 @@
                 <h3 class="align-left top-border">Details</h3>
             </div>
             <div class="activeDetails">
-                <p>Sleep in the bathroom sink pretend you want to go out but then don't stare out cat door then go back
+                <p th:text="${ticket.issue_details}">Sleep in the bathroom sink pretend you want to go out but then
+                    don't stare out cat door then go back
                     inside for allways wanting food, tuxedo cats always looking dapper sniff other cat's butt and hang
                     jaw
                     half open thereafter. Meow go back to sleep owner brings food and water tries to pet on head, so
@@ -174,8 +240,9 @@
             <div>
                 <h3 class="align-left top-border">Notes</h3>
             </div>
-            <div class="activeDetails">
-                <p>Meow to be let in it's 3am, time to create some chaos or scratch the postman wake up lick paw wake up
+            <div th:each="note : ${note}" class="activeDetails">
+                <p th:text="${note.description}">Meow to be let in it's 3am, time to create some chaos or scratch the
+                    postman wake up lick paw wake up
                     owner meow meow, for chase mice flop over, so give attitude. Eat from dog's food kitty run to human
                     with
                     blood on mouth from frenzied attack on poor innocent mouse, don't i look cute?. Murder hooman toes
@@ -190,15 +257,17 @@
             <label class="radios">
                 <table class="all-width">
                     <tr>
-                        <td style="text-align: left"><input type="radio" checked="checked" name="radio" id="progress"/>
-                            <label for="progress">In Progress</label>
-                        </td>
-                        <td style="text-align: center"><input type="radio" name="radio" id="complete"/>
-                            <label for="complete">Complete</label>
-                        </td>
-                        <td style="text-align: right"><input type="radio" name="radio" id="escalate"/>
-                            <label for="escalate">Escalate</label>
-                        </td>
+                        <form action="">
+                            <td style="text-align: left"><input type="radio" checked="checked" name="radio" id="progress"/>
+                                <label for="progress">In Progress</label>
+                            </td>
+                            <td style="text-align: center"><input type="radio" name="radio" id="complete"/>
+                                <label for="complete">Complete</label>
+                            </td>
+                            <td style="text-align: right"><input type="radio" name="radio" id="escalate"/>
+                                <label for="escalate">Escalate</label>
+                            </td>
+                        </form>
                     </tr>
                 </table>
             </label>
@@ -206,5 +275,17 @@
     </div>
 </div>
 
+
+<script>
+
+    function showSingleTicket() {
+        var show = document.getElementById("activeTickets");
+        if (window.getComputedStyle(show).visibility === "hidden") {
+            show.style.visibility = "visible";
+        } else {
+            show.style.visibility = "hidden";
+        }
+    }
+</script>
 </body>
 </html>

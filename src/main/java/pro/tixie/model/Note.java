@@ -30,7 +30,10 @@ public class Note {
         this.created = created;
     }
 
-//    getters
+    public Note() {
+    }
+
+    //    getters
 
     public Long getId() {
         return id;
