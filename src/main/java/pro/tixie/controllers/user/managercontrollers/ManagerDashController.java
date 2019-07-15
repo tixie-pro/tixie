@@ -41,10 +41,26 @@ public class ManagerDashController {
         Status inProg= statDao.findById(2);
         Status open= statDao.findById(1);
 
+//        carpenter = 1 electric = 2 plumbing =3 hvac = 4 custodian = 5 biohazard = 6
+
+        Specialization carp = specDao.findById(1);
+        Specialization elec = specDao.findById(2);
+        Specialization plum = specDao.findById(3);
+        Specialization hvac = specDao.findById(4);
+        Specialization cust = specDao.findById(5);
+        Specialization bioh = specDao.findById(6);
+//        creating the lists
         List<Ticket> allTix = ticketDao.findAll();
         List<Ticket> compTix = ticketDao.findAllByStatus(comp);
         List<Ticket> inProgTix= ticketDao.findAllByStatus(inProg);
         List<Ticket> openTix= ticketDao.findAllByStatus(open);
+
+        List<Ticket> carpTix = ticketDao.findAllBySpecialization(carp);
+        List<Ticket> elecTix = ticketDao.findAllBySpecialization(elec);
+        List<Ticket> plumTix = ticketDao.findAllBySpecialization(plum);
+        List<Ticket> hvacTix = ticketDao.findAllBySpecialization(hvac);
+        List<Ticket> custTix = ticketDao.findAllBySpecialization(cust);
+        List<Ticket> biohTix = ticketDao.findAllBySpecialization(bioh);
 
 //        String totalTix=
 
@@ -56,6 +72,9 @@ public class ManagerDashController {
         model.addAttribute("open", openTix.size());
         model.addAttribute("openPerc", percentCalc(openTix.size(), allTix.size()));
 //        one graph for tickets by catagory
+
+
+
 //        one graph for tickets by time line.
 
 
