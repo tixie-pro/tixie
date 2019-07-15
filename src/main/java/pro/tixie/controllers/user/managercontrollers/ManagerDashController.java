@@ -49,6 +49,9 @@ public class ManagerDashController {
         Specialization hvac = specDao.findById(4);
         Specialization cust = specDao.findById(5);
         Specialization bioh = specDao.findById(6);
+
+//
+
 //        creating the lists
         List<Ticket> allTix = ticketDao.findAll();
         List<Ticket> compTix = ticketDao.findAllByStatus(comp);
@@ -72,7 +75,18 @@ public class ManagerDashController {
         model.addAttribute("open", openTix.size());
         model.addAttribute("openPerc", percentCalc(openTix.size(), allTix.size()));
 //        one graph for tickets by catagory
-
+        model.addAttribute("hvac", hvacTix.size());
+        model.addAttribute("hvacPerc",percentCalc(hvacTix.size(), allTix.size()));
+        model.addAttribute("carp", carpTix.size());
+        model.addAttribute("carpPerc",percentCalc(carpTix.size(), allTix.size()));
+        model.addAttribute("elec", elecTix.size());
+        model.addAttribute("elecPerc",percentCalc(elecTix.size(), allTix.size()));
+        model.addAttribute("plum", plumTix.size());
+        model.addAttribute("plumPerc",percentCalc(plumTix.size(), allTix.size()));
+        model.addAttribute("cust", custTix.size());
+        model.addAttribute("custPerc",percentCalc(custTix.size(), allTix.size()));
+        model.addAttribute("bioh", biohTix.size());
+        model.addAttribute("biohPerc",percentCalc(biohTix.size(), allTix.size()));
 
 
 //        one graph for tickets by time line.
