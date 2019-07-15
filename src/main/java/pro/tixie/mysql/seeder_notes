@@ -1,0 +1,9 @@
+Seeder execution order, assuming the database has been updated. :
+
+1: priority
+2: role
+3: specialization
+4: status
+5: user
+6: tickets
+7: notes

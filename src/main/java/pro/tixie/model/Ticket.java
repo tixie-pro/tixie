@@ -1,6 +1,7 @@
 package pro.tixie.model;
 
 import javax.persistence.*;
+import org.springframework.context.*;
 import java.util.Date;
 
 @Entity
@@ -19,7 +20,7 @@ public class Ticket {
     @Column(nullable = false)
     private String location_2;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     private String issue_details;
 
     @OneToOne
@@ -37,7 +38,7 @@ public class Ticket {
     @Column(nullable = false)
     private Date issue_date;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Date comp_date;
 
     @Column(nullable = false)
@@ -45,6 +46,8 @@ public class Ticket {
 
     @OneToOne
     private Priority priority;
+
+    public Ticket(){};
 
     public Ticket( long id, int biohazard, String location_1, String location_2, String issue_details, Specialization specialization, Status status, User author, User owner, Date issue_date, Date comp_date, String imgUrl, Priority priority) {
         this.biohazard = biohazard;

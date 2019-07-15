@@ -92,6 +92,7 @@ public class User{
 
     public String getConfirmPassword() {
         return confirmPassword;
+
     }
 
     public String getProfileImage() {
@@ -125,6 +126,7 @@ public class User{
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
         checkPassword();
+
     }
 
     public void setProfileImage(String profileImage) {
