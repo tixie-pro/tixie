@@ -16,4 +16,5 @@ public interface TicketRepository extends CrudRepository<Ticket, Long> {
     public List<Ticket> findAllBySpecialization(Specialization spec);
     public List<Ticket> findAllByStatus(Status status);
 
+
 }

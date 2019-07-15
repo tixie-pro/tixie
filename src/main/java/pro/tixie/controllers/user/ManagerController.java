@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pro.tixie.model.*;
 import pro.tixie.repos.*;
@@ -18,18 +19,21 @@ public class ManagerController {
     private PriorityRepository priDao;
     private StatusRepository statDao;
     private SpecializationRepo specDao;
+    private NoteRepository noteDao;
 
     public ManagerController(TicketRepository ticketDao,
                              UserRepository userDao,
                              PriorityRepository priDao,
                              StatusRepository statDao,
-                             SpecializationRepo specDao
+                             SpecializationRepo specDao,
+                             NoteRepository noteDao
     ){
         this.ticketDao = ticketDao;
         this.userDao = userDao;
         this.priDao = priDao;
         this.statDao= statDao;
         this.specDao = specDao;
+        this.noteDao = noteDao;
     }
 
     @GetMapping("tickets/all")
@@ -88,6 +92,25 @@ public class ManagerController {
 
     }
 
+    @GetMapping("/tech")
+    public String techPage(Model model){
+        List<Ticket> tix = ticketDao.findAll();
+        model.addAttribute("tix", tix);
+        model.addAttribute("active", false);
+        return "user/technician/index";
+    }
+
+    @GetMapping("tech/ticket/{id}")
+    public String techTicket(@PathVariable long id, Model model){
+        Ticket tix = ticketDao.findOne(id);
+        List<Note> note = noteDao.findAllByTicket(tix);
+        List<Ticket> allTix = ticketDao.findAll();
+        model.addAttribute("active", true);
+        model.addAttribute("ticket", tix);
+        model.addAttribute("note", note);
+        model.addAttribute("tix", allTix);
+        return "user/technician/index";
+    }
 
 
 }
