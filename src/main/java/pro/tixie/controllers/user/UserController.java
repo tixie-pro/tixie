@@ -34,6 +34,11 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @GetMapping("/tech")
+    private String techPage(Model model){
+        return "user/technician/index";
+    }
+
 
 
 }
