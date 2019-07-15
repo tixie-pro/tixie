@@ -5,33 +5,63 @@
     <title>Title</title>
 </head>
 <body>
-<div >
-<table>
-    <tr>
-        <th>Ticket #</th>
-        <th>Priority</th>
-        <th>Category</th>
-        <th>Status</th>
-        <th>Issue</th>
-        <th>Created on</th>
-        <th>Created by</th>
-        <th>Assigned to</th>
-    </tr>
+<div>
+    <div>
+        <div>
+            <div th:style="@{border: black 1px solid;float:left; width: 70px}">Ticket #</div>
+            <div th:style="@{border: black 1px solid;float:left; width: 70px}">Priority</div>
+            <div th:style="@{border: black 1px solid;float:left; width: 70px}">Category</div>
+            <div th:style="@{border: black 1px solid;float:left; width: 70px}">Status</div>
+            <div th:style="@{border: black 1px solid;float:left; width: 80px}">Created on</div>
+            <div th:style="@{border: black 1px solid;float:left; width: 80px}">Created by</div>
+            <div th:style="@{border: black 1px solid;float:left; width: 80px}">Assigned to</div>
+            <div th:style="@{border: black 1px solid;float:left; width: 80px}"></div>
+        </div>
 
-    <div th:each="ticket : ${tix}" >
-        <tr>
-            <td><span th:text="${ticket.id}"/></td>
-            <td><span th:text="${ticket.priorityId.name}"/></td>
-            <td><span th:text="${ticket.specialization_id.name}"/></td>
-            <td><span th:text="${ticket.statusId.status}"/></td>
-            <td><span th:text="${ticket.issue_details}"/></td>
-            <td><span th:text="${ticket.issue_date.getTime()}"/></td>
-            <td><span th:text="${ticket.authorId.getuserName()}"/></td>
-            <td><span th:text="${ticket.ownerId.getuserName()}"/></td>
-        </tr>
+        <div th:each="ticket : ${tix}">
+            <div style="width: 100%;">
+                <div th:style="@{border: black 1px solid;float:left;width: 70px; height: 75px; overflow: hidden; text-overflow: ellipsis; clear: left;}">
+                    <span th:text="${ticket.id}"/>
+                </div>
+                <div th:style="@{border: black 1px solid;float:left;width: 70px; height: 75px; overflow: hidden; text-overflow: ellipsis;}">
+                    <a th:href="@{'/tickets/priority/'+${ticket.priorityId.id}}">
+                        <span th:text="${ticket.priorityId.name}"/>
+                    </a>
+                </div>
+                <div th:style="@{border: black 1px solid;float:left;width: 70px; height: 75px; overflow: hidden; text-overflow: ellipsis;}">
+                    <a th:href="@{'/tickets/specialization/'+${ticket.specialization_id.id}}">
+                        <span th:text="${ticket.specialization_id.name}"/>
+                    </a>
+                </div>
+                <div th:style="@{border: black 1px solid;float:left;width: 70px; height: 75px; overflow: hidden; text-overflow: ellipsis;}">
+                    <a th:href="@{'/tickets/status/'+${ticket.statusId.id}}">
+                    <span th:text="${ticket.statusId.status}"/>
+                    </a>
+                </div>
+                <div th:style="@{border: black 1px solid;float:left;width: 80px; height: 75px; overflow: hidden; text-overflow: ellipsis;}">
+                    <a th:href="@{'/tickets/author/'+${ticket.authorId.id}}">
+                        <span th:text="${ticket.authorId.getuserName()}"/>
+                    </a>
+                </div>
+                <div th:style="@{border: black 1px solid;float:left;width: 80px; height: 75px; overflow: hidden; text-overflow: ellipsis;}">
+                    <a th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">
+                        <span th:text="${ticket.ownerId.getuserName()}"/>
+                    </a>
+                </div>
+                <div th:style="@{border: black 1px solid;float:left;width: 80px; height: 75px; overflow: hidden; text-overflow: ellipsis;}">
+                    <span th:text="${ticket.issue_date}"/>
+                </div>
+                <div th:style="@{border: black 1px solid;float:left;width: 80px; height: 75px; overflow: hidden; text-overflow: ellipsis;}">
+                    <a th:href="@{'/tech'}">
+                        <button>
+                            View Ticket
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
-
-</table>
 </div>
 </body>
 </html>
