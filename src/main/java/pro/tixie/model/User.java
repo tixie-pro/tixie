@@ -2,14 +2,17 @@ package pro.tixie.model;
 
 import javax.persistence.*;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+
 @Entity
-public class User {
+public class User{
     @Id
     @GeneratedValue
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private String userName;
+    private String username;
 
     @Column(nullable = false)
     private String firstName;
@@ -23,32 +26,52 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    private String confirmPassword;
+
     private String profileImage;
 
     @OneToOne
     private Specialization specialization;
 
+
+
     public User() {
 
     }
 
-    public User(Long id, String username, String firstName, String lastName, String email, String password, String profileImage, Specialization specialization) {
+    public User(Long id, String username, String firstName, String lastName, String email, String password, String confirmPassword, String profileImage, Specialization specialization) {
         this.id = id;
-        this.userName = username;
+        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.confirmPassword = confirmPassword;
         this.profileImage = profileImage;
         this.specialization = specialization;
     }
+    public User(User copy){
+        id = copy.id;
+        username = copy.username;
+        email = copy.email;
+        password = copy.password;
+    }
+
+    private void checkPassword() {
+        if (this.password == null || this.confirmPassword == null) {
+            return;
+        } else if (!this.password.equals(confirmPassword)) {
+            this.confirmPassword = null;
+        }
+    }
+
 
     public Long getId() {
         return id;
     }
 
     public String getuserName() {
-        return userName;
+        return username;
     }
 
     public String getFirstName() {
@@ -67,6 +90,11 @@ public class User {
         return password;
     }
 
+    public String getConfirmPassword() {
+        return confirmPassword;
+
+    }
+
     public String getProfileImage() {
         return profileImage;
     }
@@ -76,7 +104,7 @@ public class User {
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
     public void setFirstName(String firstName) {
@@ -93,6 +121,12 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+        checkPassword();
+
     }
 
     public void setProfileImage(String profileImage) {
