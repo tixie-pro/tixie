@@ -1,17 +1,15 @@
-package pro.tixie.controllers.user;
-import org.springframework.context.annotation.Bean;
+package pro.tixie.controllers.user.managercontrollers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import pro.tixie.model.*;
 import pro.tixie.repos.*;
 
 import java.util.List;
 
 @Controller
-public class ManagerController {
+public class ManagerTixController {
 
     private TicketRepository ticketDao;
     private UserRepository userDao;
@@ -19,7 +17,7 @@ public class ManagerController {
     private StatusRepository statDao;
     private SpecializationRepo specDao;
 
-    public ManagerController(TicketRepository ticketDao,
+    public ManagerTixController(TicketRepository ticketDao,
                              UserRepository userDao,
                              PriorityRepository priDao,
                              StatusRepository statDao,
