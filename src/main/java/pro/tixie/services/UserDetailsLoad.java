@@ -1,6 +1,5 @@
 package pro.tixie.services;
 
-
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -8,6 +7,7 @@ import org.springframework.stereotype.Service;
 import pro.tixie.model.User;
 import pro.tixie.repos.UserRepository;
 import pro.tixie.security.UserWithRoles;
+
 
 @Service
 public class UserDetailsLoad implements UserDetailsService {

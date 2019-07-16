@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
+<h1>This is employee Home / Ticket View</h1>
+<th:block th:each="employee : ${employee}">
+</th:block>
+
+<h4>Open Tickets</h4>
+<th:block th:each="ticket : ${tix}">
+    <th:block th:if="${ticket.statusId.status} == @{'open'}">
+        <p class="ticket_name" th:text="'TX' + '-' + ${ticket.id} +'-'+${ticket.getSpecialization_id().name}"></p>
+        <p th:text="${ticket.issue_details}"></p>
+        <p>Status: <span th:text="${ticket.statusId.status}"></span></p>
+    </th:block>
+</th:block>
+    <hr />
+<h4>In-Progress Tickets</h4>
+<th:block th:each="ticket : ${tix}">
+    <th:block th:if="${ticket.statusId.status} == @{'in progress'}">
+        <p th:text="${ticket.id}"></p>
+        <p th:text="${ticket.issue_details}"></p>
+        <p th:text="${ticket.statusId.status}"></p>
+    </th:block>
+</th:block>
+<hr/>
+<h4>Closed Tickets</h4>
+<th:block th:each="ticket : ${tix}">
+    <th:block th:if="${ticket.statusId.status} == @{'complete'}">
+        <p th:text="${ticket.id}"></p>
+        <p th:text="${ticket.issue_details}"></p>
+        <p th:text="${ticket.statusId.status}"></p>
+    </th:block>
+</th:block>
+
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users.
+    User ID: <span th:text="${#authentication.principal.id}"></span>
+    Username: <span th:text="${#authentication.principal.username}"></span>
+    Email: <span th:text="${#authentication.principal.email}"></span>
+</div>
 
 </body>
 </html>
