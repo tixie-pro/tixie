@@ -17,3 +17,4 @@ public interface UserRepository extends CrudRepository<User, Long> {
     public List<User> findAllBySpecialization(Specialization spec);
 
 }
+

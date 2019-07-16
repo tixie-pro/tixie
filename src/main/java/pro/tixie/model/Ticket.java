@@ -33,6 +33,7 @@ public class Ticket {
     private User author;
 
     @OneToOne
+
     private User owner;
 
     @Column(nullable = false)

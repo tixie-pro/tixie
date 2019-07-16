@@ -33,13 +33,16 @@ public class User{
     @OneToOne
     private Specialization specialization;
 
+    @OneToOne
+    private Role role;
+
 
 
     public User() {
 
     }
 
-    public User(Long id, String username, String firstName, String lastName, String email, String password, String confirmPassword, String profileImage, Specialization specialization) {
+    public User(Long id, String username, String firstName, String lastName, String email, String password, String confirmPassword, String profileImage, Specialization specialization, Role role) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
@@ -49,6 +52,8 @@ public class User{
         this.confirmPassword = confirmPassword;
         this.profileImage = profileImage;
         this.specialization = specialization;
+        this.role = role;
+
     }
     public User(User copy){
         id = copy.id;
@@ -95,6 +100,8 @@ public class User{
 
     }
 
+
+
     public String getProfileImage() {
         return profileImage;
     }
@@ -102,6 +109,8 @@ public class User{
     public Specialization getSpecialization() {
         return specialization;
     }
+
+    public Role getRole() {return role;}
 
     public void setUserName(String userName) {
         this.username = userName;
@@ -136,4 +145,7 @@ public class User{
     public void setSpecialization(Specialization specialization) {
         this.specialization = specialization;
     }
+
+    public void setRole(Role role) {this.role = role;}
+
 }

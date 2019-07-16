@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div th:style="@{width: 70%; margin: auto;}">
+    <div th:each="tech :${techs}">
+        <div th:style="@{float:left; clear:left;width: 400px; border: black 2px solid;margin :3px;}">
+            <h3 th:text="@{${tech.firstName}+' '+${tech.lastName}}">heading goes here</h3>
+            <p th:text="@{'Role: '+${tech.role.role}}">role</p>
+            <p th:text="@{'Specialization: '+${tech.specialization.name}}"></p>
+            <div th:each="ticket : ${tix}">
+                <div th:if="${ticket.ownerId}==${tech}">
+                    <p th:text="@{'Tickets assigned: TX_'+${ticket.id}+'_'+${ticket.getSpecialization_id().name }}"></p>
+                </div>
+            </div>
+        </div>
+        <div th:style="@{float:left;clear:right; width: 400px; min-height:100px; border: black 2px solid;margin :3px;}">
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
