@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
@@ -8,35 +8,38 @@
 <h1>This is employee Home / Ticket View</h1>
 <th:block th:each="employee : ${employee}">
 </th:block>
+
+<h4>Open Tickets</h4>
 <th:block th:each="ticket : ${tix}">
-    <p th:text="${ticket.id}"></p>
-    <p th:text="${ticket.issue_details}"></p>
+    <th:block th:if="${ticket.statusId.status} == @{'open'}">
+        <p class="ticket_name" th:text="'TX' + '-' + ${ticket.id} +'-'+${ticket.getSpecialization_id().name}"></p>
+        <p>Status: <span th:text="${ticket.statusId.status}"></span></p>
+    </th:block>
+</th:block>
+    <hr />
+<h4>In-Progress Tickets</h4>
+<th:block th:each="ticket : ${tix}">
+    <th:block th:if="${ticket.statusId.status} == @{'in progress'}">
+        <p th:text="${ticket.id}"></p>
+        <p th:text="${ticket.issue_details}"></p>
+        <p th:text="${ticket.statusId.status}"></p>
+    </th:block>
+</th:block>
+<hr/>
+<h4>Closed Tickets</h4>
+<th:block th:each="ticket : ${tix}">
+    <th:block th:if="${ticket.statusId.status} == @{'complete'}">
+        <p th:text="${ticket.id}"></p>
+        <p th:text="${ticket.issue_details}"></p>
+        <p th:text="${ticket.statusId.status}"></p>
+    </th:block>
 </th:block>
 
-<div class="container">
-    <div class="">
-        <form action="@{/employee/ticket/create}" th:method="POST" th:object="${tix}">
-
-<!--            <label for="specialization_id">Specialization</label>-->
-<!--            <input id="specialization_id" type="text" th:field="*{specialization.name}"/>-->
-
-<!--            <label for="imgUrl">IMG Url</label>-->
-<!--            <input id="imgUrl" type="text" th:field="*{imgUrl}"/>-->
-
-<!--            <label for="location_1">location_1</label>-->
-<!--            <input id="location_1" type="text" th:field="*{location_1}"/>-->
-
-<!--            <label for="location_2">location_2</label>-->
-<!--            <input id="location_2" type="text" th:field="*{location_2}"/>-->
-
-<!--            <label for="biohazard">Biohazard</label>-->
-<!--            <input id="biohazard" type="text" th:field="*{biohazard}"/>-->
-
-<!--            <label for="issue_details">issue_details</label>-->
-<!--            <textarea id="issue_details" th:field="*{issue_details}" cols="30" rows="10"></textarea>-->
-            <button type="submit">Create</button>
-        </form>
-    </div>
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users.
+    User ID: <span th:text="${#authentication.principal.id}"></span>
+    Username: <span th:text="${#authentication.principal.username}"></span>
+    Email: <span th:text="${#authentication.principal.email}"></span>
 </div>
 
 </body>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="">
+        <h4>Create A Ticket</h4>
+        <form action="@{/employee/ticket/create}" th:method="POST" th:object="${tix}">
+
+            <!--            <label for="specialization_id">Specialization</label>-->
+            <!--            <input id="specialization_id" type="text" th:field="*{specialization.name}"/>-->
+
+            <!--            <label for="imgUrl">IMG Url</label>-->
+            <!--            <input id="imgUrl" type="text" th:field="*{imgUrl}"/>-->
+
+            <!--            <label for="location_1">location_1</label>-->
+            <!--            <input id="location_1" type="text" th:field="*{location_1}"/>-->
+
+            <!--            <label for="location_2">location_2</label>-->
+            <!--            <input id="location_2" type="text" th:field="*{location_2}"/>-->
+
+            <!--            <label for="biohazard">Biohazard</label>-->
+            <!--            <input id="biohazard" type="text" th:field="*{biohazard}"/>-->
+
+            <!--            <label for="issue_details">issue_details</label>-->
+            <!--            <textarea id="issue_details" th:field="*{issue_details}" cols="30" rows="10"></textarea>-->
+            <button type="submit">Create</button>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>
