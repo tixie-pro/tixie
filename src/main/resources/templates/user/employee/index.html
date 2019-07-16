@@ -13,6 +13,7 @@
 <th:block th:each="ticket : ${tix}">
     <th:block th:if="${ticket.statusId.status} == @{'open'}">
         <p class="ticket_name" th:text="'TX' + '-' + ${ticket.id} +'-'+${ticket.getSpecialization_id().name}"></p>
+        <p th:text="${ticket.issue_details}"></p>
         <p>Status: <span th:text="${ticket.statusId.status}"></span></p>
     </th:block>
 </th:block>
