@@ -3,6 +3,7 @@ package pro.tixie.controllers.user.managercontrollers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import pro.tixie.model.Ticket;
 import pro.tixie.model.User;
 import pro.tixie.repos.*;
 
@@ -31,8 +32,12 @@ public class ManagerViewTechsController {
     };
 
     @GetMapping("tech-list/all")
-    public showAllTechs(Model model){
-        List<User>
+    public String showAllTechs(Model model){
+        List<User> allTechs = userDao.findAll();
+        List<Ticket> allTix = ticketDao.findAll();
+        model.addAttribute("tix", allTix);
+        model.addAttribute("techs", allTechs );
+        return "user/manager/tech-list";
     }
 
 }
