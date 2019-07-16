@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <title>Tixie | Login</title>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css"/>
 </head>
 <body>
+<div class="uk-container">
 
+    <div class="uk-grid"></div>
+
+    <div class="uk-grid uk-grid-medium uk-child-width-expand@s">
+        <div class="card_container uk-flex uk-height-medium uk-margin uk-text-center">
+            <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
+                <form th:action="@{/login}" method="POST">
+                    <div class="uk-margin">
+                        <div class="uk-inline">
+                            <span class="uk-form-icon" uk-icon="icon: user"></span>
+                            <input class="uk-input" name="username" type="text"/>
+                        </div>
+                    </div>
+
+                    <div class="uk-margin">
+                        <div class="uk-inline">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" name="password" type="password"/>
+                        </div>
+                    </div>
+                    <button class="uk-button uk-button-default" type="submit" value="Log In">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-grid"></div>
+
+</div>
 </body>
+<!-- UIkit JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
 </html>

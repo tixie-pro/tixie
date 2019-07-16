@@ -52,7 +52,7 @@
                     <span th:text="${ticket.issue_date}"/>
                 </div>
                 <div th:style="@{border: black 1px solid;float:left;width: 80px; height: 75px; overflow: hidden; text-overflow: ellipsis;}">
-                    <a th:href="@{'/tech'}">
+                    <a th:href="@{'/tech/ticket/'+${ticket.id}}">
                         <button>
                             View Ticket
                         </button>
