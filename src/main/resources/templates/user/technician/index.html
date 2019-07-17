@@ -172,7 +172,8 @@
                                     <th:block th:if="${ticket.ownerId}==${tech}">
                                         <option th:value="@{${tech.id}}"
                                                 th:text="@{${tech.firstName}+' '+${tech.lastName}}"
-                                                th:selected="@{selected}"></option>
+                                                th:selected="@{selected}">
+                                        </option>
                                     </th:block>
                                     <th:block th:if="${ticket.ownerId}!=${tech}">
                                         <th:block th:if="${ticket.specialization_id}==${tech.specialization}">
