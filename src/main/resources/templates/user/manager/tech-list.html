@@ -12,13 +12,29 @@
             <h3 th:text="@{${tech.firstName}+' '+${tech.lastName}}">heading goes here</h3>
             <p th:text="@{'Role: '+${tech.role.role}}">role</p>
             <p th:text="@{'Specialization: '+${tech.specialization.name}}"></p>
-            <div th:each="ticket : ${tix}">
-                <div th:if="${ticket.ownerId}==${tech}">
-                    <p th:text="@{'Tickets assigned: TX_'+${ticket.id}+'_'+${ticket.getSpecialization_id().name }}"></p>
-                </div>
-            </div>
+            <p>Tickets assigned:
+                <span th:text="${tech.tixCount(tix)}">
+                test failed
+                </span>
+            </p>
+
+
         </div>
         <div th:style="@{float:left;clear:right; width: 400px; min-height:100px; border: black 2px solid;margin :3px;}">
+
+            <div th:each="ticket : ${tix}">
+                <a th:href="@{'/tech/ticket/'+${ticket.id}}">
+                    <div th:if="${ticket.ownerId}==${tech}">
+                        <p>
+                        <span th:text="@{'Tickets assigned: TX_'+${ticket.id}+'_'+${ticket.getSpecialization_id().name }}">
+                            <button>
+                                View Ticket
+                            </button>
+                        </span>
+                        </p>
+                    </div>
+                </a>
+            </div>
 
         </div>
     </div>

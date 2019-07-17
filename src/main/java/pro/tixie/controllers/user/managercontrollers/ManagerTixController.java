@@ -102,13 +102,28 @@ public class ManagerTixController {
     @GetMapping("tech/ticket/{id}")
     public String techTicket(@PathVariable long id, Model model){
         Ticket tix = ticketDao.findOne(id);
+        List<User> allTechs = userDao.findAll();
         List<Note> note = noteDao.findAllByTicket(tix);
         List<Ticket> allTix = ticketDao.findAll();
         model.addAttribute("active", true);
         model.addAttribute("ticket", tix);
         model.addAttribute("note", note);
+        model.addAttribute("techs", allTechs);
         model.addAttribute("tix", allTix);
         return "user/technician/index";
+    }
+    @PostMapping("techreassign")
+    public String techTixReassign(
+            @RequestParam (name = "assign") long id,
+            @RequestParam (name = "ticketid") long tixId
+            ){
+
+        Ticket tix = ticketDao.findOne(tixId);
+        User owner = userDao.findOne(id);
+
+        tix.setOwnerId(owner);
+        ticketDao.save(tix);
+            return ("redirect:/tech/ticket/"+tixId);
     }
 
     @PostMapping("/techticketcomplete")

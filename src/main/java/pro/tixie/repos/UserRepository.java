@@ -13,10 +13,8 @@ public interface UserRepository extends CrudRepository<User, Long> {
     User findByUsername(String username);
 
     public List<User> findAll();
-
-    public List<User> findAllByRole(Role role);
-
+    public List<User> findAllByRole( Role role);
     public List<User> findAllBySpecialization(Specialization spec);
 
-
 }
+

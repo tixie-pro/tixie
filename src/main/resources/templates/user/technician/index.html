@@ -165,9 +165,32 @@
                                 </td>
                             </tr>
                         </table>
+                        <form th:action="@{/techreassign}" th:method="post">
+                            <select name="assign" id="assign">
+                                <th:block th:each="tech : ${techs}">
+                                    <!--                                <th:block th:if="${ticket.specialization_id}==${tech.specialization}">-->
+                                    <th:block th:if="${ticket.ownerId}==${tech}">
+                                        <option th:value="@{${tech.id}}"
+                                                th:text="@{${tech.firstName}+' '+${tech.lastName}}"
+                                                th:selected="@{selected}">
+                                        </option>
+                                    </th:block>
+                                    <th:block th:if="${ticket.ownerId}!=${tech}">
+                                        <th:block th:if="${ticket.specialization_id}==${tech.specialization}">
+                                            <option th:value="@{${tech.id}}"
+                                                    th:text="@{${tech.firstName}+' '+${tech.lastName}}">
+                                            </option>
+                                        </th:block>
+                                    </th:block>
+                                </th:block>
+                                <input type="hidden" th:value="${ticket.id}" name="ticketid"/>
+                                <button th:type="submit">submit</button>
+                            </select>
+                        </form>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
