@@ -42,6 +42,8 @@ public class User{
 
     }
 
+
+
     public User(Long id, String username, String firstName, String lastName, String email, String password, String confirmPassword, String profileImage, Specialization specialization, Role role) {
         this.id = id;
         this.username = username;

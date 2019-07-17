@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pro.tixie.model.*;
 import pro.tixie.repos.*;
+import pro.tixie.services.EmailService;
+
 import java.util.List;
 
 @Controller
@@ -17,18 +19,22 @@ public class EmployeeController {
     private PriorityRepository priorDao;
     private SpecializationRepo specDao;
     private NoteRepository noteDao;
+    private EmailService emailService;
+
     public EmployeeController(UserRepository userDao,
                               TicketRepository ticketDao,
                               StatusRepository statusDao,
                               PriorityRepository priorDao,
                               SpecializationRepo specDao,
-                              NoteRepository noteDao) {
+                              NoteRepository noteDao,
+                              EmailService emailService) {
         this.userDao = userDao;
         this.ticketDao = ticketDao;
         this.statusDao = statusDao;
         this.priorDao = priorDao;
         this.specDao = specDao;
         this.noteDao = noteDao;
+        this.emailService = emailService;
     }
 
     @GetMapping("/employee/{id}")
@@ -54,11 +60,13 @@ public class EmployeeController {
     }
 
     @PostMapping("/employee/ticket/create")
-    public String employeeTicketCreate(Model model, Ticket ticketCreated) {
+    public String employeeTicketCreate(Model model, Ticket ticketCreated, Ticket ticket) {
         Status newStat = statusDao.findOne(1L);
         ticketCreated.setAuthorId((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         ticketCreated.setStatusId(newStat);
         ticketDao.save(ticketCreated);
-    return "redirect:/";
+        emailService.prepareAndSend(ticket, "You created a ticket", "you did it!");
+
+        return "redirect:/";
     }
 }
