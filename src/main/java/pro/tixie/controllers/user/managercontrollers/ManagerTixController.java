@@ -123,7 +123,7 @@ public class ManagerTixController {
 
         tix.setOwnerId(owner);
         ticketDao.save(tix);
-            return ("tech/ticket/"+tixId);
+            return ("redirect:/tech/ticket/"+tixId);
     }
 
 
