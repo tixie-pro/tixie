@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.List;
+
 
 @Entity
 public class User{
@@ -147,5 +149,18 @@ public class User{
     }
 
     public void setRole(Role role) {this.role = role;}
+
+//    other methods
+
+    public int tixCount(List<Ticket> allTix){
+        int x = 0;
+        long id = this.id;
+        for (Ticket ticket:allTix){
+            if (ticket.getOwnerId().id.equals(id)){
+                x++;
+            }
+        }
+        return x;
+    }
 
 }
