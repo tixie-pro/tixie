@@ -6,7 +6,10 @@
     <title>Tixie.Pro - Maintenance Ticketing System</title>
 </head>
 <body>
-    <h1 th:text='${"Tixie - Modern Ticketing System"}'></h1>
+
+<th:block th:replace="partials/common :: navigation-index-page">
+</th:block>
+<h1 th:text='${"Tixie - Modern Ticketing System"}'></h1>
 </body>
 <footer>
     <th:block th:include="partials/common :: footer">
