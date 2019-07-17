@@ -125,45 +125,47 @@
                 <!--</div>-->
                 <div class="uk-card uk-card-default uk-card-body">
                     <h3 class="uk-heading-medium uk-heading-line uk-text-center"><span>Active Ticket</span></h3>
-                    <table class="uk-table uk-table-striped">
-                        <tr>
-                            <th>Category: <span th:text="${ticket.specialization_id.name}"></span></th>
-                        </tr>
-                        <tr>
-                            <th>Location: <span th:text="${ticket.location_1}"></span> , <span
-                                    th:text="${ticket.location_2}"></span></th>
-                        </tr>
-                    </table>
-                    <div>
-                        <h3 class="uk-heading-small uk-heading-line uk-text-center"><span>Details</span></h3>
+                    <div class="uk-overflow-auto height uk-height-large">
+                        <table class="uk-table uk-table-striped">
+                            <tr>
+                                <th>Category: <span th:text="${ticket.specialization_id.name}"></span></th>
+                            </tr>
+                            <tr>
+                                <th>Location: <span th:text="${ticket.location_1}"></span> , <span
+                                        th:text="${ticket.location_2}"></span></th>
+                            </tr>
+                        </table>
+                        <div>
+                            <h3 class="uk-heading-small uk-heading-line uk-text-center"><span>Details</span></h3>
+                        </div>
+                        <div class="uk-card-body">
+                            <p th:text="${ticket.issue_details}"></p>
+                        </div>
+                        <div>
+                            <h3 class="uk-heading-small uk-heading-line uk-text-center"><span>Notes</span></h3>
+                        </div>
+                        <div th:each="note : ${note}" class="uk-card-body">
+                            <p th:text="${note.description}"></p>
+                        </div>
+                        <table class="uk-table uk-table-striped">
+                            <tr>
+                                <td style="text-align: left"><input type="radio" checked="checked" name="radio"
+                                                                    id="progress"/>
+                                    <label for="progress">In Progress</label>
+                                </td>
+                                <td style="text-align: center">
+                                    <form th:action="@{'/techticketcomplete'}" th:method="post">
+                                        <input type="hidden" th:value="${ticket.id}" th:name="ticketId"/>
+                                        <input type="hidden" th:value="3" th:name="status"/>
+                                        <button>Completed</button>
+                                    </form>
+                                </td>
+                                <td style="text-align: right"><input type="radio" name="radio" id="escalate"/>
+                                    <label for="escalate">Escalate</label>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-                    <div class="uk-card-body">
-                        <p th:text="${ticket.issue_details}"></p>
-                    </div>
-                    <div>
-                        <h3 class="uk-heading-small uk-heading-line uk-text-center"><span>Notes</span></h3>
-                    </div>
-                    <div th:each="note : ${note}" class="uk-card-body">
-                        <p th:text="${note.description}"></p>
-                    </div>
-                    <table class="uk-table uk-table-striped">
-                        <tr>
-                            <td style="text-align: left"><input type="radio" checked="checked" name="radio"
-                                                                id="progress"/>
-                                <label for="progress">In Progress</label>
-                            </td>
-                            <td style="text-align: center">
-                                <form th:action="@{'/techticketcomplete'}" th:method="post">
-                                    <input type="hidden" th:value="${ticket.id}" th:name="ticketId"/>
-                                    <input type="hidden" th:value="3" th:name="status"/>
-                                    <button>Completed</button>
-                                </form>
-                            </td>
-                            <td style="text-align: right"><input type="radio" name="radio" id="escalate"/>
-                                <label for="escalate">Escalate</label>
-                            </td>
-                        </tr>
-                    </table>
                 </div>
             </div>
         </div>
