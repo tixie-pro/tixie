@@ -1,7 +1,11 @@
 package pro.tixie.model;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.context.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -36,11 +40,13 @@ public class Ticket {
 
     private User owner;
 
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
     private Date issue_date;
 
     @Column(nullable = true)
-    private Date comp_date;
+    private  Date comp_date;
 
     @Column(nullable = false)
     private String imgUrl;
@@ -167,5 +173,8 @@ public class Ticket {
 
     public void setPriorityId(Priority priority) {
         this.priority = priority;
+    }
+
+    public void getIssue_date(LocalDateTime dateNow) {
     }
 }

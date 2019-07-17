@@ -126,6 +126,20 @@ public class ManagerTixController {
             return ("redirect:/tech/ticket/"+tixId);
     }
 
+    @PostMapping("/techticketcomplete")
+    public String completeTicket(
+            @RequestParam (name = "ticketId") Long id,
+            @RequestParam (name = "status") Long statId){
+
+                Status newStat = statDao.findOne(statId);
+                Ticket tick = ticketDao.findOne(id);
+
+                tick.setStatusId(newStat);
+                ticketDao.save(tick);
+
+                return "redirect:/tech";
+
+    }
 
 
 

@@ -1,36 +1,109 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
+    <th:block th:include="partials/common :: head">
+    </th:block>
+    <title>Tixie | Create A Ticket</title>
 </head>
 <body>
-<div class="container">
+<div class="uk-container">
     <div class="">
         <h4>Create A Ticket</h4>
-        <form action="@{/employee/ticket/create}" th:method="POST" th:object="${tix}">
+        <form class="uk-grid-small" th:action="@{/employee/ticket/create}" th:method="POST" th:object="${tix}">
+            <th:block th:field="*{statusId}" th:value="1" >
+            </th:block>
+            <div sec:authorize="isAuthenticated()">
+                <span th:field="*{authorId}" th:value="*{#authentication.principal.id}"></span>
+                Email: <span th:text="${#authentication.principal.email}"></span>
+            </div>
 
-            <!--            <label for="specialization_id">Specialization</label>-->
-            <!--            <input id="specialization_id" type="text" th:field="*{specialization.name}"/>-->
+            <div class="uk-width-1-4@m">
+                <div class="uk-margin">
+                    <p>Specialization</p>
+                    <div uk-form-custom="target: > * > span:first-child">
+                        <select th:value="0" th:field="*{specialization_id}">
+                            <option th:value="1" th:text="*{'Carpenter'}"></option>
+                            <option th:value="2" th:text="*{'Electrical'}"></option>
+                            <option th:value="3" th:text="*{'Plumbing'}"></option>
+                            <option th:value="4" th:text="*{'HVAC'}"></option>
+                            <option th:value="5" th:text="*{'Custodian'}"></option>
+                        </select>
+                        <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                            <span></span>
+                            <span uk-icon="icon: chevron-down"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-            <!--            <label for="imgUrl">IMG Url</label>-->
-            <!--            <input id="imgUrl" type="text" th:field="*{imgUrl}"/>-->
+            <div class="uk-width-1-4@m">
+                <div class="uk-margin">
+                    <p>Priority</p>
+                    <div uk-form-custom="target: > * > span:first-child">
+                        <select th:value="0" th:field="*{priorityId}">
+                            <option th:value="1" th:text="*{'Low'}"></option>
+                            <option th:value="2" th:text="*{'Medium'}"></option>
+                            <option th:value="3" th:text="*{'High'}"></option>
+                            <option th:value="4" th:text="*{'Urgent'}"></option>
+                        </select>
+                        <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                            <span></span>
+                            <span uk-icon="icon: chevron-down"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-1-4@m">
+                <div class="uk-margin">
+                    <p>Main Area</p>
+                    <div uk-form-custom="target: > * > span:first-child">
+                        <select th:value="0" th:field="*{location_1}">
+                            <option th:value="'Wing A'" th:text="*{'Wing A'}"></option>
+                            <option th:value="'Wing B'" th:text="*{'Wing B'}"></option>
+                            <option th:value="'Wing C'" th:text="*{'Wing C'}"></option>
+                            <option th:value="'Wing D'" th:text="*{'Wing D'}"></option>
+                        </select>
+                        <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                            <span></span>
+                            <span uk-icon="icon: chevron-down"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-            <!--            <label for="location_1">location_1</label>-->
-            <!--            <input id="location_1" type="text" th:field="*{location_1}"/>-->
+            <div class="uk-width-1-4@m">
+                <div class="uk-margin">
+                    <p>Detailed Location</p>
+                    <div uk-form-custom="target: > * > span:first-child">
+                        <select th:value="0" th:field="*{location_2}">
+                            <option th:value="1" th:text="*{'Room 1'}"></option>
+                            <option th:value="2" th:text="*{'Room 2'}"></option>
+                            <option th:value="3" th:text="*{'Room 3'}"></option>
+                            <option th:value="4" th:text="*{'Room 4'}"></option>
+                        </select>
+                        <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                            <span></span>
+                            <span uk-icon="icon: chevron-down"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-            <!--            <label for="location_2">location_2</label>-->
-            <!--            <input id="location_2" type="text" th:field="*{location_2}"/>-->
+            <div class="uk-margin">
+                <textarea th:field="*{issue_details}" class="uk-textarea" rows="5" placeholder="Enter Details"></textarea>
+            </div>
 
-            <!--            <label for="biohazard">Biohazard</label>-->
-            <!--            <input id="biohazard" type="text" th:field="*{biohazard}"/>-->
+            <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                <label><input class="uk-radio" type="radio" th:field="*{biohazard}" th:value="1" th:text="*{'Yes'}" /></label>
+                <label><input class="uk-radio" type="radio" th:field="*{biohazard}" th:value="0" th:text="*{'No'}" /></label>
+            </div>
 
-            <!--            <label for="issue_details">issue_details</label>-->
-            <!--            <textarea id="issue_details" th:field="*{issue_details}" cols="30" rows="10"></textarea>-->
+            <input type="text" th:field="*{ImgUrl}" placeholder="www.image.com" />
             <button type="submit">Create</button>
-
         </form>
     </div>
 </div>
 </body>
+<th:block th:include="partials/common :: footer">
+</th:block>
 </html>

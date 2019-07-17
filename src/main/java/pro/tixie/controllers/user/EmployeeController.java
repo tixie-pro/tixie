@@ -5,10 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import pro.tixie.model.*;
 import pro.tixie.repos.*;
-
 import java.util.List;
 
 @Controller
@@ -35,16 +33,17 @@ public class EmployeeController {
 
     @GetMapping("/employee/{id}")
     public String allTixByEmployee(@PathVariable long id, Model model) {
+        User loggedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userTix = userDao.findOne(id);
         Ticket tixNote = ticketDao.findOne(id);
         List<Note> note = noteDao.findAllByTicket(tixNote);
         model.addAttribute("tix", ticketDao.findAllByAuthor(userTix));
         model.addAttribute("employee", userDao);
         model.addAttribute("note", note);
-        return "user/employee/index";
+        return ("user/employee/index");
     }
 
-    @RequestMapping("/employee/ticket/create")
+    @GetMapping("/employee/ticket/create")
     public String showTicketCreate(Model model, Status status, Specialization spec, Priority prior, Note note) {
         model.addAttribute("tix", new Ticket());
         model.addAttribute("status", status);
@@ -54,9 +53,12 @@ public class EmployeeController {
         return "user/employee/create_ticket";
     }
 
-    @PostMapping("/employee/ticket/create/{id}")
+    @PostMapping("/employee/ticket/create")
     public String employeeTicketCreate(Model model, Ticket ticketCreated) {
+        Status newStat = statusDao.findOne(1L);
+        ticketCreated.setAuthorId((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        ticketCreated.setStatusId(newStat);
         ticketDao.save(ticketCreated);
-    return "redirect:/employee/index";
+    return "redirect:/";
     }
 }
