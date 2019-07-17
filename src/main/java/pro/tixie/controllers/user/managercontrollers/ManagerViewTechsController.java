@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import pro.tixie.model.Note;
+import pro.tixie.model.Role;
 import pro.tixie.model.Ticket;
 import pro.tixie.model.User;
 import pro.tixie.repos.*;
@@ -20,10 +21,12 @@ public class ManagerViewTechsController {
     private StatusRepository statDao;
     private SpecializationRepo specDao;
     private NoteRepository noteDao;
+    private RoleRepo roleRepo;
 
     public ManagerViewTechsController(
             UserRepository userDao,
-            TicketRepository ticketDao
+            TicketRepository ticketDao,
+            RoleRepo roleDao
     ){
         this.ticketDao = ticketDao;
         this.userDao = userDao;
@@ -31,14 +34,17 @@ public class ManagerViewTechsController {
         this.statDao= statDao;
         this.specDao = specDao;
         this.noteDao = noteDao;
+        this.roleRepo = roleDao;
     };
 
     @GetMapping("tech-list/all")
     public String showAllTechs(Model model){
         List<User> allTechs = userDao.findAll();
         List<Ticket> allTix = ticketDao.findAll();
+        List<Role> roles = roleRepo.findAll();
         model.addAttribute("tix", allTix);
         model.addAttribute("techs", allTechs );
+        model.addAttribute("roles", roles);
         model.addAttribute("x", 0);
 
         return "user/manager/tech-list";

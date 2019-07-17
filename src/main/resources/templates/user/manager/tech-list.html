@@ -23,6 +23,7 @@
         <div th:style="@{float:left;clear:right; width: 400px; min-height:100px; border: black 2px solid;margin :3px;}">
 
             <div th:each="ticket : ${tix}">
+
                 <a th:href="@{'/tech/ticket/'+${ticket.id}}">
                     <div th:if="${ticket.ownerId}==${tech}">
                         <p>
@@ -34,6 +35,30 @@
                         </p>
                     </div>
                 </a>
+            </div>
+            <form th:action="change-role" th:method="post">
+                <p> change role</p>
+                <select name="role" id="role">
+                    <th:block th:each="role: ${roles}">
+                        <th:block th:if="${tech.role.role}==${role.role}">
+
+                            <option th:value="@{${role.id} }"
+                                    th:text="${role.role}"
+                                    th:selected="@{selected}">
+                                Role
+                            </option>
+                        </th:block>
+                        <th:block th:if="${tech.role.role}!=${role.role}">
+                            <option th:value="@{${role.id} }"
+                                    th:text="${role.role}">
+                                not the role
+                            </option>
+                        </th:block>
+                    </th:block>
+                </select>
+            </form>
+            <div>
+
             </div>
 
         </div>
