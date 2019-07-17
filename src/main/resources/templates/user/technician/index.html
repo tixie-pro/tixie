@@ -51,57 +51,56 @@
                 <div class="uk-overflow-auto height uk-height-large">
                     <table class="uk-table uk-table-striped uk-height-medium">
                         <div th:each="tickets : ${tix}">
-                            <tr>
-                                <th>Active</th>
-                                <th>Ticket Id</th>
-                                <th>Notes</th>
-                            </tr>
-                            <tr>
-                                <td class="center">
-                                    <th:block th:if="${active}">
-                                        <th:block th:if="${tickets.id} == ${ticket.id}">
-                                            <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
-                                                <div class="uk-card-body">
-                                                    <div onclick="showSingleTicket()" class="center">
-                                                        <input class="center" type="checkbox"
-                                                               checked="checked"/>
+                            <th:block th:if="${tickets.statusId.id} != 3">
+                                <tr>
+                                    <th>Active</th>
+                                    <th>Ticket Id</th>
+                                    <th>Notes</th>
+                                </tr>
+                                <tr>
+                                    <td class="center">
+                                        <th:block th:if="${active}">
+                                            <th:block th:if="${tickets.id} == ${ticket.id}">
+                                                <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
+                                                    <div class="uk-card-body">
+                                                        <div class="center">
+                                                            <input type="checkbox"
+                                                                   checked="checked"/>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </a>
+                                                </a>
+                                            </th:block>
+                                            <th:block th:if="${tickets.id} != ${ticket.id}">
+                                                <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
+                                                    <div class="uk-card-body">
+                                                        <div class="center" type="checkbox" name="active"
+                                                             value="Active">
+                                                            <button>Activate</button>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </th:block>
                                         </th:block>
-                                        <th:block th:if="${tickets.id} != ${ticket.id}">
+                                        <th:block th:if="${!active}">
                                             <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
                                                 <div class="uk-card-body">
-                                                    <div onclick="showSingleTicket()" class="center"
-                                                         type="checkbox"
-                                                         name="active" value="Active">
+                                                    <div type="checkbox" name="active" value="Active">
                                                         <button>Activate</button>
                                                     </div>
                                                 </div>
                                             </a>
                                         </th:block>
-                                    </th:block>
-                                    <th:block th:if="${!active}">
-                                        <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
-                                            <div class="uk-card-body">
-                                                <div onclick="showSingleTicket()" class="center"
-                                                     type="checkbox"
-                                                     name="active" value="Active">
-                                                    <button>Activate</button>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </th:block>
-                                </td>
-                                <td><p class="uk-card-body" th:text="${tickets.id}"/></td>
-                                <td><p class="uk-card-body" th:text="${tickets.issue_details}"/></td>
-                            </tr>
+                                    </td>
+                                    <td><p class="uk-card-body" th:text="${tickets.id}"/></td>
+                                    <td><p class="uk-card-body" th:text="${tickets.issue_details}"/></td>
+                                </tr>
+                            </th:block>
                         </div>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="uk-width-1-2@m uk-card uk-card-body">
+        <div class="uk-width-1-2@m uk-card uk-card-body height" id="completedRemove">
             <div th:if="${active}">
                 <!--<div class="uk-grid-small uk-child-width-auto" uk-grid="true" uk-countdown="date: 2019-07-24T14:39:43+00:00">-->
                 <!--<div>-->
@@ -147,27 +146,24 @@
                     <div th:each="note : ${note}" class="uk-card-body">
                         <p th:text="${note.description}"></p>
                     </div>
-                    <label class="uk-card-body">
-                        <table class="uk-table uk-table-striped">
-                            <tr>
-                                <form action="">
-                                    <td style="text-align: left"><input type="radio" checked="checked"
-                                                                        name="radio"
-                                                                        id="progress"/>
-                                        <label for="progress">In Progress</label>
-                                    </td>
-                                    <td style="text-align: center"><input type="radio" name="radio"
-                                                                          id="complete"/>
-                                        <label for="complete">Complete</label>
-                                    </td>
-                                    <td style="text-align: right"><input type="radio" name="radio"
-                                                                         id="escalate"/>
-                                        <label for="escalate">Escalate</label>
-                                    </td>
+                    <table class="uk-table uk-table-striped">
+                        <tr>
+                            <td style="text-align: left"><input type="radio" checked="checked" name="radio"
+                                                                id="progress"/>
+                                <label for="progress">In Progress</label>
+                            </td>
+                            <td style="text-align: center">
+                                <form th:action="@{'/techticketcomplete'}" th:method="post">
+                                    <input type="hidden" th:value="${ticket.id}" th:name="ticketId"/>
+                                    <input type="hidden" th:value="3" th:name="status"/>
+                                    <button>Completed</button>
                                 </form>
-                            </tr>
-                        </table>
-                    </label>
+                            </td>
+                            <td style="text-align: right"><input type="radio" name="radio" id="escalate"/>
+                                <label for="escalate">Escalate</label>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
@@ -176,14 +172,6 @@
 
 <script>
 
-    function showSingleTicket() {
-        var show = document.getElementById("activeTickets");
-        if (window.getComputedStyle(show).visibility === "hidden") {
-            show.style.visibility = "visible";
-        } else {
-            show.style.visibility = "hidden";
-        }
-    }
 </script>
 <!-- UIkit JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>

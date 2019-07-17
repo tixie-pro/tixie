@@ -3,6 +3,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pro.tixie.model.*;
 import pro.tixie.repos.*;
 
@@ -109,7 +111,20 @@ public class ManagerTixController {
         return "user/technician/index";
     }
 
+    @PostMapping("/techticketcomplete")
+    public String completeTicket(
+            @RequestParam (name = "ticketId") Long id,
+            @RequestParam (name = "status") Long statId){
 
+                Status newStat = statDao.findOne(statId);
+                Ticket tick = ticketDao.findOne(id);
+
+                tick.setStatusId(newStat);
+                ticketDao.save(tick);
+
+                return "redirect:/tech";
+
+    }
 
 
 }
