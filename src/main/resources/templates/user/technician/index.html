@@ -3,97 +3,37 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css"/>
     <style>
-        h3 {
-            border-bottom: #1a1a1a 3px solid;
-            text-align: center;
-        }
-
-
         .container {
             margin-top: 1rem;
 
         }
 
-        .mainTitle {
-            border: #1a1a1a 3px solid;
-            width: fit-content;
-            align-content: center;
-            text-align: center;
-            display: inline;
-            margin-left: 40%;
+
+        .uk-countdown-label {
+            font-size: 10px;
         }
 
-        .top-border {
-            border-top: #1a1a1a 3px solid;
-            padding: 15px 0 15px 0;
+        .uk-countdown-number {
+            font-size: 50px;
         }
 
-        .activeTicketsTitle {
-            border: #1a1a1a 3px solid;
-            width: fit-content;
-        }
-
-        /*#activeTickets{*/
-        /*visibility: hidden;*/
+        /*.uk-height-large {*/
+        /*height: 90vh;*/
         /*}*/
-
-        .assignedTickets {
-            border: #1a1a1a 3px solid;
-            width: 500px;
-            height: 693px;
-        }
-
-        table, th {
-            border: 1px solid black;
-        }
 
         .float-right {
             float: right;
         }
 
-        .align-left {
-            text-align: left;
-        }
-
-        .activeTicketsTitle {
-            width: 60%;
-            margin-left: 25%;
-
-        }
-
-        .radios {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .all-width {
-            width: 100%;
-            padding: 15px 0 15px 0;
-        }
-
-        .whole-page {
-            display: inline-flex;
-            padding-top: 15px;
-        }
-
-        #table-wrapper {
-            position: relative;
-        }
-
-        #table-scroll {
-            height: 630px;
-            overflow: auto;
-            margin-top: 20px;
-        }
-
-        #table-wrapper table {
-            width: 100%;
-
-        }
-
-        .text {
+        .center {
             text-align: center;
+        }
+
+        .height {
+            height: 630px;
         }
 
 
@@ -101,39 +41,40 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="mainTitle">Building Maintenance</h1>
-    <button class="float-right">Logout</button>
-    <div class="whole-page">
-        <div class="assignedTickets">
-            <h3>Assigned Tickets</h3>
-            <div class="view">
-                <div id="table-wrapper">
-                    <div id="table-scroll">
-                        <table>
-                            <thead>
-                            <div th:each="tickets : ${tix}">
+    <h1 class="center uk-heading-large">Assigned Tickets
+        <button class="uk-button uk-button-danger float-right">Logout</button>
+    </h1>
+    <div class="uk-grid-match uk-grid-small uk-text-center" uk-grid="true">
+        <div class="uk-width-1-2@m uk-card uk-card-body height">
+            <div class="uk-card uk-card-default uk-card-body">
+                <h3 class="uk-heading-medium uk-heading-line uk-text-center"><span>Assign Ticket</span></h3>
+                <div class="uk-overflow-auto height uk-height-large">
+                    <table class="uk-table uk-table-striped uk-height-medium">
+                        <div th:each="tickets : ${tix}">
+                            <th:block th:if="${tickets.statusId.id} != 3">
                                 <tr>
                                     <th>Active</th>
                                     <th>Ticket Id</th>
                                     <th>Notes</th>
                                 </tr>
                                 <tr>
-                                    <td class="text">
+                                    <td class="center">
                                         <th:block th:if="${active}">
                                             <th:block th:if="${tickets.id} == ${ticket.id}">
                                                 <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
-                                                    <div>
-                                                        <div onclick="showSingleTicket()" class="text">
-                                                            <input type="checkbox" checked="checked"></input>
+                                                    <div class="uk-card-body">
+                                                        <div class="center">
+                                                            <input type="checkbox"
+                                                                   checked="checked"/>
                                                         </div>
                                                     </div>
                                                 </a>
                                             </th:block>
                                             <th:block th:if="${tickets.id} != ${ticket.id}">
                                                 <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
-                                                    <div>
-                                                        <div onclick="showSingleTicket()" class="text" type="checkbox"
-                                                             name="active" value="Active">
+                                                    <div class="uk-card-body">
+                                                        <div class="center" type="checkbox" name="active"
+                                                             value="Active">
                                                             <button>Activate</button>
                                                         </div>
                                                     </div>
@@ -142,151 +83,100 @@
                                         </th:block>
                                         <th:block th:if="${!active}">
                                             <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
-                                                <div>
-                                                    <div onclick="showSingleTicket()" class="text" type="checkbox"
-                                                         name="active" value="Active">
+                                                <div class="uk-card-body">
+                                                    <div type="checkbox" name="active" value="Active">
                                                         <button>Activate</button>
                                                     </div>
                                                 </div>
                                             </a>
                                         </th:block>
                                     </td>
-                                    <td class="text"><span class="text" th:text="${tickets.id}"/></td>
-                                    <td><span class="text" th:text="${tickets.issue_details}"/></td>
+                                    <td><p class="uk-card-body" th:text="${tickets.id}"/></td>
+                                    <td><p class="uk-card-body" th:text="${tickets.issue_details}"/></td>
                                 </tr>
-                            </div>
-                            </thead>
+                            </th:block>
+                        </div>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="uk-width-1-2@m uk-card uk-card-body height" id="completedRemove">
+            <div th:if="${active}">
+                <!--<div class="uk-grid-small uk-child-width-auto" uk-grid="true" uk-countdown="date: 2019-07-24T14:39:43+00:00">-->
+                <!--<div>-->
+                <!--<div class="uk-countdown-number uk-countdown-days"></div>-->
+                <!--<div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Days</div>-->
+                <!--</div>-->
+                <!--<div class="uk-countdown-separator">:</div>-->
+                <!--<div>-->
+                <!--<div class="uk-countdown-number uk-countdown-hours"></div>-->
+                <!--<div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Hours</div>-->
+                <!--</div>-->
+                <!--<div class="uk-countdown-separator">:</div>-->
+                <!--<div>-->
+                <!--<div class="uk-countdown-number uk-countdown-minutes"></div>-->
+                <!--<div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Minutes</div>-->
+                <!--</div>-->
+                <!--<div class="uk-countdown-separator">:</div>-->
+                <!--<div>-->
+                <!--<div class="uk-countdown-number uk-countdown-seconds"></div>-->
+                <!--<div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Seconds</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <div class="uk-card uk-card-default uk-card-body">
+                    <h3 class="uk-heading-medium uk-heading-line uk-text-center"><span>Active Ticket</span></h3>
+                    <div class="uk-overflow-auto height uk-height-large">
+                        <table class="uk-table uk-table-striped">
+                            <tr>
+                                <th>Category: <span th:text="${ticket.specialization_id.name}"></span></th>
+                            </tr>
+                            <tr>
+                                <th>Location: <span th:text="${ticket.location_1}"></span> , <span
+                                        th:text="${ticket.location_2}"></span></th>
+                            </tr>
+                        </table>
+                        <div>
+                            <h3 class="uk-heading-small uk-heading-line uk-text-center"><span>Details</span></h3>
+                        </div>
+                        <div class="uk-card-body">
+                            <p th:text="${ticket.issue_details}"></p>
+                        </div>
+                        <div>
+                            <h3 class="uk-heading-small uk-heading-line uk-text-center"><span>Notes</span></h3>
+                        </div>
+                        <div th:each="note : ${note}" class="uk-card-body">
+                            <p th:text="${note.description}"></p>
+                        </div>
+                        <table class="uk-table uk-table-striped">
+                            <tr>
+                                <td style="text-align: left"><input type="radio" checked="checked" name="radio"
+                                                                    id="progress"/>
+                                    <label for="progress">In Progress</label>
+                                </td>
+                                <td style="text-align: center">
+                                    <form th:action="@{'/techticketcomplete'}" th:method="post">
+                                        <input type="hidden" th:value="${ticket.id}" th:name="ticketId"/>
+                                        <input type="hidden" th:value="3" th:name="status"/>
+                                        <button>Completed</button>
+                                    </form>
+                                </td>
+                                <td style="text-align: right"><input type="radio" name="radio" id="escalate"/>
+                                    <label for="escalate">Escalate</label>
+                                </td>
+                            </tr>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <div th:if="${active}" class="activeTicketsTitle">
-            <div>
-                <h3 class="align-left">Active Ticket</h3>
-            </div>
-            <div class="activeDetails">
-                <table>
-                    <tr>
-                        <th>Category: <span th:text="${ticket.specialization_id.name}"></span></th>
-                    </tr>
-                    <tr>
-                        <th>Location: <span th:text="${ticket.location_1}"></span> , <span
-                                th:text="${ticket.location_2}"></span></th>
-                    </tr>
-                </table>
-            </div>
-            <div>
-                <h3 class="align-left top-border">Details</h3>
-            </div>
-            <div class="activeDetails">
-                <p th:text="${ticket.issue_details}">Sleep in the bathroom sink pretend you want to go out but then
-                    don't stare out cat door then go back
-                    inside for allways wanting food, tuxedo cats always looking dapper sniff other cat's butt and hang
-                    jaw
-                    half open thereafter. Meow go back to sleep owner brings food and water tries to pet on head, so
-                    scratch
-                    get sprayed by water because bad cat lick face hiss at owner, pee a lot, and meow repeatedly scratch
-                    at
-                    fence purrrrrr eat muffins and poutine until owner comes back for destroy house in 5 seconds but sit
-                    and
-                    stare plop down in the middle where everybody walks and cereal boxes make for five star
-                    accommodation .
-                    Have my breakfast spaghetti yarn cats go for world domination yet eats owners hair then claws head.
-                    Purrrrrr jump off balcony, onto stranger's head but eats owners hair then claws head or spit up on
-                    light
-                    gray carpet instead of adjacent linoleum and pet my belly, you know you want to; seize the hand and
-                    shred it! toy mouse squeak roll over so sit on human. Jump up to edge of bath, fall in then scramble
-                    in
-                    a mad panic to get out lounge in doorway so trip on catnip but chill on the couch table scratch at
-                    fleas, meow until belly rubs, hide behind curtain when vacuum cleaner is on scratch strangers and
-                    poo on
-                    owners food. Throw down all the stuff in the kitchen. Cuddle no cuddle cuddle love scratch scratch
-                    lick
-                    yarn hanging out of own butt wake up wander around the house making large amounts of noise jump on
-                    top
-                    of your human's bed and fall asleep again but hide head under blanket so no one can see or eat a rug
-                    and
-                    furry furry hairs everywhere oh no human coming lie on counter don't get off counter but fight own
-                    tail,
-                    or hunt by meowing loudly at 5am next to human slave food dispenser. Attack dog, run away and
-                    pretend to
-                    be victim lick yarn hanging out of own butt eat the rubberband fight an alligator and win thug cat
-                    mice
-                    but i’m so hungry i’m so hungry but ew not for that . Chase after silly colored fish toys around the
-                    house dead stare with ears cocked yet i like cats because they are fat and fluffy flop over, and
-                    hopped
-                    up on catnip, yet push your water glass on the floor for paw at your fat belly. Allways wanting food
-                    if
-                    it fits, i sits. I is not fat, i is fluffy cat sit like bread catasstrophe yet proudly present butt
-                    to
-                    human and and sometimes switches in french and say "miaou" just because well why not have a lot of
-                    grump
-                    in yourself because you can't forget to be grumpy and not be like king grumpy cat check cat door for
-                    ambush 10 times before coming in. Stick butt in face run up and down stairs, kick up litter lick the
-                    plastic bag. Chase the pig around the house poop on floor and watch human clean up cat dog hate
-                    mouse
-                    eat string barf pillow no baths hate everything steal the warm chair right after you get up. Cat
-                    meoooow
-                    i iz master of hoomaan, not hoomaan master of i, oooh damn dat dog eat half my food and ask for more
-                    so
-                    poop on floor and watch human clean up, yet scratch the postman wake up lick paw wake up owner meow
-                    meow. Stare at ceiling behind the couch meow loudly just to annoy owners meoooow so annoy the old
-                    grumpy
-                    cat, start a fight and then retreat to wash when i lose so rub face on owner but dismember a mouse
-                    and
-                    then regurgitate parts of it on the family room floor.</p>
-            </div>
-            <div>
-                <h3 class="align-left top-border">Notes</h3>
-            </div>
-            <div th:each="note : ${note}" class="activeDetails">
-                <p th:text="${note.description}">Meow to be let in it's 3am, time to create some chaos or scratch the
-                    postman wake up lick paw wake up
-                    owner meow meow, for chase mice flop over, so give attitude. Eat from dog's food kitty run to human
-                    with
-                    blood on mouth from frenzied attack on poor innocent mouse, don't i look cute?. Murder hooman toes
-                    meowzer pounce on unsuspecting person attack the child sit on the laptop chase laser. Where is my
-                    slave?
-                    I'm getting hungry poop on grasses. It's 3am, time to create some chaos . Meow in empty rooms
-                    relentlessly pursues moth or warm up laptop with butt lick butt fart rainbows until owner yells pee
-                    in
-                    litter box hiss at cats. Sniff all the things meeeeouw for tuxedo cats always looking dapper. Grass
-                    smells good see owner, run in terror. </p>
-            </div>
-            <label class="radios">
-                <table class="all-width">
-                    <tr>
-                        <form action="">
-                            <td style="text-align: left"><input type="radio" checked="checked" name="radio"
-                                                                id="progress"/>
-                                <label for="progress">In Progress</label>
-                            </td>
-                            <td style="text-align: center"><input type="radio" name="radio" id="complete"/>
-                                <label for="complete">Complete</label>
-                            </td>
-                            <td style="text-align: right"><input type="radio" name="radio" id="escalate"/>
-                                <label for="escalate">Escalate</label>
-                            </td>
-                        </form>
-                    </tr>
-                </table>
-            </label>
-        </div>
     </div>
 </div>
 
-
 <script>
 
-    function showSingleTicket() {
-        var show = document.getElementById("activeTickets");
-        if (window.getComputedStyle(show).visibility === "hidden") {
-            show.style.visibility = "visible";
-        } else {
-            show.style.visibility = "hidden";
-        }
-    }
 </script>
+<!-- UIkit JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
 </body>
 </html>
