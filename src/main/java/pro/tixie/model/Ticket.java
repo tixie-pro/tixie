@@ -37,7 +37,7 @@ public class Ticket {
     private User owner;
 
     @Column(nullable = false)
-    private Date issue_date;
+    private String issue_date;
 
     @Column(nullable = true)
     private Date comp_date;
@@ -50,7 +50,7 @@ public class Ticket {
 
     public Ticket(){};
 
-    public Ticket( long id, int biohazard, String location_1, String location_2, String issue_details, Specialization specialization, Status status, User author, User owner, Date issue_date, Date comp_date, String imgUrl, Priority priority) {
+    public Ticket( long id, int biohazard, String location_1, String location_2, String issue_details, Specialization specialization, Status status, User author, User owner, String issue_date, Date comp_date, String imgUrl, Priority priority) {
         this.biohazard = biohazard;
         this.location_1 = location_1;
         this.location_2 = location_2;
@@ -101,7 +101,7 @@ public class Ticket {
         return owner;
     }
 
-    public Date getIssue_date() {
+    public String getIssue_date() {
         return issue_date;
     }
 
@@ -153,7 +153,7 @@ public class Ticket {
         this.owner = owner;
     }
 
-    public void setIssue_date(Date issue_date) {
+    public void setIssue_date(String issue_date) {
         this.issue_date = issue_date;
     }
 

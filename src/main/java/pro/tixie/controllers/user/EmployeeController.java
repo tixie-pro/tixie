@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pro.tixie.model.*;
 import pro.tixie.repos.*;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -44,9 +46,10 @@ public class EmployeeController {
         return "user/employee/index";
     }
 
-    @RequestMapping("/employee/ticket/create")
+    @GetMapping("/employee/ticket/create")
     public String showTicketCreate(Model model, Status status, Specialization spec, Priority prior, Note note) {
         model.addAttribute("tix", new Ticket());
+        model.addAttribute("localDateTime", LocalDateTime.now());
         model.addAttribute("status", status);
         model.addAttribute("spec", spec);
         model.addAttribute("priority", prior);
@@ -54,9 +57,10 @@ public class EmployeeController {
         return "user/employee/create_ticket";
     }
 
-    @PostMapping("/employee/ticket/create/{id}")
+    @PostMapping("/employee/ticket/create")
     public String employeeTicketCreate(Model model, Ticket ticketCreated) {
+        System.out.println(ticketCreated);
         ticketDao.save(ticketCreated);
-    return "redirect:/employee/index";
+    return "redirect:/";
     }
 }
