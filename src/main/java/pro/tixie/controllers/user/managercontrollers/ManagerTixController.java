@@ -3,6 +3,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pro.tixie.model.*;
 import pro.tixie.repos.*;
 
@@ -100,13 +102,28 @@ public class ManagerTixController {
     @GetMapping("tech/ticket/{id}")
     public String techTicket(@PathVariable long id, Model model){
         Ticket tix = ticketDao.findOne(id);
+        List<User> allTechs = userDao.findAll();
         List<Note> note = noteDao.findAllByTicket(tix);
         List<Ticket> allTix = ticketDao.findAll();
         model.addAttribute("active", true);
         model.addAttribute("ticket", tix);
         model.addAttribute("note", note);
+        model.addAttribute("techs", allTechs);
         model.addAttribute("tix", allTix);
         return "user/technician/index";
+    }
+    @PostMapping("techreassign")
+    public String techTixReassign(
+            @RequestParam (name = "assign") long id,
+            @RequestParam (name = "ticketid") long tixId
+            ){
+
+        Ticket tix = ticketDao.findOne(tixId);
+        User owner = userDao.findOne(id);
+
+        tix.setOwnerId(owner);
+        ticketDao.save(tix);
+            return ("tech/ticket/"+tixId);
     }
 
 

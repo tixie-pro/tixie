@@ -255,35 +255,47 @@
                     smells good see owner, run in terror. </p>
             </div>
             <label class="radios">
-                <div>
-                <table class="all-width">
-                    <tr>
-                        <form action="">
-                            <td style="text-align: left"><input type="radio" checked="checked" name="radio" id="progress"/>
-                                <label for="progress">In Progress</label>
-                            </td>
-                            <td style="text-align: center"><input type="radio" name="radio" id="complete"/>
-                                <label for="complete">Complete</label>
-                            </td>
-                            <td style="text-align: right"><input type="radio" name="radio" id="escalate"/>
-                                <label for="escalate">Escalate</label>
-                            </td>
-                        </form>
-                    </tr>
-                </table>
-                </div>
-                <th:block >
-<!--                    todo implement authentication to limit buttons to manager or above-->
+                <div class="all-width">
+                    <table class="all-width">
+                        <tr>
+                            <form action="">
+                                <td style="text-align: left"><input type="radio" checked="checked" name="radio"
+                                                                    id="progress"/>
+                                    <label for="progress">In Progress</label>
+                                </td>
+                                <td style="text-align: center"><input type="radio" name="radio" id="complete"/>
+                                    <label for="complete">Complete</label>
+                                </td>
+                                <td style="text-align: right"><input type="radio" name="radio" id="escalate"/>
+                                    <label for="escalate">Escalate</label>
+                                </td>
+                            </form>
+                        </tr>
+                    </table>
+                    <div class="all-width">
 
-                    <div>
-                        <p>
-                            Reasign Ticket
-                        </p>
-                        <button >
-<!--                            todo new view with list of techs.-->
-                        </button>
+                        <h4>Choose to Reassign</h4>
+                        <p th:text="@{'Currently assigned to: '+${ticket.ownerId.firstName}}"></p>
+                        <form th:action="@{/techreassign}" th:method="post">
+                            <select name="assign" id="assign" >
+                                <th:block th:each="tech : ${techs}">
+                                    <!--                                <th:block th:if="${ticket.specialization_id}==${tech.specialization}">-->
+                                    <th:block th:if="${ticket.ownerId}==${tech}">
+                                        <option th:value="@{${tech.id}}"
+                                                th:text="@{${tech.firstName}+' '+${tech.lastName}}"
+                                                th:selected="@{selected}"></option>
+                                    </th:block>
+                                    <th:block th:if="${ticket.ownerId}!=${tech}">
+                                        <option th:value="@{${tech.id}}"
+                                                th:text="@{${tech.firstName}+' '+${tech.lastName}}"></option>
+                                    </th:block>
+                                </th:block>
+                                <input type="hidden" th:value="${ticket.id}" name="ticketid" />
+                                <button th:type="submit">submit</button>
+                            </select>
+                        </form>
                     </div>
-                </th:block>
+                </div>
             </label>
         </div>
     </div>

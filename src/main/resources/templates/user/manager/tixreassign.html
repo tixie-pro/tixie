@@ -132,8 +132,7 @@
                                             <th:block th:if="${tickets.id} != ${ticket.id}">
                                                 <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
                                                     <div>
-                                                        <div onclick="showSingleTicket()" class="text" type="checkbox"
-                                                             name="active" value="Active">
+                                                        <div name="active" value="Active">
                                                             <button>Activate</button>
                                                         </div>
                                                     </div>
@@ -272,22 +271,22 @@
                         </tr>
                     </table>
                 </div>
+                <th:block >
+                    <!--                    todo implement authentication to limit buttons to manager or above-->
+
+                    <div>
+                        <p>
+                            Reasign Ticket
+                        </p>
+                        <button >
+                            <!--                            todo new view with list of techs.-->
+                        </button>
+                    </div>
+                </th:block>
             </label>
         </div>
     </div>
 </div>
 
-
-<script>
-
-    function showSingleTicket() {
-        var show = document.getElementById("activeTickets");
-        if (window.getComputedStyle(show).visibility === "hidden") {
-            show.style.visibility = "visible";
-        } else {
-            show.style.visibility = "hidden";
-        }
-    }
-</script>
 </body>
 </html>
