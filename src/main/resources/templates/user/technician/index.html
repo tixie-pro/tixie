@@ -40,8 +40,8 @@
     </style>
 </head>
 <body>
-<div class="container">
-    <h1 class="center uk-heading-large">Assigned Tickets
+<div class="uk-container-medium">
+    <h1 class="uk-text-center uk-heading-large">Assigned Tickets
         <button class="uk-button uk-button-danger float-right">Logout</button>
     </h1>
     <div class="uk-grid-match uk-grid-small uk-text-center" uk-grid="true">
@@ -49,13 +49,13 @@
             <div class="uk-card uk-card-default uk-card-body">
                 <h3 class="uk-heading-medium uk-heading-line uk-text-center"><span>Assign Ticket</span></h3>
                 <div class="uk-overflow-auto height uk-height-large">
-                    <table class="uk-table uk-table-striped uk-height-medium">
+                    <table class="uk-table uk-table-striped uk-height-medium uk-text-center">
                         <div th:each="tickets : ${tix}">
                             <th:block th:if="${tickets.statusId.id} != 3">
                                 <tr>
-                                    <th>Active</th>
-                                    <th>Ticket Id</th>
-                                    <th>Notes</th>
+                                    <th class="uk-text-center">Active</th>
+                                    <th class="uk-text-center">Ticket Id</th>
+                                    <th class="uk-text-center">Notes</th>
                                 </tr>
                                 <tr>
                                     <td class="center">
