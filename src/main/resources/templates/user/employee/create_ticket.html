@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Create A Ticket</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css"/>
+    <th:block th:include="partials/common :: head">
+    </th:block>
+    <title>Tixie | Create A Ticket</title>
 </head>
 <body>
 <div class="uk-container">
@@ -16,8 +16,6 @@
                 <span th:field="*{authorId}" th:value="*{#authentication.principal.id}"></span>
                 Email: <span th:text="${#authentication.principal.email}"></span>
             </div>
-
-<!--            <input type="hidden" th:field="*{issue_date}" th:value="'2019-12-16 23:16:45'" />-->
 
             <div class="uk-width-1-4@m">
                 <div class="uk-margin">
@@ -106,7 +104,6 @@
     </div>
 </div>
 </body>
-<!-- UIkit JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
+<th:block th:include="partials/common :: footer">
+</th:block>
 </html>

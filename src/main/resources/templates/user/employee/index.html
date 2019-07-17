@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8"/>
+    <th:block th:include="partials/common :: head">
+    </th:block>
+    <title>Tixie.Pro - Maintenance Ticketing System</title>
     <title>Title</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css"/>
 </head>
 <body>
 <div class="uk-section">
@@ -115,10 +116,10 @@
         </div>
     </div>
 </div>
-
-
-<!-- UIkit JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
 </body>
+
+<footer>
+    <th:block th:include="partials/common :: footer">
+    </th:block>
+</footer>
 </html>
