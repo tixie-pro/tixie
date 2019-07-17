@@ -49,7 +49,6 @@ public class EmployeeController {
     @GetMapping("/employee/ticket/create")
     public String showTicketCreate(Model model, Status status, Specialization spec, Priority prior, Note note) {
         model.addAttribute("tix", new Ticket());
-        model.addAttribute("localDateTime", LocalDateTime.now());
         model.addAttribute("status", status);
         model.addAttribute("spec", spec);
         model.addAttribute("priority", prior);
@@ -59,7 +58,9 @@ public class EmployeeController {
 
     @PostMapping("/employee/ticket/create")
     public String employeeTicketCreate(Model model, Ticket ticketCreated) {
-        System.out.println(ticketCreated);
+        Status newStat = statusDao.findOne(1L);
+        ticketCreated.setAuthorId((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        ticketCreated.setStatusId(newStat);
         ticketDao.save(ticketCreated);
     return "redirect:/";
     }

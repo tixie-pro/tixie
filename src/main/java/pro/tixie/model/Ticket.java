@@ -1,7 +1,11 @@
 package pro.tixie.model;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.context.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -36,11 +40,13 @@ public class Ticket {
 
     private User owner;
 
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    private String issue_date;
+    private Date issue_date;
 
     @Column(nullable = true)
-    private Date comp_date;
+    private  Date comp_date;
 
     @Column(nullable = false)
     private String imgUrl;
@@ -50,7 +56,7 @@ public class Ticket {
 
     public Ticket(){};
 
-    public Ticket( long id, int biohazard, String location_1, String location_2, String issue_details, Specialization specialization, Status status, User author, User owner, String issue_date, Date comp_date, String imgUrl, Priority priority) {
+    public Ticket( long id, int biohazard, String location_1, String location_2, String issue_details, Specialization specialization, Status status, User author, User owner, Date issue_date, Date comp_date, String imgUrl, Priority priority) {
         this.biohazard = biohazard;
         this.location_1 = location_1;
         this.location_2 = location_2;
@@ -101,7 +107,7 @@ public class Ticket {
         return owner;
     }
 
-    public String getIssue_date() {
+    public Date getIssue_date() {
         return issue_date;
     }
 
@@ -153,7 +159,7 @@ public class Ticket {
         this.owner = owner;
     }
 
-    public void setIssue_date(String issue_date) {
+    public void setIssue_date(Date issue_date) {
         this.issue_date = issue_date;
     }
 
@@ -167,5 +173,8 @@ public class Ticket {
 
     public void setPriorityId(Priority priority) {
         this.priority = priority;
+    }
+
+    public void getIssue_date(LocalDateTime dateNow) {
     }
 }
