@@ -9,173 +9,177 @@
 <body>
 <th:block th:replace="partials/common :: navigation-index-page">
 </th:block>
+<div class="main">
 
-<div class="uk-container uk-margin">
-    <div class="uk-text-center" uk-grid="">
-        <div class="uk-width-auto">
-            <div class="uk-card uk-card-default uk-card-body tix-card-background">
-                <div class="uk-width-1-3@s">
-                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="">
-                        <li class="uk-active"><a href="#">Active</a></li>
-                        <li class="uk-parent">
-                            <a href="#">Parent</a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="#">Sub item</a></li>
-                                <li><a href="#">Sub item</a></li>
-                            </ul>
-                        </li>
-                        <li class="uk-parent">
-                            <a href="#">Parent</a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="#">Sub item</a></li>
-                                <li><a href="#">Sub item</a></li>
-                            </ul>
-                        </li>
-                        <li class="uk-nav-header">Header</li>
-                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
-                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
-                        <li class="uk-nav-divider"></li>
-                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
-                    </ul>
-                </div>
-
-                <!--  Logout  -->
-                <form th:action="@{/logout}" th:method="post">
-                    <div class="uk-margin">
-                        <button type="submit" class="uk-button uk-button-default">Logout</button>
+    <div class="uk-container uk-margin">
+        <div class="uk-text-center" uk-grid="">
+            <div class="uk-width-auto">
+                <div class="uk-card uk-card-default uk-card-body tix-card-background">
+                    <div class="uk-width-1-3@s">
+                        <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="">
+                            <li class="uk-active"><a href="#">Active</a></li>
+                            <li class="uk-parent">
+                                <a href="#">Parent</a>
+                                <ul class="uk-nav-sub">
+                                    <li><a href="#">Sub item</a></li>
+                                    <li><a href="#">Sub item</a></li>
+                                </ul>
+                            </li>
+                            <li class="uk-parent">
+                                <a href="#">Parent</a>
+                                <ul class="uk-nav-sub">
+                                    <li><a href="#">Sub item</a></li>
+                                    <li><a href="#">Sub item</a></li>
+                                </ul>
+                            </li>
+                            <li class="uk-nav-header">Header</li>
+                            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
+                            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
+                            <li class="uk-nav-divider"></li>
+                            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
+                        </ul>
                     </div>
-                </form>
-                <!--  End logout -->
+
+                    <!--  Logout  -->
+                    <form th:action="@{/logout}" th:method="post">
+                        <div class="uk-margin">
+                            <button type="submit" class="uk-button uk-button-default">Logout</button>
+                        </div>
+                    </form>
+                    <!--  End logout -->
 
 
+                </div>
             </div>
-        </div>
-        <div class="uk-width-expand">
-            <div class="uk-card uk-card-default uk-card-body tixie-main-body">
+            <div class="uk-width-expand">
+                <div class="uk-card uk-card-default uk-card-body tixie-main-body">
 
 
 
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Test Grid-->
+    <!-- Test Grid-->
 
-<!-- End Test Grid-->
-<div class="uk-section">
-    <div class="uk-container uk-container-small">
-        <div class="uk-overflow-auto">
-            <h5>User open tickets</h5>
-            <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
-                <thead>
-                <tr>
-                    <th class="uk-table-shrink"></th>
-                    <th class="uk-table-shrink">User</th>
-                    <th class="uk-width-small">Ticket Number</th>
-                    <th class="uk-table-expand ">Details</th>
-                    <th class="uk-table-shrink uk-text-nowrap">Status</th>
-                    <th class="uk-table-shrink uk-text-nowrap">Notes</th>
-                </tr>
-                </thead>
-                <tbody>
-                <th:block th:each="ticket : ${tix}">
+    <!-- End Test Grid-->
+    <div class="uk-section">
+        <div class="uk-container uk-container-small">
+            <div class="uk-overflow-auto">
+                <h5>User open tickets</h5>
+                <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+                    <thead>
                     <tr>
-                        <th:block th:if="${ticket.statusId.status} == @{'open'}">
-                            <td><input class="uk-checkbox" type="checkbox"/></td>
-                            <td><a href="#" class="uk-icon-link" uk-icon="github"></a></td>
-                            <!--  <td><img class="uk-preserve-width uk-border-circle" th:src="${ticket.authorId.getProfileImage()}" width="21" height="21" alt=""/></td>-->
-                            <td class="uk-table-link">
-                                <a class="uk-link-reset" href=""
-                                   th:text="'TX' + '-' + ${ticket.id} +'-'+${ticket.getSpecialization_id().name}"></a>
-                            </td>
-                            <td class="uk-text-truncate uk-table-expand" th:text="${ticket.issue_details}"></td>
-                            <td class="uk-text-nowrap uk-label uk-label-success"
-                                th:text="${ticket.statusId.status}"></td>
-                            <td><a href="#" class="uk-icon-link" uk-icon="file-edit"></a></td>
-                        </th:block>
+                        <th class="uk-table-shrink"></th>
+                        <th class="uk-table-shrink">User</th>
+                        <th class="uk-width-small">Ticket Number</th>
+                        <th class="uk-table-expand ">Details</th>
+                        <th class="uk-table-shrink uk-text-nowrap">Status</th>
+                        <th class="uk-table-shrink uk-text-nowrap">Notes</th>
                     </tr>
-                </th:block>
-                </tbody>
-            </table>
-        </div>
-        <br/>
-        <div class="uk-overflow-auto">
-            <h5>User In-Progress tickets</h5>
-            <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
-                <thead>
-                <tr>
-                    <th class="uk-table-shrink"></th>
-                    <th class="uk-table-shrink">User</th>
-                    <th class="uk-width-small">Ticket Number</th>
-                    <th class="uk-table-expand ">Details</th>
-                    <th class="uk-table-shrink uk-text-nowrap">Status</th>
-                    <th class="uk-table-shrink uk-text-nowrap">Notes</th>
-                </tr>
-                </thead>
-                <tbody>
-                <th:block th:each="ticket : ${tix}">
+                    </thead>
+                    <tbody>
+                    <th:block th:each="ticket : ${tix}">
+                        <tr>
+                            <th:block th:if="${ticket.statusId.status} == @{'open'}">
+                                <td><input class="uk-checkbox" type="checkbox"/></td>
+                                <td><a href="#" class="uk-icon-link" uk-icon="github"></a></td>
+                                <!--  <td><img class="uk-preserve-width uk-border-circle" th:src="${ticket.authorId.getProfileImage()}" width="21" height="21" alt=""/></td>-->
+                                <td class="uk-table-link">
+                                    <a class="uk-link-reset" href=""
+                                       th:text="'TX' + '-' + ${ticket.id} +'-'+${ticket.getSpecialization_id().name}"></a>
+                                </td>
+                                <td class="uk-text-truncate uk-table-expand" th:text="${ticket.issue_details}"></td>
+                                <td class="uk-text-nowrap uk-label uk-label-success"
+                                    th:text="${ticket.statusId.status}"></td>
+                                <td><a href="#" class="uk-icon-link" uk-icon="file-edit"></a></td>
+                            </th:block>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <div class="uk-overflow-auto">
+                <h5>User In-Progress tickets</h5>
+                <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+                    <thead>
                     <tr>
-                        <th:block th:if="${ticket.statusId.status} == @{'in progress'}">
-                            <td><input class="uk-checkbox" type="checkbox"/></td>
-                            <td><a href="#" class="uk-icon-link" uk-icon="github"></a></td>
-                            <!--  <td><img class="uk-preserve-width uk-border-circle" th:src="${ticket.authorId.getProfileImage()}" width="21" height="21" alt=""/></td>-->
-                            <td class="uk-table-link">
-                                <a class="uk-link-reset uk-text-uppercase" href=""
-                                   th:text="'TX' + '-' + ${ticket.id} +'-'+${ticket.getSpecialization_id().name}"></a>
-                            </td>
-                            <td class="uk-text-truncate uk-table-expand" th:text="${ticket.issue_details}"></td>
-                            <td class="uk-text-nowrap uk-text-uppercase uk-text-warning"
-                                th:text="${ticket.statusId.status}"></td>
-                            <td><a href="#" class="uk-icon-link" uk-icon="file-edit"></a></td>
-                        </th:block>
+                        <th class="uk-table-shrink"></th>
+                        <th class="uk-table-shrink">User</th>
+                        <th class="uk-width-small">Ticket Number</th>
+                        <th class="uk-table-expand ">Details</th>
+                        <th class="uk-table-shrink uk-text-nowrap">Status</th>
+                        <th class="uk-table-shrink uk-text-nowrap">Notes</th>
                     </tr>
-                </th:block>
-                </tbody>
-            </table>
-        </div>
-        <br/>
-        <div class="uk-overflow-auto">
-            <h5>User Tickets Completed</h5>
-            <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
-                <thead>
-                <tr>
-                    <th class="uk-table-shrink"></th>
-                    <th class="uk-table-shrink">User</th>
-                    <th class="uk-width-small">Ticket Number</th>
-                    <th class="uk-table-expand ">Details</th>
-                    <th class="uk-table-shrink uk-text-nowrap">Status</th>
-                    <th class="uk-table-shrink uk-text-nowrap">Notes</th>
-                </tr>
-                </thead>
-                <tbody>
-                <th:block th:each="ticket : ${tix}">
+                    </thead>
+                    <tbody>
+                    <th:block th:each="ticket : ${tix}">
+                        <tr>
+                            <th:block th:if="${ticket.statusId.status} == @{'in progress'}">
+                                <td><input class="uk-checkbox" type="checkbox"/></td>
+                                <td><a href="#" class="uk-icon-link" uk-icon="github"></a></td>
+                                <!--  <td><img class="uk-preserve-width uk-border-circle" th:src="${ticket.authorId.getProfileImage()}" width="21" height="21" alt=""/></td>-->
+                                <td class="uk-table-link">
+                                    <a class="uk-link-reset uk-text-uppercase" href=""
+                                       th:text="'TX' + '-' + ${ticket.id} +'-'+${ticket.getSpecialization_id().name}"></a>
+                                </td>
+                                <td class="uk-text-truncate uk-table-expand" th:text="${ticket.issue_details}"></td>
+                                <td class="uk-text-nowrap uk-text-uppercase uk-text-warning"
+                                    th:text="${ticket.statusId.status}"></td>
+                                <td><a href="#" class="uk-icon-link" uk-icon="file-edit"></a></td>
+                            </th:block>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <div class="uk-overflow-auto">
+                <h5>User Tickets Completed</h5>
+                <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+                    <thead>
                     <tr>
-                        <th:block th:if="${ticket.statusId.status} == @{'complete'}">
-                            <td><input class="uk-checkbox" type="checkbox"/></td>
-                            <td><a href="#" class="uk-icon-link" uk-icon="github"></a></td>
-                            <!--  <td><img class="uk-preserve-width uk-border-circle" th:src="${ticket.authorId.getProfileImage()}" width="21" height="21" alt=""/></td>-->
-                            <td class="uk-table-link">
-                                <a class="uk-link-reset" href=""
-                                   th:text="'TX' + '-' + ${ticket.id} +'-'+${ticket.getSpecialization_id().name}"></a>
-                            </td>
-                            <td class="uk-text-truncate uk-table-expand" th:text="${ticket.issue_details}"></td>
-                            <td class="uk-text-nowrap" th:text="${ticket.statusId.status}"></td>
-                            <td><a href="#" class="uk-icon-link" uk-icon="file-edit"></a></td>
-                        </th:block>
+                        <th class="uk-table-shrink"></th>
+                        <th class="uk-table-shrink">User</th>
+                        <th class="uk-width-small">Ticket Number</th>
+                        <th class="uk-table-expand ">Details</th>
+                        <th class="uk-table-shrink uk-text-nowrap">Status</th>
+                        <th class="uk-table-shrink uk-text-nowrap">Notes</th>
                     </tr>
-                </th:block>
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                    <th:block th:each="ticket : ${tix}">
+                        <tr>
+                            <th:block th:if="${ticket.statusId.status} == @{'complete'}">
+                                <td><input class="uk-checkbox" type="checkbox"/></td>
+                                <td><a href="#" class="uk-icon-link" uk-icon="github"></a></td>
+                                <!--  <td><img class="uk-preserve-width uk-border-circle" th:src="${ticket.authorId.getProfileImage()}" width="21" height="21" alt=""/></td>-->
+                                <td class="uk-table-link">
+                                    <a class="uk-link-reset" href=""
+                                       th:text="'TX' + '-' + ${ticket.id} +'-'+${ticket.getSpecialization_id().name}"></a>
+                                </td>
+                                <td class="uk-text-truncate uk-table-expand" th:text="${ticket.issue_details}"></td>
+                                <td class="uk-text-nowrap" th:text="${ticket.statusId.status}"></td>
+                                <td><a href="#" class="uk-icon-link" uk-icon="file-edit"></a></td>
+                            </th:block>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
 
-        <div sec:authorize="isAuthenticated()">
-            This content is only shown to authenticated users.
-            User ID: <span th:text="${#authentication.principal.id}"></span>
-            Username: <span th:text="${#authentication.principal.username}"></span>
-            Email: <span th:text="${#authentication.principal.email}"></span>
+            <div sec:authorize="isAuthenticated()">
+                This content is only shown to authenticated users.
+                User ID: <span th:text="${#authentication.principal.id}"></span>
+                Username: <span th:text="${#authentication.principal.username}"></span>
+                Email: <span th:text="${#authentication.principal.email}"></span>
+            </div>
         </div>
     </div>
+
 </div>
+
 </body>
 
 <footer>

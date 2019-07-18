@@ -4,7 +4,7 @@
     <th:block th:fragment="head">
         <meta charset="UTF-8"/>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="/css/nav.css" />
+        <link rel="stylesheet" href="/css/nav.css"/>
     </th:block>
 </head>
 <body>
@@ -50,12 +50,9 @@
                                     </form>
                                 </ul>
                             </div>
-                            <div class="uk-navbar-right">
-                                <ul class="uk-navbar-nav" sec:authorize="isAuthenticated()">
-                                    <li><a th:href="@{'/employee/{id}' (id=${#authentication.principal.id})}">Dashboard</a></li>
-                                </ul>
-                            </div>
                         </li>
+                        <li class="uk-navbar-nav" sec:authorize="isAuthenticated()"><a
+                                th:href="@{'/employee/{id}' (id=${#authentication.principal.id})}">Dashboard</a></li>
                     </ul>
                 </div>
             </nav>
