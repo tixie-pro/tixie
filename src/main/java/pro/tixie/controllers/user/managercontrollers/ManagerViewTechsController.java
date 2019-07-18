@@ -65,6 +65,7 @@ public class ManagerViewTechsController {
         tech.setSpecialization(newSpec);
         userDao.save(tech);
         return "redirect:/tech-list/all";
+
     }
 
 
