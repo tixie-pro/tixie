@@ -40,12 +40,13 @@ public class ManagerTixController {
 
 //        User user = new User();
         List<Ticket> tix = ticketDao.findAll();
+        for (Ticket ticket:tix){
+            if (ticket.getOwnerId()==null){
+                ticket.setOwnerId(userDao.findOne(1l));
+            }
+        }
         model.addAttribute("tix", tix);
-//        model.addAttribute("tix_author",ticketDao.findAllByAuthor(1l));
-//        model.addAttribute("tix_owner", ticketDao.findAllByOwner(2l));
-//        model.addAttribute("tix_priority", ticketDao.findAllByPriority(3));
-//        model.addAttribute("tix_spec", ticketDao.findAllBySpecialization(4));
-//        model.addAttribute("tix_statuys", ticketDao.findAllByStatus(5));
+
         return "user/manager/tickets";
     }
 

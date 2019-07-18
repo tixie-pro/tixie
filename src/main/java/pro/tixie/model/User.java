@@ -161,6 +161,7 @@ public class User{
             if (ticket.getOwnerId()==null)
             {
 //                    skip
+                ticket.setOwnerId(this);
             }else
             if (ticket.getOwnerId().id.equals(id)){
                 x++;
