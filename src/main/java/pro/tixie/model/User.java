@@ -158,6 +158,11 @@ public class User{
         int x = 0;
         long id = this.id;
         for (Ticket ticket:allTix){
+            if (ticket.getOwnerId()==null)
+            {
+//                    skip
+                ticket.setOwnerId(this);
+            }else
             if (ticket.getOwnerId().id.equals(id)){
                 x++;
             }

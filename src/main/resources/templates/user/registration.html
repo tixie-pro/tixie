@@ -814,26 +814,26 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="name">Confirm Password</div>
+                        <div class="name">Select Role</div>
                         <div class="value">
                             <div class="input-group">
                                 <select th:field="*{role}" class="input--style-5" type="text" name="role">
                                     <th:block th:each="newrole: ${roles}">
-<!--                                        <th:block th:if="${newrole.id}==@{5}">-->
-<!--                                            <option th:value="${newrole}" th:text="${newrole.role}"-->
-<!--                                                    th:selected="selected"> role-->
-<!--                                            </option>-->
-<!--                                        </th:block>-->
-<!--                                        <th:block th:if="${newrole.role}!='user'">-->
+                                        <th:block th:if="${newrole.role}==@{user}">
+                                            <option th:value="${newrole.id}" th:text="${newrole.role}"
+                                                    th:selected="selected"> role
+                                            </option>
+                                        </th:block>
+                                        <th:block th:if="${newrole.role}!='user'">
                                             <option th:value="${newrole.id}" th:text="${newrole.role}"> role</option>
-<!--                                        </th:block>-->
+                                        </th:block>
                                     </th:block>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="name">Confirm Password</div>
+                        <div class="name">Select Specialization</div>
                         <div class="value">
                             <select th:field="*{specialization}" class="input--style-5" type="text"
                                     name="specialization">
