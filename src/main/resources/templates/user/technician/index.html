@@ -6,34 +6,13 @@
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css"/>
     <style>
-        .container {
-            margin-top: 1rem;
-
-        }
-
-
-        .uk-countdown-label {
-            font-size: 10px;
-        }
-
-        .uk-countdown-number {
-            font-size: 50px;
-        }
-
-        /*.uk-height-large {*/
-        /*height: 90vh;*/
-        /*}*/
 
         .float-right {
             float: right;
         }
 
-        .center {
-            text-align: center;
-        }
-
         .height {
-            height: 630px;
+            height: min-content;
         }
 
 
@@ -45,10 +24,10 @@
         <button class="uk-button uk-button-danger float-right">Logout</button>
     </h1>
     <div class="uk-grid-match uk-grid-small uk-text-center" uk-grid="true">
-        <div class="uk-width-1-2@m uk-card uk-card-body height">
+        <div class="uk-width-1-2@m uk-card uk-card-body uk-overflow-auto uk-height-large">
             <div class="uk-card uk-card-default uk-card-body">
                 <h3 class="uk-heading-medium uk-heading-line uk-text-center"><span>Assign Ticket</span></h3>
-                <div class="uk-overflow-auto height uk-height-large">
+                <!--<div class="uk-overflow-auto height uk-height-large">-->
                     <table class="uk-table uk-table-striped uk-height-medium uk-text-center">
                         <div th:each="tickets : ${tix}">
                             <th:block th:if="${tickets.statusId.id} != 3">
@@ -58,12 +37,12 @@
                                     <th class="uk-text-center">Notes</th>
                                 </tr>
                                 <tr>
-                                    <td class="center">
+                                    <td class="uk-text-center">
                                         <th:block th:if="${active}">
                                             <th:block th:if="${tickets.id} == ${ticket.id}">
                                                 <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
                                                     <div class="uk-card-body">
-                                                        <div class="center">
+                                                        <div class="uk-text-center">
                                                             <input type="checkbox"
                                                                    checked="checked"/>
                                                         </div>
@@ -73,7 +52,7 @@
                                             <th:block th:if="${tickets.id} != ${ticket.id}">
                                                 <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
                                                     <div class="uk-card-body">
-                                                        <div class="center" type="checkbox" name="active"
+                                                        <div class="uk-text-center" type="checkbox" name="active"
                                                              value="Active">
                                                             <button>Activate</button>
                                                         </div>
@@ -97,7 +76,7 @@
                             </th:block>
                         </div>
                     </table>
-                </div>
+                <!--</div>-->
             </div>
         </div>
         <div class="uk-width-1-2@m uk-card uk-card-body height" id="completedRemove">
