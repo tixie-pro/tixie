@@ -9,12 +9,12 @@
 </head>
 <body>
 
-<th:block th:fragment="navigation-index-page">r
+<th:block th:fragment="navigation-index-page">
     <nav class="uk-navbar-container" uk-navbar="true">
         <div class="uk-navbar-left">
             <ul class="uk-navbar-nav">
-                <li class="uk-active"><a href="#">Active 1</a></li>
-                <li class="uk-active"><a href="#">Active 2</a></li>
+                <li class="uk-active"><a href="#">Home</a></li>
+                <li class="uk-active"><a href="#"></a></li>
                 <li>
                     <a href="#">Login</a>
                     <div class="uk-navbar-dropdown">
@@ -42,8 +42,13 @@
 
         </div>
         <div class="uk-navbar-right">
-            <ul class="uk-navbar-nav">
-                <li sec:authorize="isAuthenticated()"><a th:href="@{'/employee/{id}' (id=${#authentication.principal.id})}"><button class="uk-button uk-button-danger" >Dashboard</button></a></li>
+            <ul sec:authorize="isAuthenticated()" class="uk-navbar-nav">
+                <li><a th:href="@{'/employee/{id}' (id=${#authentication.principal.id})}"><button class="uk-button uk-button-danger" >Dashboard</button></a></li>
+                <li>
+                    <form th:action="@{/logout}" th:method="post">
+                        <button class="uk-button uk-button-danger" style="margin-top: 8px">Logout</button>
+                    </form>
+                </li>
             </ul>
         </div>
     </nav>
