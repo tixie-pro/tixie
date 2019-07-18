@@ -6,6 +6,10 @@
 </head>
 <body>
 
+<div th:style="@{width: 70%; margin: auto;text-align: center;}">
+    <h1>List Of Technicians</h1>
+</div>
+
 <div th:style="@{width: 70%; margin: auto;}">
     <div th:each="tech :${techs}">
         <div th:style="@{float:left; clear:left;width: 400px; border: black 2px solid;margin :3px;}">
@@ -50,13 +54,13 @@
                                 </option>
                             </th:block>
                             <th:block th:if="${spec.id} != ${tech.specialization.id}">
-                            <option th:value="${spec.id}" th:text="${spec.name}">
-                                spec name
-                            </option>
+                                <option th:value="${spec.id}" th:text="${spec.name}">
+                                    spec name
+                                </option>
                             </th:block>
                         </th:block>
                     </select>
-                    <input type="hidden" th:value="${tech.id}" name="techid" id="techid" />
+                    <input type="hidden" th:value="${tech.id}" name="techid" id="techid"/>
                     <button> Submit Changes</button>
                 </form>
             </div>
@@ -79,9 +83,6 @@
                 </a>
             </div>
 
-            <div>
-
-            </div>
         </div>
     </div>
 </div>
