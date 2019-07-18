@@ -13,9 +13,11 @@
 <div th:style="@{width: 70%; margin: auto;}">
     <div th:each="tech :${techs}">
         <div th:style="@{float:left; clear:left;width: 400px; border: black 2px solid;margin :3px;}">
+
             <h3 th:text="@{${tech.firstName}+' '+${tech.lastName}}">heading goes here</h3>
+
             <p th:text="@{'Role: '+${tech.role.role}}">role</p>
-            <p th:text="@{'Specialization: '+${tech.specialization.name}}"></p>
+            <p th:text="@{'Specialization: '+${tech.specialization.id}}"></p>
             <p>Tickets assigned:
                 <span th:text="${tech.tixCount(tix)}">
                 test failed
@@ -33,12 +35,6 @@
                                         th:text="${role.role}"
                                         th:selected="@{selected}">
                                     Role
-                                </option>
-                            </th:block>
-                            <th:block th:if="${tech.role.role}!=${role.role}">
-                                <option th:value="@{${role.id} }"
-                                        th:text="${role.role}">
-                                    not the role
                                 </option>
                             </th:block>
                         </th:block>

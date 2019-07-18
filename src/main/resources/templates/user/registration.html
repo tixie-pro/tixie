@@ -101,11 +101,13 @@
             .form-row {
                 display: block;
             }
+
             .form-row .name,
             .form-row .value {
                 display: block;
                 width: 100%;
             }
+
             .form-row .name {
                 margin-bottom: 7px;
             }
@@ -766,7 +768,7 @@
                         <div class="name">First Name</div>
                         <div class="value">
                             <div class="input-group">
-                                <input th:field="*{firstName}" class="input--style-5" type="text" name="firstName" />
+                                <input th:field="*{firstName}" class="input--style-5" type="text" name="firstName"/>
                             </div>
                         </div>
                     </div>
@@ -774,7 +776,7 @@
                         <div class="name">Last Name</div>
                         <div class="value">
                             <div class="input-group">
-                                <input th:field="*{lastName}" class="input--style-5" type="text" name="lastName"  />
+                                <input th:field="*{lastName}" class="input--style-5" type="text" name="lastName"/>
                             </div>
                         </div>
                     </div>
@@ -782,7 +784,7 @@
                         <div class="name">Username</div>
                         <div class="value">
                             <div class="input-group">
-                                <input th:field="*{userName}"  class="input--style-5" type="text" name="username" />
+                                <input th:field="*{userName}" class="input--style-5" type="text" name="username"/>
                             </div>
                         </div>
                     </div>
@@ -790,7 +792,7 @@
                         <div class="name">Email</div>
                         <div class="value">
                             <div class="input-group">
-                                <input th:field="*{email}" class="input--style-5" type="text" name="email" />
+                                <input th:field="*{email}" class="input--style-5" type="text" name="email"/>
                             </div>
                         </div>
                     </div>
@@ -798,7 +800,7 @@
                         <div class="name">Password</div>
                         <div class="value">
                             <div class="input-group">
-                                <input th:field="*{password}" type="password"  class="input--style-5"/>
+                                <input th:field="*{password}" type="password" class="input--style-5"/>
                             </div>
                         </div>
                     </div>
@@ -806,8 +808,39 @@
                         <div class="name">Confirm Password</div>
                         <div class="value">
                             <div class="input-group">
-                                <input th:field="*{confirmPassword}" class="input--style-5" type="password" name="confirmPassword" />
+                                <input th:field="*{confirmPassword}" class="input--style-5" type="password"
+                                       name="confirmPassword"/>
                             </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Confirm Password</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <select th:field="*{role}" class="input--style-5" type="text" name="role">
+                                    <th:block th:each="newrole: ${roles}">
+<!--                                        <th:block th:if="${newrole.id}==@{5}">-->
+<!--                                            <option th:value="${newrole}" th:text="${newrole.role}"-->
+<!--                                                    th:selected="selected"> role-->
+<!--                                            </option>-->
+<!--                                        </th:block>-->
+<!--                                        <th:block th:if="${newrole.role}!='user'">-->
+                                            <option th:value="${newrole.id}" th:text="${newrole.role}"> role</option>
+<!--                                        </th:block>-->
+                                    </th:block>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Confirm Password</div>
+                        <div class="value">
+                            <select th:field="*{specialization}" class="input--style-5" type="text"
+                                    name="specialization">
+                                <th:block th:each="spec: ${specs}">
+                                    <option th:value="${spec.id}" th:text="${spec.name}" selected="selected"></option>
+                                </th:block>
+                            </select>
                         </div>
                     </div>
                     <div>
@@ -818,7 +851,6 @@
         </div>
     </div>
 </div>
-
 
 
 </body>

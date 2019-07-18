@@ -17,6 +17,11 @@ public class Role {
         this.role = role;
     }
 
+    public Role(long id , String role) {
+        this.role = role;
+        this.id = id;
+    }
+
     public Role (){};
 
 //    getters
