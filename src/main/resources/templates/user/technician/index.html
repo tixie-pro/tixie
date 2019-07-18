@@ -17,8 +17,15 @@
 
 
     </style>
+
+    <th:block th:include="partials/common :: head">
+    </th:block>
+    <title>Tixie | Technician View</title>
+
 </head>
 <body>
+<th:block th:replace="partials/common :: navigation-index-page">
+</th:block>
 <div class="uk-container-medium">
     <h1 class="uk-text-center uk-heading-large">Assigned Tickets
         <button class="uk-button uk-button-danger float-right">Logout</button>
@@ -28,54 +35,54 @@
             <div class="uk-card uk-card-default uk-card-body">
                 <h3 class="uk-heading-medium uk-heading-line uk-text-center"><span>Assign Ticket</span></h3>
                 <!--<div class="uk-overflow-auto height uk-height-large">-->
-                    <table class="uk-table uk-table-striped uk-height-medium uk-text-center">
-                        <div th:each="tickets : ${tix}">
-                            <th:block th:if="${tickets.statusId.id} != 3">
-                                <tr>
-                                    <th class="uk-text-center">Active</th>
-                                    <th class="uk-text-center">Ticket Id</th>
-                                    <th class="uk-text-center">Notes</th>
-                                </tr>
-                                <tr>
-                                    <td class="uk-text-center">
-                                        <th:block th:if="${active}">
-                                            <th:block th:if="${tickets.id} == ${ticket.id}">
-                                                <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
-                                                    <div class="uk-card-body">
-                                                        <div class="uk-text-center">
-                                                            <input type="checkbox"
-                                                                   checked="checked"/>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </th:block>
-                                            <th:block th:if="${tickets.id} != ${ticket.id}">
-                                                <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
-                                                    <div class="uk-card-body">
-                                                        <div class="uk-text-center" type="checkbox" name="active"
-                                                             value="Active">
-                                                            <button>Activate</button>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </th:block>
-                                        </th:block>
-                                        <th:block th:if="${!active}">
+                <table class="uk-table uk-table-striped uk-height-medium uk-text-center">
+                    <div th:each="tickets : ${tix}">
+                        <th:block th:if="${tickets.statusId.id} != 3">
+                            <tr>
+                                <th class="uk-text-center">Active</th>
+                                <th class="uk-text-center">Ticket Id</th>
+                                <th class="uk-text-center">Notes</th>
+                            </tr>
+                            <tr>
+                                <td class="uk-text-center">
+                                    <th:block th:if="${active}">
+                                        <th:block th:if="${tickets.id} == ${ticket.id}">
                                             <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
                                                 <div class="uk-card-body">
-                                                    <div type="checkbox" name="active" value="Active">
+                                                    <div class="uk-text-center">
+                                                        <input type="checkbox"
+                                                               checked="checked"/>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </th:block>
+                                        <th:block th:if="${tickets.id} != ${ticket.id}">
+                                            <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
+                                                <div class="uk-card-body">
+                                                    <div class="uk-text-center" type="checkbox" name="active"
+                                                         value="Active">
                                                         <button>Activate</button>
                                                     </div>
                                                 </div>
                                             </a>
                                         </th:block>
-                                    </td>
-                                    <td><p class="uk-card-body" th:text="${tickets.id}"/></td>
-                                    <td><p class="uk-card-body" th:text="${tickets.issue_details}"/></td>
-                                </tr>
-                            </th:block>
-                        </div>
-                    </table>
+                                    </th:block>
+                                    <th:block th:if="${!active}">
+                                        <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
+                                            <div class="uk-card-body">
+                                                <div type="checkbox" name="active" value="Active">
+                                                    <button>Activate</button>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </th:block>
+                                </td>
+                                <td><p class="uk-card-body" th:text="${tickets.id}"/></td>
+                                <td><p class="uk-card-body" th:text="${tickets.issue_details}"/></td>
+                            </tr>
+                        </th:block>
+                    </div>
+                </table>
                 <!--</div>-->
             </div>
         </div>
@@ -173,12 +180,9 @@
         </div>
     </div>
 </div>
-
-<script>
-
-</script>
-<!-- UIkit JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
 </body>
+<footer>
+    <th:block th:include="partials/common :: footer">
+    </th:block>
+</footer>
 </html>
