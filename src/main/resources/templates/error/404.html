@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
+    <title>Tixie | 404 </title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css"/>
+    <link rel="stylesheet" href="/static/css/404.css" th:href="@{/css/404.css}" />
 </head>
 <body>
+<p class="center">Space Invaders destroyed this page! Take revenge on them!
+    <br/> Use <span class="label label-danger">Space</span> to shoot and <span class="label label-danger">←</span>&#160;
+    <span class="label label-danger">→</span> to move!&#160;&#160;&#160;
+    <button class="uk-button uk-button-default" id="restart">Free Play</button> or
+    <a href="/">Go Home</a>
+</p>
+
+<canvas id="space-invaders" />
 
 </body>
+<script src="/static/js/404.js" th:src="@{/js/404.js}"></script>
 </html>

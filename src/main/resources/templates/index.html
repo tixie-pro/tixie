@@ -3,13 +3,17 @@
 <head>
     <th:block th:include="partials/common :: head">
     </th:block>
+    <link rel="stylesheet" href="/css/landing.css" />
     <title>Tixie.Pro - Maintenance Ticketing System</title>
 </head>
 <body>
-
 <th:block th:replace="partials/common :: navigation-index-page">
 </th:block>
-<h1 th:text='${"Tixie - Modern Ticketing System"}'></h1>
+<div class="tixie-landing-page">
+    <div class="uk-container">
+        <h1 class="tixie-landing-slogan" th:text='${"Tixie - Modern Ticketing System"}'></h1>
+    </div>
+</div>
 </body>
 <footer>
     <th:block th:include="partials/common :: footer">
