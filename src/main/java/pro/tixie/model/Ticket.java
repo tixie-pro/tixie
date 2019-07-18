@@ -54,7 +54,9 @@ public class Ticket {
     @OneToOne
     private Priority priority;
 
-    public Ticket(){};
+    public Ticket(){
+
+    }
 
     public Ticket( long id, int biohazard, String location_1, String location_2, String issue_details, Specialization specialization, Status status, User author, User owner, Date issue_date, Date comp_date, String imgUrl, Priority priority) {
         this.biohazard = biohazard;
