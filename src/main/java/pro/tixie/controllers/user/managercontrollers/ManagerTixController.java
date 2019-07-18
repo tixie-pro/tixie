@@ -94,8 +94,10 @@ public class ManagerTixController {
     @GetMapping("/tech")
     public String techPage(Model model){
         List<Ticket> tix = ticketDao.findAll();
+
         model.addAttribute("tix", tix);
         model.addAttribute("active", false);
+
         return "user/technician/index";
     }
 
