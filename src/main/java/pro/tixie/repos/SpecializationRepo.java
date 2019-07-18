@@ -10,6 +10,7 @@ import java.util.List;
 public interface SpecializationRepo extends CrudRepository<Specialization, Long>{
 
     List<Specialization> findAllById(long id);
+    List<Specialization> findAll();
     Specialization findById(long id);
 
 }
