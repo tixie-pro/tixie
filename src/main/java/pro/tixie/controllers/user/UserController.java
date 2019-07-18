@@ -14,9 +14,11 @@ public class UserController {
     private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
 
+
     public UserController (UserRepository userDao, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
+
     }
 
     @GetMapping("/register")
