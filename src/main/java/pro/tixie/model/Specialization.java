@@ -19,6 +19,12 @@ public class Specialization {
         this.name = name;
     }
 
+    public Specialization(String name, long id) {
+        this.name = name;
+        this.id = id;
+    }
+
+
     public Long getId() {
         return id;
     }

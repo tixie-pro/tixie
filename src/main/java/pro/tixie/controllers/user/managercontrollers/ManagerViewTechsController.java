@@ -65,20 +65,9 @@ public class ManagerViewTechsController {
         tech.setSpecialization(newSpec);
         userDao.save(tech);
         return "redirect:/tech-list/all";
+
     }
 
 
-
-//    helper functions
-
-//    public int tixCount(List<Ticket> allTix, long id){
-//        int x = 0;
-//        for (Ticket ticket:allTix){
-//            if (ticket.getOwnerId().equals(id)){
-//                x++;
-//            }
-//        }
-//        return x;
-//    }
 
 }
