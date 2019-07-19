@@ -55,6 +55,8 @@
                         </li>
                         <li class="uk-navbar-nav" sec:authorize="isAuthenticated()"><a
                                 th:href="@{'/employee/{id}' (id=${#authentication.principal.id})}">Dashboard</a></li>
+                        <li class="uk-navbar-nav" sec:authorize="isAuthenticated()"><a
+                                th:href="@{'/employee/ticket/create' (id=${#authentication.principal.id})}">Create Ticket</a></li>
                     </ul>
                 </div>
             </nav>
