@@ -25,7 +25,6 @@
                                 <li><a href="#">Open</a></li>
                                 <li><a href="#">In-Progress</a></li>
                                 <li><a href="#">Completed</a></li>
-
                             </ul>
                         </li>
                         <li class="uk-parent">
@@ -37,10 +36,15 @@
                             </ul>
                         </li>
                         <li class="uk-nav-header">Other</li>
-                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: plus-circle"></span> Create Ticket</a></li>
+                        <li><a href="#offcanvas-form" uk-toggle=""><span class="uk-margin-small-right" uk-icon="icon: plus-circle"></span> Create Ticket</a></li>
                         <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
                         <li class="uk-nav-divider"></li>
                         <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
+<!--                        <li>-->
+<!--                            <form class="uk-grid-small" th:action="@{/employee/}" th:method="GET" th:object="${tix}">-->
+<!--                            <button class="uk-button uk-button-default uk-margin-small-right" type="submit" uk-toggle="target: #offcanvas-form">Open</button>-->
+<!--                            </form>-->
+<!--                        </li>-->
                     </ul>
                 </div>
             </div>
@@ -53,8 +57,7 @@
                         <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
                             <thead>
                             <tr>
-                                <!--                                <th class="uk-table-shrink"></th>-->
-                                <!--                                <th class="uk-table-shrink">User</th>-->
+
                                 <th class="uk-width-small">Ticket Number</th>
                                 <th class="uk-table-expand ">Details</th>
                                 <th class="uk-table-shrink uk-text-nowrap">Status</th>
@@ -65,9 +68,6 @@
                             <th:block th:each="ticket : ${tix}">
                                 <tr>
                                     <th:block th:if="${ticket.statusId.status} == @{'open'}">
-                                        <!-- <td><input class="uk-checkbox" type="checkbox"/></td>-->
-                                        <!-- <td><a href="#" class="uk-icon-link" uk-icon="github"></a></td>-->
-                                        <!-- <td><img class="uk-preserve-width uk-border-circle" th:src="${ticket.authorId.getProfileImage()}" width="21" height="21" alt=""/></td>-->
                                         <td class="uk-table-link">
                                             <a class="uk-link-reset" href=""
                                                th:text="'TX' + '-' + ${ticket.id} +'-'+${ticket.getSpecialization_id().name}"></a>

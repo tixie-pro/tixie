@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pro.tixie.model.*;
 import pro.tixie.repos.*;
 import pro.tixie.services.EmailService;
@@ -37,9 +38,9 @@ public class EmployeeController {
         this.emailService = emailService;
     }
 
+
     @GetMapping("/employee/{id}")
     public String allTixByEmployee(@PathVariable long id, Model model) {
-        User loggedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userTix = userDao.findOne(id);
         Ticket tixNote = ticketDao.findOne(id);
         List<Note> note = noteDao.findAllByTicket(tixNote);
@@ -58,6 +59,7 @@ public class EmployeeController {
         model.addAttribute("note", note);
         return "user/employee/create_ticket";
     }
+
 
     @PostMapping("/employee/ticket/create")
     public String employeeTicketCreate(Model model, Ticket ticketCreated, Ticket ticket) {
