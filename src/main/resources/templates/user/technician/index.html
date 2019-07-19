@@ -53,6 +53,7 @@
                 <!--<div class="uk-overflow-auto height uk-height-large">-->
                 <table class="uk-table uk-table-striped uk-height-medium uk-text-center">
                     <div th:each="tickets : ${tix}">
+                        <!--<th:block th:if="${tickets.owner}==${tech}"></th:block>-->
                         <th:block th:if="${tickets.statusId.id} != 3">
                             <tr>
                                 <th class="uk-text-center">Active</th>
@@ -66,13 +67,7 @@
                                             <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
                                                 <div class="uk-card-body">
                                                     <div class="uk-text-center">
-                                                        <div th:text="${tickets.statusId.status}"></div>
-                                                        <form th:action="@{/techticket/inprogress}" th:method="post">
-                                                            <input type="hidden" th:value="${tickets.id}"
-                                                                   th:name="ticketIdIp"/>
-                                                            <input type="hidden" th:value="2" th:name="statusIp"/>
-                                                            <button><span uk-icon="icon: check"></span>Active</button>
-                                                        </form>
+                                                        <button><span uk-icon="icon: check"></span>Active</button>
                                                     </div>
                                                 </div>
                                             </a>
@@ -82,7 +77,6 @@
                                                 <div class="uk-card-body">
                                                     <div class="uk-text-center" type="checkbox" name="active"
                                                          value="Active">
-
                                                         <button>Active</button>
                                                     </div>
                                                 </div>
@@ -174,38 +168,27 @@
                                     </form>
                                 </td>
                                 <td style="text-align: right">
-                                    <button class="uk-button uk-button-danger" type="button"
-                                            onclick="UIkit.notification({message: 'This ticket has been escalated to a Manager!', status: 'success'})">
-                                        Escalate
-                                    </button>
-
-
-                                    <!--<label for="escalate">Escalate</label>-->
+                                    <form th:action="@{/techescalate}" th:method="post">
+                                        <select name="assign" id="assign">
+                                            <th:block th:each="tech : ${techs}">
+                                                <th:block th:if="${ticket.ownerId}!=${tech}">
+                                                    <th:block th:if="${tech.role.role}==@{'manager'}">
+                                                        <option th:value="@{${tech.id}}"
+                                                                th:text="@{${tech.firstName}+' '+${tech.lastName}}">
+                                                        </option>
+                                                    </th:block>
+                                                </th:block>
+                                            </th:block>
+                                            <input type="hidden" th:value="${ticket.id}" name="ticketid"/>
+                                            <button class="uk-button uk-button-danger" type="submit"
+                                                    onclick="UIkit.notification({message: 'This ticket has been escalated to a Manager!', status: 'success'})">
+                                                Escalate
+                                            </button>
+                                        </select>
+                                    </form>
                                 </td>
                             </tr>
                         </table>
-                        <form th:action="@{/techreassign}" th:method="post">
-                            <select name="assign" id="assign">
-                                <th:block th:each="tech : ${techs}">
-                                    <!--                                <th:block th:if="${ticket.specialization_id}==${tech.specialization}">-->
-                                    <th:block th:if="${ticket.ownerId}==${tech}">
-                                        <option th:value="@{${tech.id}}"
-                                                th:text="@{${tech.firstName}+' '+${tech.lastName}}"
-                                                th:selected="@{selected}">
-                                        </option>
-                                    </th:block>
-                                    <th:block th:if="${ticket.ownerId}!=${tech}">
-                                        <th:block th:if="${ticket.specialization_id}==${tech.specialization}">
-                                            <option th:value="@{${tech.id}}"
-                                                    th:text="@{${tech.firstName}+' '+${tech.lastName}}">
-                                            </option>
-                                        </th:block>
-                                    </th:block>
-                                </th:block>
-                                <input type="hidden" th:value="${ticket.id}" name="ticketid"/>
-                                <button th:type="submit">submit</button>
-                            </select>
-                        </form>
                     </div>
                 </div>
             </div>
