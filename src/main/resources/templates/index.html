@@ -7,13 +7,24 @@
     <title>Tixie.Pro - Maintenance Ticketing System</title>
 </head>
 <body>
-<th:block th:replace="partials/common :: navigation-index-page">
-</th:block>
+<div class="uk-container">
+    <th:block th:replace="partials/common :: navigation-index-page">
+</th:block></div>
+
 <div class="tixie-landing-page">
     <div class="uk-container">
-        <h1 class="tixie-landing-slogan" th:text='${"Tixie - Modern Ticketing System"}'></h1>
+        <div uk-grid="">
+            <div class="uk-width-1-2">
+                <h1 class="tixie-landing-slogan" th:text='${"Tixie Slog Goes Here"}'></h1>
+            </div>
+            <div class="uk-width-1-2">
+                <img src="/img/07.png" alt="" />
+            </div>
+        </div>
     </div>
 </div>
+
+
 </body>
 <footer>
     <th:block th:include="partials/common :: footer">

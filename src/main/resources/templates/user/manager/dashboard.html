@@ -1,75 +1,84 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
+    <th:block th:replace="partials/common :: head">
+    </th:block>
+    <title>Tixie | Manager Dashboard</title>
+    <link rel="stylesheet" href="/css/custom.css" />
 </head>
 <body>
-<div th:style="@{float: left; border: 1px solid black;padding:3px;}">
-    <div>
-        <h3>Stats by Status</h3>
-    </div>
-    <div th:text="@{'Total Tickets: '+${totalTix}}"></div>
-    <div th:text="@{'Copmleted Tickets: '+${complete}}"></div>
-    <div th:text="@{'Copmleted %: '+${completePerc}}"></div>
-    <div th:text="@{'Tickets in progress: '+${inProg}}"></div>
-    <div th:text="@{'Tickets in progress: '+${inProg}}"></div>
-    <div th:text="@{'In Progress%: '+${inProgPerc}}"></div>
-    <div th:text="@{'Open Tickets: '+${open}}"></div>
-    <div th:text="@{'Open %: '+${openPerc}}"></div>
+<div class="uk-container">
+    <th:block th:replace="partials/common :: navigation-index-page">
+    </th:block>
 </div>
 
-<div th:style="@{float: left; border: 1px solid black;padding:3px;}">
-    <div>
-        <h3>Stats by Specialization</h3>
-    </div>
-    <div th:text="@{'Total Tickets: '+${totalTix}}"></div>
-    <div th:text="@{'Carpentry Tickets: '+${carp}}"></div>
-    <div th:text="@{'Carpentry %: '+${carpPerc}}"></div>
-    <div th:text="@{'Electrical Tickets: '+${elec}}"></div>
-    <div th:text="@{'Electrical %: '+${elecPerc}}"></div>
-    <div th:text="@{'Plumbing Tickets: '+${plum}}"></div>
-    <div th:text="@{'Plumbing %: '+${plumPerc}}"></div>
-    <div th:text="@{'HVAC Tickets'+${hvac}}"></div>
-    <div th:text="@{'HVAC %: '+${hvacPerc}}"></div>
-    <div th:text="@{'Custodial Tickets: '+${cust}}"></div>
-    <div th:text="@{'Custodial %: '+${custPerc}}"></div>
-    <div th:text="@{'Biohazardous Tickets: '+${bioh}}"></div>
-    <div th:text="@{'Biohazardous %: '+${biohPerc}}"></div>
-
-</div>
-
-<div th:style="@{float: left; border: 1px solid black;padding:3px;}">
-    <div th:each="tix :${tixbydate}">
+<div class="main">
+    <div th:style="@{float: left; border: 1px solid black;padding:3px;}">
         <div>
-            <div><span th:text="${tix.id}"/></div>
-            <div>
-                <a th:href="@{'/tickets/priority/'+${tix.priorityId.id}}">
-                    <span th:text="${tix.priorityId.name}"/>
-                </a>
-            </div>
+            <h3>Stats by Status</h3>
+        </div>
+        <div th:text="@{'Total Tickets: '+${totalTix}}"></div>
+        <div th:text="@{'Copmleted Tickets: '+${complete}}"></div>
+        <div th:text="@{'Copmleted %: '+${completePerc}}"></div>
+        <div th:text="@{'Tickets in progress: '+${inProg}}"></div>
+        <div th:text="@{'Tickets in progress: '+${inProg}}"></div>
+        <div th:text="@{'In Progress%: '+${inProgPerc}}"></div>
+        <div th:text="@{'Open Tickets: '+${open}}"></div>
+        <div th:text="@{'Open %: '+${openPerc}}"></div>
+    </div>
 
-            <div>
-                <a th:href="@{'/tickets/specialization/'+${tix.specialization_id.id}}">
-                    <span th:text="${tix.specialization_id.name}"/>
-                </a>
-            </div>
-            <div>
-                <a th:href="@{'/tickets/status/'+${tix.statusId.id}}">
-                    <span th:text="${tix.statusId.status}"/>
-                </a>
-            </div>
-            <div>
-                <a th:href="@{'/tickets/status/'+${tix.statusId.id}}">
-                    <span th:text="${tix.issue_date.getDate()}"/>
-                </a>
-            </div>
+    <div th:style="@{float: left; border: 1px solid black;padding:3px;}">
+        <div>
+            <h3>Stats by Specialization</h3>
+        </div>
+        <div th:text="@{'Total Tickets: '+${totalTix}}"></div>
+        <div th:text="@{'Carpentry Tickets: '+${carp}}"></div>
+        <div th:text="@{'Carpentry %: '+${carpPerc}}"></div>
+        <div th:text="@{'Electrical Tickets: '+${elec}}"></div>
+        <div th:text="@{'Electrical %: '+${elecPerc}}"></div>
+        <div th:text="@{'Plumbing Tickets: '+${plum}}"></div>
+        <div th:text="@{'Plumbing %: '+${plumPerc}}"></div>
+        <div th:text="@{'HVAC Tickets'+${hvac}}"></div>
+        <div th:text="@{'HVAC %: '+${hvacPerc}}"></div>
+        <div th:text="@{'Custodial Tickets: '+${cust}}"></div>
+        <div th:text="@{'Custodial %: '+${custPerc}}"></div>
+        <div th:text="@{'Biohazardous Tickets: '+${bioh}}"></div>
+        <div th:text="@{'Biohazardous %: '+${biohPerc}}"></div>
 
+    </div>
 
+    <div th:style="@{float: left; border: 1px solid black;padding:3px;}">
+        <div th:each="tix :${tixbydate}">
+            <div>
+                <div><span th:text="${tix.id}"/></div>
+                <div>
+                    <a th:href="@{'/tickets/priority/'+${tix.priorityId.id}}">
+                        <span th:text="${tix.priorityId.name}"/>
+                    </a>
+                </div>
+
+                <div>
+                    <a th:href="@{'/tickets/specialization/'+${tix.specialization_id.id}}">
+                        <span th:text="${tix.specialization_id.name}"/>
+                    </a>
+                </div>
+                <div>
+                    <a th:href="@{'/tickets/status/'+${tix.statusId.id}}">
+                        <span th:text="${tix.statusId.status}"/>
+                    </a>
+                </div>
+                <div>
+                    <a th:href="@{'/tickets/status/'+${tix.statusId.id}}">
+                        <span th:text="${tix.issue_date.getDate()}"/>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-
 </body>
+<footer>
+    <th:block th:include="partials/common :: footer">
+    </th:block>
+</footer>
 </html>

@@ -43,7 +43,6 @@ public class ManagerTixController {
         List<Ticket> tix = ticketDao.findAll();
         nulUserIf(tix);
         model.addAttribute("tix", tix);
-
         return "user/manager/tickets";
     }
 
@@ -133,6 +132,20 @@ public class ManagerTixController {
         tix.setOwnerId(owner);
         ticketDao.save(tix);
         return ("redirect:/tech/ticket/" + tixId);
+    }
+
+    @PostMapping("techescalate")
+    public String techEscalateReassign(
+            @RequestParam (name = "assign") long id,
+            @RequestParam (name = "ticketid") long tixId
+    ){
+
+        Ticket tix = ticketDao.findOne(tixId);
+        User owner = userDao.findOne(id);
+
+        tix.setOwnerId(owner);
+        ticketDao.save(tix);
+        return ("redirect:/tech");
     }
 
     @PostMapping("/techticketcomplete")
