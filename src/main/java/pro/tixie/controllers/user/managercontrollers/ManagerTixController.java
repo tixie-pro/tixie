@@ -144,6 +144,21 @@ public class ManagerTixController {
 
     }
 
+    @PostMapping("/techticket/inprogress")
+    public String inProgressTicket(
+            @RequestParam (name = "ticketIdIp") long id,
+            @RequestParam (name = "statusIp") long statIdIp){
+
+        Status ipStat = statDao.findOne(statIdIp);
+        Ticket ipTick = ticketDao.findOne(id);
+
+        ipTick.setStatusId(ipStat);
+        ticketDao.save(ipTick);
+
+        return "redirect:/tech/ticket/" +id;
+
+    }
+
 
 
 }
