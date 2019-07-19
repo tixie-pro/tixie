@@ -11,69 +11,64 @@
         <div>
             <div>
                 <h1>
-All Tickets
+                    All Tickets
                 </h1>
             </div>
         </div>
 
-            <div class="uk-card uk-card-default uk-card-body ">
-                <div class="uk-overflow-auto uk-height-large">
-                    <div th:each="ticket : ${tix}">
-                        <div class="uk-margin-medium uk-card uk-card-default">
-                            <div class="uk-flex" uk-grid="">
-                                <div class=" uk-margin-medium">
-                                    <h3>Ticket #</h3>
-                                    <span th:text="${ticket.id}"/>
-                                </div>
-                                <div class=" uk-margin-medium">
-                                    <h3>Priority</h3>
-                                    <a th:href="@{'/tickets/priority/'+${ticket.priorityId.id}}">
-                                        <span th:text="${ticket.priorityId.name}"/>
-                                    </a>
-                                </div>
-                                <div class=" uk-margin-medium">
-                                    <h3>Category</h3>
-                                    <a th:href="@{'/tickets/specialization/'+${ticket.specialization_id.id}}">
-                                        <span th:text="${ticket.specialization_id.name}"/>
-                                    </a>
-                                </div>
-                                <div class=" uk-margin-medium ">
-                                    <h3>Status</h3>
-                                    <a th:href="@{'/tickets/status/'+${ticket.statusId.id}}">
-                                        <span th:text="${ticket.statusId.status}"/>
-                                    </a>
-                                </div>
+        <div class="uk-card uk-card-default uk-card-body ">
+            <div class="uk-overflow-auto uk-height-large">
+                <div th:each="ticket : ${tix}">
+                    <div class="uk-margin-medium uk-card uk-card-default">
+                        <div class="uk-grid-small" uk-grid="">
+                            <div class="uk-card uk-card-default uk-card-body">
+                                <p>
+                                    Ticket #<span th:text="${ticket.id}"/>
+                                </p>
+                                <p>
+                                    <!--                                    <p th:href="@{'/tickets/priority/'+${ticket.priorityId.id}}">-->
+                                    Priority: <span th:text="${ticket.priorityId.name}"/>
+                                    <!--                                    </p>-->
+                                </p>
+                                <p>
+                                    <!--                                    <p th:href="@{'/tickets/specialization/'+${ticket.specialization_id.id}}">-->
+                                    Category: <span th:text="${ticket.specialization_id.name}"/>
+                                    <!--                                    </p>-->
+                                </p>
+                                <p>
+                                    <!--                                    <p th:href="@{'/tickets/status/'+${ticket.statusId.id}}">-->
+                                    Status: <span th:text="${ticket.statusId.status}"/>
+                                    <!--                                    </p>-->
+                                </p>
                             </div>
-                            <div class="uk-flex" uk-grid="">
-                                <div class=" uk-margin-medium">
-                                    <h3>Created by</h3>
-                                    <a th:href="@{'/tickets/author/'+${ticket.authorId.id}}">
-                                        <span th:text="${ticket.authorId.getuserName()}"/>
-                                    </a>
-                                </div>
+                            <div class="uk-card uk-card-default uk-card-body">
+                                <p >
+                                    <!--                                    <p th:href="@{'/tickets/author/'+${ticket.authorId.id}}">-->
+                                    Created by; <span th:text="${ticket.authorId.getuserName()}"/>
+                                    <!--                                    </p>-->
+                                </p>
 
-                                <div class=" uk-margin-medium">
-                                    <h3>Assigned to</h3>
-                                    <a th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">
-                                        <span th:text="${ticket.ownerId.getuserName()}"/>
-                                    </a>
-                                </div>
-                                <div class=" uk-margin-medium">
-                                    <h3>Created on</h3>
-                                    <span th:text="${ticket.issue_date}"/>
-                                </div>
-                                <div class=" uk-margin-medium">
+                                <p>
+                                    <!--                                    <p th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">-->
+                                    Assigned to: <span th:text="${ticket.ownerId.getuserName()}"/>
+                                    <!--                                    </p>-->
+                                </p>
+                                <p>
+                                <p>Created on: <span th:text="${ticket.issue_date}"/></p>
+                                </p>
+                                <p>
                                     <a th:href="@{'/tech/ticket/'+${ticket.id}}">
                                         <button>
                                             View Ticket
                                         </button>
                                     </a>
-                                </div>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
     </div>
 </div>
