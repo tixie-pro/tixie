@@ -38,10 +38,9 @@
                 <button class="uk-offcanvas-close" type="button" uk-close="true"></button>
                 <div th:each="tickets : ${tix}">
                     <th:block th:if="${#authentication.principal.id} == ${tickets.ownerId.id}">
-                        <!--<th:block th:if="${tickets.statusId.id} != 1">-->
-                            <h3 th:text="${tickets.id}"></h3>
-                            <p th:text="${tickets.issue_details}">Carson</p>
-                        <!--</th:block>-->
+                        <h3 th:text="${tickets.id}"></h3>
+                        <p th:text="${tickets.issue_details}">Carson</p>
+                        <p>Status: <span th:text="${tickets.statusId.status}"></span></p>
                     </th:block>
                 </div>
             </div>
@@ -199,7 +198,6 @@
             </div>
         </div>
     </div>
-    <!--</th:block>-->
 </div>
 
 <script>
