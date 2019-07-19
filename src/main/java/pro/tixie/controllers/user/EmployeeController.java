@@ -65,10 +65,11 @@ public class EmployeeController {
     public String employeeTicketCreate(Model model, Ticket ticketCreated, Ticket ticket) {
         Status newStat = statusDao.findOne(1L);
         ticketCreated.setAuthorId((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        ticketCreated.setOwnerId((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+
         ticketCreated.setStatusId(newStat);
         ticketDao.save(ticketCreated);
         emailService.prepareAndSend(ticket, "You created a ticket", "you did it!");
-
         return "redirect:/";
     }
 }

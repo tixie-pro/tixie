@@ -132,6 +132,20 @@ public class ManagerTixController {
             return ("redirect:/tech/ticket/"+tixId);
     }
 
+    @PostMapping("techescalate")
+    public String techEscalateReassign(
+            @RequestParam (name = "assign") long id,
+            @RequestParam (name = "ticketid") long tixId
+    ){
+
+        Ticket tix = ticketDao.findOne(tixId);
+        User owner = userDao.findOne(id);
+
+        tix.setOwnerId(owner);
+        ticketDao.save(tix);
+        return ("redirect:/tech");
+    }
+
     @PostMapping("/techticketcomplete")
     public String completeTicket(
             @RequestParam (name = "ticketId") Long id,

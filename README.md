@@ -1,10 +1,11 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
-  <a href="https://www.gatsbyjs.org">
+  <a href="https://www.tixie.pro">
     <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
   </a>
 </p>
 <h1 align="center">
+
   Tixie | Modern Ticketing System powered Java
 </h1>
 
@@ -46,4 +47,3 @@ A quick look at the top-level files and directories you'll see in the Tixie proj
 
 
 
-<!-- AUTO-GENERATED-CONTENT:END -->
