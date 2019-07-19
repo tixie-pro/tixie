@@ -1,76 +1,95 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
     <title>Title</title>
-    <th:block th:replace="partials/common :: head"></th:block>
+    <th:block th:replace="partials/common :: head">
+
+    </th:block>
+    <link rel="stylesheet" href="/css/custom.css"/>
+
 </head>
 <body>
-<div class="uk-container uk-container-large uk-align-center">
-    <div class="uk-container">
-        <div>
-            <div>
-                <h1>
-                    All Tickets
-                </h1>
+<div class="uk-container">
+    <th:block th:replace="partials/common :: navigation-index-page">
+    </th:block>
+</div>
+
+<div class="main">
+    <div class="uk-container uk-container-large uk-align-center">
+        <div class="uk-container" uk-grid="">
+            <div class="uk-width-1-1">
+                <div>
+                    <h1>
+                        All Tickets
+                    </h1>
+                </div>
             </div>
-        </div>
+            <div class=" uk-width-1-6 uk-card uk-card-default uk-card-body uk-margin-large-bottom">
+                <div class="uk-overflow-auto uk-height-large">
+                </div>
+            </div>
+            <div class="uk-width-4-5 uk-margin-large-bottom">
+                <div class="uk-card uk-card-default uk-card-body ">
+                    <div class="uk-overflow-auto uk-height-large">
+                        <div th:each="ticket : ${tix}">
+                            <div class="uk-margin-medium uk-card uk-card-default">
+                                <div class="uk-grid-small" uk-grid="">
+                                    <div class="uk-card uk-card-default uk-card-body">
+                                        <p>
+                                            Ticket #<span th:text="${ticket.id}"/>
+                                        </p>
+                                        <p>
+                                            <!--                                    <p th:href="@{'/tickets/priority/'+${ticket.priorityId.id}}">-->
+                                            Priority: <span th:text="${ticket.priorityId.name}"/>
+                                            <!--                                    </p>-->
+                                        </p>
+                                        <p>
+                                            <!--                                    <p th:href="@{'/tickets/specialization/'+${ticket.specialization_id.id}}">-->
+                                            Category: <span th:text="${ticket.specialization_id.name}"/>
+                                            <!--                                    </p>-->
+                                        </p>
+                                        <p>
+                                            <!--                                    <p th:href="@{'/tickets/status/'+${ticket.statusId.id}}">-->
+                                            Status: <span th:text="${ticket.statusId.status}"/>
+                                            <!--                                    </p>-->
+                                        </p>
+                                    </div>
+                                    <div class="uk-card uk-card-default uk-card-body">
+                                        <p>
+                                            <!--                                    <p th:href="@{'/tickets/author/'+${ticket.authorId.id}}">-->
+                                            Created by; <span th:text="${ticket.authorId.getuserName()}"/>
+                                            <!--                                    </p>-->
+                                        </p>
 
-        <div class="uk-card uk-card-default uk-card-body ">
-            <div class="uk-overflow-auto uk-height-large">
-                <div th:each="ticket : ${tix}">
-                    <div class="uk-margin-medium uk-card uk-card-default">
-                        <div class="uk-grid-small" uk-grid="">
-                            <div class="uk-card uk-card-default uk-card-body">
-                                <p>
-                                    Ticket #<span th:text="${ticket.id}"/>
-                                </p>
-                                <p>
-                                    <!--                                    <p th:href="@{'/tickets/priority/'+${ticket.priorityId.id}}">-->
-                                    Priority: <span th:text="${ticket.priorityId.name}"/>
-                                    <!--                                    </p>-->
-                                </p>
-                                <p>
-                                    <!--                                    <p th:href="@{'/tickets/specialization/'+${ticket.specialization_id.id}}">-->
-                                    Category: <span th:text="${ticket.specialization_id.name}"/>
-                                    <!--                                    </p>-->
-                                </p>
-                                <p>
-                                    <!--                                    <p th:href="@{'/tickets/status/'+${ticket.statusId.id}}">-->
-                                    Status: <span th:text="${ticket.statusId.status}"/>
-                                    <!--                                    </p>-->
-                                </p>
-                            </div>
-                            <div class="uk-card uk-card-default uk-card-body">
-                                <p >
-                                    <!--                                    <p th:href="@{'/tickets/author/'+${ticket.authorId.id}}">-->
-                                    Created by; <span th:text="${ticket.authorId.getuserName()}"/>
-                                    <!--                                    </p>-->
-                                </p>
-
-                                <p>
-                                    <!--                                    <p th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">-->
-                                    Assigned to: <span th:text="${ticket.ownerId.getuserName()}"/>
-                                    <!--                                    </p>-->
-                                </p>
-                                <p>
-                                <p>Created on: <span th:text="${ticket.issue_date}"/></p>
-                                </p>
-                                <p>
-                                    <a th:href="@{'/tech/ticket/'+${ticket.id}}">
-                                        <button>
-                                            View Ticket
-                                        </button>
-                                    </a>
-                                </p>
+                                        <p>
+                                            <!--                                    <p th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">-->
+                                            Assigned to: <span th:text="${ticket.ownerId.getuserName()}"/>
+                                            <!--                                    </p>-->
+                                        </p>
+                                        <p>
+                                        <p>Created on: <span th:text="${ticket.issue_date}"/></p>
+                                        </p>
+                                        <p>
+                                            <a th:href="@{'/tech/ticket/'+${ticket.id}}">
+                                                <button>
+                                                    View Ticket
+                                                </button>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
+
 </div>
 </body>
+<footer>
+    <th:block th:include="partials/common :: footer">
+    </th:block>
+</footer>
 </html>
