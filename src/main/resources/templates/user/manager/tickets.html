@@ -53,10 +53,18 @@ All Tickets
                                 </div>
 
                                 <div class=" uk-margin-medium">
+                                    <th:block th:if="${ticket.ownerId.getuserName()}== @{null}">
+                                        <h3>Assigned to</h3>
+
+                                            <span th:text="@{none}"/>
+
+                                    </th:block>
+                                    <th:block th:if="${ticket.ownerId.getuserName()}!= @{null}">
                                     <h3>Assigned to</h3>
                                     <a th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">
                                         <span th:text="${ticket.ownerId.getuserName()}"/>
                                     </a>
+                                    </th:block>
                                 </div>
                                 <div class=" uk-margin-medium">
                                     <h3>Created on</h3>
