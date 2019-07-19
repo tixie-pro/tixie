@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
     <title>Title</title>
-    <th:block th:replace="partials/common :: head"></th:block>
+    <th:block th:replace="partials/common :: head">
+
+    </th:block>
+    <link rel="stylesheet" href="/css/custom.css"/>
+
 </head>
 <body>
-<div class="uk-container uk-container-large uk-align-center">
-    <div class="uk-container">
-        <div>
-            <div>
-                <h1>
-                    All Tickets
-                </h1>
-            </div>
-        </div>
+<div class="uk-container">
+    <th:block th:replace="partials/common :: navigation-index-page">
+    </th:block>
+</div>
 
+<div class="main">
+    <div class="uk-container uk-container-large uk-align-center">
+        <div class="uk-container">
+            <div>
+                <div>
+                    <h1>
+                        All Tickets
+                    </h1>
+                </div>
+            </div>
         <div class="uk-card uk-card-default uk-card-body ">
             <div class="uk-overflow-auto uk-height-large">
                 <div th:each="ticket : ${tix}">
@@ -69,8 +77,11 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 </body>
+<footer>
+    <th:block th:include="partials/common :: footer">
+    </th:block>
+</footer>
 </html>

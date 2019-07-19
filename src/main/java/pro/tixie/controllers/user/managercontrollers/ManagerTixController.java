@@ -42,7 +42,6 @@ public class ManagerTixController {
         List<Ticket> tix = ticketDao.findAll();
         nulUserIf(tix);
         model.addAttribute("tix", tix);
-
         return "user/manager/tickets";
     }
 
