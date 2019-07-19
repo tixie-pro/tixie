@@ -2,12 +2,12 @@
 
 .tixie-landing-page {
     padding-top: 10%;
-    background-image: radial-gradient(circle, #804777, #643963, #4b2c4e, #331f39, #1e1225);
+    background-image: radial-gradient(#17bea6, #452ac5);
     height: 100vh;
 }
 
 .tixie-landing-slogan {
-    color: #FFFFFF;
+    color: #17bea6;
     font-family: 'Noto Sans', sans-serif;
 }
 
