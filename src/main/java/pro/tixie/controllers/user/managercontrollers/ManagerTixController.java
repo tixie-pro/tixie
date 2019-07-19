@@ -42,7 +42,7 @@ public class ManagerTixController {
         List<Ticket> tix = ticketDao.findAll();
         for (Ticket ticket:tix){
             if (ticket.getOwnerId()==null){
-                ticket.setOwnerId(userDao.findOne(1l));
+                ticket.setOwnerId(userDao.findOne(1L));
             }
         }
         model.addAttribute("tix", tix);
