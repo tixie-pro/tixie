@@ -40,48 +40,51 @@ public class ManagerTixController {
 
 //        User user = new User();
         List<Ticket> tix = ticketDao.findAll();
-        for (Ticket ticket:tix){
-            if (ticket.getOwnerId()==null){
-                ticket.setOwnerId(userDao.findOne(1L));
-            }
-        }
+        nulUserIf(tix);
         model.addAttribute("tix", tix);
-
         return "user/manager/tickets";
     }
 
     @GetMapping("tickets/tech/{id}")
     public String allTicketsbyTech(@PathVariable long id, Model model){
         User user = userDao.findOne(id);
-        model.addAttribute("tix", ticketDao.findAllByOwner(user));
+        List<Ticket> tix = ticketDao.findAllByOwner(user);
+        nulUserIf(tix);
+        model.addAttribute("tix", tix);
         return "user/manager/tickets";
     }
 
     @GetMapping("tickets/author/{id}")
     public String allTicketsbyAuthor(@PathVariable long id, Model model){
         User user = userDao.findOne(id);
-        model.addAttribute("tix", ticketDao.findAllByAuthor(user));
+        List<Ticket> tix = ticketDao.findAllByAuthor(user);
+        nulUserIf(tix);
+        model.addAttribute("tix", tix);
         return "user/manager/tickets";
     }
 
     @GetMapping("tickets/priority/{id}")
     public String allTicketsbyPriority(@PathVariable long id, Model model){
         Priority pri = priDao.findOne(id);
-        model.addAttribute("tix", ticketDao.findAllByPriority(pri));
+        List<Ticket>tix = ticketDao.findAllByPriority(pri);
+        nulUserIf(tix);
+        model.addAttribute("tix", tix);
         return "user/manager/tickets";
     }
 
     @GetMapping("tickets/status/{id}")
     public String allTicketsByStatus(@PathVariable long id, Model model){
         Status stat = statDao.findOne(id);
-        model.addAttribute("tix", ticketDao.findAllByStatus(stat));
+        List<Ticket> tix = ticketDao.findAllByStatus(stat);
+        model.addAttribute("tix", tix);
         return "user/manager/tickets";
     }
 
     @GetMapping("tickets/specialization/{id}")
     public String allTickstsBySpec(@PathVariable long id, Model model){
         Specialization spec = specDao.findOne(id);
-        model.addAttribute("tix", ticketDao.findAllBySpecialization(spec));
+        List<Ticket> tix = ticketDao.findAllBySpecialization(spec);
+        model.addAttribute("tix", tix);
         return "user/manager/tickets";
     }
 
@@ -144,6 +147,32 @@ public class ManagerTixController {
 
     }
 
+    @PostMapping("/techticket/inprogress")
+    public String inProgressTicket(
+            @RequestParam (name = "ticketIdIp") long id,
+            @RequestParam (name = "statusIp") long statIdIp){
 
+        Status ipStat = statDao.findOne(statIdIp);
+        Ticket ipTick = ticketDao.findOne(id);
+
+        ipTick.setStatusId(ipStat);
+        ticketDao.save(ipTick);
+
+        return "redirect:/tech/ticket/" +id;
+
+    }
+
+    public List<Ticket> nulUserIf(List<Ticket> tix){
+        for (Ticket ticket:tix){
+            if (ticket.getOwnerId()==null){
+                User nullUser = new User();
+                nullUser.setFirstName("Not");
+                nullUser.setLastName("Assigned");
+                nullUser.setUserName("Not Assiged");
+                ticket.setOwnerId(nullUser);
+            }
+        }
+        return tix;
+    }
 
 }

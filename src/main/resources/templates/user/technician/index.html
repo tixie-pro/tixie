@@ -29,7 +29,9 @@
 <div class="uk-container-medium">
     <h1 class="uk-text-center uk-heading-large">Assigned Tickets
     </h1>
-    <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-slide">My Tickets</button>
+    <button class="uk-button uk-button-default uk-margin-small-right" type="button"
+            uk-toggle="target: #offcanvas-slide">My Tickets
+    </button>
     <div id="offcanvas-slide" uk-offcanvas="overlay: true">
         <div class="uk-offcanvas-bar">
             <button class="uk-offcanvas-close" type="button" uk-close="true"></button>
@@ -64,8 +66,13 @@
                                             <a th:href="@{'/tech/ticket/' + ${tickets.id}}">
                                                 <div class="uk-card-body">
                                                     <div class="uk-text-center">
-                                                        <input type="checkbox"
-                                                               checked="checked"/>
+                                                        <div th:text="${tickets.statusId.status}"></div>
+                                                        <form th:action="@{/techticket/inprogress}" th:method="post">
+                                                            <input type="hidden" th:value="${tickets.id}"
+                                                                   th:name="ticketIdIp"/>
+                                                            <input type="hidden" th:value="2" th:name="statusIp"/>
+                                                            <button><span uk-icon="icon: check"></span>Active</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </a>
@@ -75,7 +82,8 @@
                                                 <div class="uk-card-body">
                                                     <div class="uk-text-center" type="checkbox" name="active"
                                                          value="Active">
-                                                        <button>Activate</button>
+
+                                                        <button>Active</button>
                                                     </div>
                                                 </div>
                                             </a>
@@ -149,8 +157,14 @@
                         <table class="uk-table uk-table-striped">
                             <tr>
                                 <td style="text-align: left">
-                                    <button class="uk-button uk-button-default" disabled="disabled"><span uk-icon="icon: check"></span>In Progress</button>
-
+                                    <form th:action="@{/techticket/inprogress}" th:method="post">
+                                        <input type="hidden" th:value="${ticket.id}"
+                                               th:name="ticketIdIp"/>
+                                        <input type="hidden" th:value="2" th:name="statusIp"/>
+                                        <button th:text="${ticket.statusId.status}" class="uk-button uk-button-default"><span
+                                                uk-icon="icon: check"></span>In Progress
+                                        </button>
+                                    </form>
                                 </td>
                                 <td style="text-align: center">
                                     <form th:action="@{'/techticketcomplete'}" th:method="post">
