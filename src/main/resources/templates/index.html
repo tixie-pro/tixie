@@ -3,26 +3,76 @@
 <head>
     <th:block th:include="partials/common :: head">
     </th:block>
-    <link rel="stylesheet" href="/css/landing.css" />
+    <link rel="stylesheet" href="/css/landing.css"/>
     <title>Tixie.Pro - Maintenance Ticketing System</title>
 </head>
 <body>
 <div class="uk-container">
     <th:block th:replace="partials/common :: navigation-index-page">
-</th:block></div>
-
+    </th:block>
+</div>
 <div class="tixie-landing-page">
     <div class="uk-container">
         <div uk-grid="">
-            <div class="uk-width-1-2">
-                <h1 class="tixie-landing-slogan" th:text='${"Tixie Slog Goes Here"}'></h1>
+            <div class="uk-width-1-2 tixie-landing-image">
+<!--                <img src="https://cdn.dribbble.com/users/79571/screenshots/5984205/resource_illustrations_affinity_designer.png" alt="">-->
+                <img src="https://cdn.dribbble.com/users/56427/screenshots/6003020/attachments/1290168/budio_hero_illustration_for_animation-01.jpg"
+                     alt=""/>
             </div>
             <div class="uk-width-1-2">
-                <img src="/img/07.png" alt="" />
+                <h3 class="heading heading--stroke heading--shadow">Tixie</h3>
+<!--                <h5 class="tixie-landing-slogan">Track an issue. Any issue.</h5>-->
+                <h5 class="tixie-landing">Learn More About Us <span uk-icon="icon:  arrow-down; ratio: 2.5"></span></h5>
             </div>
         </div>
     </div>
 </div>
+<!-- Stats-->
+<div class="tixie-stats-container">
+    <div class="uk-container uk-margin-top uk-margin-bottom">
+        <div class="uk-child-width-expand@s uk-text-center" uk-grid=""
+             uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 500; repeat: true">
+            <div class="uk-card uk-card-hover uk-card-body">
+                <span uk-icon="icon: users; ratio: 3.5" class="tixie-landing-stats-sub uk-animation-stroke"></span>
+                <h4>1,500 Tixie Subscribers</h4>
+            </div>
+            <div class="uk-card uk-card-default uk-card-body">
+                <span uk-icon="icon:  file-text; ratio: 3.5" class="tixie-landing-stats-tix uk-animation-stroke"></span>
+                <h4>9,500 tickets completed</h4>
+            </div>
+            <div class="uk-card uk-card-hover uk-card-body">
+                <span uk-icon="icon: heart; ratio: 3.5" class="tixie-landing-stats-client uk-animation-stroke"></span>
+                <h4>4,000+ Happy Clients</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Stats-->
+
+<!-- What Tixie Is-->
+<!-- class="uk-card uk-card-default uk-card-small uk-card-body"-->
+<div class="uk-container uk-margin-top uk-margin-bottom">
+    <div>
+        <div class="uk-child-width-expand@s uk-text-center" uk-grid=""
+             uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 300; repeat: true">
+            <div class="">
+                <img src="https://cdn.dribbble.com/users/369527/screenshots/5958438/agora_animation.gif" alt=""/>
+            </div>
+            <div class="uk-margin-top">
+                <h2 class="uk-padding-large	uk-padding-remove-bottom">Tixie | Modern Ticketing System</h2>
+                <p class="uk-text-justify">Tixie is a ticketing system for maintenance personnel to modernize and simplify handling maintenance
+                    needs. This system features user friendly navigation and ticket creation to minimize any training
+                    that may be needed for users on both sides of the system. It is also easily adaptable for easy
+                    customization dependent on any clients needs.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End What Tixie Is-->
+
+<!-- Tixie Features -->
+
+<!-- End Tixie Features -->
 
 
 </body>

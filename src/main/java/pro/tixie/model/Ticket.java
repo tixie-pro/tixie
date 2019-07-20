@@ -3,9 +3,6 @@ package pro.tixie.model;
 import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.context.*;
-
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -177,6 +174,4 @@ public class Ticket {
         this.priority = priority;
     }
 
-    public void getIssue_date(LocalDateTime dateNow) {
-    }
 }

@@ -1,7 +1,13 @@
 body {
-    background-image: radial-gradient(circle, #734b6d, #633f62, #533457, #44294d, #351f42);
-    /*background-color: #1a1a1a;*/
+    /*background-image: radial-gradient(circle, #734b6d, #633f62, #533457, #44294d, #351f42);*/
+    background-color: #4C53DC;
 }
+
+
+/* Experimental Table */
+
+
+/* End Experimental Table*/
 
 .main   {
     padding-top: 9%;
