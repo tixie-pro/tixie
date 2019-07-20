@@ -5,7 +5,9 @@ html {
     font-family: 'Quicksand', sans-serif;
     font-weight: 400;
     overflow: hidden;
-    background-image: radial-gradient(circle, #804777, #643963, #4b2c4e, #331f39, #1e1225);
+    /*background-image: radial-gradient(circle, #804777, #643963, #4b2c4e, #331f39, #1e1225);*/
+    background-color: #4C53DC;
+;
 }
 
 .writing {
