@@ -3,7 +3,7 @@
 <head>
     <th:block th:include="partials/common :: head">
     </th:block>
-    <link rel="stylesheet" href="/css/technician.css" />
+    <link rel="stylesheet" href="/css/technician.css"/>
     <script src="https://kit.fontawesome.com/7508253178.js"></script>
     <title>Tixie | Technician View</title>
 </head>
@@ -15,53 +15,116 @@
 <div class="main">
     <div class="uk-container">
         <div class="tixie-assigned-tech-tix uk-margin-top">
-            <h3><span th:text="${#authentication.principal.getuserName()}"></span> Assigned Tickets</h3>
-            <table class="uk-table uk-table-striped">
-                <thead>
-                <tr>
-                    <th class="uk-table-shrink">View</th>
-                    <th class="uk-table-shrink">Status</th>
-                    <th class="uk-table-shrink">ID</th>
-                    <th class="uk-table-expand">Details</th>
-                </tr>
-                </thead>
-                <tbody>
-                <th:block th:each="tickets : ${tix}">
-                    <th:block th:if="${#authentication.principal.id} == ${tickets.ownerId.id}">
-                        <tr>
-                            <td><a href=""><span class="tixie-tech-icons far fa-edit fa-2x"></span></a></td>
-                            <td class="uk-text-uppercase" th:text="${tickets.statusId.status}"></td>
-                            <td class="uk-text-uppercase" th:text="'TX-'+ ${tickets.id} + '-' + ${tickets.specialization_id.name}"></td>
-                            <td class="uk-text-truncate" th:text="${tickets.issue_details} "></td>
-                        </tr>
+            <h3>Assigned Tickets</h3>
+            <div class="uk-card uk-card-default uk-card-body">
+                <table class="uk-table uk-table-striped">
+                    <thead>
+                    <tr>
+                        <th class="uk-table-shrink">View</th>
+                        <th class="uk-table-shrink">Status</th>
+                        <th class="uk-table-shrink">ID</th>
+                        <th class="uk-table-expand">Details</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:each="tickets : ${tix}">
+                        <th:block th:if="${#authentication.principal.id} == ${tickets.ownerId.id}">
+                            <tr>
+                                <td><a href=""><span class="tixie-tech-icons far fa-edit fa-2x"></span></a></td>
+                                <td class="uk-text-uppercase" th:text="${tickets.statusId.status}"></td>
+                                <td class="uk-text-uppercase"
+                                    th:text="'TX-'+ ${tickets.id} + '-' + ${tickets.specialization_id.name}"></td>
+                                <td class="uk-text-truncate" th:text="${tickets.issue_details} "></td>
+                            </tr>
+                        </th:block>
                     </th:block>
-                </th:block>
-                </tbody>
-            </table>
-            <div class="tixie-available-tech-tix">
+                    </tbody>
+                </table>
+            </div>
+            <div class="tixie-available-tech-tix uk-margin-top uk-margin-bottom">
                 <h3>Available Tickets</h3>
                 <div uk-filter="target: .js-filter">
-                    <ul class="uk-subnav uk-subnav-pill">
-                        <li class="uk-active" uk-filter-control=""><a href="#">All</a></li>
-                        <li uk-filter-control="[data-spec='plumbing']"><a href="#">Plumbing</a></li>
-                        <li uk-filter-control="[data-spec='electrical']"><a href="#">Electrical</a></li>
-                        <li uk-filter-control="[data-spec='carpenter']"><a href="#">Carpentry</a></li>
-                        <li uk-filter-control="[data-spec='hvac']"><a href="#">HVAC</a></li>
-                        <li uk-filter-control="[data-spec='custodian']"><a href="#">Custodian</a></li>
-                    </ul>
-                    <ul class="js-filter uk-child-width-1-2 uk-child-width-1-3@m uk-text-center" uk-grid="">
+                    <div class="uk-grid-small uk-grid-divider uk-child-width-auto" uk-grid="">
+                        <div>
+                            <ul class="uk-subnav uk-subnav-pill" uk-margin="">
+                                <li class="uk-active" uk-filter-control=""><a href="#">All</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="uk-subnav uk-subnav-pill" uk-margin="">
+                                <li uk-filter-control="filter: [data-spec='plumbing']; group: data-spec"><a href="#">Plumbing</a></li>
+                                <li uk-filter-control="filter: [data-spec='electrical']; group: data-spec"><a href="#">Electrical</a></li>
+                                <li uk-filter-control="filter: [data-spec='carpenter']; group: data-spec"><a href="#">Carpentry</a></li>
+                                <li uk-filter-control="filter: [data-spec='hvac']; group: data-spec"><a href="#">HVAC</a></li>
+                                <li uk-filter-control="filter: [data-spec='custodian']; group: data-spec"><a href="#">Custodian</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="uk-subnav uk-subnav-pill" uk-margin="">
+                                <li uk-filter-control="filter: [data-pri='low']; group: data-pri"><a href="#">Low</a></li>
+                                <li uk-filter-control="filter: [data-pri='medium']; group: data-pri"><a href="#">Medium</a></li>
+                                <li uk-filter-control="filter: [data-pri='high']; group: data-pri"><a href="#">High</a></li>
+                                <li uk-filter-control="filter: [data-pri='urgent']; group: data-pri"><a href="#">Urgent</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="js-filter uk-child-width-1-2 uk-child-width-1-3@m" uk-grid="">
                         <th:block th:each="tickets : ${tix}">
                             <th:block th:if="${tickets.statusId.id} != 3">
-                                <li th:attr="data-spec=${tickets.specialization_id.name}">
+                                <li data-th-attr="data-spec=${tickets.specialization_id.name}, data-pri=${tickets.priorityId.name}">
                                     <div class="uk-card uk-card-default uk-card-body">
-                                        <span class="tixie-tech-icons" th:classappend="
+                                        <!-- Logic checks for spec name comparison and adds appropriate class -->
+                                        <div class="uk-text-center tixie-tech-icons" th:classappend="
                                         ${(tickets.specialization_id.name   == 'electrical' ? 'tixie-tech-icon-elec fas fa-bolt fa-2x' : '') +
                                         (tickets.specialization_id.name     == 'plumbing' ? 'tixie-tech-icon-plumb fas fa-tint fa-2x' : '')  +
                                         (tickets.specialization_id.name     == 'hvac' ? 'tixie-tech-icon-hvac fas fa-thermometer-three-quarters fa-2x' : '') +
                                         (tickets.specialization_id.name     == 'custodian' ? 'tixie-tech-icon-cust fas fa-broom fa-2x' : '') +
                                         (tickets.specialization_id.name     == 'carpenter' ? 'tixie-tech-icon-carp fas fa-hammer fa-2x' : '')}">
-                                        </span>
-                                        <span class="uk-text-capitalize tixie-ticket-name" th:text="'TX-'+ ${tickets.id} + '-' + ${tickets.specialization_id.name}"></span>
+                                        </div>
+                                        <h6 class="uk-margin-remove-top uk-text-bold uk-text-uppercase tixie-ticket-name" th:text="'Ticket ID: TX-'+ ${tickets.id} + '-' + ${tickets.specialization_id.name}"></h6>
+                                        <!-- Logic checks for priority name comparison and adds appropriate class -->
+                                        <span class="uk-label" th:text="${tickets.priorityId.name}" th:classappend="
+                                        ${(tickets.priorityId.name == 'low' ? 'uk-label-default': '') +
+                                        (tickets.priorityId.name == 'medium' ? 'uk-label-success': '') +
+                                        (tickets.priorityId.name == 'high' ? 'uk-label-warning': '') +
+                                        (tickets.priorityId.name == 'urgent' ? 'uk-label-danger': '')}"></span>
+                                        <div class="uk-margin-top uk-text-truncate">
+                                            <span class="uk-text-bold">Details:</span>
+                                            <span class="tixie-ticket-name" th:text="${tickets.issue_details}"></span>
+                                        </div>
+                                        <th:block th:if="${!active}">
+                                            <a class="uk-button uk-button-default" th:href="'#modal-'+ ${tickets.id}"
+                                               uk-toggle="">View</a>
+                                            <div th:id="'modal-'+ ${tickets.id}" uk-modal="">
+                                                <div class="uk-modal-dialog">
+                                                    <button class="uk-modal-close-default" type="button"
+                                                            uk-close=""></button>
+                                                    <div class="uk-modal-header">
+                                                        <h2 class="uk-modal-title uk-text-capitalize"
+                                                            th:text="'Ticket ID: TX-'+ ${tickets.id} + '-' + ${tickets.specialization_id.name}">
+                                                            Modal Title</h2>
+                                                    </div>
+                                                    <div class="uk-modal-body">
+                                                        <div class="">
+                                                            <span class="uk-text-bold">Location:</span><span
+                                                                th:text="' ' + ${tickets.location_1} + ' |' + ${tickets.location_1}"></span>
+                                                        </div>
+                                                        <div class="">
+                                                            <span class="uk-text-bold">Details:</span><span
+                                                                th:text="' ' + ${tickets.issue_details}"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-modal-footer uk-text-right">
+                                                        <button class="uk-button uk-button-default uk-modal-close"
+                                                                type="button">Cancel
+                                                        </button>
+                                                        <button class="uk-button uk-button-primary" type="button">Save
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </th:block>
                                     </div>
                                 </li>
                             </th:block>
@@ -73,6 +136,7 @@
     </div>
 </div>
 
+<!-- Old Code-->
 
 <!--<div sec:authorize="isAuthenticated()">-->
 <div class="uk-container-medium">
@@ -96,8 +160,6 @@
     <div class="uk-grid-match uk-grid-small uk-text-center" uk-grid="true">
         <div class="uk-width-1-2@m uk-card uk-card-body uk-overflow-auto uk-height-large">
             <div class="uk-card uk-card-default uk-card-body">
-
-
                 <h3 class="uk-heading-medium uk-heading-line uk-text-center"><span>Available Tickets</span></h3>
                 <!--<div class="uk-overflow-auto height uk-height-large">-->
                 <table class="uk-table uk-table-striped uk-height-medium uk-text-center">

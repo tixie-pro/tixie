@@ -1,3 +1,8 @@
+body {
+    background-color: #e8f5e9;
+}
+
+
 h1,
 h2,
 h3,
@@ -17,6 +22,11 @@ h5 {
 .fas,
 .far{
     color: #4C53DC;
+}
+
+.tixie-default-button {
+    color: #FFFFFF;
+    background-color: #4C53DC ;
 }
 
 .tixie-tech-icon-elec {
