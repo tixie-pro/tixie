@@ -14,30 +14,28 @@ h5 {
     color: #FFF;
 }
 
-.tixie-tech-icons {
-    border: 1px solid #2A3142;
-    padding: 3%;
-    border-radius: 50%;
-    background-color: #4C53DC;
+.fas,
+.far{
+    color: #4C53DC;
 }
 
 .tixie-tech-icon-elec {
-    background-color: #e6c015;
+    color: #e6c015;
 }
 
 .tixie-tech-icon-plumb {
-    background-color: #a18cd1;
+    color: #a18cd1;
 }
 
 .tixie-tech-icon-hvac {
-    background-color: #2A3142;
+   color: #2A3142;
 }
 
 .tixie-tech-icon-hvac {
-    background-color: #74E083;
+    color: #74E083;
 }
 
 .tixie-tech-icon-carp {
-    background-color: #ff4b5a;
+    color: #ff4b5a;
 }
 

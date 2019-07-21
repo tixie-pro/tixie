@@ -3,34 +3,36 @@
 <head>
     <th:block th:include="partials/common :: head">
     </th:block>
-    <link rel="stylesheet" href="/css/technician.css"/>
+    <link rel="stylesheet" href="/css/technician.css" />
+    <script src="https://kit.fontawesome.com/7508253178.js"></script>
     <title>Tixie | Technician View</title>
 </head>
 <body>
-<th:block th:include="partials/common :: navigation-index-page">
-</th:block>
+<div class="uk-container">
+    <th:block th:include="partials/common :: navigation-index-page">
+    </th:block>
+</div>
 <div class="main">
     <div class="uk-container">
         <div class="tixie-assigned-tech-tix uk-margin-top">
-            <h3>Assigned Tickets</h3>
+            <h3><span th:text="${#authentication.principal.getuserName()}"></span> Assigned Tickets</h3>
             <table class="uk-table uk-table-striped">
                 <thead>
                 <tr>
-                    <th>Status</th>
-                    <th>Ticket ID</th>
-                    <th>View Ticket</th>
+                    <th class="uk-table-shrink">View</th>
+                    <th class="uk-table-shrink">Status</th>
+                    <th class="uk-table-shrink">ID</th>
+                    <th class="uk-table-expand">Details</th>
                 </tr>
                 </thead>
                 <tbody>
                 <th:block th:each="tickets : ${tix}">
                     <th:block th:if="${#authentication.principal.id} == ${tickets.ownerId.id}">
                         <tr>
-                            <!--                    <a href="" class="baseclass" th:classappend="${isAdmin} ? adminclass : userclass"></a>-->
-
+                            <td><a href=""><span class="tixie-tech-icons far fa-edit fa-2x"></span></a></td>
                             <td class="uk-text-uppercase" th:text="${tickets.statusId.status}"></td>
-                            <td class="uk-text-uppercase"
-                                th:text="'TX-'+ ${tickets.id} + '-' + ${tickets.specialization_id.name}"></td>
-                            <td><span class="tixie-tech-icons" uk-icon="icon: file-edit; ratio: 1.5"></span></td>
+                            <td class="uk-text-uppercase" th:text="'TX-'+ ${tickets.id} + '-' + ${tickets.specialization_id.name}"></td>
+                            <td class="uk-text-truncate" th:text="${tickets.issue_details} "></td>
                         </tr>
                     </th:block>
                 </th:block>
@@ -47,21 +49,19 @@
                         <li uk-filter-control="[data-spec='hvac']"><a href="#">HVAC</a></li>
                         <li uk-filter-control="[data-spec='custodian']"><a href="#">Custodian</a></li>
                     </ul>
-                    <!--                <a th:href="@{ /users/{id} (id=${post.user.id}) }"-->
-                    <!--                th:attr="data-el_id=${element.getId()}"-->
                     <ul class="js-filter uk-child-width-1-2 uk-child-width-1-3@m uk-text-center" uk-grid="">
                         <th:block th:each="tickets : ${tix}">
                             <th:block th:if="${tickets.statusId.id} != 3">
                                 <li th:attr="data-spec=${tickets.specialization_id.name}">
                                     <div class="uk-card uk-card-default uk-card-body">
-                                        <span th:text="'TX-'+ ${tickets.id} + '-' + ${tickets.specialization_id.name}"></span>
-                                        <span class="tixie-tech-icons" th:classappend="${
-                                        (tickets.specialization_id.name == 'electrical' ? 'tixie-tech-icon-elec' : '') +
-                                        (tickets.specialization_id.name == 'plumbing' ? 'tixie-tech-icon-plumb' : '')  +
-                                        (tickets.specialization_id.name == 'hvac' ? 'tixie-tech-icon-hvac' : '') +
-                                        (tickets.specialization_id.name == 'custodian' ? 'tixie-tech-icon-cust' : '') +
-                                        (tickets.specialization_id.name == 'carpenter' ? 'tixie-tech-icon-carp' : '')}"
-                                              uk-icon="icon: tag; ratio: 2"></span>
+                                        <span class="tixie-tech-icons" th:classappend="
+                                        ${(tickets.specialization_id.name   == 'electrical' ? 'tixie-tech-icon-elec fas fa-bolt fa-2x' : '') +
+                                        (tickets.specialization_id.name     == 'plumbing' ? 'tixie-tech-icon-plumb fas fa-tint fa-2x' : '')  +
+                                        (tickets.specialization_id.name     == 'hvac' ? 'tixie-tech-icon-hvac fas fa-thermometer-three-quarters fa-2x' : '') +
+                                        (tickets.specialization_id.name     == 'custodian' ? 'tixie-tech-icon-cust fas fa-broom fa-2x' : '') +
+                                        (tickets.specialization_id.name     == 'carpenter' ? 'tixie-tech-icon-carp fas fa-hammer fa-2x' : '')}">
+                                        </span>
+                                        <span class="uk-text-capitalize tixie-ticket-name" th:text="'TX-'+ ${tickets.id} + '-' + ${tickets.specialization_id.name}"></span>
                                     </div>
                                 </li>
                             </th:block>
