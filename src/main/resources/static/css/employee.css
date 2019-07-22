@@ -1,26 +1,9 @@
 body {
-    /*background-image: radial-gradient(circle, #734b6d, #633f62, #533457, #44294d, #351f42);*/
-    background-color: #4C53DC;
+    background-color: #f1f8e9;
 }
-
-
-/* Experimental Table */
-
-
-/* End Experimental Table*/
 
 .main   {
     padding-top: 9%;
-}
-
-.tix-card-background,
-.tixie-main-body,
-.tixie-card {
-    color: #FFF;
-    background-color: #2A3142;
-    -webkit-box-shadow: 0px 0px 29px -5px rgba(0,0,0,0.48);
-    -moz-box-shadow: 0px 0px 29px -5px rgba(0,0,0,0.48);
-    box-shadow: 0px 0px 29px -5px rgba(0,0,0,0.48);
 }
 
 .tixie-text-link li a {
@@ -34,6 +17,16 @@ body {
 .uk-nav-header {
     color: #FFFFFF;
 }
+
+
+/*.tix-card-background,*/
+/*.tixie-main-body,*/
+/*.tixie-card {*/
+/*    color: #FFF;*/
+/*    -webkit-box-shadow: 0px 0px 29px -5px rgba(0,0,0,0.48);*/
+/*    -moz-box-shadow: 0px 0px 29px -5px rgba(0,0,0,0.48);*/
+/*    box-shadow: 0px 0px 29px -5px rgba(0,0,0,0.48);*/
+/*}*/
 
 
 
