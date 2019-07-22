@@ -45,6 +45,7 @@ public class EmployeeController {
         Ticket tixNote = ticketDao.findOne(id);
         List<Note> note = noteDao.findAllByTicket(tixNote);
         model.addAttribute("tix", ticketDao.findAllByAuthor(userTix));
+        model.addAttribute("profile", userTix);
         model.addAttribute("employee", userDao);
         model.addAttribute("note", note);
         return ("user/employee/index");
