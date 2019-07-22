@@ -5,6 +5,7 @@
     </th:block>
     <title>Tixie | Manager Dashboard</title>
     <link rel="stylesheet" href="/css/custom.css"/>
+
 </head>
 <body onload="myFunction()">
 <div class="uk-container">
@@ -13,46 +14,62 @@
 </div>
 
 <div class="main">
-    <div th:style="@{float: left; border: 1px solid black;padding:3px;}">
-        <div>
-            <h3>Stats by Status</h3>
+    <div class="uk-container uk-margin-top uk-margin-bottom uk-grid-large uk-child-width-expand@s uk-text-center" uk-grid="">
+        <div class="uk-card uk-grid-large uk-width-1-2 ">
+            <div class="uk-card-header">
+                <h3>Stats by Status</h3>
+            </div>
+            <div class="uk-card-body">
+                <canvas id="myChart"></canvas>
+            </div>
         </div>
-
-        <div class="uk-container uk-margin-top uk-margin-bottom">
-            <canvas id="myChart"></canvas>
+        <div class="uk-card uk-grid-large uk-width-1-2">
+            <div class="uk-card-header">
+                <h3>Stats by Category</h3>
+            </div>
+            <div class="uk-card-body">
+                <canvas id="pie-chart"></canvas>
+            </div>
         </div>
-
-        <div id="totalTix" th:text="${totalTix}"></div>
-        <div th:text="@{'Copmleted Tickets: '+${complete}}"></div>
-        <div th:text="@{'Copmleted %: '+${completePerc}}"></div>
-        <div th:text="@{'Tickets in progress: '+${inProg}}"></div>
-        <div th:text="@{'Tickets in progress: '+${inProg}}"></div>
-        <div th:text="@{'In Progress%: '+${inProgPerc}}"></div>
-        <div th:text="@{'Open Tickets: '+${open}}"></div>
-        <div th:text="@{'Open %: '+${openPerc}}"></div>
     </div>
+</div>
 
-    <div th:style="@{float: left; border: 1px solid black;padding:3px;}">
+<div class="main">
+    <div th:style="@{position:absolute; left:-500000px; border: 1px solid black;padding:3px;}">
+
+        <div>
+            <h4>Total Tickets</h4>
+            <span id="totalTix" th:text="${totalTix}"></span>
+            <h4>Completed Tickets</h4>
+            <span id="compTix" th:text="${complete}"></span>
+            <!--            <div th:text="${completePerc}"></div>-->
+            <h4>In Progress</h4>
+            <span id="inProg" th:text="${inProg}"></span>
+            <!--            <div th:text="${inProgPerc}"></div>-->
+            <h4>Open Tickets</h4>
+            <span id="openTix" th:text="${open}"></span>
+            <!--            <div th:text="${openPerc}"></div>-->
+        </div>
+    </div>
+    <div th:style="@{position:absolute; left:-500000px; border: 1px solid black;padding:3px;}">
         <div>
             <h3>Stats by Specialization</h3>
         </div>
         <div th:text="@{'Total Tickets: '+${totalTix}}"></div>
-        <div th:text="@{'Carpentry Tickets: '+${carp}}"></div>
-        <div th:text="@{'Carpentry %: '+${carpPerc}}"></div>
-        <div th:text="@{'Electrical Tickets: '+${elec}}"></div>
-        <div th:text="@{'Electrical %: '+${elecPerc}}"></div>
-        <div th:text="@{'Plumbing Tickets: '+${plum}}"></div>
-        <div th:text="@{'Plumbing %: '+${plumPerc}}"></div>
-        <div th:text="@{'HVAC Tickets'+${hvac}}"></div>
-        <div th:text="@{'HVAC %: '+${hvacPerc}}"></div>
-        <div th:text="@{'Custodial Tickets: '+${cust}}"></div>
-        <div th:text="@{'Custodial %: '+${custPerc}}"></div>
-        <div th:text="@{'Biohazardous Tickets: '+${bioh}}"></div>
-        <div th:text="@{'Biohazardous %: '+${biohPerc}}"></div>
-
+        <div id="carp" th:text="${carp}"></div>
+<!--        <div id="" th:text="${carpPerc}"></div>-->
+        <div id="elec" th:text="${elec}"></div>
+<!--        <div id="" th:text="${elecPerc}"></div>-->
+        <div id="plum" th:text="${plum}"></div>
+<!--        <div id="" th:text="${plumPerc}"></div>-->
+        <div id="hvac" th:text="${hvac}"></div>
+<!--        <div id="" th:text="${hvacPerc}"></div>-->
+        <div id="cust" th:text="${cust}"></div>
+<!--        <div id="" th:text="${custPerc}"></div>-->
+        <div id="bioh" th:text="${bioh}"></div>
+<!--        <div id="" th:text="${biohPerc}"></div>-->
     </div>
-
-    <div th:style="@{float: left; border: 1px solid black;padding:3px;}">
+    <div th:style="@{position:absolute; left:-500000px; border: 1px solid black;padding:3px;}">
         <div th:each="tix :${tixbydate}">
             <div>
                 <div><span th:text="${tix.id}"/></div>
@@ -61,7 +78,6 @@
                         <span th:text="${tix.priorityId.name}"/>
                     </a>
                 </div>
-
                 <div>
                     <a th:href="@{'/tickets/specialization/'+${tix.specialization_id.id}}">
                         <span th:text="${tix.specialization_id.name}"/>
@@ -88,16 +104,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
     <script>
         function myFunction() {
-            var x = document.getElementById("totalTix").innerText;
+
+
+
+            let x = document.getElementById("totalTix").innerText;
             console.log(x);
-            var ctx = document.getElementById('myChart').getContext('2d');
-            var myChart = new Chart(ctx, {
+            let compTix = document.getElementById("compTix").innerText;
+            let inProg = document.getElementById("inProg").innerText;
+            let openTix = document.getElementById("openTix").innerText;
+            let carp = document.getElementById("carp").innerText;
+            let elec = document.getElementById("elec").innerText;
+            let plum = document.getElementById("plum").innerText;
+            let hvac = document.getElementById("hvac").innerText;
+            let cust = document.getElementById("cust").innerText;
+            let bioh = document.getElementById("bioh").innerText;
+            let ctx = document.getElementById('myChart').getContext('2d');
+            let myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Electrical', 'Plumbing', 'Custodian', 'HVAC', 'Carpentry', 'Other'],
+                    labels: ['Total', 'Completed', 'In Progress', 'Open'],
                     datasets: [{
                         label: 'Tickets this week',
-                        data: [x, 19, 3, 5, 2, 3],
+                        data: [x, compTix, inProg, openTix],
+
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -126,7 +155,43 @@
                         }]
                     }
                 }
+
             });
+
+            var pieChart = new Chart(document.getElementById("pie-chart"), {
+                type: 'pie',
+                data: {
+                    labels: ["Carpentry", "Electrical", "Plumbing", "HVAC", "Custodial", "Biohazard"],
+                    datasets: [{
+                        label: "Number of Tickets",
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1,
+                        data: [carp,elec,plum,hvac,cust,bioh]
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Tickets by Category'
+                    }
+                }
+            });
+
         }
     </script>
 </footer>
