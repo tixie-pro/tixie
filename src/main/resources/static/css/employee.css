@@ -31,4 +31,22 @@ body {
 
 
 /* Logout*/
-
+.photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #fafafa;
+    background-color: #fafafa;
+    /*margin-left: -50px;*/
+    box-shadow: 0 0 0.5rem #babbbc;
+    animation: rotate-photo 0.5s forwards ease-in-out;
+}
+@keyframes rotate-photo {
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+.photo img {
+    width: 100%;
+}
