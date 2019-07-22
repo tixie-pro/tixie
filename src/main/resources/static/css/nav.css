@@ -1,3 +1,7 @@
 .uk-navbar-nav li a {
-    color: #FFFFFF;
+    color: #333;
+}
+
+.uk-navbar-nav li a:hover {
+    color: #2dc7ff;
 }

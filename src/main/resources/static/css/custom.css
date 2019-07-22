@@ -1,17 +1,17 @@
-body {
-    background-image: radial-gradient(circle, #734b6d, #633f62, #533457, #44294d, #351f42);
-}
+/*body {*/
+/*    background-image: radial-gradient(circle, #734b6d, #633f62, #533457, #44294d, #351f42);*/
+/*}*/
 
-.tix-card-background,
-.tixie-main-body {
-    color: #FFF;
-    background-color: #333;
-    -webkit-box-shadow: 0px 0px 29px -5px rgba(0,0,0,0.48);
-    -moz-box-shadow: 0px 0px 29px -5px rgba(0,0,0,0.48);
-    box-shadow: 0px 0px 29px -5px rgba(0,0,0,0.48);
-}
+/*.tix-card-background,*/
+/*.tixie-main-body {*/
+/*    color: #FFF;*/
+/*    background-color: #333;*/
+/*    -webkit-box-shadow: 0px 0px 29px -5px rgba(0,0,0,0.48);*/
+/*    -moz-box-shadow: 0px 0px 29px -5px rgba(0,0,0,0.48);*/
+/*    box-shadow: 0px 0px 29px -5px rgba(0,0,0,0.48);*/
+/*}*/
 
-.main   {
-    padding-top: 9%;
-}
+/*.main   {*/
+/*    padding-top: 9%;*/
+/*}*/
 
