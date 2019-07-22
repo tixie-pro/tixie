@@ -1,10 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <th:block th:include="partials/common :: head">
+    </th:block>
+    <link rel="stylesheet" href="/css/about.css"/>
+    <title>Tixie.Pro - About Tixie</title>
 </head>
 <body>
+<div class="uk-container">
+<!--    Nav Bar -->
+    <th:block th:replace="partials/common :: navigation-index-page">
+    </th:block>
+</div>
+
+<div class="uk-container tixie-main-about">
+    <!--    about landing -->
+    <div class="uk-text-left" uk-grid="">
+        <div class="uk-width-1-2">
+            <div class="tixie-about-us-large">
+                <h3>01| About Us</h3>
+            </div>
+        </div>
+        <div class="uk-width-1-2">
+            <div class="">
+                <p class="uk-text-justify">Tixie is a ticketing system for maintenance personnel to modernize and simplify handling maintenance needs.
+                    This system features user friendly navigation and ticket creation to minimize any training that may be needed for users on both sides of the system.
+                    It is also easily adaptable for easy customization dependent on any clients needs.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- The Team -->
+<div class="uk-container uk-margin-top">
+    <div class="" uk-grid="">
+        <div class="uk-width-1-4">
+            <div class="tixie-about-us-large">
+                <h3 class="tixie-about-us-large uk-text-left">02 | The Team</h3>
+            </div>
+        </div>
+        <div class="uk-width-1-4">
+            <div class="">
+                <div class="uk-margin-bottom">
+                    <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="github-alt"></a>
+                    <a href="" class="uk-icon-button  uk-margin-small-right" uk-icon="linkedin"></a>
+                    <a href="" class="uk-icon-button" uk-icon="google-plus"></a>
+                </div>
+                <div class="photo">
+                    <img class="uk-align-center" src="https://s3.amazonaws.com/alumni.codeup.com/CarsonBelew.jpg" alt="" />
+                </div>
+                <p>“Today’s Accomplishments Were Yesterday’s Impossibilities.” – Robert H. Schuller</p>
+            </div>
+        </div>
+        <div class="uk-width-1-4">
+            <div class="">
+                <div class="uk-margin-bottom">
+                    <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="github-alt"></a>
+                    <a href="" class="uk-icon-button  uk-margin-small-right" uk-icon="linkedin"></a>
+                    <a href="" class="uk-icon-button" uk-icon="google-plus"></a>
+                </div>
+                <div class="photo">
+                    <img class="uk-align-center" src="https://s3.amazonaws.com/alumni.codeup.com/JohnDeLeon.jpg" alt="" />
+                </div>
+                <p>"NullPointerException" - John De Leon</p>
+            </div>
+        </div>
+        <div class="uk-width-1-4">
+            <div class="">
+                <div class="uk-margin-bottom">
+                    <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="github-alt"></a>
+                    <a href="" class="uk-icon-button  uk-margin-small-right" uk-icon="linkedin"></a>
+                    <a href="" class="uk-icon-button" uk-icon="google-plus"></a>
+                </div>
+                <div class="photo">
+                    <img class="" src="https://i.ibb.co/LQr6Vmk/48695183.jpg" alt="" />
+                </div>
+                <p>"Only acts undertaken with commitment have meaning. Life is a meritocracy with death as the auditor." - Gym Jones</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- End The TEam-->
+
+
+<!--The Process-->
+<div class="uk-container uk-margin-top uk-padding-top">
+    <div class="uk-height-medium">
+        <div class="js-wrapper tixie-about-us-large">
+            <h3 class="tixie-about-us-large uk-text-left">03| The Process</h3>
+            <div uk-overflow-auto="selContainer: .uk-height-large; selContent: .js-wrapper">
+                <div class="uk-grid-small" uk-grid="">
+                    <div class="uk-width-1"><img src="/img/img3.jpg" alt="" /></div>
+                    <div class="uk-width-1-2"><img src="/img/img5.jpg" alt="" /></div>
+                    <div class="uk-width-1-2"><img src="/img/img7.jpg" alt="" /></div>
+                    <div class="uk-width-1-2"><img src="/img/img6.jpg" alt="" /></div>
+                    <div class="uk-width-1-2"><img src="/img/img1.jpg" alt="" /></div>
+                    <div class="uk-width-1-2"><img src="/img/img8.jpg" alt="" /></div>
+                    <div class="uk-width-1-2"><img src="/img/img9.jpg" alt="" /></div>
+                </div>
+            </div>
+            <p></p>
+        </div>
+    </div>
+</div>
 
 </body>
+<footer>
+    <th:block th:include="partials/common :: footer">
+    </th:block>
+</footer>
 </html>
