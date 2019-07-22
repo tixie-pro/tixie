@@ -4,9 +4,9 @@
     <th:block th:replace="partials/common :: head">
     </th:block>
     <title>Tixie | Manager Dashboard</title>
-    <link rel="stylesheet" href="/css/custom.css" />
+    <link rel="stylesheet" href="/css/custom.css"/>
 </head>
-<body>
+<body onload="myFunction()">
 <div class="uk-container">
     <th:block th:replace="partials/common :: navigation-index-page">
     </th:block>
@@ -17,7 +17,12 @@
         <div>
             <h3>Stats by Status</h3>
         </div>
-        <div th:text="@{'Total Tickets: '+${totalTix}}"></div>
+
+        <div class="uk-container uk-margin-top uk-margin-bottom">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <div id="totalTix" th:text="${totalTix}"></div>
         <div th:text="@{'Copmleted Tickets: '+${complete}}"></div>
         <div th:text="@{'Copmleted %: '+${completePerc}}"></div>
         <div th:text="@{'Tickets in progress: '+${inProg}}"></div>
@@ -80,5 +85,50 @@
 <footer>
     <th:block th:include="partials/common :: footer">
     </th:block>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("totalTix").innerText;
+            console.log(x);
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Electrical', 'Plumbing', 'Custodian', 'HVAC', 'Carpentry', 'Other'],
+                    datasets: [{
+                        label: 'Tickets this week',
+                        data: [x, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    </script>
 </footer>
+
 </html>
