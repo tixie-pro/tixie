@@ -5,11 +5,7 @@
     </th:block>
     <title>Tixie | Manager Dashboard</title>
     <link rel="stylesheet" href="/css/custom.css"/>
-    <style>
-        .hidden {
-            /*visibility: hidden;*/
-        }
-    </style>
+
 </head>
 <body onload="myFunction()">
 <div class="uk-container">
@@ -19,7 +15,7 @@
 
 <div class="main">
     <div class="uk-container uk-margin-top uk-margin-bottom uk-grid-large uk-child-width-expand@s uk-text-center" uk-grid="">
-        <div class="uk-card uk-card-default uk-grid-large uk-width-1-2">
+        <div class="uk-card uk-grid-large uk-width-1-2">
             <div class="uk-card-header">
                 <h3>Stats by Status</h3>
             </div>
@@ -27,7 +23,7 @@
                 <canvas id="myChart"></canvas>
             </div>
         </div>
-        <div class="uk-card uk-card-default uk-grid-large uk-width-1-2">
+        <div class="uk-card uk-grid-large uk-width-1-2">
             <div class="uk-card-header">
                 <h3>Stats by Category</h3>
             </div>
@@ -40,9 +36,6 @@
 
 <div class="main">
     <div th:style="@{position:absolute; left:-500000px; border: 1px solid black;padding:3px;}">
-        <div>
-            <h3>Stats by Status</h3>
-        </div>
 
         <div>
             <h4>Total Tickets</h4>
@@ -112,19 +105,6 @@
     <script>
         function myFunction() {
 
-            /*<div th:text="${carp}"></div>
-        <div th:text="${carpPerc}"></div>
-        <div th:text="${elec}"></div>
-        <div th:text="${elecPerc}"></div>
-        <div th:text="${plum}"></div>
-        <div th:text="${plumPerc}"></div>
-        <div th:text="${hvac}"></div>
-        <div th:text="${hvacPerc}"></div>
-        <div th:text="${cust}"></div>
-        <div th:text="${custPerc}"></div>
-        <div th:text="${bioh}"></div>
-        <div th:text="${biohPerc}"></div>
-        */
 
 
             let x = document.getElementById("totalTix").innerText;
@@ -146,6 +126,7 @@
                     datasets: [{
                         label: 'Tickets this week',
                         data: [x, compTix, inProg, openTix],
+
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -183,7 +164,23 @@
                     labels: ["Carpentry", "Electrical", "Plumbing", "HVAC", "Custodial", "Biohazard"],
                     datasets: [{
                         label: "Number of Tickets",
-                        backgroundColor: ["#3cba93", "#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850" ],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1,
                         data: [carp,elec,plum,hvac,cust,bioh]
                     }]
                 },
@@ -193,8 +190,10 @@
                         text: 'Tickets by Category'
                     }
                 }
-            })
+            });
+
         }
     </script>
 </footer>
+
 </html>

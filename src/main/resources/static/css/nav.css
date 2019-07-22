@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Noto+Sans&display=swap');
+
+body {
+    font-family: "Noto Sans", "Arial", "Helvetica Neue", sans-serif
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Fjalla One', sans-serif;
+}
+
+
+.uk-navbar-nav li a {
+    color: #333;
+}
+
+.uk-navbar-nav li a:hover {
+    color: #2dc7ff;
+}

@@ -45,19 +45,20 @@ public class EmployeeController {
         Ticket tixNote = ticketDao.findOne(id);
         List<Note> note = noteDao.findAllByTicket(tixNote);
         model.addAttribute("tix", ticketDao.findAllByAuthor(userTix));
+        model.addAttribute("profile", userTix);
         model.addAttribute("employee", userDao);
         model.addAttribute("note", note);
         return ("user/employee/index");
     }
 
-    @GetMapping("/employee/ticket/create")
-    public String showTicketCreate(Model model, Status status, Specialization spec, Priority prior, Note note) {
+    @RequestMapping(value = {"/employee/ticket/create", "/employee/{id"})
+    public String showTicketCreate(@PathVariable long id, Model model, Status status, Specialization spec, Priority prior, Note note) {
         model.addAttribute("tix", new Ticket());
         model.addAttribute("status", status);
         model.addAttribute("spec", spec);
         model.addAttribute("priority", prior);
         model.addAttribute("note", note);
-        return "user/employee/create_ticket";
+        return "partials/ticketCreateForm";
     }
 
 

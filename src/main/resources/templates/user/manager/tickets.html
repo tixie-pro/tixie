@@ -16,104 +16,53 @@
 
 <div class="main">
     <div class="uk-container uk-container-large uk-align-center">
+        <div class="tixie-all-tix uk-margin-top">
+            <div class="tixie-all-tix uk-margin-top uk-margin-bottom">
+                <h1>
+                    All Tickets
+                </h1>
 
-        <div class="uk-container" uk-grid="">
-            <div class="uk-width-1-1">
-
-                <div>
-                    <h1>
-                        All Tickets
-                    </h1>
-                </div>
-            </div>
-            <div class=" uk-width-1-6 uk-card uk-card-default uk-card-body uk-margin-large-bottom">
-                <div class="uk-overflow-auto uk-height-large">
-                    <div class="uk-width-1-4">
-                        <div class="uk-card uk-card-default uk-card-body tixie-card tixie-text-link">
-                            <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="">
-                                <li><a href="#">Tickets</a></li>
-                                <li class="uk-parent">
-                                    <a href="#">Tickets</a>
-                                    <ul class="uk-nav-sub">
-                                        <li><a href="#">Open</a></li>
-                                        <li><a href="#">In-Progress</a></li>
-                                        <li><a href="#">Completed</a></li>
-                                    </ul>
-                                </li>
-                                <li class="uk-parent">
-                                    <a href="#">Tickets</a>
-                                    <ul class="uk-nav-sub">
-                                        <li><a href="#">Open</a></li>
-                                        <li><a href="#">In-Progress</a></li>
-                                        <li><a href="#">Completed</a></li>
-                                    </ul>
-                                </li>
-                                <li class="uk-nav-header">Other</li>
-                                <li><a href="#offcanvas-form" uk-toggle=""><span class="uk-margin-small-right" uk-icon="icon: plus-circle"></span> Create Ticket</a></li>
-                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
-                                <li class="uk-nav-divider"></li>
-                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
-                                <!--                        <li>-->
-                                <!--                            <form class="uk-grid-small" th:action="@{/employee/}" th:method="GET" th:object="${tix}">-->
-                                <!--                            <button class="uk-button uk-button-default uk-margin-small-right" type="submit" uk-toggle="target: #offcanvas-form">Open</button>-->
-                                <!--                            </form>-->
-                                <!--                        </li>-->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="uk-width-4-5 uk-margin-large-bottom">
                 <div class="uk-card uk-card-default uk-card-body ">
-                    <div class="uk-overflow-auto uk-height-large">
-                        <div th:each="ticket : ${tix}">
-                            <div class="uk-margin-medium uk-card uk-card-default">
-                                <div class="uk-grid-small" uk-grid="">
-                                    <div class="uk-card uk-card-default uk-card-body">
-                                        <p>
-                                            Ticket #<span th:text="${ticket.id}"/>
-                                        </p>
-                                        <p>
-                                            <!--                                    <p th:href="@{'/tickets/priority/'+${ticket.priorityId.id}}">-->
-                                            Priority: <span th:text="${ticket.priorityId.name}"/>
-                                            <!--                                    </p>-->
-                                        </p>
-                                        <p>
-                                            <!--                                    <p th:href="@{'/tickets/specialization/'+${ticket.specialization_id.id}}">-->
-                                            Category: <span th:text="${ticket.specialization_id.name}"/>
-                                            <!--                                    </p>-->
-                                        </p>
-                                        <p>
-                                            <!--                                    <p th:href="@{'/tickets/status/'+${ticket.statusId.id}}">-->
-                                            Status: <span th:text="${ticket.statusId.status}"/>
-                                            <!--                                    </p>-->
-                                        </p>
-                                    </div>
-                                    <div class="uk-card uk-card-default uk-card-body">
-                                        <p>
-                                            <!--                                    <p th:href="@{'/tickets/author/'+${ticket.authorId.id}}">-->
-                                            Created by; <span th:text="${ticket.authorId.getuserName()}"/>
-                                            <!--                                    </p>-->
-                                        </p>
+                    <div th:each="ticket : ${tix}">
+                        <div class="uk-card uk-card-default uk-card-body">
 
-                                        <p>
-                                            <!--                                    <p th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">-->
-                                            Assigned to: <span th:text="${ticket.ownerId.getuserName()}"/>
-                                            <!--                                    </p>-->
-                                        </p>
-                                        <p>
-                                        <p>Created on: <span th:text="${ticket.issue_date}"/></p>
-                                        </p>
-                                        <p>
-                                            <a th:href="@{'/tech/ticket/'+${ticket.id}}">
-                                                <button>
-                                                    View Ticket
-                                                </button>
-                                            </a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            <p>
+                                Ticket #<span th:text="${ticket.id}"/>
+                            </p>
+                            <p>
+                                <!--                                    <p th:href="@{'/tickets/priority/'+${ticket.priorityId.id}}">-->
+                                Priority: <span th:text="${ticket.priorityId.name}"/>
+                                <!--                                    </p>-->
+                            </p>
+                            <p>
+                                <!--                                    <p th:href="@{'/tickets/specialization/'+${ticket.specialization_id.id}}">-->
+                                Category: <span th:text="${ticket.specialization_id.name}"/>
+                                <!--                                    </p>-->
+                            </p>
+                            <p>
+                                <!--                                    <p th:href="@{'/tickets/status/'+${ticket.statusId.id}}">-->
+                                Status: <span th:text="${ticket.statusId.status}"/>
+                                <!--                                    </p>-->
+                            </p>
+                            <p>
+                                <!--                                    <p th:href="@{'/tickets/author/'+${ticket.authorId.id}}">-->
+                                Created by; <span th:text="${ticket.authorId.getuserName()}"/>
+                                <!--                                    </p>-->
+                            </p>
+
+                            <p>
+                                <!--                                    <p th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">-->
+                                Assigned to: <span th:text="${ticket.ownerId.getuserName()}"/>
+                                <!--                                    </p>-->
+                            </p>
+                            <p>Created on: <span th:text="${ticket.issue_date}"/></p>
+                            <p>
+                                <a th:href="@{'/tech/ticket/'+${ticket.id}}">
+                                    <button>
+                                        View Ticket
+                                    </button>
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>

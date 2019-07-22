@@ -4,7 +4,7 @@
     <th:block th:include="partials/common :: head">
     </th:block>
     <link rel="stylesheet" href="/css/employee.css"/>
-    <title>Tixie.Pro - Maintenance Ticketing System</title>
+    <title>Tixie.Pro | Employee</title>
 </head>
 <body>
 <div class="uk-container">
@@ -17,35 +17,33 @@
         <div uk-grid="">
             <div class="uk-width-1-4">
                 <div class="uk-card uk-card-default uk-card-body tixie-card tixie-text-link">
-                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="">
-                        <li><a href="#">Tickets</a></li>
-                        <li class="uk-parent">
-                            <a href="#">Tickets</a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="#">Open</a></li>
-                                <li><a href="#">In-Progress</a></li>
-                                <li><a href="#">Completed</a></li>
-                            </ul>
-                        </li>
-                        <li class="uk-parent">
-                            <a href="#">Tickets</a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="#">Open</a></li>
-                                <li><a href="#">In-Progress</a></li>
-                                <li><a href="#">Completed</a></li>
-                            </ul>
-                        </li>
-                        <li class="uk-nav-header">Other</li>
-                        <li><a href="#offcanvas-form" uk-toggle=""><span class="uk-margin-small-right" uk-icon="icon: plus-circle"></span> Create Ticket</a></li>
-                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
-                        <li class="uk-nav-divider"></li>
-                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
-<!--                        <li>-->
-<!--                            <form class="uk-grid-small" th:action="@{/employee/}" th:method="GET" th:object="${tix}">-->
-<!--                            <button class="uk-button uk-button-default uk-margin-small-right" type="submit" uk-toggle="target: #offcanvas-form">Open</button>-->
-<!--                            </form>-->
-<!--                        </li>-->
-                    </ul>
+
+                    <!-- Experimental Card -->
+
+                    <!-- End Experiment -->
+
+                    <div class="uk-card-header">
+                        <div class="uk-grid-small uk-flex-middle" uk-grid="">
+                            <div class="uk-width-auto uk-margin-bottom" th:object="${profile}">
+                                <div class="photo uk-text-center">
+                                    <img th:src="${profile.profileImage}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+                        <div class="uk-width-expand">
+                            <p class="uk-card-title  uk-text-capitalize uk-margin-remove-bottom"
+                               th:text="'Welcome, '+ ${profile.firstName}"></p>
+                        </div>
+                        <span th:text="${profile.email}"></span>
+                        <span th:text="${profile.role.role}"></span>
+                        <span th:text="${profile.specialization.name}"></span>
+                    </div>
+                    <div class="uk-card-footer">
+                        <a href="#" class="uk-button uk-button-text">Read more</a>
+                    </div>
+
                 </div>
             </div>
 
@@ -53,15 +51,14 @@
                 <!-- Open Tickets -->
                 <div class="uk-card uk-card-default uk-card-body tixie-main-body">
                     <div class="uk-overflow-auto">
-                        <h5>User open tickets</h5>
+                        <h5>My Open Tickets</h5>
                         <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
                             <thead>
                             <tr>
-
                                 <th class="uk-width-small">Ticket Number</th>
                                 <th class="uk-table-expand ">Details</th>
                                 <th class="uk-table-shrink uk-text-nowrap">Status</th>
-                                <th class="uk-table-shrink uk-text-nowrap">Notes</th>
+                                <th class="uk-table-shrink uk-text-nowrap">View</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -98,7 +95,7 @@
                                 <th class="uk-width-small">Ticket Number</th>
                                 <th class="uk-table-expand ">Details</th>
                                 <th class="uk-table-shrink uk-text-nowrap">Status</th>
-                                <th class="uk-table-shrink uk-text-nowrap">Notes</th>
+                                <th class="uk-table-shrink uk-text-nowrap">View</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -138,7 +135,7 @@
                                 <th class="uk-width-small">Ticket Number</th>
                                 <th class="uk-table-expand ">Details</th>
                                 <th class="uk-table-shrink uk-text-nowrap">Status</th>
-                                <th class="uk-table-shrink uk-text-nowrap">Notes</th>
+                                <th class="uk-table-shrink uk-text-nowrap">View</th>
                             </tr>
                             </thead>
                             <tbody>

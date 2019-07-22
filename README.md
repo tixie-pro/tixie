@@ -5,11 +5,12 @@
   </a>
 </p>
 <h1 align="center">
-
-  Tixie | Modern Ticketing System powered Java
+  Tixie | Modern Ticketing System powered by Java
 </h1>
 
-The stack
+Tixie is a ticketing system for maintenance personnel to modernize and simplify handling maintenance needs. This system features user friendly navigation and ticket creation to minimize any training that may be needed for users on both sides of the system. It is also easily adaptable for easy customization dependent on any clients needs.
+
+<h4>The stack<h4>
 - Java Spring Boot
 - Hibernate ORM
 - Thymeleaf
@@ -43,7 +44,7 @@ A quick look at the top-level files and directories you'll see in the Tixie proj
         ├── java
             └── All Controller / Model Related Files 
         └── resource
-            └── All View Related
+            └── All View Related Files
 
 
 
