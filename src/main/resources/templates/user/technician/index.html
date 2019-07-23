@@ -37,6 +37,7 @@
                             </thead>
                             <tbody>
 
+<<<<<<< HEAD
                             <th:block th:each="tickets : ${tix}">
                                 <th:block th:if="${#authentication.principal.id} == ${tickets.ownerId.id}">
                                     <tr>
@@ -47,6 +48,40 @@
                                         <td class="uk-text-truncate" th:text="${tickets.issue_details} "></td>
                                     </tr>
                                 </th:block>
+=======
+    <div class="main">
+        <div class="uk-container">
+            <div class="tixie-assigned-tech-tix uk-margin-top">
+
+                <h3>Assigned Tickets</h3>
+                <div class="uk-card uk-card-default uk-card-body">
+                    <table class="uk-table uk-table-striped">
+                        <thead>
+                        <th:block sec:authorize="isAuthenticated()">
+                            <!--<div class="uk-width-auto uk-margin-bottom">-->
+                            <div class="photo uk-text-center uk-align-center">
+                                <img  th:src="${#authentication.principal.profileImage}" />
+                            </div>
+                            <!--</div>-->
+                        </th:block>
+                        <tr>
+                            <th class="uk-table-shrink">View</th>
+                            <th class="uk-table-shrink">Status</th>
+                            <th class="uk-table-shrink">ID</th>
+                            <th class="uk-table-expand">Details</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <th:block th:each="tickets : ${tix}">
+                            <th:block th:if="${#authentication.principal.id} == ${tickets.ownerId.id}">
+                                <tr>
+                                    <td><a href=""><span class="tixie-tech-icons far fa-edit fa-2x"></span></a></td>
+                                    <td class="uk-text-uppercase" th:text="${tickets.statusId.status}"></td>
+                                    <td class="uk-text-uppercase"
+                                        th:text="'TX-'+ ${tickets.id} + '-' + ${tickets.specialization_id.name}"></td>
+                                    <td class="uk-text-truncate" th:text="${tickets.issue_details} "></td>
+                                </tr>
+>>>>>>> 4eacdb3df598cb694e2097317770e4a6b56ac581
                             </th:block>
                             </tbody>
                         </table>
