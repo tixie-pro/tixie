@@ -64,6 +64,7 @@ public class User{
         username = copy.username;
         email = copy.email;
         password = copy.password;
+        profileImage = copy.profileImage;
     }
 
     private void checkPassword() {
