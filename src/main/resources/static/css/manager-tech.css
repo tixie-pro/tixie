@@ -7,7 +7,7 @@
     height: 200px;
     border-radius: 50%;
     overflow: hidden;
-    border: 5px solid #fafafa;
+    border: 1px solid #fafafa;
     background-color: #fafafa;
     box-shadow: 0 0 0.5rem #babbbc;
 }
