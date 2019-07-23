@@ -1,3 +1,4 @@
+
 body {
     background-color: #e8f5e9;
 }
@@ -16,15 +17,14 @@ h5 {
 }
 
 
-
 .fas,
 .far{
     color: #4C53DC;
 }
 
-.tixie-default-button {
-    color: #FFFFFF;
-    background-color: #4C53DC ;
+
+.tixie-tech-icons {
+    color: #FFF;
 }
 
 .tixie-tech-icon-elec {
@@ -35,7 +35,9 @@ h5 {
     color: #a18cd1;
 }
 
-.tixie-tech-icon-hvac {
+
+.tixie-tech-icon-cust {
+
     color: #2A3142;
 }
 
@@ -45,8 +47,4 @@ h5 {
 
 .tixie-tech-icon-carp {
     color: #ff4b5a;
-}
-
-.pushrt{
-    margin-left: 20px;
 }
