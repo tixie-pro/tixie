@@ -2,6 +2,27 @@
     padding-top: 9%;
 }
 
+.photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #fafafa;
+    background-color: #fafafa;
+    box-shadow: 0 0 0.5rem #babbbc;
+}
+
+.photo img {
+    height: 100%;
+    width: 100%;
+}
+
+@keyframes rotate-photo {
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
 .fas,
 .far{
     color: #4C53DC;
