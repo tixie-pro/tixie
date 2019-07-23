@@ -15,6 +15,28 @@ h5 {
     padding-top: 9%;
 }
 
+
+.photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #fafafa;
+    background-color: #fafafa;
+    box-shadow: 0 0 0.5rem #babbbc;
+    animation: rotate-photo 0.5s forwards ease-in-out;
+}
+
+.photo img {
+    width: 100%;
+}
+
+@keyframes rotate-photo {
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
 .tixie-tech-icons {
     color: #FFF;
 }
@@ -37,7 +59,7 @@ h5 {
     color: #a18cd1;
 }
 
-.tixie-tech-icon-hvac {
+.tixie-tech-icon-cust {
    color: #2A3142;
 }
 

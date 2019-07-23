@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import pro.tixie.model.*;
 import pro.tixie.repos.*;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
 
 @Controller
 public class ManagerDashController {
@@ -65,7 +68,7 @@ public class ManagerDashController {
         List<Ticket> custTix = ticketDao.findAllBySpecialization(cust);
         List<Ticket> biohTix = ticketDao.findAllByBiohazardEquals(1);
 
-//        String totalTix=
+
 
         model.addAttribute("totalTix", allTix.size() );
         model.addAttribute("complete", compTix.size());
@@ -87,8 +90,6 @@ public class ManagerDashController {
         model.addAttribute("custPerc",percentCalc(custTix.size(), allTix.size()));
         model.addAttribute("bioh", biohTix.size());
         model.addAttribute("biohPerc",percentCalc(biohTix.size(), allTix.size()));
-
-
 //        one graph for tickets by time line.
         model.addAttribute("tixbydate", allTix);
 
