@@ -179,7 +179,7 @@
                 data: {
                     labels: ['Total', 'Completed', 'In Progress', 'Open'],
                     datasets: [{
-                        label: 'Tickets this week',
+                        label: 'Total Tickets',
                         data: [x, compTix, inProg, openTix],
 
                         backgroundColor: [
@@ -256,16 +256,16 @@
                     "07/17","07/18","07/19","07/20","07/21","07/22","07/23"],
                     datasets: [{
                         data: datesData,
-                        label: "Africa",
+                        label: "Tickets",
                         borderColor: "#3e95cd",
-                        fill: false
+                        fill: true
                     }
                     ]
                 },
                 options: {
                     title: {
                         display: true,
-                        text: 'World population per region (in millions)'
+                        text: 'Tickets Entered'
                     }
                 }
             });
