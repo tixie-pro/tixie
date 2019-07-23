@@ -14,14 +14,10 @@
 
 <div class="main">
     <div class="uk-container uk-margin">
+
         <div uk-grid="">
             <div class="uk-width-1-4">
                 <div class="uk-card uk-card-default uk-card-body tixie-card tixie-text-link">
-
-                    <!-- Experimental Card -->
-
-                    <!-- End Experiment -->
-
                     <div class="uk-card-header">
                         <div class="uk-grid-small uk-flex-middle" uk-grid="">
                             <div class="uk-width-auto uk-margin-bottom" th:object="${profile}">
@@ -31,19 +27,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="uk-card-body">
+                    <div class="uk-card-body uk-text-left">
                         <div class="uk-width-expand">
-                            <p class="uk-card-title  uk-text-capitalize uk-margin-remove-bottom"
+                            <p class="uk-text-bold  uk-text-capitalize uk-margin-remove-bottom"
                                th:text="'Welcome, '+ ${profile.firstName}"></p>
                         </div>
-                        <span th:text="${profile.email}"></span>
-                        <span th:text="${profile.role.role}"></span>
-                        <span th:text="${profile.specialization.name}"></span>
+                        <span class="uk-article-meta" th:text="${profile.email}"></span>
+                        <span class="uk-label uk-label-success" th:text="${profile.role.role}"></span>
+                        <span class="uk-label uk-label-default" th:text="${profile.specialization.name}"></span>
                     </div>
                     <div class="uk-card-footer">
                         <a href="#" class="uk-button uk-button-text">Read more</a>
                     </div>
-
                 </div>
             </div>
 
@@ -71,11 +66,23 @@
                                         </td>
                                         <td class="uk-text-truncate uk-table-expand"
                                             th:text="${ticket.issue_details}"></td>
-                                        <td class="uk-text-nowrap uk-label uk-label-success"
+                                        <td class="uk-label uk-label-success"
                                             th:text="${ticket.statusId.status}"></td>
-                                        <td><a href="#" class="uk-icon-link" uk-icon="file-edit"></a></td>
+                                        <td><a class="uk-icon-link" uk-icon="file-edit" th:href="'#modal-' + ${ticket.id}" uk-toggle=""></a></td>
                                     </th:block>
                                 </tr>
+
+                                <!--  Modal View -->
+                                <div th:id="'modal-' + ${ticket.id}" uk-modal="">
+                                    <div class="uk-modal-dialog uk-modal-body">
+                                        <h4 class="uk-modal-title" th:text="'TX' + '-' + ${ticket.id} +'-'+${ticket.getSpecialization_id().name}"></h4>
+                                        <p th:text="${ticket.issue_details}"></p>
+                                        <p class="uk-text-right">
+                                            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                                            <button class="uk-button uk-button-primary" type="button">Save</button>
+                                        </p>
+                                    </div>
+                                </div>
                             </th:block>
                             </tbody>
                         </table>
@@ -168,7 +175,6 @@
 <!-- End Test Grid-->
 <div class="uk-section">
     <div sec:authorize="isAuthenticated()">
-        This content is only shown to authenticated users.
         User ID: <span th:text="${#authentication.principal.id}"></span>
         Username: <span th:text="${#authentication.principal.username}"></span>
         Email: <span th:text="${#authentication.principal.email}"></span>
@@ -180,3 +186,10 @@
     </th:block>
 </footer>
 </html>
+
+th:block th:object=${user}
+nav
+<li> principal id == user.isAdmin</li>
+// Comparison code
+/nav
+/th:block
