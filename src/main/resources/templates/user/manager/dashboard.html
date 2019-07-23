@@ -4,7 +4,7 @@
     <th:block th:replace="partials/common :: head">
     </th:block>
     <title>Tixie | Manager Dashboard</title>
-    <link rel="stylesheet" href="/css/custom.css"/>
+    <link rel="stylesheet" href="/css/manager.css"/>
 
 </head>
 <body onload="myFunction()">
@@ -14,22 +14,28 @@
 </div>
 
 <div class="main">
-    <div class="uk-container uk-margin-top uk-margin-bottom uk-grid-large uk-child-width-expand@s uk-text-center" uk-grid="">
-        <div class="uk-card uk-grid-large uk-width-1-2 ">
-            <div class="uk-card-header">
-                <h3>Stats by Status</h3>
+    <div class="uk-container">
+        <div class="uk-container uk-grid-large uk-child-width-expand@s uk-text-center" uk-grid="">
+            <div class="pushrt uk-card uk-grid-large uk-width-1-2 ">
+                <div class="uk-card-header">
+                    <h3>Stats by Status</h3>
+                </div>
+                <div class="uk-card-body">
+                    <canvas id="myChart"></canvas>
+                </div>
             </div>
-            <div class="uk-card-body">
-                <canvas id="myChart"></canvas>
+            <div class="uk-card uk-grid-large uk-width-1-2">
+                <div class="uk-card-header">
+                    <h3>Stats by Category</h3>
+                </div>
+                <div class="uk-card-body">
+                    <canvas id="pie-chart"></canvas>
+                </div>
             </div>
         </div>
-        <div class="uk-card uk-grid-large uk-width-1-2">
-            <div class="uk-card-header">
-                <h3>Stats by Category</h3>
-            </div>
-            <div class="uk-card-body">
-                <canvas id="pie-chart"></canvas>
-            </div>
+
+        <div>
+            <canvas id="line-chart" width="800" height="250"></canvas>
         </div>
     </div>
 </div>
@@ -57,42 +63,49 @@
         </div>
         <div th:text="@{'Total Tickets: '+${totalTix}}"></div>
         <div id="carp" th:text="${carp}"></div>
-<!--        <div id="" th:text="${carpPerc}"></div>-->
+        <!--        <div id="" th:text="${carpPerc}"></div>-->
         <div id="elec" th:text="${elec}"></div>
-<!--        <div id="" th:text="${elecPerc}"></div>-->
+        <!--        <div id="" th:text="${elecPerc}"></div>-->
         <div id="plum" th:text="${plum}"></div>
-<!--        <div id="" th:text="${plumPerc}"></div>-->
+        <!--        <div id="" th:text="${plumPerc}"></div>-->
         <div id="hvac" th:text="${hvac}"></div>
-<!--        <div id="" th:text="${hvacPerc}"></div>-->
+        <!--        <div id="" th:text="${hvacPerc}"></div>-->
         <div id="cust" th:text="${cust}"></div>
-<!--        <div id="" th:text="${custPerc}"></div>-->
+        <!--        <div id="" th:text="${custPerc}"></div>-->
         <div id="bioh" th:text="${bioh}"></div>
-<!--        <div id="" th:text="${biohPerc}"></div>-->
+        <!--        <div id="" th:text="${biohPerc}"></div>-->
     </div>
-    <div th:style="@{position:absolute; left:-500000px; border: 1px solid black;padding:3px;}">
+    <div th:style="@{position:absolute; left:-5000000px; border: 1px solid black;padding:3px;}">
         <div th:each="tix :${tixbydate}">
             <div>
-                <div><span th:text="${tix.id}"/></div>
-                <div>
-                    <a th:href="@{'/tickets/priority/'+${tix.priorityId.id}}">
-                        <span th:text="${tix.priorityId.name}"/>
-                    </a>
-                </div>
-                <div>
-                    <a th:href="@{'/tickets/specialization/'+${tix.specialization_id.id}}">
-                        <span th:text="${tix.specialization_id.name}"/>
-                    </a>
-                </div>
-                <div>
-                    <a th:href="@{'/tickets/status/'+${tix.statusId.id}}">
-                        <span th:text="${tix.statusId.status}"/>
-                    </a>
-                </div>
-                <div>
-                    <a th:href="@{'/tickets/status/'+${tix.statusId.id}}">
-                        <span th:text="${tix.issue_date.getDate()}"/>
-                    </a>
-                </div>
+
+                <div class="dates" th:id="${tix.id}" th:text="${tix.getIssue_date()}"></div>
+
+
+<!--                <input class="dates" th:id="${tix.id}" type="hidden" th:value="${tix.getIssue_date()}"/>-->
+
+
+<!--                <div><span th:text="${tix.id}"/></div>-->
+<!--                <div>-->
+<!--                    <a th:href="@{'/tickets/priority/'+${tix.priorityId.id}}">-->
+<!--                        <span th:text="${tix.priorityId.name}"/>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <a th:href="@{'/tickets/specialization/'+${tix.specialization_id.id}}">-->
+<!--                        <span th:text="${tix.specialization_id.name}"/>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <a th:href="@{'/tickets/status/'+${tix.statusId.id}}">-->
+<!--                        <span th:text="${tix.statusId.status}"/>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <a th:href="@{'/tickets/status/'+${tix.statusId.id}}">-->
+<!--                        <span th:text="${tix.issue_date.getDate()}"/>-->
+<!--                    </a>-->
+<!--                </div>-->
             </div>
         </div>
     </div>
@@ -104,7 +117,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
     <script>
         function myFunction() {
-
 
 
             let x = document.getElementById("totalTix").innerText;
@@ -119,6 +131,49 @@
             let cust = document.getElementById("cust").innerText;
             let bioh = document.getElementById("bioh").innerText;
             let ctx = document.getElementById('myChart').getContext('2d');
+            let tixDate=[];
+            let count = 0;
+            let datesData=[];
+            let gDates= [ "06-24","06-25","06-26","06-27","06-28","06-29","06-30",
+                "07-01","07-02","07-03","07-04","07-05","07-06","07-07","07-08",
+                "07-09","07-10","07-11","07-12","07-13","07-14","07-15","07-16",
+                "07-17","07-18","07-19","07-20","07-21","07-22","07-23"];
+            let dates = document.getElementsByClassName("dates");
+            console.log(tixDate);
+            console.log(dates);
+            let i = 0;
+            function datesLoop(){
+                if(dates.item(i) !=null) {
+                    console.log(dates.item(i).innerHTML);
+                    tixDate.push(dates.item(i).innerHTML);
+                    i++;
+                    datesLoop();
+                }
+            }
+
+            datesLoop();
+            i=0;
+
+            function compareDates() {
+
+                if(gDates[i]!=null){
+                    tixDate.forEach(function(tx){
+                        if (tx.includes(gDates[i])){
+                            count++;
+                        }
+                    })
+                    datesData.push(count);
+                    count = 0;
+                    i++;
+                    compareDates();
+                }
+
+            }
+
+            compareDates();
+            console.log(tixDate);
+            console.log(datesData);
+
             let myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -181,13 +236,36 @@
                             'rgba(255, 159, 64, 1)'
                         ],
                         borderWidth: 1,
-                        data: [carp,elec,plum,hvac,cust,bioh]
+                        data: [carp, elec, plum, hvac, cust, bioh]
                     }]
                 },
                 options: {
                     title: {
                         display: true,
                         text: 'Tickets by Category'
+                    }
+                }
+            });
+
+            new Chart(document.getElementById("line-chart"), {
+                type: 'line',
+                data: {
+                    labels: [ "06/24","06/25","06/26","06/27","06/28","06/29","06/30",
+                    "07/01","07/02","07/03","07/04","07/05","07/06","07/07","07/08",
+                        "07/09","07/10","07/11","07/12","07/13","07/14","07/15","07/16",
+                    "07/17","07/18","07/19","07/20","07/21","07/22","07/23"],
+                    datasets: [{
+                        data: datesData,
+                        label: "Africa",
+                        borderColor: "#3e95cd",
+                        fill: false
+                    }
+                    ]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'World population per region (in millions)'
                     }
                 }
             });

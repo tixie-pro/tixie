@@ -1,0 +1,52 @@
+body {
+    background-color: #e8f5e9;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Fjalla One', sans-serif;
+}
+
+.main {
+    padding-top: 9%;
+}
+
+
+
+.fas,
+.far{
+    color: #4C53DC;
+}
+
+.tixie-default-button {
+    color: #FFFFFF;
+    background-color: #4C53DC ;
+}
+
+.tixie-tech-icon-elec {
+    color: #e6c015;
+}
+
+.tixie-tech-icon-plumb {
+    color: #a18cd1;
+}
+
+.tixie-tech-icon-hvac {
+    color: #2A3142;
+}
+
+.tixie-tech-icon-hvac {
+    color: #74E083;
+}
+
+.tixie-tech-icon-carp {
+    color: #ff4b5a;
+}
+
+.pushrt{
+    margin-left: 20px;
+}
