@@ -1,0 +1,72 @@
+
+body {
+    background-color: #e8f5e9;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Fjalla One', sans-serif;
+}
+
+.main {
+    padding-top: 9%;
+}
+
+
+.photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #fafafa;
+    background-color: #fafafa;
+    box-shadow: 0 0 0.5rem #babbbc;
+}
+
+.photo img {
+    height: 100%;
+    width: 100%;
+}
+
+@keyframes rotate-photo {
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+
+.fas,
+.far{
+    color: #4C53DC;
+}
+
+
+.tixie-tech-icons {
+    color: #FFF;
+}
+
+.tixie-tech-icon-elec {
+    color: #e6c015;
+}
+
+.tixie-tech-icon-plumb {
+    color: #a18cd1;
+}
+
+
+.tixie-tech-icon-cust {
+
+    color: #2A3142;
+}
+
+.tixie-tech-icon-hvac {
+    color: #74E083;
+}
+
+.tixie-tech-icon-carp {
+    color: #ff4b5a;
+}
