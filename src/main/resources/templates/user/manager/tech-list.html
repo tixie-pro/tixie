@@ -24,48 +24,104 @@
                 </div>
                 <div>
                     <ul class="uk-subnav uk-subnav-pill" uk-margin="">
-                        <li uk-filter-control="filter: [data-tech='eletrical']; group: data-tech"><a href="#">Electricians</a></li>
-                        <li uk-filter-control="filter: [data-tech='plumbing']; group: data-tech"><a href="#">Plumbers</a></li>
-                        <li uk-filter-control="filter: [data-tech='custodian']; group: data-tech"><a href="#">Custodians</a></li>
-                        <li uk-filter-control="filter: [data-tech='hvac']; group: data-tech"><a href="#">HVAC Techs</a></li>
-                        <li uk-filter-control="filter: [data-tech='carpentry']; group: data-tech"><a href="#">Carpenters</a></li>
+                        <li uk-filter-control="filter: [data-tech='2']; group: data-tech"><a href="#">Electricians</a>
+                        </li>
+                        <li uk-filter-control="filter: [data-tech='3']; group: data-tech"><a
+                                href="#">Plumbers</a></li>
+                        <li uk-filter-control="filter: [data-tech='5']; group: data-tech"><a
+                                href="#">Custodians</a></li>
+                        <li uk-filter-control="filter: [data-tech='4']; group: data-tech"><a href="#">HVAC Techs</a>
+                        </li>
+                        <li uk-filter-control="filter: [data-tech='1']; group: data-tech"><a
+                                href="#">Carpenters</a></li>
                     </ul>
                 </div>
                 <div>
                     <ul class="uk-subnav uk-subnav-pill" uk-margin="">
-                        <li uk-filter-control="filter: [data-size='small']; group: size"><a href="#">Assigned | 1-5</a></li>
-                        <li uk-filter-control="filter: [data-size='medium']; group: size"><a href="#">Assigned |6-10</a></li>
-                        <li uk-filter-control="filter: [data-size='large']; group: size"><a href="#">Assigned | 10+</a></li>
+                        <li uk-filter-control="filter: [data-size='admin']; group: size"><a href="#">Admin</a>
+                        </li>
+                        <li uk-filter-control="filter: [data-size='tech']; group: size"><a href="#">Tech</a>
+                        </li>
+                        <li uk-filter-control="filter: [data-size='employee']; group: size"><a href="#">Employee</a>
+                        </li>
                     </ul>
                 </div>
             </div>
 
             <ul class="js-filter uk-child-width-1-4 uk-child-width-1-4@m uk-text-center" uk-grid="masonry: true">
                 <th:block th:each="tech :${techs}">
-                    <li data-color="white" data-size="large">
+                    <li data-th-attr="data-tech=${tech.specialization.id}, data-size=${tech.role.role} ">
                         <div class="uk-card uk-card-default uk-card-body">
-                            <img class="tech-photo" th:src="${tech.profileImage}" alt="" />
+                            <img class="tech-photo" th:src="${tech.profileImage}" alt=""/>
                             <div class="" th:text="@{${tech.firstName}+' '+${tech.lastName}}"></div>
-                            <div class="uk-label uk-label-default" th:text="@{'Role: '+${tech.role.role}}"></div>
-                            <div class="uk-label uk-label-default" th:text="@{'Specialization: '+${tech.specialization.id}}"></div>
+                            <div class="uk-label uk-label-warning" th:text="@{'Role: '+${tech.role.role}}"></div>
+                            <div class="uk-label uk-label-default"
+                                 th:text="@{'Spec: '+${tech.specialization.name}}"></div>
                             <div class="uk-label uk-label-default" th:text="${tech.tixCount(tix)}"></div>
-                            <a class="uk-button uk-button-default uk-margin-top" th:href="@{'#modal-' + ${tech.id}}" uk-toggle="">Open</a>
+                            <a class="uk-button uk-button-default uk-margin-top" th:href="@{'#modal-' + ${tech.id}}"
+                               uk-toggle="">Open</a>
                         </div>
                         <!--    Off Canvas   -->
-                          <div th:id="@{'modal-'+ ${tech.id}}" uk-modal="">
+                        <div th:id="@{'modal-'+ ${tech.id}}" uk-modal="">
                             <div class="uk-modal-dialog">
                                 <button class="uk-modal-close-default" type="button" uk-close=""></button>
 
                                 <div class="uk-modal-header">
                                     <h2 class="uk-modal-title" th:text="${tech.id}"></h2>
                                 </div>
-
                                 <div class="uk-modal-body" uk-overflow-auto="">
-                                    <h1>Content Goes Here</h1>
+
+                                    <form th:action="@{/change-role}" th:method="post">
+                                        <p> change role</p>
+                                        <select name="role" id="role">
+                                            <th:block th:each="role: ${roles}">
+                                                <th:block th:if="${tech.role.role}==${role.role}">
+                                                    <option th:value="@{${role.id} }"
+                                                            th:text="${role.role}"
+                                                            th:selected="@{selected}">
+                                                        Role
+                                                    </option>
+                                                </th:block>
+
+<!--                                                <th:block th:if=“${tech.role.role}!=${role.role}“>-->
+<!--                                                    <option th:value="@{${role.id}"-->
+<!--                                                        th:text="${role.role}">-->
+<!--                                                    </option>-->
+<!--                                                </th:block>-->
+
+
+                                            </th:block>
+                                        </select>
+                                        <p> change Specialization</p>
+                                        <select name="changespec" id="changespec">
+                                            <th:block th:each="spec : ${specs}">
+                                                <th:block th:if="${spec.id}== ${tech.specialization.id}">
+                                                    <option th:value="${spec.id}"
+                                                            th:text="${spec.name}"
+                                                            th:selected="@{selected}">
+                                                        spec name
+                                                    </option>
+                                                </th:block>
+
+
+                                                <th:block th:if="${spec.id} != ${tech.specialization.id}">
+                                                    <option th:value="${spec.id}" th:text="${spec.name}">
+                                                        spec name
+                                                    </option>
+                                                </th:block>
+
+
+
+                                            </th:block>
+                                        </select>
+                                        <input type="hidden" th:value="${tech.id}" name="techid" id="techid"/>
+                                        <button> Submit Changes</button>
+                                    </form>
                                 </div>
 
                                 <div class="uk-modal-footer uk-text-right">
-                                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel
+                                    </button>
                                     <button class="uk-button uk-button-primary" type="button">Save</button>
                                 </div>
                             </div>
@@ -103,7 +159,6 @@
 <!--                        <select name="role" id="role">-->
 <!--                            <th:block th:each="role: ${roles}">-->
 <!--                                <th:block th:if="${tech.role.role}==${role.role}">-->
-
 <!--                                    <option th:value="@{${role.id} }"-->
 <!--                                            th:text="${role.role}"-->
 <!--                                            th:selected="@{selected}">-->
