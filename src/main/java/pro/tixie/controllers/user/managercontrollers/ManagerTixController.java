@@ -40,7 +40,11 @@ public class ManagerTixController {
     public String allTickets(Model model) {
 
 //        User user = new User();
+
         List<Ticket> tix = ticketDao.findAll();
+        List<Note> note = noteDao.findAll();
+        model.addAttribute("notes", note);
+
         nulUserIf(tix);
         model.addAttribute("tix", tix);
         return "user/manager/tickets";

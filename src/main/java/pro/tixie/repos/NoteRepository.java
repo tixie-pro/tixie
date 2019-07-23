@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface NoteRepository extends CrudRepository<Note, Long> {
     public List<Note> findAllByTicket(Ticket tix);
+    public List<Note> findAll();
 }
