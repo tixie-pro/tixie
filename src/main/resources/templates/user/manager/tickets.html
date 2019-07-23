@@ -78,6 +78,9 @@
                                         (ticket.specialization_id.name     == 'custodian' ? 'tixie-tech-icon-cust fas fa-broom fa-2x' : '') +
                                         (ticket.specialization_id.name     == 'carpenter' ? 'tixie-tech-icon-carp fas fa-hammer fa-2x' : '')}">
                                         </div>
+                                        <span class="photo uk-align-right uk-animation-fade">
+                                                <img th:src="${ticket.ownerId.profileImage}"/>
+                                            </span>
                                         <h6 class="uk-margin-remove-top uk-text-bold uk-text-uppercase tixie-ticket-name"
                                             th:text="'Ticket ID: TX-'+ ${ticket.id} + '-' + ${ticket.specialization_id.name}"></h6>
                                         <p>
@@ -93,7 +96,7 @@
                                         (ticket.priorityId.name == 'urgent' ? 'uk-label-danger': '')}"></span>
                                         </div>
 
-                                        <br />
+                                        <br/>
 
 
                                         <a class="uk-button uk-button-default"
@@ -105,12 +108,13 @@
 
                                                 <button class="uk-modal-close-default" type="button"
                                                         uk-close=""></button>
+
+                                                <h6 class="uk-margin-remove-top uk-text-bold uk-text-uppercase tixie-ticket-name uk-text-center"
+                                                    th:text="'Ticket ID: TX-'+ ${ticket.id} + '-' + ${ticket.specialization_id.name}"></h6>
+
                                                 <div><img style="height: 165px; width: 205px;"
                                                           th:src="@{${ticket.imgUrl}}"/>
                                                 </div>
-
-                                                <h6 class="uk-margin-remove-top uk-text-bold uk-text-uppercase tixie-ticket-name"
-                                                    th:text="'Ticket ID: TX-'+ ${ticket.id} + '-' + ${ticket.specialization_id.name}"></h6>
 
                                                 <p>
                                                     <!--                                    <p th:href="@{'/tickets/author/'+${ticket.authorId.id}}">-->
@@ -160,7 +164,8 @@
             </div>
         </div>
     </div>
-
+    <a href="#" uk-totop="" uk-scroll="" class="uk-align-center"></a>
+    <br />
 </div>
 </body>
 <footer>
