@@ -1,6 +1,21 @@
-.main   {
+
+body {
+    background-color: #e8f5e9;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Fjalla One', sans-serif;
+}
+
+.main {
     padding-top: 9%;
 }
+
 
 .photo {
     width: 80px;
@@ -23,10 +38,12 @@
     }
 }
 
+
 .fas,
 .far{
     color: #4C53DC;
 }
+
 
 .tixie-tech-icons {
     color: #FFF;
@@ -40,7 +57,9 @@
     color: #a18cd1;
 }
 
+
 .tixie-tech-icon-cust {
+
     color: #2A3142;
 }
 

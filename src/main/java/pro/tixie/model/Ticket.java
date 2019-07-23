@@ -45,7 +45,7 @@ public class Ticket {
     @Column(nullable = true)
     private  Date comp_date;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String imgUrl;
 
     @OneToOne
