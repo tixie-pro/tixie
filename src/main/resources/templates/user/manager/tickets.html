@@ -103,6 +103,67 @@
                                            th:href="@{'#modal-center' + ${ticket.id}}"
                                            uk-toggle="">Open</a>
 
+                                        <!--<form th:action="@{/techreassign}" th:method="post">-->
+                                        <!--<select class="uk-select" name="assign" id="assign" >-->
+                                        <!--<th:block th:each="tech : ${techs}">-->
+                                        <!--&lt;!&ndash;                                <th:block th:if="${ticket.specialization_id}==${tech.specialization}">&ndash;&gt;-->
+                                        <!--<th:block th:if="${ticket.ownerId}==${tech}">-->
+                                        <!--<option th:value="@{${tech.id}}"-->
+                                        <!--th:text="@{${tech.firstName}+' '+${tech.lastName}}"-->
+                                        <!--th:selected="@{selected}"></option>-->
+                                        <!--</th:block>-->
+                                        <!--<th:block th:if="${ticket.ownerId}!=${tech}">-->
+                                        <!--<option th:value="@{${tech.id}}"-->
+                                        <!--th:text="@{${tech.firstName}+' '+${tech.lastName}}"></option>-->
+                                        <!--</th:block>-->
+                                        <!--</th:block>-->
+                                        <!--<input type="hidden" th:value="${ticket.id}" name="ticketid" />-->
+                                        <!--<button class="uk-button uk-button-danger" th:type="submit">Reassign to:</button>-->
+                                        <!--</select>-->
+                                        <!--</form>-->
+                                        <a class="uk-button uk-button-danger uk-align-right"
+                                           th:href="@{'#modal-owner' + ${ticket.ownerId.id}}" uk-toggle="">Reassign</a>
+
+                                        <div th:id="@{'modal-owner' + ${ticket.ownerId.id}}" class="uk-flex-top"
+                                             uk-modal="">
+                                            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+
+                                                <button class="uk-modal-close-default" type="button"
+                                                        uk-close=""></button>
+                                                <th:block th:each="tech : ${techs}">
+
+                                                    <th:block th:if="${ticket.ownerId}==${tech}">
+                                                        <p>Assigned to: <span
+                                                                th:text="@{${tech.firstName}+' '+${tech.lastName}}"></span>
+                                                        </p>
+                                                    </th:block>
+                                                </th:block>
+
+                                                <form th:action="@{/techreassign}" th:method="post">
+                                                    <select class="uk-select" name="assign" id="assign">
+
+                                                        <th:block th:each="tech : ${techs}">
+                                                            <!--                                <th:block th:if="${ticket.specialization_id}==${tech.specialization}">-->
+                                                            <th:block th:if="${ticket.ownerId}==${tech}">
+                                                                <option th:value="@{${tech.id}}"
+                                                                        th:text="@{${tech.firstName}+' '+${tech.lastName}}"
+                                                                        th:selected="@{selected}"></option>
+                                                            </th:block>
+                                                            <th:block th:if="${ticket.ownerId}!=${tech}">
+                                                                <option th:value="@{${tech.id}}"
+                                                                        th:text="@{${tech.firstName}+' '+${tech.lastName}}"></option>
+                                                            </th:block>
+                                                        </th:block>
+                                                        <input type="hidden" th:value="${ticket.id}" name="ticketid"/>
+                                                        <button class="uk-button uk-button-danger" th:type="submit">
+                                                            Reassign to
+                                                        </button>
+                                                    </select>
+                                                </form>
+
+                                            </div>
+                                        </div>
+
                                         <div th:id="@{'modal-center' + ${ticket.id}}" class="uk-flex-top" uk-modal="">
                                             <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
 
@@ -160,12 +221,14 @@
                             </th:block>
                         </ul>
                     </div>
+                    <br />
+                    <div>
+                        <a href="#" uk-totop="" uk-scroll="" class="uk-align-center"></a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <a href="#" uk-totop="" uk-scroll="" class="uk-align-center"></a>
-    <br />
 </div>
 </body>
 <footer>
