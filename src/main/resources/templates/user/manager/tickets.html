@@ -174,70 +174,44 @@
                                                     <button class="uk-modal-close-default" type="button"
                                                             uk-close=""></button>
 
+                                                    <h6 class="uk-margin-remove-top uk-text-bold uk-text-uppercase tixie-ticket-name uk-text-center"
+                                                        th:text="'Ticket ID: TX-'+ ${ticket.id} + '-' + ${ticket.specialization_id.name}"></h6>
 
-                                                    <br/>
-
-
-                                                    <a class="uk-button uk-button-default"
-                                                       th:href="@{'#modal-center' + ${ticket.id}}"
-                                                       uk-toggle="">Open</a>
-
-                                                    <div th:id="@{'modal-center' + ${ticket.id}}" class="uk-flex-top"
-                                                         uk-modal="">
-                                                        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-
-                                                            <button class="uk-modal-close-default" type="button"
-                                                                    uk-close=""></button>
-
-                                                            <h6 class="uk-margin-remove-top uk-text-bold uk-text-uppercase tixie-ticket-name uk-text-center"
-                                                                th:text="'Ticket ID: TX-'+ ${ticket.id} + '-' + ${ticket.specialization_id.name}"></h6>
-
-                                                            <div><img style="height: 165px; width: 205px;"
-                                                                      th:src="@{${ticket.imgUrl}}"/>
-                                                            </div>
-
-                                                            <p>
-                                                                <!--                                    <p th:href="@{'/tickets/author/'+${ticket.authorId.id}}">-->
-                                                                Created by: <span
-                                                                    th:text="${ticket.authorId.getuserName()}"/>
-                                                                <!--                                    </p>-->
-                                                            </p>
-
-                                                            <p>
-                                                                <!--                                    <p th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">-->
-                                                                Assigned to: <span
-                                                                    th:text="${ticket.ownerId.getuserName()}"/>
-                                                                <!--                                    </p>-->
-                                                            </p>
-                                                            <div class="">
-                                                                <span class="uk-text-bold">Location:</span><span
-                                                                    th:text="' ' + ${ticket.location_1} + ' | ' + ${ticket.location_2}"></span>
-                                                            </div>
-                                                            <p>
-                                                                <!--                                    <p th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">-->
-                                                                Details: <span th:text="${ticket.issue_details}"/>
-                                                                <!--                                    </p>-->
-                                                            </p>
-                                                            <div th:each="note : ${notes}">
-                                                                <th:block
-                                                                        th:if="${note.getTicket_id().id} == ${ticket.id}">
-                                                                    <p>Notes: <span th:text="${note.description}"/></p>
-                                                                </th:block>
-                                                            </div>
-                                                            <p>Created on: <span th:text="${ticket.issue_date}"/></p>
-
-
-                                                        </div>
+                                                    <div><img style="height: 165px; width: 205px;"
+                                                              th:src="@{${ticket.imgUrl}}"/>
                                                     </div>
 
+                                                    <p>
+                                                        <!--                                    <p th:href="@{'/tickets/author/'+${ticket.authorId.id}}">-->
+                                                        Created by: <span
+                                                            th:text="${ticket.authorId.getuserName()}"/>
+                                                        <!--                                    </p>-->
+                                                    </p>
 
-                                                    <!--<p>-->
-                                                    <!--<a th:href="@{'/tech/ticket/'+${ticket.id}}">-->
-                                                    <!--<button>-->
-                                                    <!--View Ticket-->
-                                                    <!--</button>-->
-                                                    <!--</a>-->
-                                                    <!--</p>-->
+                                                    <p>
+                                                        <!--                                    <p th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">-->
+                                                        Assigned to: <span
+                                                            th:text="${ticket.ownerId.getuserName()}"/>
+                                                        <!--                                    </p>-->
+                                                    </p>
+                                                    <div class="">
+                                                        <span class="uk-text-bold">Location:</span><span
+                                                            th:text="' ' + ${ticket.location_1} + ' | ' + ${ticket.location_2}"></span>
+                                                    </div>
+                                                    <p>
+                                                        <!--                                    <p th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">-->
+                                                        Details: <span th:text="${ticket.issue_details}"/>
+                                                        <!--                                    </p>-->
+                                                    </p>
+                                                    <div th:each="note : ${notes}">
+                                                        <th:block
+                                                                th:if="${note.getTicket_id().id} == ${ticket.id}">
+                                                            <p>Notes: <span th:text="${note.description}"/></p>
+                                                        </th:block>
+                                                    </div>
+                                                    <p>Created on: <span th:text="${ticket.issue_date}"/></p>
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -246,17 +220,17 @@
                             </ul>
                         </div>
                     </div>
-                    <br/>
-                    <div>
-                        <a href="#" uk-totop="" uk-scroll="" class="uk-align-center"></a>
-                    </div>
                 </div>
             </div>
         </div>
-        <a href="#" uk-totop="" uk-scroll="" class="uk-align-center"></a>
-        <br/>
     </div>
 </th:block>
+
+<br/>
+<div>
+    <a href="#" uk-totop="" uk-scroll="" class="uk-align-center"></a>
+</div>
+
 </body>
 <footer>
     <th:block th:include="partials/common :: footer">
