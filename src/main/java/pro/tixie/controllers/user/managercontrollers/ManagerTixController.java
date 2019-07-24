@@ -43,7 +43,10 @@ public class ManagerTixController {
 
         List<Ticket> tix = ticketDao.findAll();
         List<Note> note = noteDao.findAll();
+        List<User> allTechs = userDao.findAll();
         model.addAttribute("notes", note);
+        model.addAttribute("techs", allTechs);
+
 
         nulUserIf(tix);
         model.addAttribute("tix", tix);
@@ -135,7 +138,7 @@ public class ManagerTixController {
 
         tix.setOwnerId(owner);
         ticketDao.save(tix);
-        return ("redirect:/tech/ticket/" + tixId);
+        return ("redirect:/tickets/all");
     }
 
     @PostMapping("techescalate")
