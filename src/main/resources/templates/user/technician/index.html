@@ -75,6 +75,9 @@
                                     <li uk-filter-control="filter: [data-spec='custodian']; group: data-spec"><a
                                             href="#">Custodian</a>
                                     </li>
+                                    <li uk-filter-control="filter: [data-spec='biohazard']; group: data-spec"><a
+                                            href="#">Biohazard</a>
+                                    </li>
                                 </ul>
                             </div>
                             <div>
@@ -104,6 +107,7 @@
                                         (tickets.specialization_id.name     == 'plumbing' ? 'tixie-tech-icon-plumb fas fa-tint fa-2x' : '')  +
                                         (tickets.specialization_id.name     == 'hvac' ? 'tixie-tech-icon-hvac fas fa-thermometer-three-quarters fa-2x' : '') +
                                         (tickets.specialization_id.name     == 'custodian' ? 'tixie-tech-icon-cust fas fa-broom fa-2x' : '') +
+                                        (tickets.specialization_id.name     == 'biohazard' ? 'tixie-tech-icon-bio fas fa-biohazard fa-2x' : '') +
                                         (tickets.specialization_id.name     == 'carpenter' ? 'tixie-tech-icon-carp fas fa-hammer fa-2x' : '')}">
                                             </div>
                                             <h6 class="uk-margin-remove-top uk-text-bold uk-text-uppercase tixie-ticket-name"
