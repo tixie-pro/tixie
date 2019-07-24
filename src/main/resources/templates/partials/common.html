@@ -23,8 +23,7 @@
                             <div class="uk-navbar-dropdown">
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
                                     <li><a href="/dashboard/all">Dashboard</a></li>
-                                    <li><a href="/tickets/all">Tickets</a></li>
-                                    <li><a href="/tech-list/all">Technicians</a></li>
+                                    <li><a href="/tech-list/all">Users</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -56,8 +55,13 @@
                         </li>
                         <li class="uk-navbar-nav" sec:authorize="isAuthenticated()"><a
                                 th:href="@{'/employee/{id}' (id=${#authentication.principal.id})}">Dashboard</a></li>
-                        <li class="uk-navbar-nav" sec:authorize="isAuthenticated()"><a
-                                th:href="@{'/employee/ticket/create' (id=${#authentication.principal.id})}">Create Ticket</a></li>
+                        <li class="uk-navbar-nav" sec:authorize="isAuthenticated()"><a th:href="@{'/employee/ticket/create' (id=${#authentication.principal.id})}">Create Ticket</a></li>
+
+                        <li class="uk-navbar-nav uk-navbar-item" sec:authorize="isAuthenticated()">
+                            <form th:action="@{/logout}" th:method="post">
+                                <button class="uk-button uk-button-text">Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </nav>
