@@ -176,15 +176,24 @@ public class ManagerTixController {
     @PostMapping("/techticket/inprogress")
     public String inProgressTicket(
             @RequestParam(name = "ticketIdIp") long id,
-            @RequestParam(name = "statusIp") long statIdIp) {
+            @RequestParam(name = "statusIp") long statIdIp,
+            @RequestParam(name = "setOwner") long ownerId,
+            @RequestParam(name = "newOwner") long newOwnerId) {
 
         Status ipStat = statDao.findOne(statIdIp);
         Ticket ipTick = ticketDao.findOne(id);
+        Ticket openOwner = ticketDao.findOne(ownerId);
+        User user = userDao.findOne(newOwnerId);
+        openOwner.setOwnerId(user);
+
+        ticketDao.save(openOwner);
+
+
 
         ipTick.setStatusId(ipStat);
         ticketDao.save(ipTick);
 
-        return "redirect:/tech/ticket/" + id;
+        return "redirect:/tech";
 
     }
 
