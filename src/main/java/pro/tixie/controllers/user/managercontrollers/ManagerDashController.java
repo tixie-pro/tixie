@@ -20,13 +20,15 @@ public class ManagerDashController {
     private PriorityRepository priDao;
     private StatusRepository statDao;
     private SpecializationRepo specDao;
+    private NoteRepository noteDao;
 
     public ManagerDashController(
             TicketRepository ticketDao,
             UserRepository userDao,
             PriorityRepository priDao,
             StatusRepository statDao,
-            SpecializationRepo specDao
+            SpecializationRepo specDao,
+            NoteRepository noteDao
     ){
         this.ticketDao = ticketDao;
         this.userDao = userDao;
@@ -62,6 +64,7 @@ public class ManagerDashController {
         List<Ticket> compTix = ticketDao.findAllByStatus(comp);
         List<Ticket> inProgTix= ticketDao.findAllByStatus(inProg);
         List<Ticket> openTix= ticketDao.findAllByStatus(open);
+        List<Note> note = noteDao.findAll();
 
         List<Ticket> carpTix = ticketDao.findAllBySpecialization(carp);
         List<Ticket> elecTix = ticketDao.findAllBySpecialization(elec);
@@ -72,6 +75,7 @@ public class ManagerDashController {
 
 
         model.addAttribute("techs", allTechs );
+        model.addAttribute("notes", note);
         model.addAttribute("totalTix", allTix.size() );
         model.addAttribute("tix",allTix);
         model.addAttribute("complete", compTix.size());
