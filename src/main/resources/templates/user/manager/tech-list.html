@@ -82,6 +82,12 @@
                                                         Role
                                                     </option>
                                                 </th:block>
+                                                <th:block th:if="${tech.role.role}!=${role.role}">
+                                                    <option th:value="@{${role.id} }"
+                                                            th:text="${role.role}">
+                                                        Role
+                                                    </option>
+                                                </th:block>
                                             </th:block>
                                         </select>
                                         <p> change Specialization</p>
