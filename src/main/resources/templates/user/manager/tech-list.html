@@ -3,7 +3,7 @@
 <head>
     <th:block th:include="partials/common :: head">
     </th:block>
-    <link rel="stylesheet" href="/css/manager-tech.css"/>
+    <link rel="stylesheet" href="/css/manager.css"/>
     <script src="https://kit.fontawesome.com/7508253178.js"></script>
     <title>Tixie | Manager | All Techs List</title>
 </head>
@@ -79,6 +79,12 @@
                                                     <option th:value="@{${role.id} }"
                                                             th:text="${role.role}"
                                                             th:selected="@{selected}">
+                                                        Role
+                                                    </option>
+                                                </th:block>
+                                                <th:block th:if="${tech.role.role}!=${role.role}">
+                                                    <option th:value="@{${role.id} }"
+                                                            th:text="${role.role}">
                                                         Role
                                                     </option>
                                                 </th:block>
