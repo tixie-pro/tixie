@@ -45,18 +45,13 @@
                                                 <input class="uk-input" name="password" type="password"/>
                                             </div>
                                         </div>
-                                        <button class="uk-button uk-button-default demo" type="submit"
-                                                onclick="UIkit.notification({message: 'Login Succesfull!', status: 'success'})">
-                                            Login
-                                        </button>
+                                        <button class="uk-button uk-button-default demo" type="submit" onclick="UIkit.notification({message: 'Login Succesfull!', status: 'success'})">Login</button>
                                     </form>
                                 </ul>
                             </div>
                         </li>
-                        <li class="uk-navbar-nav" sec:authorize="isAuthenticated()"><a
-                                th:href="@{'/employee/{id}' (id=${#authentication.principal.id})}">Dashboard</a></li>
-                        <li class="uk-navbar-nav" sec:authorize="isAuthenticated()"><a th:href="@{'/employee/ticket/create' (id=${#authentication.principal.id})}">Create Ticket</a></li>
-
+                        <li class="uk-navbar-nav" sec:authorize="isAuthenticated()"><a th:href="@{'/employee/{id}' (id=${#authentication.principal.id})}">Employee</a></li>
+                        <li class="uk-navbar-nav" sec:authorize="isAuthenticated()"><a href="/employee/ticket/create">Create Ticket</a></li>
                         <li class="uk-navbar-nav uk-navbar-item" sec:authorize="isAuthenticated()">
                             <form th:action="@{/logout}" th:method="post">
                                 <button class="uk-button uk-button-text">Logout</button>
