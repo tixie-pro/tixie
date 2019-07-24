@@ -24,18 +24,18 @@ h5 {
     border: 5px solid #fafafa;
     background-color: #fafafa;
     box-shadow: 0 0 0.5rem #babbbc;
-    animation: rotate-photo 0.5s forwards ease-in-out;
+    /*animation: rotate-photo 0.5s forwards ease-in-out;*/
 }
 
 .photo img {
     width: 100%;
 }
 
-@keyframes rotate-photo {
-    100% {
-        transform: rotate(-360deg);
-    }
-}
+/*@keyframes rotate-photo {*/
+    /*100% {*/
+        /*transform: rotate(-360deg);*/
+    /*}*/
+/*}*/
 
 .tixie-tech-icons {
     color: #FFF;

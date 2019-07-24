@@ -150,54 +150,68 @@
                                                                     th:text="' ' + ${tickets.issue_details}"></span>
                                                             </div>
                                                         </div>
-                                                        <div class="uk-modal-footer uk-text-right">
-                                                            <form th:action="@{/techticket/inprogress}"
-                                                                  th:method="post">
-                                                                <input type="hidden" th:value="${tickets.id}"
-                                                                       th:name="ticketIdIp"/>
-                                                                <input type="hidden" th:value="2"
-                                                                       th:name="statusIp"/>
-                                                                <button th:text="${tickets.statusId.status}"
-                                                                        class="uk-button uk-button-default"><span
-                                                                        uk-icon="icon: check"></span>In Progress
-                                                                </button>
-                                                            </form>
-                                                            <div style="text-align: center">
-                                                                <form th:action="@{'/techticketcomplete'}"
+                                                        <div class="uk-flex">
+
+                                                            <div class="uk-modal-footer uk-text-left">
+                                                                <form th:action="@{/techticket/inprogress}"
                                                                       th:method="post">
                                                                     <input type="hidden" th:value="${tickets.id}"
-                                                                           th:name="ticketId"/>
-                                                                    <input type="hidden" th:value="3"
-                                                                           th:name="status"/>
-                                                                    <button class="uk-button uk-button-primary">
-                                                                        Completed
-                                                                    </button>
+                                                                           th:name="ticketIdIp"/>
+                                                                    <input type="hidden" th:value="2"
+                                                                           th:name="statusIp"/>
+                                                                    <th:block th:if="${tickets.statusId.id} == *{'2'}">
+                                                                        <button th:text="${tickets.statusId.status}"
+                                                                                class="uk-button uk-button-default"
+                                                                                disabled="disabled"><span
+                                                                                uk-icon="icon: check"></span>In Progress
+                                                                        </button>
+                                                                    </th:block>
+                                                                    <th:block th:if="${tickets.statusId.id} == *{'1'}">
+                                                                        <input type="hidden" th:value="${tickets.id}" th:name="setOwner" />
+                                                                        <input type="hidden" th:value="${#authentication.principal.id}" th:name="newOwner" />
+                                                                        <button th:text="${tickets.statusId.status}"
+                                                                                class="uk-button uk-button-default"><span
+                                                                                uk-icon="icon: check"></span>Open
+                                                                        </button>
+                                                                    </th:block>
                                                                 </form>
-                                                            </div>
-                                                            <div style="text-align: right">
-                                                                <form th:action="@{/techescalate}" th:method="post">
-                                                                    <select name="assign" id="assign">
-                                                                        <th:block th:each="tech : ${techs}">
-                                                                            <th:block
-                                                                                    th:if="${tickets.ownerId}!=${tech}">
+                                                                <div style="text-align: center">
+                                                                    <form th:action="@{'/techticketcomplete'}"
+                                                                          th:method="post">
+                                                                        <input type="hidden" th:value="${tickets.id}"
+                                                                               th:name="ticketId"/>
+                                                                        <input type="hidden" th:value="3"
+                                                                               th:name="status"/>
+                                                                        <button class="uk-button uk-button-primary">
+                                                                            Completed
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                                <div style="text-align: right">
+                                                                    <form th:action="@{/techescalate}" th:method="post">
+                                                                        <select name="assign" id="assign">
+                                                                            <th:block th:each="tech : ${techs}">
                                                                                 <th:block
-                                                                                        th:if="${tech.role.role}==@{'manager'}">
-                                                                                    <option th:value="@{${tech.id}}"
-                                                                                            th:text="@{${tech.firstName}+' '+${tech.lastName}}">
-                                                                                    </option>
+                                                                                        th:if="${tickets.ownerId}!=${tech}">
+                                                                                    <th:block
+                                                                                            th:if="${tech.role.role}==@{'manager'}">
+                                                                                        <option th:value="@{${tech.id}}"
+                                                                                                th:text="@{${tech.firstName}+' '+${tech.lastName}}">
+                                                                                        </option>
+                                                                                    </th:block>
                                                                                 </th:block>
                                                                             </th:block>
-                                                                        </th:block>
-                                                                        <input type="hidden"
-                                                                               th:value="${tickets.id}"
-                                                                               name="ticketid"/>
-                                                                        <button class="uk-button uk-button-danger"
-                                                                                type="submit"
-                                                                                onclick="UIkit.notification({message: 'This ticket has been escalated to a Manager!', status: 'success'})">
-                                                                            Escalate
-                                                                        </button>
-                                                                    </select>
-                                                                </form>
+                                                                            <input type="hidden"
+                                                                                   th:value="${tickets.id}"
+                                                                                   name="ticketid"/>
+                                                                            <button class="uk-button uk-button-danger"
+                                                                                    type="submit"
+                                                                                    onclick="UIkit.notification({message: 'This ticket has been escalated to a Manager!', status: 'success'})">
+                                                                                Escalate
+                                                                            </button>
+                                                                        </select>
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
