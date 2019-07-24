@@ -6,15 +6,22 @@
     font-size: 9em;
 }
 
+.tixie-personal-photos {
+
+}
 .photo {
     width: 150px;
     height: 150px;
-    border-radius: 3%;
+    border-radius: 3px;
     overflow: hidden;
-    border: 5px solid #fafafa;
+    border: 3px solid #fafafa;
     background-color: #fafafa;
     box-shadow: 0 0 0.5rem #babbbc;
     animation: rotate-photo 0.5s forwards ease-in-out;
+}
+
+.tixie-personal-photos {
+    height: 590px;
 }
 
 @keyframes rotate-photo {
