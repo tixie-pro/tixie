@@ -84,9 +84,7 @@
                                             <h6 class="uk-margin-remove-top uk-text-bold uk-text-uppercase tixie-ticket-name"
                                                 th:text="'Ticket ID: TX-'+ ${ticket.id} + '-' + ${ticket.specialization_id.name}"></h6>
                                             <p>
-                                                <!--                                    <p th:href="@{'/tickets/status/'+${ticket.statusId.id}}">-->
                                                 Status: <span th:text="${ticket.statusId.status}"/>
-                                                <!--                                    </p>-->
                                             </p>
                                             <div>
                                         <span class="uk-label" th:text="${ticket.priorityId.name}" th:classappend="
@@ -104,24 +102,6 @@
                                                th:href="@{'#modal-center' + ${ticket.id}}"
                                                uk-toggle="">Open</a>
 
-                                            <!--<form th:action="@{/techreassign}" th:method="post">-->
-                                            <!--<select class="uk-select" name="assign" id="assign" >-->
-                                            <!--<th:block th:each="tech : ${techs}">-->
-                                            <!--&lt;!&ndash;                                <th:block th:if="${ticket.specialization_id}==${tech.specialization}">&ndash;&gt;-->
-                                            <!--<th:block th:if="${ticket.ownerId}==${tech}">-->
-                                            <!--<option th:value="@{${tech.id}}"-->
-                                            <!--th:text="@{${tech.firstName}+' '+${tech.lastName}}"-->
-                                            <!--th:selected="@{selected}"></option>-->
-                                            <!--</th:block>-->
-                                            <!--<th:block th:if="${ticket.ownerId}!=${tech}">-->
-                                            <!--<option th:value="@{${tech.id}}"-->
-                                            <!--th:text="@{${tech.firstName}+' '+${tech.lastName}}"></option>-->
-                                            <!--</th:block>-->
-                                            <!--</th:block>-->
-                                            <!--<input type="hidden" th:value="${ticket.id}" name="ticketid" />-->
-                                            <!--<button class="uk-button uk-button-danger" th:type="submit">Reassign to:</button>-->
-                                            <!--</select>-->
-                                            <!--</form>-->
                                             <a class="uk-button uk-button-danger uk-align-right"
                                                th:href="@{'#modal-owner' + ${ticket.ownerId.id}}"
                                                uk-toggle="">Reassign</a>
@@ -167,6 +147,7 @@
                                                 </div>
                                             </div>
 
+
                                             <div th:id="@{'modal-center' + ${ticket.id}}" class="uk-flex-top"
                                                  uk-modal="">
                                                 <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
@@ -197,6 +178,7 @@
                                                     <div class="">
                                                         <span class="uk-text-bold">Location:</span><span
                                                             th:text="' ' + ${ticket.location_1} + ' | ' + ${ticket.location_2}"></span>
+
                                                     </div>
                                                     <p>
                                                         <!--                                    <p th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">-->
@@ -214,6 +196,15 @@
 
                                                 </div>
                                             </div>
+
+
+                                            <!--<p>-->
+                                            <!--<a th:href="@{'/tech/ticket/'+${ticket.id}}">-->
+                                            <!--<button>-->
+                                            <!--View Ticket-->
+                                            <!--</button>-->
+                                            <!--</a>-->
+                                            <!--</p>-->
                                         </div>
                                     </li>
                                 </th:block>
@@ -230,6 +221,7 @@
 <div>
     <a href="#" uk-totop="" uk-scroll="" class="uk-align-center"></a>
 </div>
+
 
 </body>
 <footer>

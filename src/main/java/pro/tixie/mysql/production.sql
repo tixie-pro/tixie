@@ -1,3 +1,5 @@
+create
+
 USE tixie_db;
 
 insert into priority (id, name) values (1, 'low');
