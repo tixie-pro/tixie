@@ -18,15 +18,13 @@
         <div uk-grid="">
             <div class="uk-width-1-4">
                 <div class="uk-card uk-card-default uk-card-body tixie-card tixie-text-link">
-                    <div class="uk-card-header">
-                        <div class="uk-grid-small uk-flex-middle" uk-grid="">
-                            <div class="uk-width-auto uk-margin-bottom" th:object="${profile}">
-                                <div class="photo uk-text-center">
+                        <div class="uk-grid-small" uk-grid="">
+                            <div class="uk-width-auto uk-margin-bottom uk-align-center" th:object="${profile}">
+                                <div class="photo uk-text-center uk-align-center">
                                     <img th:src="${profile.profileImage}"/>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     <div class="uk-card-body uk-text-left">
                         <div class="uk-width-expand">
                             <p class="uk-text-bold  uk-text-capitalize uk-margin-remove-bottom"
@@ -186,10 +184,3 @@
     </th:block>
 </footer>
 </html>
-
-th:block th:object=${user}
-nav
-<li> principal id == user.isAdmin</li>
-// Comparison code
-/nav
-/th:block
