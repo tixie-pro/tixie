@@ -71,6 +71,7 @@ public class ManagerDashController {
 
 
         model.addAttribute("totalTix", allTix.size() );
+        model.addAttribute("tix",allTix);
         model.addAttribute("complete", compTix.size());
         model.addAttribute("completePerc",percentCalc(compTix.size(), allTix.size()));
         model.addAttribute("inProg", inProgTix.size());

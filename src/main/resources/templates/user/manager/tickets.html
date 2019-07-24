@@ -15,221 +15,248 @@
     <th:block th:replace="partials/common :: navigation-index-page">
     </th:block>
 </div>
+<th:block th:fragment="tickets-list">
+    <div class="main">
+        <div class="uk-container uk-container-large uk-align-center">
+            <div class="tixie-all-tix uk-margin-top">
+                <div class="tixie-all-tix uk-margin-top uk-margin-bottom">
+                    <h1>
+                        All Tickets
+                    </h1>
 
-<div class="main">
-    <div class="uk-container uk-container-large uk-align-center">
-        <div class="tixie-all-tix uk-margin-top">
-            <div class="tixie-all-tix uk-margin-top uk-margin-bottom">
-                <h1>
-                    All Tickets
-                </h1>
+                    <div class="uk-card  uk-card-body ">
+                        <div uk-filter="target: .js-filter">
 
-                <div class="uk-card uk-card-default uk-card-body ">
-                    <div uk-filter="target: .js-filter">
-
-                        <div class="uk-grid-small uk-grid-divider uk-child-width-auto" uk-grid="">
-                            <div>
-                                <ul class="uk-subnav uk-subnav-pill" uk-margin="">
-                                    <li class="uk-active" uk-filter-control=""><a href="#">All</a></li>
-                                </ul>
+                            <div class="uk-grid-small uk-grid-divider uk-child-width-auto" uk-grid="">
+                                <div>
+                                    <ul class="uk-subnav uk-subnav-pill" uk-margin="">
+                                        <li class="uk-active" uk-filter-control=""><a href="#">All</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul class="uk-subnav uk-subnav-pill" uk-margin="">
+                                        <li uk-filter-control="filter: [data-spec='plumbing']; group: data-spec"><a
+                                                href="#">Plumbing</a>
+                                        </li>
+                                        <li uk-filter-control="filter: [data-spec='electrical']; group: data-spec"><a
+                                                href="#">Electrical</a>
+                                        </li>
+                                        <li uk-filter-control="filter: [data-spec='carpenter']; group: data-spec"><a
+                                                href="#">Carpentry</a>
+                                        </li>
+                                        <li uk-filter-control="filter: [data-spec='hvac']; group: data-spec"><a
+                                                href="#">HVAC</a></li>
+                                        <li uk-filter-control="filter: [data-spec='custodian']; group: data-spec"><a
+                                                href="#">Custodian</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul class="uk-subnav uk-subnav-pill" uk-margin="">
+                                        <li uk-filter-control="filter: [data-pri='low']; group: data-pri"><a
+                                                href="#">Low</a>
+                                        </li>
+                                        <li uk-filter-control="filter: [data-pri='medium']; group: data-pri"><a
+                                                href="#">Medium</a></li>
+                                        <li uk-filter-control="filter: [data-pri='high']; group: data-pri"><a
+                                                href="#">High</a>
+                                        </li>
+                                        <li uk-filter-control="filter: [data-pri='urgent']; group: data-pri"><a
+                                                href="#">Urgent</a></li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div>
-                                <ul class="uk-subnav uk-subnav-pill" uk-margin="">
-                                    <li uk-filter-control="filter: [data-spec='plumbing']; group: data-spec"><a
-                                            href="#">Plumbing</a>
-                                    </li>
-                                    <li uk-filter-control="filter: [data-spec='electrical']; group: data-spec"><a
-                                            href="#">Electrical</a>
-                                    </li>
-                                    <li uk-filter-control="filter: [data-spec='carpenter']; group: data-spec"><a
-                                            href="#">Carpentry</a>
-                                    </li>
-                                    <li uk-filter-control="filter: [data-spec='hvac']; group: data-spec"><a
-                                            href="#">HVAC</a></li>
-                                    <li uk-filter-control="filter: [data-spec='custodian']; group: data-spec"><a
-                                            href="#">Custodian</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul class="uk-subnav uk-subnav-pill" uk-margin="">
-                                    <li uk-filter-control="filter: [data-pri='low']; group: data-pri"><a
-                                            href="#">Low</a>
-                                    </li>
-                                    <li uk-filter-control="filter: [data-pri='medium']; group: data-pri"><a
-                                            href="#">Medium</a></li>
-                                    <li uk-filter-control="filter: [data-pri='high']; group: data-pri"><a
-                                            href="#">High</a>
-                                    </li>
-                                    <li uk-filter-control="filter: [data-pri='urgent']; group: data-pri"><a
-                                            href="#">Urgent</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <ul class="js-filter uk-child-width-1-2 uk-child-width-1-3@m" uk-grid="">
-                            <th:block th:each="ticket : ${tix}">
-                                <li data-th-attr="data-spec=${ticket.specialization_id.name}, data-pri=${ticket.priorityId.name}">
+                            <ul class="js-filter uk-child-width-1-2 uk-child-width-1-3@m" uk-grid="">
+                                <th:block th:each="ticket : ${tix}">
+                                    <li data-th-attr="data-spec=${ticket.specialization_id.name}, data-pri=${ticket.priorityId.name}">
 
-                                    <div class="uk-card uk-card-default uk-card-body">
-                                        <div class="uk-text-center tixie-tech-icons" th:classappend="
+                                        <div class="uk-card uk-card-default uk-card-body">
+                                            <div class="uk-text-center tixie-tech-icons" th:classappend="
                                         ${(ticket.specialization_id.name   == 'electrical' ? 'tixie-tech-icon-elec fas fa-bolt fa-2x' : '') +
                                         (ticket.specialization_id.name     == 'plumbing' ? 'tixie-tech-icon-plumb fas fa-tint fa-2x' : '')  +
                                         (ticket.specialization_id.name     == 'hvac' ? 'tixie-tech-icon-hvac fas fa-thermometer-three-quarters fa-2x' : '') +
                                         (ticket.specialization_id.name     == 'custodian' ? 'tixie-tech-icon-cust fas fa-broom fa-2x' : '') +
                                         (ticket.specialization_id.name     == 'carpenter' ? 'tixie-tech-icon-carp fas fa-hammer fa-2x' : '')}">
-                                        </div>
-                                        <span class="photo uk-align-right uk-animation-fade">
+                                            </div>
+                                            <span class="photo uk-align-right uk-animation-fade">
                                                 <img th:src="${ticket.ownerId.profileImage}"/>
                                             </span>
-                                        <h6 class="uk-margin-remove-top uk-text-bold uk-text-uppercase tixie-ticket-name"
-                                            th:text="'Ticket ID: TX-'+ ${ticket.id} + '-' + ${ticket.specialization_id.name}"></h6>
-                                        <p>
-                                            <!--                                    <p th:href="@{'/tickets/status/'+${ticket.statusId.id}}">-->
-                                            Status: <span th:text="${ticket.statusId.status}"/>
-                                            <!--                                    </p>-->
-                                        </p>
-                                        <div>
+                                            <h6 class="uk-margin-remove-top uk-text-bold uk-text-uppercase tixie-ticket-name"
+                                                th:text="'Ticket ID: TX-'+ ${ticket.id} + '-' + ${ticket.specialization_id.name}"></h6>
+                                            <p>
+                                                <!--                                    <p th:href="@{'/tickets/status/'+${ticket.statusId.id}}">-->
+                                                Status: <span th:text="${ticket.statusId.status}"/>
+                                                <!--                                    </p>-->
+                                            </p>
+                                            <div>
                                         <span class="uk-label" th:text="${ticket.priorityId.name}" th:classappend="
                                         ${(ticket.priorityId.name == 'low' ? 'uk-label-default': '') +
                                         (ticket.priorityId.name == 'medium' ? 'uk-label-success': '') +
                                         (ticket.priorityId.name == 'high' ? 'uk-label-warning': '') +
                                         (ticket.priorityId.name == 'urgent' ? 'uk-label-danger': '')}"></span>
-                                        </div>
 
-                                        <br/>
+                                            </div>
+
+                                            <br/>
 
 
-                                        <a class="uk-button uk-button-default"
-                                           th:href="@{'#modal-center' + ${ticket.id}}"
-                                           uk-toggle="">Open</a>
+                                            <a class="uk-button uk-button-default"
+                                               th:href="@{'#modal-center' + ${ticket.id}}"
+                                               uk-toggle="">Open</a>
 
-                                        <!--<form th:action="@{/techreassign}" th:method="post">-->
-                                        <!--<select class="uk-select" name="assign" id="assign" >-->
-                                        <!--<th:block th:each="tech : ${techs}">-->
-                                        <!--&lt;!&ndash;                                <th:block th:if="${ticket.specialization_id}==${tech.specialization}">&ndash;&gt;-->
-                                        <!--<th:block th:if="${ticket.ownerId}==${tech}">-->
-                                        <!--<option th:value="@{${tech.id}}"-->
-                                        <!--th:text="@{${tech.firstName}+' '+${tech.lastName}}"-->
-                                        <!--th:selected="@{selected}"></option>-->
-                                        <!--</th:block>-->
-                                        <!--<th:block th:if="${ticket.ownerId}!=${tech}">-->
-                                        <!--<option th:value="@{${tech.id}}"-->
-                                        <!--th:text="@{${tech.firstName}+' '+${tech.lastName}}"></option>-->
-                                        <!--</th:block>-->
-                                        <!--</th:block>-->
-                                        <!--<input type="hidden" th:value="${ticket.id}" name="ticketid" />-->
-                                        <!--<button class="uk-button uk-button-danger" th:type="submit">Reassign to:</button>-->
-                                        <!--</select>-->
-                                        <!--</form>-->
-                                        <a class="uk-button uk-button-danger uk-align-right"
-                                           th:href="@{'#modal-owner' + ${ticket.ownerId.id}}" uk-toggle="">Reassign</a>
+                                            <!--<form th:action="@{/techreassign}" th:method="post">-->
+                                            <!--<select class="uk-select" name="assign" id="assign" >-->
+                                            <!--<th:block th:each="tech : ${techs}">-->
+                                            <!--&lt;!&ndash;                                <th:block th:if="${ticket.specialization_id}==${tech.specialization}">&ndash;&gt;-->
+                                            <!--<th:block th:if="${ticket.ownerId}==${tech}">-->
+                                            <!--<option th:value="@{${tech.id}}"-->
+                                            <!--th:text="@{${tech.firstName}+' '+${tech.lastName}}"-->
+                                            <!--th:selected="@{selected}"></option>-->
+                                            <!--</th:block>-->
+                                            <!--<th:block th:if="${ticket.ownerId}!=${tech}">-->
+                                            <!--<option th:value="@{${tech.id}}"-->
+                                            <!--th:text="@{${tech.firstName}+' '+${tech.lastName}}"></option>-->
+                                            <!--</th:block>-->
+                                            <!--</th:block>-->
+                                            <!--<input type="hidden" th:value="${ticket.id}" name="ticketid" />-->
+                                            <!--<button class="uk-button uk-button-danger" th:type="submit">Reassign to:</button>-->
+                                            <!--</select>-->
+                                            <!--</form>-->
+                                            <a class="uk-button uk-button-danger uk-align-right"
+                                               th:href="@{'#modal-owner' + ${ticket.ownerId.id}}"
+                                               uk-toggle="">Reassign</a>
 
-                                        <div th:id="@{'modal-owner' + ${ticket.ownerId.id}}" class="uk-flex-top"
-                                             uk-modal="">
-                                            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                                            <div th:id="@{'modal-owner' + ${ticket.ownerId.id}}" class="uk-flex-top"
+                                                 uk-modal="">
+                                                <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
 
-                                                <button class="uk-modal-close-default" type="button"
-                                                        uk-close=""></button>
-                                                <th:block th:each="tech : ${techs}">
+                                                    <button class="uk-modal-close-default" type="button"
+                                                            uk-close=""></button>
+                                                    <th:block th:each="tech : ${techs}">
 
-                                                    <th:block th:if="${ticket.ownerId}==${tech}">
-                                                        <p>Assigned to: <span
-                                                                th:text="@{${tech.firstName}+' '+${tech.lastName}}"></span>
-                                                        </p>
-                                                    </th:block>
-                                                </th:block>
-
-                                                <form th:action="@{/techreassign}" th:method="post">
-                                                    <select class="uk-select" name="assign" id="assign">
-
-                                                        <th:block th:each="tech : ${techs}">
-                                                            <!--                                <th:block th:if="${ticket.specialization_id}==${tech.specialization}">-->
-                                                            <th:block th:if="${ticket.ownerId}==${tech}">
-                                                                <option th:value="@{${tech.id}}"
-                                                                        th:text="@{${tech.firstName}+' '+${tech.lastName}}"
-                                                                        th:selected="@{selected}"></option>
-                                                            </th:block>
-                                                            <th:block th:if="${ticket.ownerId}!=${tech}">
-                                                                <option th:value="@{${tech.id}}"
-                                                                        th:text="@{${tech.firstName}+' '+${tech.lastName}}"></option>
-                                                            </th:block>
+                                                        <th:block th:if="${ticket.ownerId}==${tech}">
+                                                            <p>Assigned to: <span
+                                                                    th:text="@{${tech.firstName}+' '+${tech.lastName}}"></span>
+                                                            </p>
                                                         </th:block>
-                                                        <input type="hidden" th:value="${ticket.id}" name="ticketid"/>
-                                                        <button class="uk-button uk-button-danger" th:type="submit">
-                                                            Reassign to
-                                                        </button>
-                                                    </select>
-                                                </form>
-
-                                            </div>
-                                        </div>
-
-                                        <div th:id="@{'modal-center' + ${ticket.id}}" class="uk-flex-top" uk-modal="">
-                                            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-
-                                                <button class="uk-modal-close-default" type="button"
-                                                        uk-close=""></button>
-
-                                                <h6 class="uk-margin-remove-top uk-text-bold uk-text-uppercase tixie-ticket-name uk-text-center"
-                                                    th:text="'Ticket ID: TX-'+ ${ticket.id} + '-' + ${ticket.specialization_id.name}"></h6>
-
-                                                <div><img style="height: 165px; width: 205px;"
-                                                          th:src="@{${ticket.imgUrl}}"/>
-                                                </div>
-
-                                                <p>
-                                                    <!--                                    <p th:href="@{'/tickets/author/'+${ticket.authorId.id}}">-->
-                                                    Created by: <span th:text="${ticket.authorId.getuserName()}"/>
-                                                    <!--                                    </p>-->
-                                                </p>
-
-                                                <p>
-                                                    <!--                                    <p th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">-->
-                                                    Assigned to: <span th:text="${ticket.ownerId.getuserName()}"/>
-                                                    <!--                                    </p>-->
-                                                </p>
-                                                <div class="">
-                                                    <span class="uk-text-bold">Location:</span><span
-                                                        th:text="' ' + ${ticket.location_1} + ' | ' + ${ticket.location_2}"></span>
-                                                </div>
-                                                <p>
-                                                    <!--                                    <p th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">-->
-                                                    Details: <span th:text="${ticket.issue_details}"/>
-                                                    <!--                                    </p>-->
-                                                </p>
-                                                <div th:each="note : ${notes}">
-                                                    <th:block th:if="${note.getTicket_id().id} == ${ticket.id}">
-                                                        <p>Notes: <span th:text="${note.description}"/></p>
                                                     </th:block>
+
+                                                    <form th:action="@{/techreassign}" th:method="post">
+                                                        <select class="uk-select" name="assign" id="assign">
+
+                                                            <th:block th:each="tech : ${techs}">
+                                                                <!--                                <th:block th:if="${ticket.specialization_id}==${tech.specialization}">-->
+                                                                <th:block th:if="${ticket.ownerId}==${tech}">
+                                                                    <option th:value="@{${tech.id}}"
+                                                                            th:text="@{${tech.firstName}+' '+${tech.lastName}}"
+                                                                            th:selected="@{selected}"></option>
+                                                                </th:block>
+                                                                <th:block th:if="${ticket.ownerId}!=${tech}">
+                                                                    <option th:value="@{${tech.id}}"
+                                                                            th:text="@{${tech.firstName}+' '+${tech.lastName}}"></option>
+                                                                </th:block>
+                                                            </th:block>
+                                                            <input type="hidden" th:value="${ticket.id}"
+                                                                   name="ticketid"/>
+                                                            <button class="uk-button uk-button-danger" th:type="submit">
+                                                                Reassign to
+                                                            </button>
+                                                        </select>
+                                                    </form>
+
                                                 </div>
-                                                <p>Created on: <span th:text="${ticket.issue_date}"/></p>
+                                            </div>
+
+                                            <div th:id="@{'modal-center' + ${ticket.id}}" class="uk-flex-top"
+                                                 uk-modal="">
+                                                <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+
+                                                    <button class="uk-modal-close-default" type="button"
+                                                            uk-close=""></button>
 
 
+                                                    <br/>
+
+
+                                                    <a class="uk-button uk-button-default"
+                                                       th:href="@{'#modal-center' + ${ticket.id}}"
+                                                       uk-toggle="">Open</a>
+
+                                                    <div th:id="@{'modal-center' + ${ticket.id}}" class="uk-flex-top"
+                                                         uk-modal="">
+                                                        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+
+                                                            <button class="uk-modal-close-default" type="button"
+                                                                    uk-close=""></button>
+
+                                                            <h6 class="uk-margin-remove-top uk-text-bold uk-text-uppercase tixie-ticket-name uk-text-center"
+                                                                th:text="'Ticket ID: TX-'+ ${ticket.id} + '-' + ${ticket.specialization_id.name}"></h6>
+
+                                                            <div><img style="height: 165px; width: 205px;"
+                                                                      th:src="@{${ticket.imgUrl}}"/>
+                                                            </div>
+
+                                                            <p>
+                                                                <!--                                    <p th:href="@{'/tickets/author/'+${ticket.authorId.id}}">-->
+                                                                Created by: <span
+                                                                    th:text="${ticket.authorId.getuserName()}"/>
+                                                                <!--                                    </p>-->
+                                                            </p>
+
+                                                            <p>
+                                                                <!--                                    <p th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">-->
+                                                                Assigned to: <span
+                                                                    th:text="${ticket.ownerId.getuserName()}"/>
+                                                                <!--                                    </p>-->
+                                                            </p>
+                                                            <div class="">
+                                                                <span class="uk-text-bold">Location:</span><span
+                                                                    th:text="' ' + ${ticket.location_1} + ' | ' + ${ticket.location_2}"></span>
+                                                            </div>
+                                                            <p>
+                                                                <!--                                    <p th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">-->
+                                                                Details: <span th:text="${ticket.issue_details}"/>
+                                                                <!--                                    </p>-->
+                                                            </p>
+                                                            <div th:each="note : ${notes}">
+                                                                <th:block
+                                                                        th:if="${note.getTicket_id().id} == ${ticket.id}">
+                                                                    <p>Notes: <span th:text="${note.description}"/></p>
+                                                                </th:block>
+                                                            </div>
+                                                            <p>Created on: <span th:text="${ticket.issue_date}"/></p>
+
+
+                                                        </div>
+                                                    </div>
+
+
+                                                    <!--<p>-->
+                                                    <!--<a th:href="@{'/tech/ticket/'+${ticket.id}}">-->
+                                                    <!--<button>-->
+                                                    <!--View Ticket-->
+                                                    <!--</button>-->
+                                                    <!--</a>-->
+                                                    <!--</p>-->
+                                                </div>
                                             </div>
                                         </div>
-
-
-                                        <!--<p>-->
-                                        <!--<a th:href="@{'/tech/ticket/'+${ticket.id}}">-->
-                                        <!--<button>-->
-                                        <!--View Ticket-->
-                                        <!--</button>-->
-                                        <!--</a>-->
-                                        <!--</p>-->
-                                    </div>
-                                </li>
-                            </th:block>
-                        </ul>
+                                    </li>
+                                </th:block>
+                            </ul>
+                        </div>
                     </div>
-                    <br />
+                    <br/>
                     <div>
                         <a href="#" uk-totop="" uk-scroll="" class="uk-align-center"></a>
                     </div>
                 </div>
             </div>
         </div>
+        <a href="#" uk-totop="" uk-scroll="" class="uk-align-center"></a>
+        <br/>
     </div>
-</div>
+</th:block>
 </body>
 <footer>
     <th:block th:include="partials/common :: footer">
