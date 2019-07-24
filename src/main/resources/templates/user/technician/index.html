@@ -149,9 +149,10 @@
                                                                     th:text="' ' + ${tickets.issue_details}"></span>
                                                             </div>
                                                         </div>
-                                                        <div class="uk-flex">
+                                                        <div uk-grid="">
 
-                                                            <div class="uk-modal-footer uk-text-left">
+                                                            <div class="uk-modal-footer">
+
                                                                 <form th:action="@{/techticket/inprogress}"
                                                                       th:method="post">
                                                                     <input type="hidden" th:value="${tickets.id}"
@@ -159,11 +160,13 @@
                                                                     <input type="hidden" th:value="2"
                                                                            th:name="statusIp"/>
                                                                     <th:block th:if="${tickets.statusId.id} == *{'2'}">
-                                                                        <button th:text="${tickets.statusId.status}"
-                                                                                class="uk-button uk-button-default"
-                                                                                disabled="disabled"><span
-                                                                                uk-icon="icon: check"></span>In Progress
-                                                                        </button>
+                                                                        <div class="uk-text-right">
+                                                                            <button th:text="${tickets.statusId.status}"
+                                                                                    class="uk-button uk-button-default"
+                                                                                    disabled="disabled"><span
+                                                                                    uk-icon="icon: check"></span>In Progress
+                                                                            </button>
+                                                                        </div>
                                                                     </th:block>
                                                                     <th:block th:if="${tickets.statusId.id} == *{'1'}">
                                                                         <input type="hidden" th:value="${tickets.id}" th:name="setOwner" />

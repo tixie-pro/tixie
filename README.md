@@ -1,7 +1,7 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.tixie.pro">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+    <img alt="Tixie Logo" src="http://www.simpleimageresizer.com/_uploads/photos/abf57570/66987293_357484011815716_3633227412528955392_n-removebg-preview_200x200.png" width="60" />
   </a>
 </p>
 <h1 align="center">
