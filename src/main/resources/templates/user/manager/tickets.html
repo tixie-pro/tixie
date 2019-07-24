@@ -178,6 +178,7 @@
                                                     <div class="">
                                                         <span class="uk-text-bold">Location:</span><span
                                                             th:text="' ' + ${ticket.location_1} + ' | ' + ${ticket.location_2}"></span>
+
                                                     </div>
                                                     <p>
                                                         <!--                                    <p th:href="@{'/tickets/tech/'+${ticket.ownerId.id}}">-->
@@ -206,25 +207,22 @@
                                             <!--</p>-->
                                         </div>
                                     </li>
-
+                                </th:block>
+                            </ul>
                         </div>
                     </div>
-
+                </div>
+            </div>
+        </div>
+    </div>
 </th:block>
-</ul>
-</div>
-</div>
+
 <br/>
 <div>
     <a href="#" uk-totop="" uk-scroll="" class="uk-align-center"></a>
 </div>
-</div>
-</div>
-</div>
-<a href="#" uk-totop="" uk-scroll="" class="uk-align-center"></a>
-<br/>
-</div>
-</th:block>
+
+
 </body>
 <footer>
     <th:block th:include="partials/common :: footer">

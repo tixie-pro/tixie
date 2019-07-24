@@ -35,6 +35,7 @@ public class ManagerDashController {
         this.priDao = priDao;
         this.statDao= statDao;
         this.specDao = specDao;
+        this.noteDao = noteDao;
     }
 
     @GetMapping("dashboard/all")

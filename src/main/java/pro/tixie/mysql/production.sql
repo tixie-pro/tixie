@@ -29,9 +29,9 @@ insert into status (id, status) values (2, 'in progress');
 insert into status (id, status) values (3, 'complete');
 
 
-insert into user (id, first_name, last_name, email, password, username, profile_image, specialization_id, role_id) values (1, 'Fifine', 'Bilton', 'fbilton1@opera.com', 'VdXnZ7c7BCW', 'fbilton1', 'https://randomuser.me/api/portraits/men/1.jpg', 1, 2);
-insert into user (id, first_name, last_name, email, password, username, profile_image, specialization_id, role_id) values (2, 'Fifaine', 'Biltaon', 'fbiaalton1@opera.com', 'VdXnZ7c7BCW', 'fbilton2', 'https://randomuser.me/api/portraits/men/2.jpg', 2, 2);
-insert into user (id, first_name, last_name, email, password, username, profile_image, specialization_id, role_id) values (3, 'Nadiya', 'Knowles', 'nknowles2@hibu.com', 'rVIwkF9Nji', 'nknowles2', 'https://randomuser.me/api/portraits/men/3.jpg', 3,2);
+insert into user (id, first_name, last_name, email, password, username, profile_image, specialization_id, role_id) values (1, 'Nikho', 'Rosales', 'nikho@tixie.pro', '$2a$10$373ZKGPNliitXrYX65I0beBWI01ROcFO4oF5BtZcnUqdZjigExfbi', 'Nikho', '/img/nikho.jpg', 1, 4);
+insert into user (id, first_name, last_name, email, password, username, profile_image, specialization_id, role_id) values (2, 'Carson', 'Belew', 'carson@tixie.pro', '$2a$10$373ZKGPNliitXrYX65I0beBWI01ROcFO4oF5BtZcnUqdZjigExfbi', 'Carson', '/img/carson3.png', 2, 3);
+insert into user (id, first_name, last_name, email, password, username, profile_image, specialization_id, role_id) values (3, 'John', 'De Leon', 'john@tixie.pro', '$2a$10$373ZKGPNliitXrYX65I0beBWI01ROcFO4oF5BtZcnUqdZjigExfbi', 'John', '/img/john.jpg', 3,2);
 insert into user (id, first_name, last_name, email, password, username, profile_image, specialization_id, role_id) values (4, 'Hattie', 'Cahill', 'hcahill3@about.me', '5kk0RiL09', 'hcahill3', 'https://randomuser.me/api/portraits/men/4.jpg', 4,2);
 insert into user (id, first_name, last_name, email, password, username, profile_image, specialization_id, role_id) values (5, 'Blanche', 'Cluatt', 'bcluatt4@ox.ac.uk', '5ydmV4', 'bcluatt4', 'https://randomuser.me/api/portraits/men/5.jpg', 5,2);
 insert into user (id, first_name, last_name, email, password, username, profile_image, specialization_id, role_id) values (6, 'Grier', 'Kidd', 'gkidd5@google.ca', '4Yi2yCIJlnAr', 'gkidd5', 'https://randomuser.me/api/portraits/men/6.jpg', 6,2);
