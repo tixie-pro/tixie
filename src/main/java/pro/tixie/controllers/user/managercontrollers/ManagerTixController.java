@@ -35,7 +35,7 @@ public class ManagerTixController {
         this.specDao = specDao;
         this.noteDao = noteDao;
     }
-
+    @SuppressWarnings("Duplicates")
     @GetMapping("tickets/all")
     public String allTickets(Model model) {
 
@@ -52,11 +52,16 @@ public class ManagerTixController {
         model.addAttribute("tix", tix);
         return "user/manager/tickets";
     }
-
+    @SuppressWarnings("Duplicates")
     @GetMapping("tickets/tech/{id}")
     public String allTicketsbyTech(@PathVariable long id, Model model) {
         User user = userDao.findOne(id);
         List<Ticket> tix = ticketDao.findAllByOwner(user);
+        List<Note> note = noteDao.findAll();
+
+        List<User> allTechs = userDao.findAll();
+        model.addAttribute("notes", note);
+        model.addAttribute("techs", allTechs);
         nulUserIf(tix);
         model.addAttribute("tix", tix);
         return "user/manager/tickets";
