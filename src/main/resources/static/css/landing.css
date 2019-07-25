@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Fjalla+One|Noto+Sans&display=swap');
 
+html{
+    scroll-behavior: smooth;
+}
+
 
 
 h1,
@@ -35,9 +39,6 @@ h5 {
     color: #4C53DC;
 }
 
-.tixie-learn-icon:hover {
-    background-color: deeppink;
-}
 
 /* More About Tixie*/
 
