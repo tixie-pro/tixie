@@ -57,6 +57,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/employee/ticket/create", // only authenticated user can create ticket
                         "/employee",
+                        "/register",
                         "/tech",// only authenticated user can access tech page
                         "/dashboard/all",
                         "/tech-list/all"
