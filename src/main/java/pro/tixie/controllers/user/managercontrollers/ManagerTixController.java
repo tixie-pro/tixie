@@ -146,7 +146,7 @@ public class ManagerTixController {
 
         tix.setOwnerId(owner);
         ticketDao.save(tix);
-        return ("redirect:/tickets/all");
+        return ("redirect:/dashboard/all");
     }
 
     @PostMapping("techescalate")

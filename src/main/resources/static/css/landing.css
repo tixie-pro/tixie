@@ -21,10 +21,13 @@ h5 {
     height:60vh;
 }
 
-
 .tixie-landing-slogan {
     color: blanchedalmond;
     font-family: 'Fjalla One', sans-serif;
+}
+
+.tixie-features {
+    height: 150px;
 }
 
 .tixie-landing-stats {
@@ -32,10 +35,14 @@ h5 {
     color: #4C53DC;
 }
 
+.tixie-learn-icon:hover {
+    background-color: deeppink;
+}
+
 /* More About Tixie*/
 
 .quote {
-    background: #41ade5;
+    background: #F7F6FB;
     position: relative;
     z-index: 1;
 }
@@ -72,11 +79,6 @@ h5 {
     padding: 3% 20px;
     text-align: center;
 }
-
-
-
-
-
 
 
 /* Stats Styles*/
