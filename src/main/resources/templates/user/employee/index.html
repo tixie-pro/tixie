@@ -93,8 +93,6 @@
                         <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
                             <thead>
                             <tr>
-                                <th class="uk-table-shrink"></th>
-                                <th class="uk-table-shrink">User</th>
                                 <th class="uk-width-small">Ticket Number</th>
                                 <th class="uk-table-expand ">Details</th>
                                 <th class="uk-table-shrink uk-text-nowrap">Status</th>
@@ -105,8 +103,6 @@
                             <th:block th:each="ticket : ${tix}">
                                 <tr>
                                     <th:block th:if="${ticket.statusId.status} == @{'in progress'}">
-                                        <td><input class="uk-checkbox" type="checkbox"/></td>
-                                        <td><a href="#" class="uk-icon-link" uk-icon="github"></a></td>
                                         <!--  <td><img class="uk-preserve-width uk-border-circle" th:src="${ticket.authorId.getProfileImage()}" width="21" height="21" alt=""/></td>-->
                                         <td class="uk-table-link">
                                             <a class="uk-link-reset uk-text-uppercase" href=""
@@ -133,8 +129,6 @@
                         <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
                             <thead>
                             <tr>
-                                <th class="uk-table-shrink"></th>
-                                <th class="uk-table-shrink">User</th>
                                 <th class="uk-width-small">Ticket Number</th>
                                 <th class="uk-table-expand ">Details</th>
                                 <th class="uk-table-shrink uk-text-nowrap">Status</th>
@@ -145,8 +139,6 @@
                             <th:block th:each="ticket : ${tix}">
                                 <tr>
                                     <th:block th:if="${ticket.statusId.status} == @{'complete'}">
-                                        <td><input class="uk-checkbox" type="checkbox"/></td>
-                                        <td><a href="#" class="uk-icon-link" uk-icon="github"></a></td>
                                         <!--  <td><img class="uk-preserve-width uk-border-circle" th:src="${ticket.authorId.getProfileImage()}" width="21" height="21" alt=""/></td>-->
                                         <td class="uk-table-link">
                                             <a class="uk-link-reset" href=""
@@ -177,7 +169,7 @@
     <!--</div>-->
 <!--</div>-->
 </body>
-<footer>
+<footer class="uk-height-small">
     <th:block th:include="partials/common :: footer">
     </th:block>
 </footer>

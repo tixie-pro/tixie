@@ -16,6 +16,13 @@ h6 {
 
 .uk-navbar-nav li a {
     color: #333;
+    font-size: x-large;
+
+}
+
+.uk-navbar-nav li form button{
+    font-size: x-large;
+
 }
 
 .uk-navbar-nav li a:hover {
@@ -31,3 +38,4 @@ h6 {
     -moz-box-shadow: -2px 9px 5px -4px rgba(189,182,189,1);
     box-shadow: -2px 9px 5px -4px rgba(189,182,189,1);
 }
+
