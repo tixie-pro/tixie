@@ -4,7 +4,7 @@
     <th:block th:include="partials/common :: head">
     </th:block>
     <link rel="stylesheet" href="/css/manager.css"/>
-    <link rel="stylesheet" href="/css/manager-tech.css" />
+    <link rel="stylesheet" href="/css/manager-tech.css"/>
     <script src="https://kit.fontawesome.com/7508253178.js"></script>
     <title>Tixie | Manager | All Techs List</title>
 </head>
@@ -73,8 +73,8 @@
                                 <div class="uk-modal-body" uk-overflow-auto="">
 
                                     <form th:action="@{/change-role}" th:method="post">
-                                        <p> change role</p>
-                                        <select name="role" id="role">
+                                        <p class="uk-modal-title"> Change Role</p>
+                                        <select class="uk-select" name="role" id="role">
                                             <th:block th:each="role: ${roles}">
                                                 <th:block th:if="${tech.role.role}==${role.role}">
                                                     <option th:value="@{${role.id} }"
@@ -91,8 +91,8 @@
                                                 </th:block>
                                             </th:block>
                                         </select>
-                                        <p> change Specialization</p>
-                                        <select name="changespec" id="changespec">
+                                        <p class="uk-modal-title"> Change Specialization</p>
+                                        <select class="uk-select" name="changespec" id="changespec">
                                             <th:block th:each="spec : ${specs}">
                                                 <th:block th:if="${spec.id}== ${tech.specialization.id}">
                                                     <option th:value="${spec.id}"
@@ -108,16 +108,16 @@
                                                 </th:block>
                                             </th:block>
                                         </select>
-                                        <input type="hidden" th:value="${tech.id}" name="techid" id="techid"/>
-                                        <button> Submit Changes</button>
+                                        <div class="uk-modal-footer uk-text-right uk-margin-medium-top uk-padding-remove-bottom">
+                                            <button class="uk-button uk-button-default uk-modal-close" type="button">
+                                                Cancel
+                                            </button>
+                                            <input type="hidden" th:value="${tech.id}" name="techid" id="techid"/>
+                                            <button class="uk-button uk-button-primary uk-margin-small-left">Save</button>
+                                        </div>
                                     </form>
                                 </div>
 
-                                <div class="uk-modal-footer uk-text-right">
-                                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel
-                                    </button>
-                                    <button class="uk-button uk-button-primary" type="button">Save</button>
-                                </div>
                             </div>
                         </div>
                         <!--   End off Canvas -->
@@ -202,7 +202,7 @@
 <!--    </div>-->
 <!--</div>-->
 </body>
-<footer>
+<footer class="uk-height-small">
     <th:block th:include="partials/common :: footer">
     </th:block>
 </footer>

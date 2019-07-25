@@ -195,8 +195,7 @@
                                                                             th:if="${tickets.statusId.id} == *{'2'}">
                                                                         <button th:text="${tickets.statusId.status}"
                                                                                 class="uk-button uk-button-default"
-                                                                                disabled="disabled"><span
-                                                                                uk-icon="icon: check"></span>In
+                                                                                disabled="disabled">In
                                                                             Progress
                                                                         </button>
                                                                     </th:block>
@@ -208,9 +207,8 @@
                                                                         <input type="hidden"
                                                                                th:value="${#authentication.principal.id}"
                                                                                th:name="newOwner"/>
-                                                                        <button th:text="${tickets.statusId.status}"
-                                                                                class="uk-button uk-button-default"><span
-                                                                                uk-icon="icon: check"></span>Open
+                                                                        <button class="uk-button uk-button-default">
+                                                                            Accept
                                                                         </button>
                                                                     </th:block>
                                                                 </form>
@@ -247,175 +245,175 @@
 <!-- Old Code-->
 
 <!--<div sec:authorize="isAuthenticated()">-->
-    <!--<div class="uk-container-medium">-->
-        <!--<h1 class="uk-text-center uk-heading-large">Assigned Tickets-->
-        <!--</h1>-->
-        <!--<button class="uk-button uk-button-default uk-margin-small-right" type="button"-->
-                <!--uk-toggle="target: #offcanvas-slide">My Tickets-->
-        <!--</button>-->
-        <!--<div id="offcanvas-slide" uk-offcanvas="overlay: true">-->
-            <!--<div class="uk-offcanvas-bar">-->
-                <!--<button class="uk-offcanvas-close" type="button" uk-close="true"></button>-->
-                <!--<div th:each="tickets : ${tix}">-->
-                    <!--<th:block th:if="${#authentication.principal.id} == ${tickets.ownerId.id}">-->
-                        <!--<h3 th:text="${tickets.id}"></h3>-->
-                        <!--<p th:text="${tickets.issue_details}">Carson</p>-->
-                        <!--<p>Status: <span th:text="${tickets.statusId.status}"></span></p>-->
-                    <!--</th:block>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="uk-grid-match uk-grid-small uk-text-center" uk-grid="true">-->
-            <!--<div class="uk-width-1-2@m uk-card uk-card-body uk-overflow-auto uk-height-large">-->
-                <!--<div class="uk-card uk-card-default uk-card-body">-->
-                    <!--<h3 class="uk-heading-medium uk-heading-line uk-text-center"><span>Available Tickets</span></h3>-->
-                    <!--&lt;!&ndash;<div class="uk-overflow-auto height uk-height-large">&ndash;&gt;-->
-                    <!--<table class="uk-table uk-table-striped uk-height-medium uk-text-center">-->
-                        <!--<div th:each="tickets : ${tix}">-->
-                            <!--<th:block th:if="${tickets.statusId.id} != 3">-->
-                                <!--<tr>-->
-                                    <!--<th class="uk-text-center">Active</th>-->
-                                    <!--<th class="uk-text-center">Ticket Id</th>-->
-                                    <!--<th class="uk-text-center">Notes</th>-->
-                                <!--</tr>-->
-                                <!--<tr>-->
-                                    <!--<td class="uk-text-center">-->
-                                        <!--<th:block th:if="${active}">-->
-                                            <!--<th:block th:if="${tickets.id} == ${ticket.id}">-->
-                                                <!--<a th:href="@{'/tech/ticket/' + ${tickets.id}}">-->
-                                                    <!--<div class="uk-card-body">-->
-                                                        <!--<div class="uk-text-center">-->
-                                                            <!--<button><span uk-icon="icon: check"></span>Active-->
-                                                            <!--</button>-->
-                                                        <!--</div>-->
-                                                    <!--</div>-->
-                                                <!--</a>-->
-                                            <!--</th:block>-->
-                                            <!--<th:block th:if="${tickets.id} != ${ticket.id}">-->
-                                                <!--<a th:href="@{'/tech/ticket/' + ${tickets.id}}">-->
-                                                    <!--<div class="uk-card-body">-->
-                                                        <!--<div class="uk-text-center" type="checkbox" name="active"-->
-                                                             <!--value="Active">-->
-                                                            <!--<button>Active</button>-->
-                                                        <!--</div>-->
-                                                    <!--</div>-->
-                                                <!--</a>-->
-                                            <!--</th:block>-->
-                                        <!--</th:block>-->
-                                        <!--<th:block th:if="${!active}">-->
-                                            <!--<a th:href="@{'/tech/ticket/' + ${tickets.id}}">-->
-                                                <!--<div class="uk-card-body">-->
-                                                    <!--<div type="checkbox" name="active" value="Active">-->
-                                                        <!--<button>Activate</button>-->
-                                                    <!--</div>-->
-                                                <!--</div>-->
-                                            <!--</a>-->
-                                        <!--</th:block>-->
-                                    <!--</td>-->
-                                    <!--<td><p class="uk-card-body" th:text="${tickets.id}"/></td>-->
-                                    <!--<td><p class="uk-card-body" th:text="${tickets.issue_details}"/></td>-->
-                                <!--</tr>-->
-                            <!--</th:block>-->
-                        <!--</div>-->
-                    <!--</table>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="uk-width-1-2@m uk-card uk-card-body height" id="completedRemove">-->
-                <!--<div th:if="${active}">-->
-                    <!--&lt;!&ndash;<div class="uk-grid-small uk-child-width-auto" uk-grid="true" uk-countdown="date: 2019-07-24T14:39:43+00:00">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="uk-countdown-number uk-countdown-days"></div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Days</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="uk-countdown-separator">:</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="uk-countdown-number uk-countdown-hours"></div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Hours</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="uk-countdown-separator">:</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="uk-countdown-number uk-countdown-minutes"></div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Minutes</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="uk-countdown-separator">:</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="uk-countdown-number uk-countdown-seconds"></div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Seconds</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--<div class="uk-card uk-card-default uk-card-body">-->
-                        <!--<h3 class="uk-heading-medium uk-heading-line uk-text-center"><span>Active Ticket</span></h3>-->
-                        <!--<div class="uk-overflow-auto height uk-height-large">-->
-                            <!--<table class="uk-table uk-table-striped">-->
-                                <!--<tr>-->
-                                    <!--<th>Category: <span th:text="${ticket.specialization_id.name}"></span></th>-->
-                                <!--</tr>-->
-                                <!--<tr>-->
-                                    <!--<th>Location: <span th:text="${ticket.location_1}"></span> , <span-->
-                                            <!--th:text="${ticket.location_2}"></span></th>-->
-                                <!--</tr>-->
-                            <!--</table>-->
-                            <!--<div>-->
-                                <!--<h3 class="uk-heading-small uk-heading-line uk-text-center"><span>Details</span>-->
-                                <!--</h3>-->
-                            <!--</div>-->
-                            <!--<div class="uk-card-body">-->
-                                <!--<p th:text="${ticket.issue_details}"></p>-->
-                            <!--</div>-->
-                            <!--<div>-->
-                                <!--<h3 class="uk-heading-small uk-heading-line uk-text-center"><span>Notes</span></h3>-->
-                            <!--</div>-->
-                            <!--<div th:each="note : ${note}" class="uk-card-body">-->
-                                <!--<p th:text="${note.description}"></p>-->
-                            <!--</div>-->
-                            <!--<table class="uk-table uk-table-striped">-->
-                                <!--<tr>-->
-                                    <!--<td style="text-align: left">-->
-                                        <!--<form th:action="@{/techticket/inprogress}" th:method="post">-->
-                                            <!--<input type="hidden" th:value="${ticket.id}"-->
-                                                   <!--th:name="ticketIdIp"/>-->
-                                            <!--<input type="hidden" th:value="2" th:name="statusIp"/>-->
-                                            <!--<button th:text="${ticket.statusId.status}"-->
-                                                    <!--class="uk-button uk-button-default"><span-->
-                                                    <!--uk-icon="icon: check"></span>In Progress-->
-                                            <!--</button>-->
-                                        <!--</form>-->
-                                    <!--</td>-->
-                                    <!--<td style="text-align: center">-->
-                                        <!--<form th:action="@{'/techticketcomplete'}" th:method="post">-->
-                                            <!--<input type="hidden" th:value="${ticket.id}" th:name="ticketId"/>-->
-                                            <!--<input type="hidden" th:value="3" th:name="status"/>-->
-                                            <!--<button class="uk-button uk-button-primary">Completed</button>-->
-                                        <!--</form>-->
-                                    <!--</td>-->
-                                    <!--<td style="text-align: right">-->
-                                        <!--<form th:action="@{/techescalate}" th:method="post">-->
-                                            <!--<select name="assign" id="assign">-->
-                                                <!--<th:block th:each="tech : ${techs}">-->
-                                                    <!--<th:block th:if="${ticket.ownerId}!=${tech}">-->
-                                                        <!--<th:block th:if="${tech.role.role}==@{'manager'}">-->
-                                                            <!--<option th:value="@{${tech.id}}"-->
-                                                                    <!--th:text="@{${tech.firstName}+' '+${tech.lastName}}">-->
-                                                            <!--</option>-->
-                                                        <!--</th:block>-->
-                                                    <!--</th:block>-->
-                                                <!--</th:block>-->
-                                                <!--<input type="hidden" th:value="${ticket.id}" name="ticketid"/>-->
-                                                <!--<button class="uk-button uk-button-danger" type="submit"-->
-                                                        <!--onclick="UIkit.notification({message: 'This ticket has been escalated to a Manager!', status: 'success'})">-->
-                                                    <!--Escalate-->
-                                                <!--</button>-->
-                                            <!--</select>-->
-                                        <!--</form>-->
-                                    <!--</td>-->
-                                <!--</tr>-->
-                            <!--</table>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
+<!--<div class="uk-container-medium">-->
+<!--<h1 class="uk-text-center uk-heading-large">Assigned Tickets-->
+<!--</h1>-->
+<!--<button class="uk-button uk-button-default uk-margin-small-right" type="button"-->
+<!--uk-toggle="target: #offcanvas-slide">My Tickets-->
+<!--</button>-->
+<!--<div id="offcanvas-slide" uk-offcanvas="overlay: true">-->
+<!--<div class="uk-offcanvas-bar">-->
+<!--<button class="uk-offcanvas-close" type="button" uk-close="true"></button>-->
+<!--<div th:each="tickets : ${tix}">-->
+<!--<th:block th:if="${#authentication.principal.id} == ${tickets.ownerId.id}">-->
+<!--<h3 th:text="${tickets.id}"></h3>-->
+<!--<p th:text="${tickets.issue_details}">Carson</p>-->
+<!--<p>Status: <span th:text="${tickets.statusId.status}"></span></p>-->
+<!--</th:block>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="uk-grid-match uk-grid-small uk-text-center" uk-grid="true">-->
+<!--<div class="uk-width-1-2@m uk-card uk-card-body uk-overflow-auto uk-height-large">-->
+<!--<div class="uk-card uk-card-default uk-card-body">-->
+<!--<h3 class="uk-heading-medium uk-heading-line uk-text-center"><span>Available Tickets</span></h3>-->
+<!--&lt;!&ndash;<div class="uk-overflow-auto height uk-height-large">&ndash;&gt;-->
+<!--<table class="uk-table uk-table-striped uk-height-medium uk-text-center">-->
+<!--<div th:each="tickets : ${tix}">-->
+<!--<th:block th:if="${tickets.statusId.id} != 3">-->
+<!--<tr>-->
+<!--<th class="uk-text-center">Active</th>-->
+<!--<th class="uk-text-center">Ticket Id</th>-->
+<!--<th class="uk-text-center">Notes</th>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td class="uk-text-center">-->
+<!--<th:block th:if="${active}">-->
+<!--<th:block th:if="${tickets.id} == ${ticket.id}">-->
+<!--<a th:href="@{'/tech/ticket/' + ${tickets.id}}">-->
+<!--<div class="uk-card-body">-->
+<!--<div class="uk-text-center">-->
+<!--<button><span uk-icon="icon: check"></span>Active-->
+<!--</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</a>-->
+<!--</th:block>-->
+<!--<th:block th:if="${tickets.id} != ${ticket.id}">-->
+<!--<a th:href="@{'/tech/ticket/' + ${tickets.id}}">-->
+<!--<div class="uk-card-body">-->
+<!--<div class="uk-text-center" type="checkbox" name="active"-->
+<!--value="Active">-->
+<!--<button>Active</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</a>-->
+<!--</th:block>-->
+<!--</th:block>-->
+<!--<th:block th:if="${!active}">-->
+<!--<a th:href="@{'/tech/ticket/' + ${tickets.id}}">-->
+<!--<div class="uk-card-body">-->
+<!--<div type="checkbox" name="active" value="Active">-->
+<!--<button>Activate</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</a>-->
+<!--</th:block>-->
+<!--</td>-->
+<!--<td><p class="uk-card-body" th:text="${tickets.id}"/></td>-->
+<!--<td><p class="uk-card-body" th:text="${tickets.issue_details}"/></td>-->
+<!--</tr>-->
+<!--</th:block>-->
+<!--</div>-->
+<!--</table>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="uk-width-1-2@m uk-card uk-card-body height" id="completedRemove">-->
+<!--<div th:if="${active}">-->
+<!--&lt;!&ndash;<div class="uk-grid-small uk-child-width-auto" uk-grid="true" uk-countdown="date: 2019-07-24T14:39:43+00:00">&ndash;&gt;-->
+<!--&lt;!&ndash;<div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="uk-countdown-number uk-countdown-days"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Days</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="uk-countdown-separator">:</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="uk-countdown-number uk-countdown-hours"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Hours</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="uk-countdown-separator">:</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="uk-countdown-number uk-countdown-minutes"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Minutes</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="uk-countdown-separator">:</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="uk-countdown-number uk-countdown-seconds"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Seconds</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<div class="uk-card uk-card-default uk-card-body">-->
+<!--<h3 class="uk-heading-medium uk-heading-line uk-text-center"><span>Active Ticket</span></h3>-->
+<!--<div class="uk-overflow-auto height uk-height-large">-->
+<!--<table class="uk-table uk-table-striped">-->
+<!--<tr>-->
+<!--<th>Category: <span th:text="${ticket.specialization_id.name}"></span></th>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<th>Location: <span th:text="${ticket.location_1}"></span> , <span-->
+<!--th:text="${ticket.location_2}"></span></th>-->
+<!--</tr>-->
+<!--</table>-->
+<!--<div>-->
+<!--<h3 class="uk-heading-small uk-heading-line uk-text-center"><span>Details</span>-->
+<!--</h3>-->
+<!--</div>-->
+<!--<div class="uk-card-body">-->
+<!--<p th:text="${ticket.issue_details}"></p>-->
+<!--</div>-->
+<!--<div>-->
+<!--<h3 class="uk-heading-small uk-heading-line uk-text-center"><span>Notes</span></h3>-->
+<!--</div>-->
+<!--<div th:each="note : ${note}" class="uk-card-body">-->
+<!--<p th:text="${note.description}"></p>-->
+<!--</div>-->
+<!--<table class="uk-table uk-table-striped">-->
+<!--<tr>-->
+<!--<td style="text-align: left">-->
+<!--<form th:action="@{/techticket/inprogress}" th:method="post">-->
+<!--<input type="hidden" th:value="${ticket.id}"-->
+<!--th:name="ticketIdIp"/>-->
+<!--<input type="hidden" th:value="2" th:name="statusIp"/>-->
+<!--<button th:text="${ticket.statusId.status}"-->
+<!--class="uk-button uk-button-default"><span-->
+<!--uk-icon="icon: check"></span>In Progress-->
+<!--</button>-->
+<!--</form>-->
+<!--</td>-->
+<!--<td style="text-align: center">-->
+<!--<form th:action="@{'/techticketcomplete'}" th:method="post">-->
+<!--<input type="hidden" th:value="${ticket.id}" th:name="ticketId"/>-->
+<!--<input type="hidden" th:value="3" th:name="status"/>-->
+<!--<button class="uk-button uk-button-primary">Completed</button>-->
+<!--</form>-->
+<!--</td>-->
+<!--<td style="text-align: right">-->
+<!--<form th:action="@{/techescalate}" th:method="post">-->
+<!--<select name="assign" id="assign">-->
+<!--<th:block th:each="tech : ${techs}">-->
+<!--<th:block th:if="${ticket.ownerId}!=${tech}">-->
+<!--<th:block th:if="${tech.role.role}==@{'manager'}">-->
+<!--<option th:value="@{${tech.id}}"-->
+<!--th:text="@{${tech.firstName}+' '+${tech.lastName}}">-->
+<!--</option>-->
+<!--</th:block>-->
+<!--</th:block>-->
+<!--</th:block>-->
+<!--<input type="hidden" th:value="${ticket.id}" name="ticketid"/>-->
+<!--<button class="uk-button uk-button-danger" type="submit"-->
+<!--onclick="UIkit.notification({message: 'This ticket has been escalated to a Manager!', status: 'success'})">-->
+<!--Escalate-->
+<!--</button>-->
+<!--</select>-->
+<!--</form>-->
+<!--</td>-->
+<!--</tr>-->
+<!--</table>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 <!--</div>-->
 
 <script>

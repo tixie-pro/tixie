@@ -3,8 +3,8 @@
 <head>
     <th:block th:fragment="head">
         <meta charset="UTF-8"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
-        <link rel="stylesheet" href="/css/nav.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css"/>
+        <link rel="stylesheet" href="/css/nav.css"/>
     </th:block>
 </head>
 <body>
@@ -17,17 +17,8 @@
                     <ul class="uk-navbar-nav">
                         <li><a href="/">Home</a></li>
                         <li><a href="/about">About Us</a></li>
-                        <li><a href="/tech">Technician</a></li>
-                        <li>
-                            <a href="#">Manager</a>
-                            <div class="uk-navbar-dropdown">
-                                <ul class="uk-nav uk-navbar-dropdown-nav">
-                                    <li><a href="/dashboard/all">Dashboard</a></li>
-                                    <li><a href="/tech-list/all">Users</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
+                        <!--              Login          -->
+                        <li sec:authorize="isAnonymous()">
                             <a href="#">Login</a>
                             <div class="uk-navbar-dropdown">
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
@@ -38,19 +29,32 @@
                                                 <input class="uk-input" name="username" type="text"/>
                                             </div>
                                         </div>
-
                                         <div class="uk-margin">
                                             <div class="uk-inline">
                                                 <span class="uk-form-icon" uk-icon="icon: lock"></span>
                                                 <input class="uk-input" name="password" type="password"/>
                                             </div>
                                         </div>
-                                        <button class="uk-button uk-button-default demo" type="submit" onclick="UIkit.notification({message: 'Login Succesfull!', status: 'success'})">Login</button>
+                                        <button class="uk-button uk-button-default demo" type="submit"
+                                                onclick="UIkit.notification({message: 'Login Succesfull!', status: 'success'})">
+                                            Login
+                                        </button>
                                     </form>
                                 </ul>
                             </div>
                         </li>
-                        <li class="uk-navbar-nav" sec:authorize="isAuthenticated()"><a th:href="@{'/employee/{id}' (id=${#authentication.principal.id})}">Employee</a></li>
+                        <li class="uk-navbar-nav" sec:authorize="isAuthenticated()" th:if="${#authentication.principal.role.id} == ${'4'}"><a th:href="@{'/employee/{id}' (id=${#authentication.principal.id})}">Employee</a></li>
+                        <li class="uk-navbar-nav" sec:authorize="isAuthenticated()" th:if="${#authentication.principal.role.id} == ${'3'}"><a href="/tech">Technician</a></li>
+                        <li class="uk-navbar-nav" sec:authorize="isAuthenticated()" th:if="${#authentication.principal.role.id} == ${'2'}">
+                            <a href="#">Manager</a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li><a href="/dashboard/all">Dashboard</a></li>
+                                    <li><a href="/tech-list/all">Users</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
                         <li class="uk-navbar-nav" sec:authorize="isAuthenticated()"><a href="/employee/ticket/create">Create Ticket</a></li>
                         <li class="uk-navbar-nav uk-navbar-item" sec:authorize="isAuthenticated()">
                             <form th:action="@{/logout}" th:method="post">
