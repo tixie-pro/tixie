@@ -16,8 +16,16 @@ h6 {
 
 .uk-navbar-nav li a {
     color: #333;
+    font-size: x-large;
+
+}
+
+.uk-navbar-nav li form button{
+    font-size: x-large;
+
 }
 
 .uk-navbar-nav li a:hover {
     color: #2dc7ff;
 }
+
