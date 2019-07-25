@@ -170,13 +170,13 @@
     </div>
 </div>
 <!-- End Test Grid-->
-<div class="uk-section">
-    <div sec:authorize="isAuthenticated()">
-        User ID: <span th:text="${#authentication.principal.id}"></span>
-        Username: <span th:text="${#authentication.principal.username}"></span>
-        Email: <span th:text="${#authentication.principal.email}"></span>
-    </div>
-</div>
+<!--<div class="uk-section">-->
+    <!--<div sec:authorize="isAuthenticated()">-->
+        <!--User ID: <span th:text="${#authentication.principal.id}"></span>-->
+        <!--Username: <span th:text="${#authentication.principal.username}"></span>-->
+        <!--Email: <span th:text="${#authentication.principal.email}"></span>-->
+    <!--</div>-->
+<!--</div>-->
 </body>
 <footer>
     <th:block th:include="partials/common :: footer">
