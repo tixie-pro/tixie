@@ -32,6 +32,19 @@
                             Email: <span th:text="${#authentication.principal.email}"></span>
                         </div>
 
+                        <h2 class="uk-heading-line"><span>Specialization</span></h2>
+                        <div class="uk-margin">
+                            <select class="uk-select" th:value="0" th:field="*{specialization_id}">
+                                <option th:value="1" th:text="*{'Carpenter'}"></option>
+                                <option th:value="2" th:text="*{'Electrical'}"></option>
+                                <option th:value="3" th:text="*{'Plumbing'}"></option>
+                                <option th:value="4" th:text="*{'HVAC'}"></option>
+                                <option th:value="5" th:text="*{'Custodian'}"></option>
+                                <option th:value="6" th:text="*{'Biohazard'}" ></option>
+                            </select>
+                        </div>
+
+
                             <div class="uk-margin">
                                 <p>Specialization</p>
                                 <div uk-form-custom="target: > * > span:first-child">
