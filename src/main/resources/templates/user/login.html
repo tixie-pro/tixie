@@ -10,31 +10,34 @@
 <th:block th:replace="partials/common :: navigation-index-page">
 </th:block>
 <div class="uk-container">
-    <div class="uk-grid"></div>
-    <div class="uk-grid uk-grid-medium uk-child-width-expand@s">
-        <div class="card_container uk-flex uk-height-medium uk-margin uk-text-center">
-            <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
-                <form th:action="@{/login}" method="POST">
-
-                    <div class="uk-margin">
-                        <div class="uk-inline">
-                            <span class="uk-form-icon" uk-icon="icon: user"></span>
-                            <input class="uk-input" name="username" type="text"/>
+    <div class="main">
+        <div class="uk-grid"></div>
+        <div class="uk-grid uk-grid-medium uk-child-width-expand@s">
+            <div class="card_container uk-flex uk-height-medium uk-margin uk-text-center">
+                <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
+                    <form th:action="@{/login}" method="POST">
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                <input class="uk-input" name="username" type="text"/>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="uk-margin">
-                        <div class="uk-inline">
-                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                            <input class="uk-input" name="password" type="password"/>
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                <input class="uk-input" name="password" type="password"/>
+                            </div>
                         </div>
-                    </div>
-                    <button class="uk-button uk-button-default" type="submit" value="Log In">Submit</button>
-                </form>
+                        <button class="uk-button uk-button-default" type="submit" value="Log In">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
+        <div class="uk-grid"></div>
     </div>
-    <div class="uk-grid"></div>
+
+
+
 
 </div>
 </body>

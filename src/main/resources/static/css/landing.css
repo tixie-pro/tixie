@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Fjalla+One|Noto+Sans&display=swap');
 
 
-body {
-    /*background-image: radial-gradient(circle, #734b6d, #633f62, #533457, #44294d, #351f42);*/
-}
 
 h1,
 h2,
@@ -18,9 +15,10 @@ h5 {
 }
 
 .tixie-landing-page {
-    background-color: #4C53DC;
-    padding-top: 10%;
-    height:90vh;
+    /*background-color: #FFF;*/
+    background-color: #fff;
+    padding-top: 9%;
+    height:60vh;
 }
 
 
@@ -33,6 +31,52 @@ h5 {
     font-family: 'Fjalla One', sans-serif;
     color: #4C53DC;
 }
+
+/* More About Tixie*/
+
+.quote {
+    background: #41ade5;
+    position: relative;
+    z-index: 1;
+}
+.quote:before, .quote:after {
+    background: inherit;
+    content: '';
+    display: block;
+    height: 50%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    -webkit-backface-visibility: hidden;
+}
+.quote:before {
+    top: 0;
+    -webkit-transform: skewY(1.5deg);
+    transform: skewY(1.5deg);
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+}
+.quote:after {
+    bottom: 0;
+    -webkit-transform: skewY(-1.5deg);
+    transform: skewY(-1.5deg);
+    -webkit-transform-origin: 100%;
+    transform-origin: 100%;
+}
+
+.quote {
+    color: #fff;
+    font-family: 'Fira Sans', sans-serif;
+    margin: 50px 0;
+    padding: 3% 20px;
+    text-align: center;
+}
+
+
+
+
+
 
 
 /* Stats Styles*/
