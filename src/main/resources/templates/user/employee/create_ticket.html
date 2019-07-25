@@ -3,7 +3,7 @@
 <head>
     <th:block th:include="partials/common :: head">
     </th:block>
-    <link rel="stylesheet" href="/css/create_ticket.css" />
+    <link rel="stylesheet" href="/css/create_ticket.css"/>
     <title>Tixie | Create A Ticket</title>
 </head>
 <body>
@@ -22,16 +22,16 @@
             </div>
             <div class="uk-width-1-2@m">
                 <div class="uk-card uk-card-default uk-card-body">
-                    <h4>Create A Ticket</h4>
-                    <form class="uk-grid-small" th:action="@{/employee/ticket/create}" th:method="POST" th:object="${tix}">
-                        <th:block th:field="*{statusId}" th:value="1" >
+                    <h1 class="uk-heading-divider">Create a Ticket</h1>
+                    <form class="uk-grid-small" th:action="@{/employee/ticket/create}" th:method="POST"
+                          th:object="${tix}">
+                        <th:block th:field="*{statusId}" th:value="1">
                         </th:block>
                         <div sec:authorize="isAuthenticated()">
                             <span th:field="*{authorId}" th:value="*{#authentication.principal.id}"></span>
                             Email: <span th:text="${#authentication.principal.email}"></span>
                         </div>
 
-                        <div class="uk-width-1-4@m">
                             <div class="uk-margin">
                                 <p>Specialization</p>
                                 <div uk-form-custom="target: > * > span:first-child">
@@ -50,72 +50,61 @@
                                     </button>
                                 </div>
                             </div>
+                        <h2 class="uk-heading-line"><span>Specialization</span></h2>
+                        <div class="uk-margin">
+                            <select class="uk-select" th:value="0" th:field="*{specialization_id}">
+                                <option th:value="1" th:text="*{'Carpenter'}"></option>
+                                <option th:value="2" th:text="*{'Electrical'}"></option>
+                                <option th:value="3" th:text="*{'Plumbing'}"></option>
+                                <option th:value="4" th:text="*{'HVAC'}"></option>
+                                <option th:value="5" th:text="*{'Custodian'}"></option>
+                                <option th:value="6" th:text="*{'Biohazard'}" ></option>
+                            </select>
                         </div>
 
-                        <div class="uk-width-1-4@m">
-                            <div class="uk-margin">
-                                <p>Priority</p>
-                                <div uk-form-custom="target: > * > span:first-child">
-                                    <select th:value="0" th:field="*{priorityId}">
-                                        <option th:value="1" th:text="*{'Low'}"></option>
-                                        <option th:value="2" th:text="*{'Medium'}"></option>
-                                        <option th:value="3" th:text="*{'High'}"></option>
-                                        <option th:value="4" th:text="*{'Urgent'}"></option>
-                                    </select>
-                                    <button class="uk-button uk-button-default" type="button" tabindex="-1">
-                                        <span></span>
-                                        <span uk-icon="icon: chevron-down"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="uk-width-1-4@m">
-                            <div class="uk-margin">
-                                <p>Main Area</p>
-                                <div uk-form-custom="target: > * > span:first-child">
-                                    <select th:value="0" th:field="*{location_1}">
-                                        <option th:value="'Wing A'" th:text="*{'Wing A'}"></option>
-                                        <option th:value="'Wing B'" th:text="*{'Wing B'}"></option>
-                                        <option th:value="'Wing C'" th:text="*{'Wing C'}"></option>
-                                        <option th:value="'Wing D'" th:text="*{'Wing D'}"></option>
-                                    </select>
-                                    <button class="uk-button uk-button-default" type="button" tabindex="-1">
-                                        <span></span>
-                                        <span uk-icon="icon: chevron-down"></span>
-                                    </button>
-                                </div>
-                            </div>
+                        <h2 class="uk-heading-line"><span>Priority</span></h2>
+                        <div class="uk-margin">
+                            <select class="uk-select" th:value="0" th:field="*{priorityId}">
+                                <option th:value="1" th:text="*{'Low'}"></option>
+                                <option th:value="2" th:text="*{'Medium'}"></option>
+                                <option th:value="3" th:text="*{'High'}"></option>
+                                <option th:value="4" th:text="*{'Urgent'}"></option>
+                            </select>
                         </div>
 
-                        <div class="uk-width-1-4@m">
-                            <div class="uk-margin">
-                                <p>Detailed Location</p>
-                                <div uk-form-custom="target: > * > span:first-child">
-                                    <select th:value="0" th:field="*{location_2}">
-                                        <option th:value="1" th:text="*{'Room 1'}"></option>
-                                        <option th:value="2" th:text="*{'Room 2'}"></option>
-                                        <option th:value="3" th:text="*{'Room 3'}"></option>
-                                        <option th:value="4" th:text="*{'Room 4'}"></option>
-                                    </select>
-                                    <button class="uk-button uk-button-default" type="button" tabindex="-1">
-                                        <span></span>
-                                        <span uk-icon="icon: chevron-down"></span>
-                                    </button>
-                                </div>
-                            </div>
+                        <h2 class="uk-heading-line"><span>Main Area</span></h2>
+                        <div class="uk-margin">
+                            <select class="uk-select" th:value="0" th:field="*{location_1}">
+                                <option th:value="'Wing A'" th:text="*{'Wing A'}"></option>
+                                <option th:value="'Wing B'" th:text="*{'Wing B'}"></option>
+                                <option th:value="'Wing C'" th:text="*{'Wing C'}"></option>
+                                <option th:value="'Wing D'" th:text="*{'Wing D'}"></option>
+                            </select>
                         </div>
+
+
+                        <h2 class="uk-heading-line"><span>Detailed Location</span></h2>
+                        <div class="uk-margin">
+                            <select class="uk-select" th:value="0" th:field="*{location_2}">
+                                <option th:value="1" th:text="*{'Room 1'}"></option>
+                                <option th:value="2" th:text="*{'Room 2'}"></option>
+                                <option th:value="3" th:text="*{'Room 3'}"></option>
+                                <option th:value="4" th:text="*{'Room 4'}"></option>
+                            </select>
+                        </div>
+
 
                         <div class="uk-margin">
-                            <textarea th:field="*{issue_details}" class="uk-textarea" rows="5" placeholder="Enter Details"></textarea>
+                            <textarea th:field="*{issue_details}" class="uk-textarea" rows="5"
+                                      placeholder="Enter extra details about issue"></textarea>
                         </div>
 
-                        <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                            <label><input class="uk-radio" type="radio" th:field="*{biohazard}" th:value="1" th:text="*{'Yes'}" /></label>
-                            <label><input class="uk-radio" type="radio" th:field="*{biohazard}" th:value="0" th:text="*{'No'}" /></label>
+                        <div class="uk-margin" uk-margin="">
+                            <div uk-form-custom="target: true">
+                                <input class="uk-input uk-form-width-medium uk-text-center" type="text" th:field="*{ImgUrl}" placeholder="Insert image url here"/>
+                            </div>
                         </div>
-
-                        <input type="text" th:field="*{ImgUrl}" placeholder="www.image.com" />
-                        <button type="submit">Create</button>
+                        <button class="uk-button uk-button-default" type="submit">Create</button>
                     </form>
                 </div>
             </div>
