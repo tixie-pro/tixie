@@ -3,18 +3,21 @@
 <head>
     <th:block th:include="partials/common :: head">
     </th:block>
+    <link rel="stylesheet" href="/css/login.css"/>
     <title>Tixie | Login</title>
     <!-- UIkit CSS -->
 </head>
 <body>
-<th:block th:replace="partials/common :: navigation-index-page">
-</th:block>
 <div class="uk-container">
-    <div class="main">
-        <div class="uk-grid"></div>
-        <div class="uk-grid uk-grid-medium uk-child-width-expand@s">
+    <th:block th:replace="partials/common :: navigation-index-page">
+    </th:block>
+</div>
+<div class="main">
+    <div class="login-container">
+        <div class="uk-width-1-3@m"></div>
+        <div class="uk-align-center uk-grid uk-grid-medium uk-child-width-expand@s">
             <div class="card_container uk-flex uk-height-medium uk-margin uk-text-center">
-                <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
+                <div class="uk-align-center uk-card uk-card-default uk-card-body uk-width-1-3@m">
                     <form th:action="@{/login}" method="POST">
                         <div class="uk-margin">
                             <div class="uk-inline">
@@ -33,12 +36,8 @@
                 </div>
             </div>
         </div>
-        <div class="uk-grid"></div>
+        <div class="uk-width-1-3@m"></div>
     </div>
-
-
-
-
 </div>
 </body>
 <!-- UIkit JS -->
