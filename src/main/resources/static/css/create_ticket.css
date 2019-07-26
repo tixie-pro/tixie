@@ -5,3 +5,25 @@
 h3{
     width: 100%;
 }
+
+h1,
+h2 {
+    color: #3f3f3f;
+}
+
+.fa-biohazard {
+    color: darkgoldenrod;
+}
+
+.fa-map-marked-alt {
+    color: #74E083;
+}
+
+.fa-exclamation-circle {
+    color: #ff4b5a;
+}
+
+.tixie-tip-container {
+    background-color: #eceff1;
+}
+
