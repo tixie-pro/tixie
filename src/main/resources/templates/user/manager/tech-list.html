@@ -72,7 +72,7 @@
                                 <button class="uk-modal-close-default" type="button" uk-close=""></button>
 
                                 <div class="uk-modal-header">
-                                    <h2 class="uk-modal-title" th:text="${tech.id}"></h2>
+                                    <h2 class="uk-modal-title" th:text="@{${tech.firstName}+' '+${tech.lastName}}"></h2>
                                 </div>
                                 <div class="uk-modal-body" uk-overflow-auto="">
 
