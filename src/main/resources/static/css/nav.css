@@ -20,6 +20,13 @@ h6 {
 
 .uk-navbar-nav li a {
     color: #333;
+    font-size: x-large;
+
+}
+
+.uk-navbar-nav li form button{
+    font-size: x-large;
+
 }
 
 .uk-navbar-nav li a:hover {
@@ -31,7 +38,4 @@ h6 {
 }
 
 .tixie-nav-global {
-    border-bottom: #2A3142;
-    border-left: #2A3142;
-    border-right:#2A3142;
 }
