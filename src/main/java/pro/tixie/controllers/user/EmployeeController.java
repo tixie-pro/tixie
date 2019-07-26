@@ -1,4 +1,6 @@
 package pro.tixie.controllers.user;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,10 +42,38 @@ public class EmployeeController {
 
 
     @GetMapping("/employee/{id}")
-    public String allTixByEmployee(@PathVariable long id, Model model) {
+    public String allTixByEmployee(
+            @PathVariable long id,
+            Model model,
+            @PageableDefault(value=4) Pageable pageable) {
         User userTix = userDao.findOne(id);
         Ticket tixNote = ticketDao.findOne(id);
         List<Note> note = noteDao.findAllByTicket(tixNote);
+        Status open= statusDao.findById(1);
+        Status inProg = statusDao.findById(2);
+        Status comp = statusDao.findById(3);
+
+        if(ticketDao.findAllByOwnerAndStatus(userTix,open).size()>400) {
+            model.addAttribute("page", ticketDao.findAllByOwnerAndStatus(userTix, open, pageable));
+            model.addAttribute("pageable", true);
+        }else{
+            model.addAttribute("page", ticketDao.findAllByOwnerAndStatus(userTix, open));
+            model.addAttribute("pageable", false);
+        }
+        if(ticketDao.findAllByOwnerAndStatus(userTix,inProg).size()>400) {
+            model.addAttribute("page2", ticketDao.findAllByOwnerAndStatus(userTix, inProg, pageable));
+            model.addAttribute("pageable2", true);
+        }else{
+            model.addAttribute("page2", ticketDao.findAllByOwnerAndStatus(userTix, inProg));
+            model.addAttribute("pageable2", false);
+        }
+        if(ticketDao.findAllByOwnerAndStatus(userTix,comp).size()>400) {
+            model.addAttribute("page3", ticketDao.findAllByOwnerAndStatus(userTix, comp, pageable));
+            model.addAttribute("pageable3", true);
+        }else{
+            model.addAttribute("page3", ticketDao.findAllByOwnerAndStatus(userTix, comp));
+            model.addAttribute("pageable3", false);
+        }
         model.addAttribute("tix", ticketDao.findAllByAuthor(userTix));
         model.addAttribute("profile", userTix);
         model.addAttribute("employee", userDao);
@@ -72,4 +102,6 @@ public class EmployeeController {
         //emailService.prepareAndSend(ticket, "You created a ticket", "you did it!");
         return "redirect:/";
     }
+
+
 }
