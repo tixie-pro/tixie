@@ -14,9 +14,25 @@ body {
     color: #FFFFFF;
 }
 
+.tixie-80vh{
+    max-height: 80vh;
+}
+
+.tixie-tb-div{
+    padding: 0 9px 0 9px;
+
+}
+
+.tixie-row{
+    padding: 16px 9px 16px 9px;
+    border-top: #999 solid 1px;
+}
+
 .uk-nav-header {
     color: #FFFFFF;
 }
+
+
 
 /* Logout*/
 .photo {
