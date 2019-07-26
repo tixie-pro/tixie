@@ -116,6 +116,6 @@
     };
 })(jQuery);
 
-$(".container").pagify(4, ".single-item");
+$(".container").pagify(5, ".single-item");
 
 console.log("pagination ended");
