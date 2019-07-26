@@ -17,7 +17,7 @@
     <div class="main">
         <div class="uk-container">
             <div class="tixie-assigned-tech-tix uk-margin-top">
-                <h3>Assigned Tickets</h3>
+                <h3 class="uk-heading-line"><span>Assigned Tickets</span></h3>
                 <div class="uk-card uk-card-default uk-card-body">
                     <table class="uk-table uk-table-striped">
                         <thead>
@@ -38,7 +38,7 @@
                         <tbody>
                         <th:block th:each="tickets : ${tix}">
                             <th:block th:if="${#authentication.principal.id} == ${tickets.ownerId.id}">
-                                <tr>
+                                <tr  th:if="${tickets.statusId.status} == @{'in progress'}">
                                     <td><a href=""><span class="tixie-tech-icons far fa-edit fa-2x"></span></a></td>
                                     <td class="uk-text-uppercase" th:text="${tickets.statusId.status}"></td>
                                     <td class="uk-text-uppercase"
@@ -51,7 +51,7 @@
                     </table>
                 </div>
                 <div class="tixie-available-tech-tix uk-margin-top uk-margin-bottom">
-                    <h3>Available Tickets</h3>
+                    <h3 class="uk-heading-line"><span>Available Tickets</span></h3>
                     <div uk-filter="target: .js-filter">
                         <div class="uk-grid-small uk-grid-divider uk-child-width-auto" uk-grid="">
                             <div>

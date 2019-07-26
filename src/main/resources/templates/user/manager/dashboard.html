@@ -16,12 +16,19 @@
 <div class="main">
     <th:block sec:authorize="isAuthenticated()">
         <div class="uk-container">
-            <th:block th:each="ticket : ${tix}">
-                <th:block th:if="${#authentication.principal.id}==${ticket.ownerId.id}">
-                    <div class="uk-alert-danger" th:text="@{'Ticket ID: TX-'+
-        ${ticket.id}+'-'+${ticket.getSpecialization_id().name} }"></div>
+            <div uk-grid="" class="uk-child-width-1-3">
+                <th:block th:each="ticket : ${tix}">
+                    <th:block th:if="${#authentication.principal.id}==${ticket.ownerId.id}">
+                        <div>
+                            <div class="uk-alert-danger uk-align-center" uk-alert="">
+                                <a class="uk-alert-close" uk-close=""></a>
+                                <p th:text="@{'Ticket ID: TX-'+
+        ${ticket.id}+'-'+${ticket.getSpecialization_id().name} }"></p>
+                            </div>
+                        </div>
+                    </th:block>
                 </th:block>
-            </th:block>
+            </div>
         </div>
     </th:block>
     <div class="uk-container">
@@ -49,10 +56,6 @@
         </div>
     </div>
 
-    <div>
-        <th:block th:replace="user/manager/tickets :: tickets-list">
-        </th:block>
-    </div>
 
 </div>
 
@@ -124,6 +127,10 @@
         </div>
     </div>
 </div>
+<div>
+    <th:block th:replace="user/manager/tickets :: tickets-list">
+    </th:block>
+</div>
 
 </body>
 <footer>
@@ -149,10 +156,10 @@
             let tixDate = [];
             let count = 0;
             let datesData = [];
-            let gDates = [ "06-25", "06-26", "06-27", "06-28", "06-29", "06-30",
+            let gDates = ["06-25", "06-26", "06-27", "06-28", "06-29", "06-30",
                 "07-01", "07-02", "07-03", "07-04", "07-05", "07-06", "07-07", "07-08",
                 "07-09", "07-10", "07-11", "07-12", "07-13", "07-14", "07-15", "07-16",
-                "07-17", "07-18", "07-19", "07-20", "07-21", "07-22", "07-23","07-24","07-25"];
+                "07-17", "07-18", "07-19", "07-20", "07-21", "07-22", "07-23", "07-24", "07-25"];
             let dates = document.getElementsByClassName("dates");
             console.log(tixDate);
             console.log(dates);
@@ -269,7 +276,7 @@
                     labels: ["06/25", "06/26", "06/27", "06/28", "06/29", "06/30",
                         "07/01", "07/02", "07/03", "07/04", "07/05", "07/06", "07/07", "07/08",
                         "07/09", "07/10", "07/11", "07/12", "07/13", "07/14", "07/15", "07/16",
-                        "07/17", "07/18", "07/19", "07/20", "07/21", "07/22", "07/23","07/24","07/25"],
+                        "07/17", "07/18", "07/19", "07/20", "07/21", "07/22", "07/23", "07/24", "07/25"],
                     datasets: [{
                         data: datesData,
                         label: "Tickets",
