@@ -162,9 +162,10 @@
                                                     <h6 class="uk-margin-remove-top uk-text-bold uk-text-uppercase tixie-ticket-name uk-text-center"
                                                         th:text="'Ticket ID: TX-'+ ${ticket.id} + '-' + ${ticket.specialization_id.name}"></h6>
 
-                                                    <div><img style="height: 165px; width: 205px;"
-                                                              th:src="@{${ticket.imgUrl}}"/>
-                                                    </div>
+                                                    <!--image of issue *not used in capstone but could be in future*-->
+                                                    <!--<div><img style="height: 165px; width: 205px;"-->
+                                                              <!--th:src="@{${ticket.imgUrl}}"/>-->
+                                                    <!--</div>-->
 
                                                     <p>
                                                         <!--                                    <p th:href="@{'/tickets/author/'+${ticket.authorId.id}}">-->
@@ -228,7 +229,7 @@
 
 
 </body>
-<footer>
+<footer class="uk-height-small">
     <th:block th:include="partials/common :: footer">
     </th:block>
 </footer>

@@ -26,7 +26,7 @@
                     </div>
                     <div class="tixie-tips-bio">
                         <h2><i class="fas fa-biohazard"></i> Biohazard</h2>
-                        <p>Some issues need special commendations, let us know if you think there are dangerous substances involved!</p>
+                        <p>Some issues need special accommodations, let us know if you think there are dangerous substances involved!</p>
                     </div>
                     <div class="tixie-tips-urgent">
                         <h2><i class="fas fa-exclamation-circle"></i> Urgency</h2>
@@ -90,12 +90,14 @@
                                       placeholder="Enter extra details about issue"></textarea>
                         </div>
 
-                        <div class="uk-margin" uk-margin="">
-                            <div uk-form-custom="target: true">
-                                <input class="uk-input uk-form-width-medium uk-text-center" type="text" th:field="*{ImgUrl}" placeholder="Insert image url here"/>
-                            </div>
-                        </div>
-                        <button class="uk-button uk-button-default" type="submit">Create</button>
+
+                        <!--input for  image of issue *not used in capstone but could be in future*-->
+                        <!--<div class="uk-margin" uk-margin="">-->
+                            <!--<div uk-form-custom="target: true">-->
+                                <!--<input class="uk-input uk-form-width-medium uk-text-center" type="text" th:field="*{ImgUrl}" placeholder="Insert image url here"/>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <button class="uk-button uk-button-primary uk-text-center paddMe" type="submit">Create</button>
                     </form>
                 </div>
             </div>
