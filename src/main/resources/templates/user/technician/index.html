@@ -145,14 +145,7 @@
                                                                 Modal Title</h2>
                                                                 <span class="uk-text-center">
                                                                     <form th:action="@{/techescalate}" th:method="post">
-                                                                        <input type="hidden"
-                                                                               th:value="${tickets.id}"
-                                                                               name="ticketid"/>
-                                                                            <button class="uk-button uk-button-danger"
-                                                                                    type="submit"
-                                                                                    onclick="UIkit.notification({message: 'This ticket has been escalated to a Manager!', status: 'success'})">
-                                                                                Escalate
-                                                                            </button>
+
                                                                         <select name="assign" id="assign"
                                                                                 class="uk-select uk-form-width-medium">
                                                                             <th:block th:each="tech : ${techs}">
@@ -167,6 +160,14 @@
                                                                                 </th:block>
                                                                             </th:block>
                                                                         </select>
+                                                                        <input type="hidden"
+                                                                               th:value="${tickets.id}"
+                                                                               name="ticketid"/>
+                                                                            <button class="uk-button uk-button-danger"
+                                                                                    type="submit"
+                                                                                    onclick="UIkit.notification({message: 'This ticket has been escalated to a Manager!', status: 'success'})">
+                                                                                Escalate
+                                                                            </button>
                                                                     </form>
                                                                 </span>
                                                             </span>
