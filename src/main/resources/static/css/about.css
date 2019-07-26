@@ -1,3 +1,7 @@
+body {
+    font-size: 16px;
+}
+
 .tixie-main-about {
     padding-top: 9%;
 }
@@ -10,8 +14,8 @@
 
 }
 .photo {
-    width: 150px;
-    height: 150px;
+    width: 275px;
+    height: 275px;
     border-radius: 3px;
     overflow: hidden;
     border: 3px solid #fafafa;
@@ -37,6 +41,51 @@
     height: 300px
 }
 
-.tixie-about-us-large h3 {
-    border-bottom: solid 3px #2dc7ff;
+.highlight {
+    background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #FFD0AE 50%);
+}
+
+
+/* */
+.tixie-about-para {
+    color: #2A3142;
+    font-size: large;
+}
+.quote {
+    background: #F7F6FB;
+    position: relative;
+    z-index: 1;
+}
+.quote:before, .quote:after {
+    background: inherit;
+    content: '';
+    display: block;
+    height: 50%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    -webkit-backface-visibility: hidden;
+}
+.quote:before {
+    top: 0;
+    -webkit-transform: skewY(1.5deg);
+    transform: skewY(1.5deg);
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+}
+.quote:after {
+    bottom: 0;
+    -webkit-transform: skewY(-1.5deg);
+    transform: skewY(-1.5deg);
+    -webkit-transform-origin: 100%;
+    transform-origin: 100%;
+}
+
+.quote {
+    color: #fff;
+    font-family: 'Fira Sans', sans-serif;
+    margin: 50px 0;
+    padding: 3% 20px;
+    text-align: center;
 }
