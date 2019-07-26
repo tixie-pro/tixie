@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Fjalla+One|Noto+Sans&display=swap');
 
 body {
-    font-family: "Noto Sans", "Arial", "Helvetica Neue", sans-serif
+    font-family: "Noto Sans", "Arial", "Helvetica Neue", sans-serif;
+    font-size: 16px;
 }
 
 h1,
@@ -13,6 +14,9 @@ h6 {
     font-family: 'Fjalla One', sans-serif;
 }
 
+.highlight {
+    background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #FFD0AE 50%);
+}
 
 .uk-navbar-nav li a {
     color: #333;
@@ -34,8 +38,4 @@ h6 {
 }
 
 .tixie-nav-global {
-    -webkit-box-shadow: -2px 9px 5px -4px rgba(189,182,189,1);
-    -moz-box-shadow: -2px 9px 5px -4px rgba(189,182,189,1);
-    box-shadow: -2px 9px 5px -4px rgba(189,182,189,1);
 }
-

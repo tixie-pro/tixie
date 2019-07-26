@@ -54,7 +54,6 @@
                                 </ul>
                             </div>
                         </li>
-
                         <li class="uk-navbar-nav" sec:authorize="isAuthenticated()"><a href="/employee/ticket/create">Create Ticket</a></li>
                         <li class="uk-navbar-nav uk-navbar-item" sec:authorize="isAuthenticated()">
                             <form th:action="@{/logout}" th:method="post">
