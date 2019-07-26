@@ -93,48 +93,7 @@
                         </div>
                         </tbody>
                     </table>
-                    <!--                    pagination -->
-                    <!--                    <th:block th:if="${pageable}">-->
-                    <!--                        <nav class="text-center">-->
-                    <!--                            <ul class="uk-pagination">-->
-                    <!--                                <li th:class="${page.isFirst()}? 'disabled' : ''">-->
-                    <!--                                    <span th:if='${page.isFirst()}'>← First</span>-->
-                    <!--                                    <a th:if='${not page.isFirst()}' th:href="'?page=0'">First-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                                <li th:class="${page.hasPrevious()}? '' : 'disabled'">-->
-                    <!--                                    <span th:if='${not page.hasPrevious()}'>«</span>-->
-                    <!--                                    <a th:if='${page.hasPrevious()}'-->
-                    <!--                                       th:href="'?page=' + ${page.getNumber() - 1}"-->
-                    <!--                                       title='Go to previous page'>-->
-                    <!--                                        «-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                                &lt;!&ndash; Show a link to each page &ndash;&gt;-->
-                    <!--                                <li th:each="i : ${#numbers.sequence(1, page.getTotalPages())}">-->
-                    <!--                                    <span th:if='${(i - 1) == param.page}' th:text='${i}'>1</span>-->
-                    <!--                                    <a th:if='${not ((i - 1) == param.page)}'-->
-                    <!--                                       th:href="'?page=' + ${(i -1)}">-->
-                    <!--                                        <span th:text='${i}'>1</span>-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                                <li th:class="${page.hasNext()} ? '' : 'disabled'">-->
-                    <!--                                    <span th:if='${not page.hasNext()}'>»</span>-->
-                    <!--                                    <a th:if='${page.hasNext()}'-->
-                    <!--                                       th:href="'?page=' + ${page.getNumber() + 1}"-->
-                    <!--                                       title='Go to next page'>-->
-                    <!--                                        »-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                                <li th:class="${page.isLast()}? 'disabled' : ''">-->
-                    <!--                                    <span th:if='${page.isLast()}'>Last →</span>-->
-                    <!--                                    <a th:if='${not page.isLast()}' th:href="'?page=' + ${page.getTotalPages() - 1}">-->
-                    <!--                                        Last-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                            </ul>-->
-                    <!--                        </nav>-->
-                    <!--                    </th:block>-->
+
                 </div>
                 <!-- End Open tickets -->
 
@@ -171,49 +130,6 @@
                             </tbody>
                         </table>
                     </div>
-                    <!--                    pagination -->
-                    <!--                    fix if, method doesn't exist -->
-                    <!--                    <th:block th:if="${pageable2}">-->
-                    <!--                        <nav class="text-center">-->
-                    <!--                            <ul class="uk-pagination">-->
-                    <!--                                <li th:class="${page2.isFirst()}? 'disabled' : ''">-->
-                    <!--                                    <span th:if='${page2.isFirst()}'>← First</span>-->
-                    <!--                                    <a th:if='${not page2.isFirst()}' th:href="'?page2=0'">First-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                                <li th:class="${page2.hasPrevious()}? '' : 'disabled'">-->
-                    <!--                                    <span th:if='${not page2.hasPrevious()}'>«</span>-->
-                    <!--                                    <a th:if='${page2.hasPrevious()}'-->
-                    <!--                                       th:href="'?page2=' + ${page2.getNumber() - 1}"-->
-                    <!--                                       title='Go to previous page'>-->
-                    <!--                                        «-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                                &lt;!&ndash; Show a link to each page2 &ndash;&gt;-->
-                    <!--                                <li th:each="i : ${#numbers.sequence(1, page2.getTotalPages())}">-->
-                    <!--                                    <span th:if='${(i - 1) == param.page2}' th:text='${i}'>1</span>-->
-                    <!--                                    <a th:if='${not ((i - 1) == param.page2)}'-->
-                    <!--                                       th:href="'?page2=' + ${(i -1)}">-->
-                    <!--                                        <span th:text='${i}'>1</span>-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                                <li th:class="${page2.hasNext()} ? '' : 'disabled'">-->
-                    <!--                                    <span th:if='${not page2.hasNext()}'>»</span>-->
-                    <!--                                    <a th:if='${page2.hasNext()}'-->
-                    <!--                                       th:href="'?page2=' + ${page2.getNumber() + 1}"-->
-                    <!--                                       title='Go to next page'>-->
-                    <!--                                        »-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                                <li th:class="${page2.isLast()}? 'disabled' : ''">-->
-                    <!--                                    <span th:if='${page2.isLast()}'>Last →</span>-->
-                    <!--                                    <a th:if='${not page2.isLast()}' th:href="'?page2=' + ${page2.getTotalPages() - 1}">-->
-                    <!--                                        Last-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                            </ul>-->
-                    <!--                        </nav>-->
-                    <!--                    </th:block>-->
                 </div>
                 <!-- End in  Progress-->
 
@@ -249,48 +165,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <!--                    pagination -->
-                    <!--                    <th:block th:if="${pageable3}">-->
-                    <!--                        <nav class="text-center">-->
-                    <!--                            <ul class="uk-pagination">-->
-                    <!--                                <li th:class="${page3.isFirst()}? 'disabled' : ''">-->
-                    <!--                                    <span th:if='${page3.isFirst()}'>First</span>-->
-                    <!--                                    <a th:if='${not page3.isFirst()}' th:href="'?page3=0'">First-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                                <li th:class="${page3.hasPrevious()}? '' : 'disabled'">-->
-                    <!--                                    <span th:if='${not page3.hasPrevious()}'>«</span>-->
-                    <!--                                    <a th:if='${page3.hasPrevious()}'-->
-                    <!--                                       th:href="'?page3=' + ${page3.getNumber() - 1}"-->
-                    <!--                                       title='Go to previous page'>-->
-                    <!--                                        «-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                                &lt;!&ndash; Show a link to each page3 &ndash;&gt;-->
-                    <!--                                <li th:each="i : ${#numbers.sequence(1, page3.getTotalPages())}">-->
-                    <!--                                    <span th:if='${(i - 1) == param.page3}' th:text='${i}'>1</span>-->
-                    <!--                                    <a th:if='${not ((i - 1) == param.page3)}'-->
-                    <!--                                       th:href="'?page3=' + ${(i -1)}">-->
-                    <!--                                        <span th:text='${i}'>1</span>-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                                <li th:class="${page3.hasNext()} ? '' : 'disabled'">-->
-                    <!--                                    <span th:if='${not page3.hasNext()}'>»</span>-->
-                    <!--                                    <a th:if='${page3.hasNext()}'-->
-                    <!--                                       th:href="'?page3=' + ${page3.getNumber() + 1}"-->
-                    <!--                                       title='Go to next page'>-->
-                    <!--                                        »-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                                <li th:class="${page3.isLast()}? 'disabled' : ''">-->
-                    <!--                                    <span th:if='${page3.isLast()}'>Last</span>-->
-                    <!--                                    <a th:if='${not page3.isLast()}' th:href="'?page3=' + ${page3.getTotalPages() - 1}">-->
-                    <!--                                        Last-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                            </ul>-->
-                    <!--                        </nav>-->
-                    <!--                    </th:block>-->
+
                 </div>
                 <!-- End Completed Tickets-->
             </div>
