@@ -100,7 +100,7 @@ public class EmployeeController {
         ticketCreated.setStatusId(newStat);
         ticketDao.save(ticketCreated);
         //emailService.prepareAndSend(ticket, "You created a ticket", "you did it!");
-        return "redirect:/";
+        return "redirect:/employee/ticket/create";
     }
 
 
