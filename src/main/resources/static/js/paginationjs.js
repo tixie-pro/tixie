@@ -117,8 +117,7 @@
 })(jQuery);
 
 $(".container").pagify(5, ".single-item");
-$(".container2").pagify(5, ".single-item2");
-$(".container3").pagify(5, ".single-item3");
+
 
 
 console.log("pagination ended");
