@@ -72,7 +72,9 @@ public class ManagerDashController {
         List<Ticket> plumTix = ticketDao.findAllBySpecialization(plum);
         List<Ticket> hvacTix = ticketDao.findAllBySpecialization(hvac);
         List<Ticket> custTix = ticketDao.findAllBySpecialization(cust);
-        List<Ticket> biohTix = ticketDao.findAllByBiohazardEquals(1);
+        List<Ticket> biohTix = ticketDao.findAllBySpecialization(bioh);
+
+//        List<Ticket> biohTix = ticketDao.findAllByBiohazardEquals(1);
 
 
         model.addAttribute("techs", allTechs );
