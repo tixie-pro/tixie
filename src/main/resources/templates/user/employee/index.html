@@ -110,9 +110,9 @@
                                 <div class="uk-flex-left uk-text-nowrap">View</div>
                             </div>
 
-                            <div class="container2">
+                            <div class="">
                                 <th:block th:each="ticket : ${page2}">
-                                    <div class="single-item2">
+                                    <div class="">
                                         <th:block th:if="${ticket.statusId.status} == @{'in progress'}">
                                             <!--  <td><img class="uk-preserve-width uk-border-circle" th:src="${ticket.authorId.getProfileImage()}" width="21" height="21" alt=""/></td>-->
                                             <div class="tixie-row uk-flex tixie-tb-div">
@@ -150,9 +150,9 @@
                                 <div class="uk-flex-left uk-text-nowrap uk-width-1-3">Status</div>
                                 <div class="uk-flex-left uk-text-nowrap">View</div>
                             </div>
-                            <div class="container3">
+                            <div class="">
                             <th:block th:each="ticket : ${page3}">
-                                <div class="single-item3">
+                                <div class="">
                                     <th:block th:if="${ticket.statusId.status} == @{'complete'}">
                                         <!--  <td><img class="uk-preserve-width uk-border-circle" th:src="${ticket.authorId.getProfileImage()}" width="21" height="21" alt=""/></td>-->
                                         <div class="tixie-row uk-flex tixie-tb-div">
