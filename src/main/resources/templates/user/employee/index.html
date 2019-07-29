@@ -34,7 +34,7 @@
                         <span class="uk-label uk-label-default" th:text="${profile.specialization.name}"></span>
                     </div>
                     <div class="uk-card-footer">
-                        <a href="#" class="uk-button uk-button-text">Read more</a>
+                        <a href="/employee/ticket/create" class="uk-button uk-button-text">Create Ticket</a>
                     </div>
                 </div>
             </div>
@@ -65,9 +65,9 @@
                                                    th:text="'TX' + '-' + ${ticket.id} +'-'+${ticket.getSpecialization_id().name}"></a>
                                             </div>
                                             <div class="tixie-tb-div uk-text-truncate uk-flex-left uk-width-1-2"
-                                                th:text="${ticket.issue_details}"></div>
+                                                 th:text="${ticket.issue_details}"></div>
                                             <div class="uk-text-primary tixie-tb-div uk-flex-left uk-text-nowrap uk-width-1-3 uk-text-uppercase"
-                                                th:text="${ticket.statusId.status}"></div>
+                                                 th:text="${ticket.statusId.status}"></div>
                                             <div class="tixie-tb-div uk-flex-left uk-text-nowrap">
                                                 <a class="uk-icon-link" uk-icon="file-edit"
                                                    th:href="'#modal-' + ${ticket.id}"
@@ -98,37 +98,42 @@
                 <!-- End Open tickets -->
 
                 <!-- In Progress-->
-                <div class="uk-card uk-card-default uk-card-body uk-margin tixie-main-body">
+                <div class="uk-card uk-card-default uk-card-body tixie-main-body uk-margin-large">
                     <div class="uk-overflow-auto">
                         <h5>User In-Progress tickets</h5>
-                        <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
-                            <thead>
-                            <tr>
-                                <th class="uk-width-small">Ticket Number</th>
-                                <th class="uk-table-expand ">Details</th>
-                                <th class="uk-table-shrink uk-text-nowrap">Status</th>
-                                <th class="uk-table-shrink uk-text-nowrap">View</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <th:block th:each="ticket : ${page2}">
-                                <tr>
-                                    <th:block th:if="${ticket.statusId.status} == @{'in progress'}">
-                                        <!--  <td><img class="uk-preserve-width uk-border-circle" th:src="${ticket.authorId.getProfileImage()}" width="21" height="21" alt=""/></td>-->
-                                        <td class="uk-table-link">
-                                            <a class="uk-link-reset" href=""
-                                               th:text="'TX' + '-' + ${ticket.id} +'-'+${ticket.getSpecialization_id().name}"></a>
-                                        </td>
-                                        <td class="uk-text-truncate uk-table-expand"
-                                            th:text="${ticket.issue_details}"></td>
-                                        <td class="uk-text-nowrap uk-text-uppercase uk-text-warning"
-                                            th:text="${ticket.statusId.status}"></td>
-                                        <td><a href="#" class="uk-icon-link" uk-icon="file-edit"></a></td>
-                                    </th:block>
-                                </tr>
-                            </th:block>
-                            </tbody>
-                        </table>
+                        <div class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+
+                            <div class="tixie-tb-div divtable uk-flex uk-flex-left">
+                                <div class="uk-width-1-6 uk-flex-left">Ticket Number</div>
+                                <div class="uk-flex-left uk-width-1-2">Details</div>
+                                <div class="uk-flex-left uk-text-nowrap uk-width-1-3">Status</div>
+                                <div class="uk-flex-left uk-text-nowrap">View</div>
+                            </div>
+
+                            <div class="container2">
+                                <th:block th:each="ticket : ${page2}">
+                                    <div class="single-item2">
+                                        <th:block th:if="${ticket.statusId.status} == @{'in progress'}">
+                                            <!--  <td><img class="uk-preserve-width uk-border-circle" th:src="${ticket.authorId.getProfileImage()}" width="21" height="21" alt=""/></td>-->
+                                            <div class="tixie-row uk-flex tixie-tb-div">
+                                                <div class="uk-width-1-6 uk-flex-left ">
+                                                    <a class="uk-link-reset" href=""
+                                                       th:text="'TX' + '-' + ${ticket.id} +'-'+${ticket.getSpecialization_id().name}"></a>
+                                                </div>
+                                                <div class="tixie-tb-div uk-text-truncate uk-flex-left uk-width-1-2"
+                                                     th:text="${ticket.issue_details}"></div>
+                                                <div class="uk-text-primary tixie-tb-div uk-flex-left uk-text-nowrap uk-width-1-3 uk-text-uppercase"
+                                                     th:text="${ticket.statusId.status}"></div>
+                                                <div class="tixie-tb-div uk-flex-left uk-text-nowrap">
+                                                    <a class="uk-icon-link" uk-icon="file-edit"
+                                                       th:href="'#modal-' + ${ticket.id}"
+                                                       uk-toggle=""></a></div>
+                                            </div>
+                                        </th:block>
+                                    </div>
+                                </th:block>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- End in  Progress-->
@@ -137,33 +142,43 @@
                 <div class="uk-card uk-card-default uk-card-body uk-margin tixie-main-body">
                     <div class="uk-overflow-auto">
                         <h5>User Tickets Completed</h5>
-                        <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
-                            <thead>
-                            <tr>
-                                <th class="uk-width-small">Ticket Number</th>
-                                <th class="uk-table-expand ">Details</th>
-                                <th class="uk-table-shrink uk-text-nowrap">Status</th>
-                                <th class="uk-table-shrink uk-text-nowrap">View</th>
-                            </tr>
-                            </thead>
-                            <tbody>
+                        <div class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+
+                            <div class="tixie-tb-div divtable uk-flex uk-flex-left">
+                                <div class="uk-width-1-6 uk-flex-left">Ticket Number</div>
+                                <div class="uk-flex-left uk-width-1-2">Details</div>
+                                <div class="uk-flex-left uk-text-nowrap uk-width-1-3">Status</div>
+                                <div class="uk-flex-left uk-text-nowrap">View</div>
+                            </div>
+                            <div class="container3">
                             <th:block th:each="ticket : ${page3}">
-                                <tr>
+                                <div class="single-item3">
                                     <th:block th:if="${ticket.statusId.status} == @{'complete'}">
                                         <!--  <td><img class="uk-preserve-width uk-border-circle" th:src="${ticket.authorId.getProfileImage()}" width="21" height="21" alt=""/></td>-->
-                                        <td class="uk-table-link">
-                                            <a class="uk-link-reset" href=""
-                                               th:text="'TX' + '-' + ${ticket.id} +'-'+${ticket.getSpecialization_id().name}"></a>
-                                        </td>
-                                        <td class="uk-text-truncate uk-table-expand"
-                                            th:text="${ticket.issue_details}"></td>
-                                        <td class="uk-text-nowrap uk-text-success uk-text-uppercase" th:text="${ticket.statusId.status}"></td>
-                                        <td><a href="#" class="uk-icon-link " uk-icon="file-edit"></a></td>
+                                        <div class="tixie-row uk-flex tixie-tb-div">
+                                            <div class="uk-width-1-6 uk-flex-left ">
+                                                <a class="uk-link-reset" href=""
+                                                   th:text="'TX' + '-' + ${ticket.id} +'-'+${ticket.getSpecialization_id().name}"></a>
+                                            </div>
+                                            <div class="tixie-tb-div uk-text-truncate uk-flex-left uk-width-1-2"
+                                                 th:text="${ticket.issue_details}">
+
+                                            </div>
+                                            <div class="uk-text-primary tixie-tb-div uk-flex-left uk-text-nowrap uk-width-1-3 uk-text-uppercase"
+                                                 th:text="${ticket.statusId.status}">
+
+                                            </div>
+                                            <div class="tixie-tb-div uk-flex-left uk-text-nowrap">
+                                                <a class="uk-icon-link" uk-icon="file-edit"
+                                                   th:href="'#modal-' + ${ticket.id}"
+                                                   uk-toggle=""></a>
+                                            </div>
+                                        </div>
                                     </th:block>
-                                </tr>
+                                </div>
                             </th:block>
-                            </tbody>
-                        </table>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
