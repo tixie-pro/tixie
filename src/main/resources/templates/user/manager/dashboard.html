@@ -12,7 +12,6 @@
     <th:block th:replace="partials/common :: navigation-index-page">
     </th:block>
 </div>
-
 <div class="main">
     <th:block sec:authorize="isAuthenticated()">
         <div class="uk-container">
@@ -37,7 +36,7 @@
                 <div class="uk-card-header">
                     <h3>Tickets by Status</h3>
                 </div>
-                <div class="uk-card-body">
+                <div class="uk-card-body uk-text-large">
                     <canvas id="myChart"></canvas>
                 </div>
             </div>
@@ -51,7 +50,7 @@
             </div>
         </div>
 
-        <div>
+        <div class="">
             <canvas id="line-chart" width="800" height="250"></canvas>
         </div>
     </div>
@@ -156,11 +155,11 @@
             let tixDate = [];
             let count = 0;
             let datesData = [];
-            let gDates = [ "06-29", "06-30",
+            let gDates = [  "06-30",
                 "07-01", "07-02", "07-03", "07-04", "07-05", "07-06", "07-07", "07-08",
                 "07-09", "07-10", "07-11", "07-12", "07-13", "07-14", "07-15", "07-16",
                 "07-17", "07-18", "07-19", "07-20", "07-21", "07-22", "07-23", "07-24",
-                "07-25", "07-26", "07-27","07-28","07-29"];
+                "07-25", "07-26", "07-27","07-28","07-29", "07-30"];
             let dates = document.getElementsByClassName("dates");
             console.log(tixDate);
             console.log(dates);
@@ -274,11 +273,11 @@
             new Chart(document.getElementById("line-chart"), {
                 type: 'line',
                 data: {
-                    labels: ["06/29", "06/30",
+                    labels: [ "06/30",
                         "07/01", "07/02", "07/03", "07/04", "07/05", "07/06", "07/07", "07/08",
                         "07/09", "07/10", "07/11", "07/12", "07/13", "07/14", "07/15", "07/16",
                         "07/17", "07/18", "07/19", "07/20", "07/21", "07/22", "07/23", "07/24",
-                        "07/25","07/26","07/27", "07/28","07/29"],
+                        "07/25","07/26","07/27", "07/28","07/29","07/30"],
                     datasets: [{
                         data: datesData,
                         label: "Tickets",
