@@ -38,6 +38,11 @@ public class UserController {
         return "user/registration";
     }
 
+//    @GetMapping("/redirect")
+//    private String redirectUser() {
+//            return
+//    }
+
     @PostMapping("/register")
     private String insert(@ModelAttribute User user){
 
